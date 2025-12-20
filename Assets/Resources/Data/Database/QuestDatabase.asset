@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f7e4a09422d0340ab96f8272607c52, type: 3}
+  m_Name: QuestDatabase
+  m_EditorClassIdentifier: 
+  Items:
+  - questId: Quest_001
+    questName: "\uCC98\uC74C \uD558\uB294 \uD018\uC2A4\uD2B8"
+    description: "\uCC98\uC74C \uD558\uB294 \uD018\uC2A4\uD2B8\uC785\uB2C8\uB2E4.\n\uC0C1\uC778\uC5D0\uAC8C\uC11C
+      \uC544\uC774\uD15C\uC744 \uC0AC\uC624\uC138\uC694"
+    prerequisite:
+      type: 1
+      value: 1
+    preAcceptReward: item:gold_coin:20
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: quest_letter_mayor
+      requiredCount: 1
+      currentCount: 0
+    rewardGold: 100
+    rewardExp: 50
+    rewards:
+    - itemId: sword_wooden
+      quantity: 1
+      dropRate: 100
+    - itemId: armor_leather
+      quantity: 1
+      dropRate: 100
+    status: 0

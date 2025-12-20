@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ca25b479a669b4b988417a2a8f4343, type: 3}
+  m_Name: MonsterDatabase
+  m_EditorClassIdentifier: 
+  Items:
+  - monsterid: monster_1000001
+    monsterName: "\uC628\uC21C\uD55C \uC0C8\uB07C \uACE0\uC591\uC774"
+    description: "\uB9C9 \uD0DC\uC5B4\uB09C \uC544\uAE30 \uACE0\uC591\uC774\uC785\uB2C8\uB2E4.
+      \uC21C\uD558\uACE0 \uC628\uD654\uD569\uB2C8\uB2E4."
+    level: 1
+    monsterType: 0
+    isAggressive: 0
+    isRanged: 0
+    attackSpeed: 1
+    moveSpeed: 2
+    detectionRange: 5
+    strBonus: 3
+    dexBonus: 2
+    intBonus: 1
+    lukBonus: 1
+    tecBonus: 0
+    dropExp: 5
+    dropGold: 3
+    dropItems:
+    - itemId: gold_coin
+      quantity: 3
+      dropRate: 100
+    - itemId: herb_healing
+      quantity: 1
+      dropRate: 60
+    - itemId: leather_piece
+      quantity: 1
+      dropRate: 30
+  - monsterid: monster_1000002
+    monsterName: "\uC7A5\uB09C\uAE30 \uB9CE\uC740 \uACE0\uC591\uC774"
+    description: "\uC5D0\uB108\uC9C0\uAC00 \uB118\uCE58\uB294 \uCCAD\uB144 \uACE0\uC591\uC774\uC785\uB2C8\uB2E4.
+      \uD638\uAE30\uC2EC\uC774 \uB9CE\uC2B5\uB2C8\uB2E4."
+    level: 3
+    monsterType: 0
+    isAggressive: 1
+    isRanged: 1
+    attackSpeed: 1.2
+    moveSpeed: 2.5
+    detectionRange: 3
+    strBonus: 5
+    dexBonus: 5
+    intBonus: 1
+    lukBonus: 2
+    tecBonus: 0
+    dropExp: 15
+    dropGold: 8
+    dropItems:
+    - itemId: gold_coin
+      quantity: 5
+      dropRate: 100
+    - itemId: herb_healing
+      quantity: 2
+      dropRate: 70
+    - itemId: leather_piece
+      quantity: 2
+      dropRate: 40
+  - monsterid: monster_1100003
+    monsterName: "\uC131\uB09C \uAE38\uACE0\uC591\uC774"
+    description: "\uC601\uC5ED\uC744 \uCE68\uBC94\uB2F9\uD574 \uD654\uAC00 \uB09C
+      \uAE38\uACE0\uC591\uC774\uC785\uB2C8\uB2E4. \uB0A0\uCE74\uB85C\uC6B4 \uBC1C\uD1B1\uC744
+      \uD718\uB450\uB985\uB2C8\uB2E4."
+    level: 5
+    monsterType: 0
+    isAggressive: 1
+    isRanged: 0
+    attackSpeed: 1.5
+    moveSpeed: 3
+    detectionRange: 12
+    strBonus: 8
+    dexBonus: 12
+    intBonus: 2
+    lukBonus: 3
+    tecBonus: 1
+    dropExp: 50
+    dropGold: 15
+    dropItems:
+    - itemId: gold_coin
+      quantity: 10
+      dropRate: 100
+    - itemId: leather_piece
+      quantity: 3
+      dropRate: 60
+    - itemId: ore_iron
+      quantity: 1
+      dropRate: 30
+  - monsterid: monster_1110004
+    monsterName: "\uD560\uD034\uB294 \uADF8\uB9BC\uC790 \uACE0\uC591\uC774"
+    description: "\uBE60\uB978 \uC18D\uB3C4\uB85C \uC6C0\uC9C1\uC774\uBA70 \uADF8\uB9BC\uC790\uC5D0
+      \uC228\uC5B4 \uD560\uD034\uB294 \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4."
+    level: 7
+    monsterType: 0
+    isAggressive: 1
+    isRanged: 1
+    attackSpeed: 1.8
+    moveSpeed: 3.5
+    detectionRange: 15
+    strBonus: 10
+    dexBonus: 18
+    intBonus: 5
+    lukBonus: 5
+    tecBonus: 3
+    dropExp: 80
+    dropGold: 25
+    dropItems:
+    - itemId: gold_coin
+      quantity: 15
+      dropRate: 100
+    - itemId: potion_hp_small
+      quantity: 1
+      dropRate: 40
+    - itemId: leather_piece
+      quantity: 5
+      dropRate: 70
+    - itemId: dagger_iron
+      quantity: 1
+      dropRate: 5
+  - monsterid: monster_2100005
+    monsterName: "\uC5D8\uB9AC\uD2B8: \uC5B4\uB460\uC744 \uAC77\uB294 \uACE0\uC591\uC774"
+    description: "\uBC24\uC758 \uAE30\uC6B4\uC744 \uD761\uC218\uD55C \uC5D8\uB9AC\uD2B8
+      \uACE0\uC591\uC774. \uBB35\uC9C1\uD55C \uBC1C\uCC28\uAE30\uB97C \uC0AC\uC6A9\uD569\uB2C8\uB2E4."
+    level: 10
+    monsterType: 1
+    isAggressive: 1
+    isRanged: 0
+    attackSpeed: 2
+    moveSpeed: 4
+    detectionRange: 20
+    strBonus: 15
+    dexBonus: 20
+    intBonus: 5
+    lukBonus: 8
+    tecBonus: 5
+    dropExp: 150
+    dropGold: 40
+    dropItems:
+    - itemId: gold_coin
+      quantity: 30
+      dropRate: 100
+    - itemId: leather_piece
+      quantity: 8
+      dropRate: 80
+    - itemId: armor_leather
+      quantity: 1
+      dropRate: 20
+    - itemId: ore_iron
+      quantity: 5
+      dropRate: 50
+  - monsterid: monster_2110006
+    monsterName: "\uC5D8\uB9AC\uD2B8: \uD658\uC601 \uB9C8\uBC95 \uACE0\uC591\uC774"
+    description: "\uC2E0\uBE44\uB85C\uC6B4 \uB9C8\uB825\uC744 \uC0AC\uC6A9\uD558\uB294
+      \uACE0\uC591\uC774. \uC6D0\uAC70\uB9AC\uC5D0\uC11C \uD658\uC601 \uD22C\uC0AC\uCCB4\uB97C
+      \uB0A0\uB9BD\uB2C8\uB2E4."
+    level: 15
+    monsterType: 1
+    isAggressive: 1
+    isRanged: 1
+    attackSpeed: 2.2
+    moveSpeed: 4.5
+    detectionRange: 25
+    strBonus: 18
+    dexBonus: 15
+    intBonus: 30
+    lukBonus: 12
+    tecBonus: 8
+    dropExp: 250
+    dropGold: 70
+    dropItems:
+    - itemId: gold_coin
+      quantity: 50
+      dropRate: 100
+    - itemId: staff_crystal
+      quantity: 1
+      dropRate: 10
+    - itemId: ring_silver
+      quantity: 1
+      dropRate: 5
+    - itemId: gem_sapphire
+      quantity: 1
+      dropRate: 15
+  - monsterid: monster_3110007
+    monsterName: "\uBCF4\uC2A4: \uC544\uD649 \uAF2C\uB9AC \uB0E5\uC774\uC2E0"
+    description: "\uACE0\uC591\uC774\uB4E4\uC758 \uC815\uC810\uC5D0 \uC120 \uC874\uC7AC.
+      \uAD11\uBC94\uC704\uD55C \uB9C8\uBC95 \uACF5\uACA9\uC744 \uAD6C\uC0AC\uD558\uB294
+      \uBCF4\uC2A4\uC785\uB2C8\uB2E4."
+    level: 25
+    monsterType: 2
+    isAggressive: 1
+    isRanged: 1
+    attackSpeed: 2.5
+    moveSpeed: 5
+    detectionRange: 30
+    strBonus: 30
+    dexBonus: 30
+    intBonus: 50
+    lukBonus: 30
+    tecBonus: 15
+    dropExp: 1000
+    dropGold: 300
+    dropItems:
+    - itemId: gold_coin
+      quantity: 300
+      dropRate: 100
+    - itemId: sword_steel
+      quantity: 1
+      dropRate: 50
+    - itemId: armor_plate
+      quantity: 1
+      dropRate: 20
+    - itemId: ring_gold
+      quantity: 1
+      dropRate: 10
+    - itemId: gem_ruby
+      quantity: 1
+      dropRate: 5

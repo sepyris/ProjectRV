@@ -1,0 +1,8 @@
+ID,Name,Description,Level,MonsterType,IsAggressive,IsRanged,AttackSpeed,MoveSpeed,DetectionRange,strBonus,DexBonus,IntBonus,lukBonus,tecBonus,DropExp,DropGold,DropItemTable
+monster_1000001,온순한 새끼 고양이,막 태어난 아기 고양이입니다. 순하고 온화합니다.,1,Normal,FALSE,FALSE,1,2,5,3,2,1,1,0,5,3,gold_coin:3:100;herb_healing:1:60;leather_piece:1:30
+monster_1000002,장난기 많은 고양이,에너지가 넘치는 청년 고양이입니다. 호기심이 많습니다.,3,Normal,FALSE,FALSE,1.2,2.5,8,5,5,1,2,0,15,8,gold_coin:5:100;herb_healing:2:70;leather_piece:2:40
+monster_1100003,성난 길고양이,영역을 침범당해 화가 난 길고양이입니다. 날카로운 발톱을 휘두릅니다.,5,Normal,TRUE,FALSE,1.5,3,12,8,12,2,3,1,50,15,gold_coin:10:100;leather_piece:3:60;ore_iron:1:30
+monster_1110004,할퀴는 그림자 고양이,빠른 속도로 움직이며 그림자에 숨어 할퀴는 공격을 합니다.,7,Normal,TRUE,TRUE,1.8,3.5,15,10,18,5,5,3,80,25,gold_coin:15:100;potion_hp_small:1:40;leather_piece:5:70;dagger_iron:1:5
+monster_2100005,엘리트: 어둠을 걷는 고양이,밤의 기운을 흡수한 엘리트 고양이. 묵직한 발차기를 사용합니다.,10,Elite,TRUE,FALSE,2,4,20,15,20,5,8,5,150,40,gold_coin:30:100;leather_piece:8:80;armor_leather:1:20;ore_iron:5:50
+monster_2110006,엘리트: 환영 마법 고양이,신비로운 마력을 사용하는 고양이. 원거리에서 환영 투사체를 날립니다.,15,Elite,TRUE,TRUE,2.2,4.5,25,18,15,30,12,8,250,70,gold_coin:50:100;staff_crystal:1:10;ring_silver:1:5;gem_sapphire:1:15
+monster_3110007,보스: 아홉 꼬리 냥이신,고양이들의 정점에 선 존재. 광범위한 마법 공격을 구사하는 보스입니다.,25,Boss,TRUE,TRUE,2.5,5,30,30,30,50,30,15,1000,300,gold_coin:300:100;sword_steel:1:50;armor_plate:1:20;ring_gold:1:10;gem_ruby:1:5

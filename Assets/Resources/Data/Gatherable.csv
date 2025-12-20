@@ -1,0 +1,5 @@
+ID,Name,Description,GatherType,RequiredTool,GatherTime,DropItemTable
+herb_node_basic,약초 덤불,기본 약초를 채집할 수 있는 덤불,Gathering,Sickle,2,herb_healing:3:100;herb_healing:2:50
+ore_node_iron,철광석 광맥,철광석을 채집할 수 있는 광맥,Mining,Pickaxe,3,ore_iron:5:100;ore_iron:3:60
+fish_spot_river,강 낚시터,민물고기를 낚을 수 있는 곳,Fishing,FishingRod,5,fish_carp:1:70;fish_salmon:1:30
+mushroom_spot,버섯 군락,버섯을 채집할 수 있는 곳,Gathering,None,1.5,mushroom_red:3:90;mushroom_blue:2:40

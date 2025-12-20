@@ -1,0 +1,58 @@
+npcId,DialogueType,QuestID,Text
+# npc_main 기본 대화,,,
+npc_0001,Normal,,안녕하세요! 오늘 기분은 어떠신가요?
+,,,마을에 새로운 일이 생겼다고 들었어요.
+,,,퀘스트를 선택하거나 그냥 대화를 즐기실 수 있어요.
+,,,
+# 일상 대화 (선택지용),,,
+npc_0001,Daily,,좋아요 오늘도 즐거운 하루 보내세요!
+,,,
+# 퀘스트1: npc_north,,,
+npc_0001,Quest_Offer,Quest_001,퀘스트1: 북쪽 상인 NPC에게서 아이템을 사와주세요
+npc_0001,Quest_Accept,Quest_001,좋아요 북쪽 NPC에게 가서 진행하세요.
+npc_0001,Quest_Decline,Quest_001,아쉽네요 나중에 다시 도전할 수 있어요.
+npc_0001,Quest_Progress,Quest_001,아직 퀘스트1를 진행하지 않았습니다.
+npc_0001,Quest_Complete,Quest_001,퀘스트1 완료! 보상으로 아이템을 드립니다.
+,,,
+npc_north,Quest_Offer,Quest_001,퀘스트1 진행 중입니다. 준비되셨나요?
+npc_north,Quest_Accept,Quest_001,좋아요 아이템 2개 지급 완료!
+npc_north,Quest_Decline,Quest_001,준비가 되면 다시 말씀해주세요.
+npc_north,Quest_Progress,Quest_001,아직 진행 중입니다.
+npc_north,Quest_Complete,Quest_001,퀘스트1 완료! 아이템 2개 지급 완료.
+,,,
+# 퀘스트2: 수집형,,,
+npc_0001,Quest_Offer,Quest_002,퀘스트2: 수집품 2종류를 모아 오세요.
+npc_0001,Quest_Accept,Quest_002,좋아요 수집품을 모아 오세요.
+npc_0001,Quest_Decline,Quest_002,다음에 도전해주세요.
+npc_0001,Quest_Progress,Quest_002,아직 수집품을 모두 모으지 못하셨네요.
+npc_0001,Quest_Complete,Quest_002,퀘스트2 완료! 보상을 드립니다.
+,,,
+# 퀘스트3: npc_main 제안 → npc_east 진행,,,
+npc_0001,Quest_Offer,Quest_003,퀘스트3: 동쪽 NPC에게 가서 완료하세요.
+npc_0001,Quest_Accept,Quest_003,좋아요 진행해보세요.
+npc_0001,Quest_Decline,Quest_003,나중에 다시 도전하실 수 있어요.
+npc_0001,Quest_Progress,Quest_003,퀘스트3 진행 중입니다.
+,,,
+npc_east,Quest_Offer,Quest_003,퀘스트3 진행 중이군요. 준비되셨나요?
+npc_east,Quest_Accept,Quest_003,좋아요 이제 완료를 확인합니다.
+npc_east,Quest_Decline,Quest_003,준비가 되면 다시 말씀해주세요.
+npc_east,Quest_Progress,Quest_003,아직 진행 중입니다.
+npc_east,Quest_Complete,Quest_003,퀘스트3 완료! 이제 퀘스트4를 제안합니다.
+,,,
+# 퀘스트4: 퀘스트3 완료 시 자동 제안,,,
+npc_0001,Quest_Offer,Quest_004,퀘스트4: 이어지는 퀘스트입니다. 완료를 목표로 하세요.
+npc_0001,Quest_Accept,Quest_004,퀘스트4 수락! 이제 진행하세요.
+npc_0001,Quest_Decline,Quest_004,퀘스트4 거절. 나중에 다시 선택할 수 있어요.
+npc_0001,Quest_Progress,Quest_004,퀘스트4 진행 중입니다.
+npc_0001,Quest_Complete,Quest_004,퀘스트4 완료! 축하드립니다.
+,,,
+npc_east,Quest_Offer,Quest_004,퀘스트4 진행 준비 완료! 수락할 수 있습니다.
+npc_east,Quest_Accept,Quest_004,퀘스트4 수락 완료!
+npc_east,Quest_Decline,Quest_004,퀘스트4 거절. 다음에 다시 선택 가능
+npc_east,Quest_Progress,Quest_004,퀘스트4 진행 중입니다.
+npc_east,Quest_Complete,Quest_004,퀘스트4 완료! 축하드립니다.
+,,,
+# npc_east 일상 대화,,,
+npc_east,Normal,,안녕하세요! 오늘 기분은 어떠신가요?
+,,,마을 소식을 들으러 오셨나요?
+npc_east,Daily,,오늘도 좋은 하루 되세요!

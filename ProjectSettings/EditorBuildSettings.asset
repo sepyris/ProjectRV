@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/0_Main/00_MainLoading.unity
+    guid: b354cd0e03f0bb348aba63553e264816
+  - enabled: 1
+    path: Assets/Scenes/0_Main/01_MainScreen.unity
+    guid: f557a70aa36c8f94fb28551a58e0304f
+  - enabled: 1
+    path: Assets/Scenes/0_Main/02_CharacterSelectWindow.unity
+    guid: d7b8430714ca92d43ae945fb0e39cb3d
+  - enabled: 1
+    path: Assets/Scenes/0_Main/03_GameStartLoadingScene.unity
+    guid: 98d6601b886bdbf4d96476a498009462
+  - enabled: 1
+    path: Assets/Scenes/MapLoadingScene.unity
+    guid: bde827640abf4a64c986c2b2df9bc83e
+  - enabled: 1
+    path: Assets/Scenes/0_Main/Map_Town_Tutorial01.unity
+    guid: df78c24ee3ab14747bce063ef5da3c0a
+  - enabled: 1
+    path: Assets/Scenes/1_FelisTown/Town/Map_Town_FOR_001.unity
+    guid: b8e3c217886353d4698110d181033a49
+  - enabled: 1
+    path: Assets/Scenes/1_FelisTown/Field/Map_Field_FOR_101.unity
+    guid: 18effddb270a99247940c10096be43bf
+  - enabled: 1
+    path: Assets/Scenes/1_FelisTown/Field/Map_Field_FOR_102.unity
+    guid: b67fa26e8b18c684e8d150503ff694ff
+  - enabled: 1
+    path: Assets/Scenes/1_FelisTown/Field/Map_Field_FOR_103.unity
+    guid: c39b6024c40b0cd4a87f249629a2f2ea
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e7f4e276d1144224d8886690545f61e2, type: 3}
