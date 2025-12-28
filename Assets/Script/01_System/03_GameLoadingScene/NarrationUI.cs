@@ -26,7 +26,7 @@ public class NarrationUI : MonoBehaviour
 
     private void Awake()
     {
-        Hide(instant: true);
+        HidePanel(instant: true);
 
         narrationPanel.SetActive(false);
         if (skipProgressPanel != null)
@@ -44,7 +44,7 @@ public class NarrationUI : MonoBehaviour
         // 스킵 힌트 표시
         if (skipHintText != null && config.canSkip)
         {
-            skipHintText.text = $"F키 {config.skipHoldDuration}초 홀드: 건너뛰기";
+            skipHintText.text = $"F키 {config.skipHoldDuration}초 홀드\n건너뛰기";
         }
 
         // 대기 중 표시 (Conditional 모드일 때만)
@@ -121,14 +121,19 @@ public class NarrationUI : MonoBehaviour
     /// <summary>
     /// 나레이션 숨기기
     /// </summary>
-    public void Hide(bool instant = false)
+    public void HidePanel(bool instant = false)
     {
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-        }
+        // 스킵 진행바 숨김
+        if (skipProgressPanel != null)
+            skipProgressPanel.SetActive(false);
 
+        narrationPanel.SetActive(false);
+    }
+    /// <summary>
+    /// 나레이션 숨기기
+    /// </summary>
+    public void HideProgress(bool instant = false)
+    {
         // 스킵 진행바 숨김
         if (skipProgressPanel != null)
             skipProgressPanel.SetActive(false);
@@ -158,15 +163,11 @@ public class NarrationUI : MonoBehaviour
     {
         return conditionType switch
         {
-            NarrationConditionType.Move => "이동해보세요...",
-            NarrationConditionType.Interact => "E키를 눌러보세요...",
-            NarrationConditionType.OpenInventory => "인벤토리를 열어보세요...",
-            NarrationConditionType.PickupItem => "아이템을 획득하세요...",
-            NarrationConditionType.ReachPosition => "목표 지점으로 이동하세요...",
-            NarrationConditionType.UseSkill => "스킬을 사용해보세요...",
-            NarrationConditionType.TalkToNPC => "NPC와 대화하세요...",
-            NarrationConditionType.OpenMenu => "메뉴를 열어보세요...",
-            NarrationConditionType.EquipItem => "아이템을 장착하세요...",
+            NarrationConditionType.Move => "방향키로 이동해보세요",
+            NarrationConditionType.OpenInventory => "I(i)키로 아이템창을 열어보세요",
+            NarrationConditionType.OpenEquipment => "E(e)장비창을 열어보세요",
+            NarrationConditionType.OpenQuest => "Q(q)퀘스트창을 열어보세요",
+            NarrationConditionType.OpenStat => "S(s)스텟창을 열어보세요",
             _ => ""
         };
     }

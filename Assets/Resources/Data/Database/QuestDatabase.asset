@@ -15,7 +15,7 @@ MonoBehaviour:
   Items:
   - questId: Quest_001
     questName: "\uCC98\uC74C \uD558\uB294 \uD018\uC2A4\uD2B8"
-    description: "\uCC98\uC74C \uD558\uB294 \uD018\uC2A4\uD2B8\uC785\uB2C8\uB2E4.\n\uC0C1\uC778\uC5D0\uAC8C\uC11C
+    description: "\uCC98\uC74C \uD558\uB294 \uD018\uC2A4\uD2B8\uC785\uB2C8\uB2E4.\r\n\uC0C1\uC778\uC5D0\uAC8C\uC11C
       \uC544\uC774\uD15C\uC744 \uC0AC\uC624\uC138\uC694"
     prerequisite:
       type: 1

@@ -17,15 +17,10 @@ public enum NarrationConditionType
 {
     None,              // 조건 없음 (Auto 모드용)
     Move,              // 플레이어 이동 감지
-    Interact,          // E키 입력 감지
     OpenInventory,     // 인벤토리 열기
-    PickupItem,        // 아이템 획득
-    ReachPosition,     // 특정 위치 도달
-    UseSkill,          // 스킬 사용
-    TalkToNPC,         // NPC와 대화
-    CompleteQuest,     // 퀘스트 완료
-    OpenMenu,          // 메뉴 열기
-    EquipItem,         // 아이템 장착
+    OpenEquipment,     // 장비창 열기
+    OpenQuest,         // 퀘스트창 열기
+    OpenStat,          // 스텟창 열기
     Custom             // 커스텀 조건 (스크립트에서 직접 호출)
 }
 
@@ -63,6 +58,6 @@ public class NarrationConfig
     [Tooltip("F키(Interact) 홀드로 스킵 가능 여부")]
     public bool canSkip = true;
 
-    [Tooltip("F키를 눌러야 하는 시간(초) - 기본값 3초")]
-    public float skipHoldDuration = 3f;
+    [Tooltip("F키를 눌러야 하는 시간(초) - 기본값 1.5초")]
+    public float skipHoldDuration = 1.5f;
 }

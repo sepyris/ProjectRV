@@ -13,6 +13,86 @@ MonoBehaviour:
   m_Name: DialogueDatabase
   m_EditorClassIdentifier: 
   Items:
+  - npcId: System
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "\uC2DC\uC2A4\uD15C\uCD08\uAE30\uD654\uC911......"
+    - Text: "\uC548\uB155\uD558\uC138\uC694\nProjectRV\uC5D0 \uC624\uC2E0\uAC78 \uD658\uC601\uD569\uB2C8\uB2E4"
+    - Text: "\uC81C\uB300\uB85C \uC5F0\uACB0\uC774 \uB418\uC5C8\uB294\uC9C0 \uD655\uC778
+        \uD558\uAE30 \uC704\uD574\n\uC2DC\uC2A4\uD15C \uC810\uAC80\uC744 \uD574\uBCF4\uACA0\uC2B5\uB2C8\uB2E4"
+  - npcId: System_Complete
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "\uC810\uAC80\uC911 F\uD0A4\uB97C \uAFB9 \uB20C\uB7EC\uC11C\n\uC5B8\uC81C\uB4E0\uC9C0
+        \uC138\uC0C1\uC73C\uB85C \uB098\uAC08\uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  - npcId: System_Move
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "\uC77C\uB2E8 \uC6C0\uC9C1\uC774\uB294\uAC78 \uD655\uC778 \uD574\uBCF4\uACA0\uC2B5\uB2C8\uB2E4\n\uBC29\uD5A5\uD0A4
+        \uC0C1\uD558\uC88C\uC6B0\uB85C \uC6C0\uC9C1\uC77C\uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  - npcId: System_Move_Complete
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "\uC6C0\uC9C1\uC784\uC774 \uD655\uC778 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.\n\uB2E4\uC74C\uC740
+        \uC2DC\uC2A4\uD15C \uD655\uC778 \uD558\uACA0\uC2B5\uB2C8\uB2E4."
+  - npcId: System_OpenInventory
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "I(i)\uD0A4\uB97C \uB204\uB974\uAC70\uB098 \uC544\uB798\uC758 \uBC84\uD2BC\uC744
+        \uD1B5\uD574\n\uC778\uBCA4\uD1A0\uB9AC \uCC3D\uC744 \uC5F4\uC218 \uC788\uC2B5\uB2C8\uB2E4"
+  - npcId: System_OpenInventory_Complete
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "\uC778\uBCA4\uD1A0\uB9AC\uCC3D \uD655\uC778 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.\n\uB2E4\uC74C\uC740
+        \uC7A5\uBE44\uCC3D\uC744 \uD655\uC778 \uD574\uBCF4\uACA0\uC2B5\uB2C8\uB2E4"
+  - npcId: System_OpenEquipment
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "E(e)\uD0A4\uB97C \uB204\uB974\uAC70\uB098 \uC544\uB798\uC758 \uBC84\uD2BC\uC744
+        \uD1B5\uD574\n\uC7A5\uBE44\uCC3D\uC744 \uC5F4\uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  - npcId: System_OpenEquipment_Complete
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "\uC7A5\uBE44\uCC3D \uD655\uC778 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.\n\uB2E4\uC74C\uC740
+        \uD018\uC2A4\uD2B8\uCC3D\uC744 \uD655\uC778 \uD574\uBCF4\uACA0\uC2B5\uB2C8\uB2E4"
+  - npcId: System_OpenQuest
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "Q(q)\uD0A4\uB97C \uB204\uB974\uAC70\uB098 \uC544\uB798\uC758 \uBC84\uD2BC\uC744
+        \uD1B5\uD574\n\uD018\uC2A4\uD2B8\uCC3D\uC744 \uC5F4\uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  - npcId: System_OpenQuest_Complete
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "\uD018\uC2A4\uD2B8\uCC3D \uD655\uC778 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.\n\uB2E4\uC74C\uC740
+        \uC2A4\uD15F\uCC3D\uC744 \uD655\uC778 \uD574\uBCF4\uACA0\uC2B5\uB2C8\uB2E4"
+  - npcId: System_OpenStat
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "S(s)\uD0A4\uB97C \uB204\uB974\uAC70\uB098 \uC544\uB798\uC758 \uBC84\uD2BC\uC744
+        \uD1B5\uD574\n\uC2A4\uD15F\uCC3D\uC744 \uC5F4\uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  - npcId: System_OpenStat_Complete
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "\uC2A4\uD15F\uCC3D \uD655\uC778 \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+    - Text: "\uBAA8\uB4E0 \uC2DC\uC2A4\uD15C \uC810\uAC80\uC774 \uC644\uB8CC \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+  - npcId: System_End
+    dialogueType: Narration
+    questId: 
+    lines:
+    - Text: "\uC774\uC81C ProjectRV\uC5D0\uC11C\n\uC990\uAC70\uC6B4 \uC0DD\uD65C\uC744
+        \uBCF4\uB0B4\uC2DC\uAE38 \uBC14\uB78D\uB2C8\uB2E4"
   - npcId: npc_0001
     dialogueType: Normal
     questId: 

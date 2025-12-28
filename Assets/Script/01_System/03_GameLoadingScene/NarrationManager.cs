@@ -1,14 +1,14 @@
+using Definitions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Definitions;
 
 /// <summary>
 /// 나레이션 시스템 전체 관리
 /// - 대화 데이터는 DialogueDataManager에서 가져옴
 /// - ESC로 닫히지 않음
 /// - 플레이어 이동/조작 가능
-/// - F키 3초 홀드로 스킵
+/// - F키 1.5초 홀드로 스킵
 /// - 타이핑 효과 지원
 /// </summary>
 public class NarrationManager : MonoBehaviour
@@ -115,6 +115,7 @@ public class NarrationManager : MonoBehaviour
             // 홀드 완료
             if (skipHoldTime >= currentConfig.skipHoldDuration)
             {
+                narrationUI.HideProgress();
                 Debug.Log("[NarrationManager] 스킵 완료");
                 StopNarration();
                 return;
@@ -178,17 +179,20 @@ public class NarrationManager : MonoBehaviour
 
             var line = currentLines[currentLineIndex];
             narrationUI.Show(line.Text, currentConfig);
+            //나레이션 UI설정될때까지 조금 대기
+            yield return new WaitForSeconds(1f);
 
             // 모드에 따라 대기
             if (currentConfig.mode == NarrationMode.Auto)
             {
+                Debug.Log($"[NarrationManager] 나레이션 중: {currentConfig.narrationId} ({currentLines.Count}개 대사)");
                 // 타이핑 효과가 완료될 때까지 대기
                 yield return new WaitUntil(() =>
                     narrationUI.IsTypingComplete() || !isNarrationActive
                 );
 
                 if (!isNarrationActive) yield break;
-
+                Debug.Log($"타이핑완료");
                 // 타이핑 완료 후 추가 대기
                 yield return new WaitForSeconds(currentConfig.delayAfterTyping);
             }
@@ -210,9 +214,14 @@ public class NarrationManager : MonoBehaviour
 
             currentLineIndex++;
         }
+        isNarrationActive = false;
 
-        // 모든 대사 완료
-        StopNarration();
+        //튜토리얼 나레이션 종료
+        if(currentConfig.narrationId == "System_End")
+        {
+            TutorialManager.CheckLastNarration();
+            narrationUI.HidePanel(instant: true);
+        }
     }
 
     /// <summary>
@@ -220,21 +229,25 @@ public class NarrationManager : MonoBehaviour
     /// </summary>
     public void StopNarration()
     {
-        if (narrationCoroutine != null)
-        {
-            StopCoroutine(narrationCoroutine);
-            narrationCoroutine = null;
-        }
-
-        narrationUI.Hide(instant: true);
         isNarrationActive = false;
-        currentConfig = null;
         currentLines = null;
         currentLineIndex = 0;
         skipHoldTime = 0f;
         isSkipHolding = false;
 
-        Debug.Log("[NarrationManager] 나레이션 종료");
+        //TODO 현재는 튜토리얼에서만 사용하기에 튜토리얼내용만 사용
+        //스킵 혹은 마지막이면 마지막 나레이션이 나오도록 함
+        var config = new NarrationConfig()
+        {
+            narrationId = "System_End",
+            mode = NarrationMode.Auto,
+            conditionType = NarrationConditionType.None,
+            conditionData = "System_End",
+            typingSpeed = 0.15f,
+            canSkip = false,
+        };
+        //
+        PlayNarration("System_End", config);
     }
 
     /// <summary>
@@ -256,15 +269,6 @@ public class NarrationManager : MonoBehaviour
                 }
                 break;
 
-            case NarrationConditionType.Interact:
-                // E키 입력 체크 (단, 스킵 홀드 중이 아닐 때만)
-                if (playerControls.Player.Interact.triggered && !isSkipHolding)
-                {
-                    conditionMet = true;
-                    Debug.Log("[NarrationManager] 조건 충족: 상호작용");
-                }
-                break;
-
             case NarrationConditionType.OpenInventory:
                 // 인벤토리 열기 체크
                 if (playerControls.Player.ToggleInventory.triggered)
@@ -273,17 +277,30 @@ public class NarrationManager : MonoBehaviour
                     Debug.Log("[NarrationManager] 조건 충족: 인벤토리 열기");
                 }
                 break;
-
-            case NarrationConditionType.OpenMenu:
-                // ESC 메뉴 체크
-                if (playerControls.Player.Cancel.triggered)
+            case NarrationConditionType.OpenEquipment:
+                // 인벤토리 열기 체크
+                if (playerControls.Player.ToggleEquipment.triggered)
                 {
                     conditionMet = true;
-                    Debug.Log("[NarrationManager] 조건 충족: 메뉴 열기");
+                    Debug.Log("[NarrationManager] 조건 충족: 장비 열기");
                 }
                 break;
-
-                // 다른 조건들은 외부에서 TriggerCondition()으로 호출
+            case NarrationConditionType.OpenQuest:
+                // 인벤토리 열기 체크
+                if (playerControls.Player.ToggleQuest.triggered)
+                {
+                    conditionMet = true;
+                    Debug.Log("[NarrationManager] 조건 충족: 퀘스트 열기");
+                }
+                break;
+            case NarrationConditionType.OpenStat:
+                // 인벤토리 열기 체크
+                if (playerControls.Player.ToggleStats.triggered)
+                {
+                    conditionMet = true;
+                    Debug.Log("[NarrationManager] 조건 충족: 스텟 열기");
+                }
+                break;
         }
     }
 
@@ -313,6 +330,14 @@ public class NarrationManager : MonoBehaviour
         }
     }
 
+    public bool IsNarrationCompleted(NarrationConditionType conditionType, string data = "")
+    {
+        if (currentConfig == null) return true;
+        return !isNarrationActive && (currentConfig.conditionType == conditionType 
+                                      && (string.IsNullOrEmpty(currentConfig.conditionData) || 
+                                          currentConfig.conditionData == data));
+    }
+
     /// <summary>
     /// 간편 호출: narrationId만으로 기본 설정 사용
     /// </summary>
@@ -323,10 +348,11 @@ public class NarrationManager : MonoBehaviour
             narrationId = narrationId,
             mode = NarrationMode.Auto,
             useTypingEffect = true,
-            typingSpeed = 0.03f,
+            typingSpeed = 0.05f,
             delayAfterTyping = 1.5f,
-            canSkip = true,
-            skipHoldDuration = 3f,
+            canSkip = false,
+            skipHoldDuration = 1.5f,
+            conditionData = "Basic",
         };
 
         PlayNarration(narrationId, config);
