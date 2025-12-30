@@ -318,10 +318,7 @@ public class QuickSlotManager : MonoBehaviour
                         if (added)
                         {
                             // 획득한 아이템 정보 표시
-                            ItemData rewardItemData = ItemDataManager.Instance?.GetItemData(reward.itemId);
-                            string rewardName = rewardItemData != null ? rewardItemData.itemName : reward.itemId;
-                            Debug.Log($"  - {rewardName}:{reward.quantity} 획득");
-
+                            string rewardName = reward.GetItemName();
                             if (FloatingNotificationManager.Instance != null)
                             {
                                 FloatingNotificationManager.Instance.ShowNotification($"{rewardName} :{reward.quantity} 획득!");

@@ -313,7 +313,7 @@ public class PlayerController : MonoBehaviour
         if (DialogueUIManager.Instance != null && DialogueUIManager.Instance.IsDialogueOpen)
             return;
 
-        ToggleQuestUI();
+        PlayerHUD.Instance.ToggleQuestUI();
     }
 
     private void OnToggleInventoryPerformed(InputAction.CallbackContext context)
@@ -322,7 +322,7 @@ public class PlayerController : MonoBehaviour
         if (DialogueUIManager.Instance != null && DialogueUIManager.Instance.IsDialogueOpen)
             return;
 
-        ToggleInventoryUI();
+        PlayerHUD.Instance.ToggleInventoryUI();
     }
 
     private void OnToggleStatsPerformed(InputAction.CallbackContext context)
@@ -331,7 +331,7 @@ public class PlayerController : MonoBehaviour
         if (DialogueUIManager.Instance != null && DialogueUIManager.Instance.IsDialogueOpen)
             return;
 
-        ToggleStatsUI();
+        PlayerHUD.Instance.ToggleStatsUI();
     }
 
     private void OnToggleEquipmentPerformed(InputAction.CallbackContext context)
@@ -340,7 +340,7 @@ public class PlayerController : MonoBehaviour
         if (DialogueUIManager.Instance != null && DialogueUIManager.Instance.IsDialogueOpen)
             return;
 
-        ToggleEquipmentUI();
+        PlayerHUD.Instance.ToggleEquipmentUI();
     }
     private void OnCancel(InputAction.CallbackContext context)
     {
@@ -394,46 +394,6 @@ public class PlayerController : MonoBehaviour
     {
         movement?.ApplyMovement();
         boundaryLimiter?.ApplyBoundaryLimit();
-    }
-
-    // ==================== UI Management ====================
-    private void ToggleQuestUI()
-    {
-        if (QuestUIManager.Instance == null) return;
-
-        if (QuestUIManager.Instance.IsQuestUIOpen())
-            QuestUIManager.Instance.CloseQuestUI();
-        else
-            QuestUIManager.Instance.OpenQuestUI();
-    }
-
-    private void ToggleInventoryUI()
-    {
-        if (ItemUIManager.Instance == null) return;
-
-        if (ItemUIManager.Instance.IsItemUIOpen())
-            ItemUIManager.Instance.CloseItemUI();
-        else
-            ItemUIManager.Instance.OpenItemUI();
-    }
-
-    private void ToggleStatsUI()
-    {
-        if (CharacterStatUIManager.Instance == null) return;
-
-        if (CharacterStatUIManager.Instance.IsStatsUIOpen())
-            CharacterStatUIManager.Instance.CloseStatUI();
-        else
-            CharacterStatUIManager.Instance.OpenStatUI();
-    }
-    private void ToggleEquipmentUI()
-    {
-        if (EquipmentUIManager.Instance == null) return;
-
-        if (EquipmentUIManager.Instance.IsEquipmentUIOpen())
-            EquipmentUIManager.Instance.CloseEquipmentUI();
-        else
-            EquipmentUIManager.Instance.OpenEquipmentUI();
     }
 
     // ==================== Scene Management ====================

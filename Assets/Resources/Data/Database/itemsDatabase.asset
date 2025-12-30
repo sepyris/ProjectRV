@@ -96,7 +96,7 @@ MonoBehaviour:
   - itemId: staff_wooden
     itemName: "\uB098\uBB34 \uC9C0\uD321\uC774"
     itemType: 0
-    description: "\uB098\uBB34\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uC9C0\uD321\uC774\n\uADF8\uB0E5
+    description: "\uB098\uBB34\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uC9C0\uD321\uC774\r\n\uADF8\uB0E5
       \uB098\uBB47\uAC00\uC9C0\uC778\uAC00?"
     maxStack: 1
     buyPrice: 120
@@ -137,7 +137,7 @@ MonoBehaviour:
   - itemId: staff_fire
     itemName: "\uD654\uC5FC \uC9C0\uD321\uC774"
     itemType: 0
-    description: "\uBD88\uC744 \uB0BC\uAC70 \uAC19\uC740 \uC9C0\uD321\uC774\n\uADF8\uB0E5
+    description: "\uBD88\uC744 \uB0BC\uAC70 \uAC19\uC740 \uC9C0\uD321\uC774\r\n\uADF8\uB0E5
       \uBE68\uAC04\uC0C9\uC77C\uBFD0\uC778\uAC78\uAE4C?"
     maxStack: 1
     buyPrice: 1500

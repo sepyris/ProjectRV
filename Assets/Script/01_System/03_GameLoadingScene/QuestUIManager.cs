@@ -396,8 +396,21 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
 
             string typeText = GetObjectiveTypeText(obj.type);
             string progress = $" ({obj.currentCount}/{obj.requiredCount})";
+            string itemInfo = "";
+            if (obj.type == QuestType.Gather || obj.type == QuestType.Collect)
+            {
+                itemInfo = ItemDataManager.Instance.GetItemData(obj.targetId).itemName;
+            }
+            if (obj.type == QuestType.Kill)
+            {
+                itemInfo = MonsterDataManager.Instance.GetMonsterData(obj.targetId).monsterName;
+            }
+            if (obj.type == QuestType.Dialogue)
+            {
+                itemInfo = NPCInfoManager.Instance.GetNPCInfo(obj.targetId).npcName;
+            }
 
-            string objectiveText = $"{status} {typeText} {obj.targetId}{progress}";
+            string objectiveText = $"{status} {typeText} {itemInfo}{progress}";
 
             // Dialogue 목표인 경우 NPC 위치 정보 추가
             if (obj.type == QuestType.Dialogue && !obj.IsCompleted && NPCInfoManager.Instance != null)
@@ -568,7 +581,7 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
         {
             foreach (var reward in quest.rewards)
             {
-                rewardTexts.Add($"{reward.itemId}:{reward.quantity}");
+                rewardTexts.Add($"{reward.GetItemName()}:{reward.quantity}");
             }
         }
 

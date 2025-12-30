@@ -404,15 +404,28 @@ public class QuestTrackerUIManager : MonoBehaviour
             string checkmark = obj.IsCompleted ? "✓" : "•";
             string typeText = GetObjectiveTypeText(obj.type);
             string progress = $" ({obj.currentCount}/{obj.requiredCount})";
+            string itemInfo = "";
+            if (obj.type == QuestType.Gather || obj.type == QuestType.Collect)
+            {
+                itemInfo = ItemDataManager.Instance.GetItemData(obj.targetId).itemName;
+            }
+            if (obj.type == QuestType.Kill)
+            {
+                itemInfo = MonsterDataManager.Instance.GetMonsterData(obj.targetId).monsterName;
+            }
+            if (obj.type == QuestType.Dialogue)
+            {
+                itemInfo = NPCInfoManager.Instance.GetNPCInfo(obj.targetId).npcName;
+            }
 
             // 완료된 목표는 회색으로 표시
             if (obj.IsCompleted)
             {
-                objectiveTexts.Add($"<color=#888888>{checkmark} {typeText} {obj.targetId}{progress}</color>");
+                objectiveTexts.Add($"<color=#888888>{checkmark} {typeText} {itemInfo}{progress}</color>");
             }
             else
             {
-                objectiveTexts.Add($"{checkmark} {typeText} {obj.targetId}{progress}");
+                objectiveTexts.Add($"{checkmark} {typeText} {itemInfo}{progress}");
             }
         }
 

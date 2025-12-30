@@ -129,4 +129,44 @@ public class PlayerHUD : MonoBehaviour
             return openedUIs[openedUIs.Count - 1].GetUIPanel();
         return null;
     }
+
+    // ==================== UI Management ====================
+    public void ToggleQuestUI()
+    {
+        if (QuestUIManager.Instance == null) return;
+
+        if (QuestUIManager.Instance.IsQuestUIOpen())
+            QuestUIManager.Instance.CloseQuestUI();
+        else
+            QuestUIManager.Instance.OpenQuestUI();
+    }
+
+    public void ToggleInventoryUI()
+    {
+        if (ItemUIManager.Instance == null) return;
+
+        if (ItemUIManager.Instance.IsItemUIOpen())
+            ItemUIManager.Instance.CloseItemUI();
+        else
+            ItemUIManager.Instance.OpenItemUI();
+    }
+
+    public void ToggleStatsUI()
+    {
+        if (CharacterStatUIManager.Instance == null) return;
+
+        if (CharacterStatUIManager.Instance.IsStatsUIOpen())
+            CharacterStatUIManager.Instance.CloseStatUI();
+        else
+            CharacterStatUIManager.Instance.OpenStatUI();
+    }
+    public void ToggleEquipmentUI()
+    {
+        if (EquipmentUIManager.Instance == null) return;
+
+        if (EquipmentUIManager.Instance.IsEquipmentUIOpen())
+            EquipmentUIManager.Instance.CloseEquipmentUI();
+        else
+            EquipmentUIManager.Instance.OpenEquipmentUI();
+    }
 }

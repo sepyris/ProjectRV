@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using GameData.Common;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
@@ -198,9 +200,11 @@ public class GatheringObject : MonoBehaviour
             Debug.LogWarning($"[Gathering] {gatherableData.gatherableName}의 드롭 테이블이 비어있습니다.");
             return;
         }
+        Dictionary<string, int> itemIdToQuantity = new Dictionary<string, int>();
 
         foreach (var dropItem in gatherableData.dropItems)
         {
+
             bool dropSuccess = false;
 
             // 필요한 도구를 가지고 있으면 100% 드롭
@@ -216,20 +220,13 @@ public class GatheringObject : MonoBehaviour
 
             if (dropSuccess)
             {
-                // 아이템 획득
-                if (InventoryManager.Instance != null)
+                if (itemIdToQuantity.ContainsKey(dropItem.itemId))
                 {
-                    InventoryManager.Instance.AddItem(dropItem.itemId, dropItem.quantity);
-                    FloatingItemManager.Instance?.ShowItemAcquired(ItemDataManager.Instance.GetItemData(dropItem.itemId), dropItem.quantity);
-
-                    string toolStatus = hasRequiredTool ? "도구 보유 (100%)" : $"확률 ({dropItem.dropRate}%)";
-                    Debug.Log($"[Gathering] 아이템 획득: {dropItem.itemId} x{dropItem.quantity} ({toolStatus})");
+                    itemIdToQuantity[dropItem.itemId] += dropItem.quantity;
                 }
-
-                // 퀘스트 매니저에 아이템 획득 알림
-                if (QuestManager.Instance != null)
+                else
                 {
-                    QuestManager.Instance.UpdateItemProgress(dropItem.itemId, dropItem.quantity);
+                    itemIdToQuantity[dropItem.itemId] = dropItem.quantity;
                 }
             }
             else
@@ -237,6 +234,22 @@ public class GatheringObject : MonoBehaviour
                 Debug.Log($"[Gathering] 드롭 실패: {dropItem.itemId} (확률: {dropItem.dropRate}%)");
             }
         }
+        foreach (var dropItem in itemIdToQuantity)
+        {
+            // 아이템 획득
+            if (InventoryManager.Instance != null)
+            {
+                InventoryManager.Instance.AddItem(dropItem.Key, dropItem.Value);
+                FloatingItemManager.Instance?.ShowItemAcquired(ItemDataManager.Instance.GetItemData(dropItem.Key), dropItem.Value);
+            }
+
+            // 퀘스트 매니저에 아이템 획득 알림
+            if (QuestManager.Instance != null)
+            {
+                QuestManager.Instance.UpdateItemProgress(dropItem.Key, dropItem.Value);
+            }
+        }
+        itemIdToQuantity.Clear();
     }
 
     /// <summary>

@@ -271,31 +271,31 @@ public class NarrationManager : MonoBehaviour
 
             case NarrationConditionType.OpenInventory:
                 // 인벤토리 열기 체크
-                if (playerControls.Player.ToggleInventory.triggered)
+                if (ItemUIManager.Instance.IsItemUIOpen())
                 {
                     conditionMet = true;
                     Debug.Log("[NarrationManager] 조건 충족: 인벤토리 열기");
                 }
                 break;
             case NarrationConditionType.OpenEquipment:
-                // 인벤토리 열기 체크
-                if (playerControls.Player.ToggleEquipment.triggered)
+                // 장비 열기 체크
+                if (EquipmentUIManager.Instance.IsEquipmentUIOpen())
                 {
                     conditionMet = true;
                     Debug.Log("[NarrationManager] 조건 충족: 장비 열기");
                 }
                 break;
             case NarrationConditionType.OpenQuest:
-                // 인벤토리 열기 체크
-                if (playerControls.Player.ToggleQuest.triggered)
+                // 퀘스트 열기 체크
+                if (QuestUIManager.Instance.IsQuestUIOpen())
                 {
                     conditionMet = true;
                     Debug.Log("[NarrationManager] 조건 충족: 퀘스트 열기");
                 }
                 break;
             case NarrationConditionType.OpenStat:
-                // 인벤토리 열기 체크
-                if (playerControls.Player.ToggleStats.triggered)
+                // 스텟 열기 체크
+                if (CharacterStatUIManager.Instance.IsStatsUIOpen())
                 {
                     conditionMet = true;
                     Debug.Log("[NarrationManager] 조건 충족: 스텟 열기");
