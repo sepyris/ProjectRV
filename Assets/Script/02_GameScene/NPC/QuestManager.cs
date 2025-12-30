@@ -97,6 +97,24 @@ public class QuestManager : MonoBehaviour
         {
             q.status = QuestStatus.Accepted;
 
+            //퀘스트 수락 보상 지급
+            foreach (var rewardPart in q.preAcceptReward.Split(';'))
+            {
+                var parts = rewardPart.Split(':');
+                // item:itemid:갯수; 형식
+                if (parts.Length == 3 && parts[0].Trim().ToLower() == "item")
+                {
+                    string itemId = parts[1].Trim();
+                    int quantity = int.Parse(parts[2].Trim());
+                    if (InventoryManager.Instance != null)
+                    {
+                        InventoryManager.Instance.AddItem(itemId, quantity);
+                        FloatingItemManager.Instance?.ShowItemAcquired(ItemDataManager.Instance.GetItemData(itemId), quantity);
+                        Debug.Log($"[QuestManager] 수락 보상 지급: {itemId} x{quantity}");
+                    }
+                }
+            }
+
             //  Collect 타입 목표는 현재 인벤토리 아이템으로 초기화 
             InitializeCollectObjectives(q);
 

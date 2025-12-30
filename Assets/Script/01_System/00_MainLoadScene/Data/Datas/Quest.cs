@@ -2,6 +2,7 @@
 using GameData.Common;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class QuestDataSO : ScriptableObject
@@ -193,7 +194,21 @@ public class QuestPrerequisite
                 break;
             //선행조건 아이템 체크
             case PrerequisiteType.Item:
-                return InventoryManager.Instance.HasItem(value);
+                var items = value.Split(',');
+                foreach (var item in items)
+                {
+                    var iparts = item.Split(':');
+                    if (iparts.Length == 2)
+                    {
+                        string itemId = iparts[0].Trim();
+                        if (int.TryParse(iparts[1].Trim(), out int quantity))
+                        {
+                            if (!InventoryManager.Instance.HasItem(itemId, quantity))
+                                return false;
+                        }
+                    }
+                }
+                break;
             //선행조건 퀘스트 상태 체크 (Quest_001:Completed)
             case PrerequisiteType.QuestStatus:
                 var parts = value.Split(':');
