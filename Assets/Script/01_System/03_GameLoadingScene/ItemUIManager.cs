@@ -5,12 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// <summary>
-/// I키로 열리는 독립적인 인벤토리 UI 관리
-/// PlayerController에서 호출됨
-/// 수정사항: 장착된 아이템은 인벤토리에서 숨김, 드래그 앤 드롭 지원
-///  드래그 중 UI 갱신 문제 해결
-/// </summary>
+
 public class ItemUIManager : MonoBehaviour, IClosableUI
 {
     public static ItemUIManager Instance { get; private set; }

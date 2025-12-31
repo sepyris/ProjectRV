@@ -144,6 +144,7 @@ namespace Definitions
         public const string QUESTS = "Quest";
         public const string SHOP = "Shop";
         public const string DUNGEONS = "Dungeons";
+        public const string Skill = "Skill";
 
 
     }

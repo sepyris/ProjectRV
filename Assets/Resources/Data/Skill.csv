@@ -1,0 +1,2 @@
+skillId,skillName,description,requiredJob,requiredLevel,maxLevel,cooldown,damageRate,levelUpDamageRate
+Skill_001,파이어볼,"""바라보는 방향으로 불덩어리를 날립니다.""",Mage,5,10,5,200,20

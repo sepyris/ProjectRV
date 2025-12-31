@@ -59,6 +59,10 @@ public static class DatabaseGenerater
             {
                 ParseDungeonsDataCSV(csvFile.text, soPath);
             }
+            else if (csvFile.name.Contains(Def_CSV.Skill))
+            {
+                ParseSkillDataCSV(csvFile.text, soPath);
+            }
             else
             {
                 Debug.LogWarning($"[DatabaseGenerater] 알 수 없는 CSV 파일: {csvFile.name}");
@@ -730,6 +734,57 @@ public static class DatabaseGenerater
 
             database.Items.Add(dungeon);
         }
+
+        if (database != null)
+        {
+            EditorUtility.SetDirty(database);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            Debug.Log($"CSV 파싱 및 ScriptableObject **{soPath}** 생성 완료! ({database.Items.Count}개 데이터)");
+        }
+        else
+        {
+            Debug.LogWarning($"변환할 수 없는 CSV 파일입니다");
+        }
+    }
+
+    private static void ParseSkillDataCSV(string csvText, string soPath)
+    {
+        SkillDataSO database = AssetDatabase.LoadAssetAtPath<SkillDataSO>(soPath);
+        if(database ==null)
+        {
+            database = ScriptableObject.CreateInstance<SkillDataSO>();
+            AssetDatabase.CreateAsset(database, soPath);
+        }
+        database.Items.Clear();
+        var lines = GetLinesFromCSV(csvText);
+        bool skipHeader = true;
+        foreach (var raw in lines)
+        {
+            if (skipHeader) { skipHeader = false; continue; }
+            if (string.IsNullOrWhiteSpace(raw)) continue;
+
+            string trimmed = raw.TrimStart();
+            if (trimmed.StartsWith("#")) continue;
+
+            var parts = SplitCSVLine(raw);
+            //CSV 구조:skillId	skillName	description	requiredJob	requiredLevel	maxLevel	cooldown	damageRate	levelUpDamageRate
+            if (parts.Count < 9) continue;
+            SkillData skill = new SkillData
+            {
+                skillId = parts[0].Trim(),
+                skillName = parts[1].Trim(),
+                description = parts[2].Trim(),
+                requiredJob = parts[3].Trim(),
+                requiredLevel = ParseInt(parts[4].Trim(), 1),
+                maxLevel = ParseInt(parts[5].Trim(), 1),
+                cooldown = ParseFloat(parts[6].Trim(), 0f),
+                damageRate = ParseFloat(parts[7].Trim(), 0f),
+                levelUpDamageRate = ParseFloat(parts[8].Trim(), 0f)
+            };
+            database.Items.Add(skill);
+        }
+
 
         if (database != null)
         {
