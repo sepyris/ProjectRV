@@ -1,9 +1,9 @@
 using UnityEngine;
 
-/// <summary>
+
 /// 데미지 텍스트 생성을 위한 헬퍼 클래스
 /// 캐릭터나 몬스터 컴포넌트에서 사용
-/// </summary>
+
 public class DamageTextSpawner : MonoBehaviour
 {
     [Header("Prefab")]
@@ -19,50 +19,50 @@ public class DamageTextSpawner : MonoBehaviour
     public Color healColor = Color.green;
     public Color missColor = Color.gray;
 
-    /// <summary>
+    
     /// 일반 데미지 표시
-    /// </summary>
+    
     public void ShowDamage(int damage)
     {
         ShowDamage(damage, false);
     }
 
-    /// <summary>
+    
     /// 데미지 표시 (크리티컬 여부 포함)
-    /// </summary>
+    
     public void ShowDamage(int damage, bool isCritical)
     {
         Color color = isCritical ? criticalDamageColor : normalDamageColor;
         SpawnDamageText(damage, color, isCritical);
     }
 
-    /// <summary>
+    
     /// 힐 표시
-    /// </summary>
+    
     public void ShowHeal(int healAmount)
     {
         SpawnTextMessage($"+{healAmount}", healColor);
     }
 
-    /// <summary>
+    
     /// 회피 표시
-    /// </summary>
+    
     public void ShowMiss()
     {
         SpawnTextMessage("MISS", missColor);
     }
 
-    /// <summary>
+    
     /// 커스텀 텍스트 표시
-    /// </summary>
+    
     public void ShowCustomText(string text, Color color)
     {
         SpawnTextMessage(text, color);
     }
 
-    /// <summary>
+    
     /// 데미지 텍스트 생성
-    /// </summary>
+    
     private void SpawnDamageText(int damage, Color color, bool isCritical)
     {
         if (damageTextPrefab == null)
@@ -81,9 +81,9 @@ public class DamageTextSpawner : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 텍스트 메시지 생성
-    /// </summary>
+    
     private void SpawnTextMessage(string text, Color color)
     {
         if (damageTextPrefab == null)
@@ -102,9 +102,9 @@ public class DamageTextSpawner : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 스폰 위치 계산
-    /// </summary>
+    
     private Vector3 GetSpawnPosition()
     {
         if (spawnPoint != null)

@@ -1,13 +1,12 @@
-﻿using GameData.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
+
 /// 퀵슬롯 시스템 관리자
 /// 1~0번 키로 10개의 퀵슬롯 사용 (넘버패드 제외)
 ///  수정: 퀵슬롯 간 위치 교환 기능 추가
-/// </summary>
+
 public class QuickSlotManager : MonoBehaviour
 {
     public static QuickSlotManager Instance { get; private set; }
@@ -70,9 +69,9 @@ public class QuickSlotManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 퀵슬롯 초기화
-    /// </summary>
+    
     private void InitializeSlots()
     {
         quickSlots = new QuickSlotData[maxSlots];
@@ -82,9 +81,9 @@ public class QuickSlotManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// Input Actions 초기화
-    /// </summary>
+    
     private void InitializeInputActions()
     {
         playerControls = new PlayerControls();
@@ -104,9 +103,9 @@ public class QuickSlotManager : MonoBehaviour
         playerControls.Enable();
     }
 
-    /// <summary>
+    
     /// 퀵슬롯에 소모품 등록
-    /// </summary>
+    
     public bool RegisterConsumable(int slotIndex, string itemId)
     {
         if (!IsValidSlotIndex(slotIndex))
@@ -138,9 +137,9 @@ public class QuickSlotManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// 퀵슬롯에 스킬 등록 (추후 확장용)
-    /// </summary>
+    
     public bool RegisterSkill(int slotIndex, string skillId)
     {
         if (!IsValidSlotIndex(slotIndex))
@@ -157,9 +156,9 @@ public class QuickSlotManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// 퀵슬롯 비우기
-    /// </summary>
+    
     public void ClearSlot(int slotIndex)
     {
         if (!IsValidSlotIndex(slotIndex))
@@ -170,9 +169,9 @@ public class QuickSlotManager : MonoBehaviour
         Debug.Log($"[QuickSlotManager] 슬롯 {slotIndex + 1} 비움");
     }
 
-    /// <summary>
+    
     ///  두 퀵슬롯의 위치를 서로 교환
-    /// </summary>
+    
     public void SwapQuickSlots(int sourceIndex, int targetIndex)
     {
         if (!IsValidSlotIndex(sourceIndex) || !IsValidSlotIndex(targetIndex))
@@ -203,9 +202,9 @@ public class QuickSlotManager : MonoBehaviour
         Debug.Log($"[QuickSlotManager] 퀵슬롯 교환: {sourceIndex + 1} <-> {targetIndex + 1}");
     }
 
-    /// <summary>
+    
     /// 퀵슬롯 사용
-    /// </summary>
+    
     public void UseQuickSlot(int slotIndex)
     {
         if (!IsValidSlotIndex(slotIndex))
@@ -233,9 +232,9 @@ public class QuickSlotManager : MonoBehaviour
         OnQuickSlotUsed?.Invoke(slotIndex);
     }
 
-    /// <summary>
+    
     /// 소모품 사용 (수정됨 - 체력 회복 OR 아이템 지급)
-    /// </summary>
+    
     private void UseConsumable(int slotIndex, string itemId)
     {
         // 인벤토리에 아이템이 있는지 확인
@@ -355,18 +354,18 @@ public class QuickSlotManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 스킬 사용 (추후 확장용)
-    /// </summary>
+    
     private void UseSkill(int slotIndex, string skillId)
     {
         // TODO: 스킬 시스템 구현
         Debug.Log($"[QuickSlotManager] 스킬 사용: {skillId} (미구현)");
     }
 
-    /// <summary>
+    
     /// 특정 아이템이 퀵슬롯에 등록되어 있는지 확인
-    /// </summary>
+    
     public bool IsItemInQuickSlot(string itemId)
     {
         for (int i = 0; i < maxSlots; i++)
@@ -380,9 +379,9 @@ public class QuickSlotManager : MonoBehaviour
         return false;
     }
 
-    /// <summary>
+    
     /// 특정 아이템이 등록된 슬롯 인덱스 찾기
-    /// </summary>
+    
     public int FindItemSlotIndex(string itemId)
     {
         for (int i = 0; i < maxSlots; i++)
@@ -396,9 +395,9 @@ public class QuickSlotManager : MonoBehaviour
         return -1;
     }
 
-    /// <summary>
+    
     /// 퀵슬롯 데이터 가져오기
-    /// </summary>
+    
     public QuickSlotData GetSlotData(int slotIndex)
     {
         if (!IsValidSlotIndex(slotIndex))
@@ -407,25 +406,25 @@ public class QuickSlotManager : MonoBehaviour
         return quickSlots[slotIndex];
     }
 
-    /// <summary>
+    
     /// 모든 퀵슬롯 데이터 가져오기
-    /// </summary>
+    
     public QuickSlotData[] GetAllSlots()
     {
         return quickSlots;
     }
 
-    /// <summary>
+    
     /// 유효한 슬롯 인덱스인지 확인
-    /// </summary>
+    
     private bool IsValidSlotIndex(int index)
     {
         return index >= 0 && index < maxSlots;
     }
 
-    /// <summary>
+    
     /// 저장 데이터로 변환
-    /// </summary>
+    
     public List<QuickSlotSaveData> GetSaveData()
     {
         List<QuickSlotSaveData> saveData = new List<QuickSlotSaveData>();
@@ -439,9 +438,9 @@ public class QuickSlotManager : MonoBehaviour
         return saveData;
     }
 
-    /// <summary>
+    
     /// 저장 데이터에서 복원
-    /// </summary>
+    
     public void LoadFromSaveData(List<QuickSlotSaveData> saveData)
     {
         // 모든 슬롯 초기화
@@ -463,9 +462,9 @@ public class QuickSlotManager : MonoBehaviour
         Debug.Log($"[QuickSlotManager] 퀵슬롯 로드 완료: {saveData?.Count ?? 0}개");
     }
 
-    /// <summary>
+    
     /// 모든 슬롯 초기화
-    /// </summary>
+    
     public void ClearAllSlots()
     {
         for (int i = 0; i < maxSlots; i++)
@@ -475,9 +474,9 @@ public class QuickSlotManager : MonoBehaviour
         Debug.Log("[QuickSlotManager] 모든 퀵슬롯 초기화");
     }
 
-    /// <summary>
+    
     /// 보상 아이템들을 받기 위해 필요한 인벤토리 슬롯 수 계산
-    /// </summary>
+    
     private int CalculateRequiredSlots(List<ItemReward> rewards)
     {
         if (InventoryManager.Instance == null)

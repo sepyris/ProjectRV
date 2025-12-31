@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 캐릭터 선택 화면 관리
-/// </summary>
+
 public class CharacterSelectManager : MonoBehaviour
 {
     [Header("UI References")]

@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 아이템 획득 메시지 매니저
 /// 아이콘 + 텍스트로 구성된 메시지를 표시
-/// </summary>
+
 public class FloatingItemManager : MonoBehaviour
 {
     public static FloatingItemManager Instance { get; private set; }
@@ -49,27 +49,27 @@ public class FloatingItemManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 아이템 획득 메시지 표시 (아이콘 없음)
-    /// </summary>
+    
     public void ShowItemMessage(string itemName, int quantity)
     {
         string message = $"{itemName} + {quantity}";
         ShowItemMessage(message, null, defaultTextColor);
     }
 
-    /// <summary>
+    
     /// 아이템 획득 메시지 표시 (아이콘 있음)
-    /// </summary>
+    
     public void ShowItemMessage(string itemName, int quantity, Sprite icon)
     {
         string message = $"{itemName} + {quantity}";
         ShowItemMessage(message, icon, defaultTextColor);
     }
 
-    /// <summary>
+    
     /// 아이템 획득 메시지 표시 (전체 설정)
-    /// </summary>
+    
     public void ShowItemMessage(string message, Sprite icon, Color textColor)
     {
         if (messagePrefab == null || messageContainer == null)
@@ -110,9 +110,9 @@ public class FloatingItemManager : MonoBehaviour
         activeMessages.Enqueue(messageObj);
     }
 
-    /// <summary>
+    
     /// ItemData를 사용하여 아이템 획득 메시지 표시
-    /// </summary>
+    
     public void ShowItemAcquired(ItemData itemData, int quantity)
     {
         if (itemData == null) return;
@@ -128,9 +128,9 @@ public class FloatingItemManager : MonoBehaviour
         ShowItemMessage(itemData.itemName, quantity, icon);
     }
 
-    /// <summary>
+    
     /// 아이템 타입별 색상 반환
-    /// </summary>
+    
     private Color GetItemTypeColor(ItemType itemType)
     {
         switch (itemType)
@@ -148,9 +148,9 @@ public class FloatingItemManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 모든 메시지 즉시 제거
-    /// </summary>
+    
     public void ClearAllMessages()
     {
         while (activeMessages.Count > 0)

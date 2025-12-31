@@ -2,10 +2,10 @@ using Definitions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
+
 /// 플레이어가 'WorldBorder' 태그의 Collider2D 영역을 벗어나지 못하게 하는 모듈.
 /// 플레이어의 BoxCollider2D 크기까지 고려하여 경계에서 자연스럽게 멈춤.
-/// </summary>
+
 public class PlayerBoundaryLimiter
 {
     private Rigidbody2D rb;

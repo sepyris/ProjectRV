@@ -4,12 +4,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
+
 /// 게임 최초 실행 시 시스템 초기화
 /// - CharacterSaveManager 생성
 /// - 게임 데이터 로드 (CSV → SO)
 /// - 각종 매니저 초기화
-/// </summary>
+
 public class SystemInitializer : MonoBehaviour
 {
     [Header("Settings")]
@@ -66,9 +66,9 @@ public class SystemInitializer : MonoBehaviour
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    /// <summary>
+    
     /// 1단계: CharacterSaveManager 초기화
-    /// </summary>
+    
     private IEnumerator InitializeCharacterSaveManager()
     {
         if (CharacterSaveManager.Instance == null)
@@ -80,9 +80,9 @@ public class SystemInitializer : MonoBehaviour
         yield return null;
     }
 
-    /// <summary>
+    
     /// 2단계: 게임 데이터 매니저 초기화 (CSV → SO 로드)
-    /// </summary>
+    
     private IEnumerator InitializeDataManagers()
     {
         // ItemDataManager 초기화
@@ -138,9 +138,9 @@ public class SystemInitializer : MonoBehaviour
         yield return null;
     }
 
-    /// <summary>
+    
     /// 3단계: 기타 시스템 초기화
-    /// </summary>
+    
     private IEnumerator InitializeOtherSystems()
     {
         // LocalizationManager 초기화
@@ -156,9 +156,9 @@ public class SystemInitializer : MonoBehaviour
         yield return null;
     }
 
-    /// <summary>
+    
     /// UI 상태 업데이트
-    /// </summary>
+    
     private void UpdateStatus(string message, float progress)
     {
         Debug.Log($"[SystemInit] {message} ({progress * 100:F0}%)");

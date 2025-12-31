@@ -80,9 +80,9 @@ public class LocalizationManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// CSV 텍스트를 읽고 데이터를 Dictionary에 저장
-    /// </summary>
+    
     private void LoadLocalizedText(string csvText)
     {
         localizedText = new Dictionary<string, Dictionary<string, string>>();
@@ -155,9 +155,9 @@ public class LocalizationManager : MonoBehaviour
         Debug.Log(string.Format(Def_UI.LOCALIZATION_LOADED, localizedText.Count, currentLanguage));
     }
 
-    /// <summary>
+    
     /// CSV 라인을 파싱 (쉼표가 포함된 텍스트 처리)
-    /// </summary>
+    
     private string[] SplitCSVLine(string line)
     {
         List<string> result = new List<string>();
@@ -187,9 +187,9 @@ public class LocalizationManager : MonoBehaviour
         return result.ToArray();
     }
 
-    /// <summary>
+    
     /// 메시지 키를 사용하여 현재 언어에 맞는 텍스트를 반환합니다.
-    /// </summary>
+    
     public string GetLocalizedValue(string key)
     {
         if (localizedText == null || localizedText.Count == 0)
@@ -222,9 +222,9 @@ public class LocalizationManager : MonoBehaviour
         return $"[MISSING: {key}]";
     }
 
-    /// <summary>
+    
     /// 현재 언어를 설정하고 이벤트를 발생시킵니다.
-    /// </summary>
+    
     public void SetLanguage(Language lang)
     {
         if (currentLanguage == lang)
@@ -240,25 +240,25 @@ public class LocalizationManager : MonoBehaviour
         OnLanguageChanged?.Invoke(currentLanguage);
     }
 
-    /// <summary>
+    
     /// 현재 언어를 반환합니다.
-    /// </summary>
+    
     public Language GetCurrentLanguage()
     {
         return currentLanguage;
     }
 
-    /// <summary>
+    
     /// 키가 존재하는지 확인합니다.
-    /// </summary>
+    
     public bool HasKey(string key)
     {
         return localizedText != null && localizedText.ContainsKey(key);
     }
 
-    /// <summary>
+    
     /// 로드된 모든 키 목록을 반환합니다 (디버깅용).
-    /// </summary>
+    
     public List<string> GetAllKeys()
     {
         if (localizedText == null) return new List<string>();

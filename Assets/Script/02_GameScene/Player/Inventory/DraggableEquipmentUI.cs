@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 장착된 장비를 드래그하여 해제할 수 있게 해주는 컴포넌트
 /// EquipmentSlotUI에 추가하여 사용
 /// 
@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// 1. dragVisual이 raycast를 차단하지 않도록 설정
 /// 2. currentItem null 체크 강화
 /// 3. 무기 슬롯 드래그 시 실제 장착된 슬롯(MeleeWeapon/RangedWeapon) 찾기
-/// </summary>
+
 public class DraggableEquipmentUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     //  현재 드래그 중인 인스턴스 추적 (정적 변수)
@@ -32,17 +32,17 @@ public class DraggableEquipmentUI : MonoBehaviour, IBeginDragHandler, IDragHandl
     private GameObject dragVisual;
 
 
-    /// <summary>
+    
     /// 드래그 중인 장비가 있는지 확인
-    /// </summary>
+    
     public static bool IsDragging()
     {
         return currentDragging != null;
     }
 
-    /// <summary>
+    
     /// 진행 중인 드래그를 강제로 취소
-    /// </summary>
+    
     public static void CancelCurrentDrag()
     {
         if (currentDragging != null)
@@ -220,9 +220,9 @@ public class DraggableEquipmentUI : MonoBehaviour, IBeginDragHandler, IDragHandl
         return success;
     }
 
-    /// <summary>
+    
     ///  실제 장착된 슬롯 찾기 (무기 슬롯 특별 처리)
-    /// </summary>
+    
     private EquipmentSlot GetActualEquippedSlot()
     {
         // 무기 슬롯의 경우, 실제 데이터의 equipSlot을 사용
@@ -299,9 +299,9 @@ public class DraggableEquipmentUI : MonoBehaviour, IBeginDragHandler, IDragHandl
             currentDragging = null;
         }
     }
-    /// <summary>
+    
     /// 오브젝트가 파괴될 때 드래그 정리
-    /// </summary>
+    
     void OnDestroy()
     {
         //  이 오브젝트가 드래그 중이었다면 정리

@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 
 
+/// 맵 데이터 관리 싱글톤
 
 public class MapInfoManager : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class MapInfoManager : MonoBehaviour
     public string currentMapId = "map_town_center";
 
     private readonly Dictionary<string, Maps> mapInfoDictionary = new();
-
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
     void Awake()
     {
         if (Instance == null)
@@ -38,6 +41,9 @@ public class MapInfoManager : MonoBehaviour
         }
     }
 
+    
+    /// 데이터베이스 초기화 및 재구축
+    
     void BuildDictionary(MapInfoSO database)
     {
         mapInfoDictionary.Clear();
@@ -56,11 +62,13 @@ public class MapInfoManager : MonoBehaviour
     }
 
 
+    // ==========================================
+    // 조회 메서드
+    // ==========================================
 
-
-    /// <summary>
+    
     /// 맵 id로 맵 이름 가져오기
-    /// </summary>
+    
     public string GetMapName(string mapId)
     {
         if (mapId != null)
@@ -75,11 +83,11 @@ public class MapInfoManager : MonoBehaviour
         return mapId;
     }
 
-    /// <summary>
+    
     /// 맵 id로 Unity 씬 이름 생성하기
     /// 형식: Map_{type}_{mapid}
     /// 예: mapId="town_center", mapType="Town" → "Map_Town_town_center"
-    /// </summary>
+    
     public string GetSceneName(string mapId)
     {
         if(mapId != null)
@@ -96,9 +104,9 @@ public class MapInfoManager : MonoBehaviour
         return null;
     }
 
-    /// <summary>
+    
     /// 맵 id로 전체 정보 가져오기
-    /// </summary>
+    
     public Maps GetMapInfo(string mapId)
     {
         if (mapInfoDictionary.TryGetValue(mapId, out Maps info))
@@ -114,17 +122,17 @@ public class MapInfoManager : MonoBehaviour
         currentMapId = mapId;
     }
 
-    /// <summary>
+    
     /// 현재 맵 이름 가져오기
-    /// </summary>
+    
     public string GetCurrentMapName()
     {
         return GetMapName(currentMapId);
     }
 
-    /// <summary>
+    
     /// 맵 변경 (씬 전환 시 호출)
-    /// </summary>
+    
     public void ChangeMap(string newMapId)
     {
         if (mapInfoDictionary.ContainsKey(newMapId))
@@ -141,9 +149,9 @@ public class MapInfoManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 모든 맵 목록 가져오기 (특정 타입)
-    /// </summary>
+    
     public Dictionary<string, Maps> GetMapsByType(string mapType)
     {
         var filteredMaps = mapInfoDictionary
@@ -152,9 +160,9 @@ public class MapInfoManager : MonoBehaviour
         return filteredMaps;
     }
 
-    /// <summary>
+    
     /// 두 맵 간의 경로 찾기 (간단한 계층 구조 기반)
-    /// </summary>
+    
     public List<string> FindPathBetweenMaps(string fromMapId, string toMapId)
     {
         List<string> path = new();

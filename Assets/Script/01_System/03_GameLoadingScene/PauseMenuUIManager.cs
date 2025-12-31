@@ -5,11 +5,11 @@ using System.Collections;
 using Definitions;
 using TMPro;
 
-/// <summary>
+
 /// 일시정지 메뉴 UI 관리
 /// ESC 또는 버튼으로 열고, 게임을 일시정지하며, 캐릭터 선택으로 돌아갈 수 있음
 /// 캐릭터 선택 이동 및 게임 종료 시 경고 팝업 표시
-/// </summary>
+
 public class PauseMenuUIManager : MonoBehaviour, IClosableUI
 {
     public static PauseMenuUIManager Instance { get; private set; }
@@ -30,9 +30,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
     [SerializeField] private bool pauseTimeOnOpen = true; // Time.timeScale = 0
     private bool isPaused = false;
 
-    /// <summary>
+    
     /// 경고 팝업에서 어떤 액션을 실행할지 저장하는 열거형
-    /// </summary>
+    
     private enum WarningAction
     {
         None,
@@ -68,9 +68,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    /// <summary>
+    
     /// UI 초기화
-    /// </summary>
+    
     private void InitializeUI()
     {
         // 메인 메뉴 버튼 이벤트 연결
@@ -120,9 +120,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         pendingAction = WarningAction.None;
     }
 
-    /// <summary>
+    
     /// 씬 로드 시 초기화
-    /// </summary>
+    
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // 게임 씬이 아니면 일시정지 메뉴 숨기기
@@ -149,9 +149,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 일시정지 토글
-    /// </summary>
+    
     public void TogglePause()
     {
         if (isPaused)
@@ -164,9 +164,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 일시정지 (메뉴 열기)
-    /// </summary>
+    
     public void Pause()
     {
         if (isPaused) return;
@@ -201,9 +201,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         Debug.Log("[PauseMenu] 게임 일시정지");
     }
 
-    /// <summary>
+    
     /// 재개 (메뉴 닫기)
-    /// </summary>
+    
     public void Resume()
     {
         if (!isPaused) return;
@@ -243,17 +243,17 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
     // 메인 메뉴 버튼 이벤트
     // ==========================================
 
-    /// <summary>
+    
     /// 재개 버튼 클릭
-    /// </summary>
+    
     private void OnResumeButtonClicked()
     {
         Resume();
     }
 
-    /// <summary>
+    
     /// 캐릭터 선택으로 돌아가기 버튼 클릭
-    /// </summary>
+    
     private void OnReturnToCharacterSelectClicked()
     {
         // 경고 팝업 표시
@@ -261,9 +261,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         ShowWarningPopup(WarningAction.ReturnToCharacterSelect);
     }
 
-    /// <summary>
+    
     /// 게임 종료 버튼 클릭
-    /// </summary>
+    
     private void OnCloseGameClicked()
     {
         // 경고 팝업 표시
@@ -275,9 +275,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
     // 경고 팝업 관련
     // ==========================================
 
-    /// <summary>
+    
     /// 경고 팝업 표시
-    /// </summary>
+    
     /// <param name="action">확인 버튼 클릭 시 실행할 액션</param>
     private void ShowWarningPopup(WarningAction action)
     {
@@ -302,9 +302,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         Debug.Log($"[PauseMenu] 경고 팝업 표시: {action}");
     }
 
-    /// <summary>
+    
     /// 경고 팝업 - 확인 버튼 클릭
-    /// </summary>
+    
     private void OnWarningConfirmClicked()
     {
         Debug.Log($"[PauseMenu] 경고 확인: {pendingAction}");
@@ -330,9 +330,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         pendingAction = WarningAction.None;
     }
 
-    /// <summary>
+    
     /// 경고 팝업 - 취소 버튼 클릭
-    /// </summary>
+    
     private void OnWarningCancelClicked()
     {
         Debug.Log("[PauseMenu] 경고 취소");
@@ -343,9 +343,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         pendingAction = WarningAction.None;
     }
 
-    /// <summary>
+    
     /// 경고 팝업 숨기기
-    /// </summary>
+    
     private void HideWarningPopup()
     {
         // 경고 팝업 숨기기
@@ -365,9 +365,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
     // 실제 액션 실행
     // ==========================================
 
-    /// <summary>
+    
     /// 게임 종료 하기
-    /// </summary>
+    
     private void CloseGame()
     {
         Debug.Log("[PauseMenu] 게임 종료 시작");
@@ -376,9 +376,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         StartCoroutine(CloseGameRoutine());
     }
 
-    /// <summary>
+    
     /// 게임 종료 코루틴 - 저장 완료 후 종료
-    /// </summary>
+    
     private IEnumerator CloseGameRoutine()
     {
         // ===== 1. 버튼 비활성화 =====
@@ -425,9 +425,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
 #endif
     }
 
-    /// <summary>
+    
     /// 캐릭터 선택 화면으로 돌아가기
-    /// </summary>
+    
     private void ReturnToCharacterSelect()
     {
         Debug.Log("[PauseMenu] 캐릭터 선택 화면으로 돌아갑니다...");
@@ -460,9 +460,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         SceneManager.LoadScene(Def_Name.SCENE_NAME_CHARACTER_SELECT_SCENE);
     }
 
-    /// <summary>
+    
     /// 모든 게임 UI 닫기
-    /// </summary>
+    
     private void CloseAllGameUI()
     {
         if (ItemUIManager.Instance != null)
@@ -487,9 +487,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
             warningPanel.SetActive(false);
     }
 
-    /// <summary>
+    
     /// 다른 UI가 열려있는지 확인
-    /// </summary>
+    
     private bool IsOtherUIOpen()
     {
         // 대화 중
@@ -507,9 +507,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         return false;
     }
 
-    /// <summary>
+    
     /// 게임 씬인지 확인
-    /// </summary>
+    
     private bool IsGameScene(string sceneName)
     {
         return sceneName.StartsWith("Map_");
@@ -517,25 +517,25 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
 
     // ===== 공개 메서드 =====
 
-    /// <summary>
+    
     /// 일시정지 상태 확인
-    /// </summary>
+    
     public bool IsPaused()
     {
         return isPaused;
     }
 
-    /// <summary>
+    
     /// 일시정지 메뉴 열기 (외부에서 호출)
-    /// </summary>
+    
     public void OpenPauseMenu()
     {
         Pause();
     }
 
-    /// <summary>
+    
     /// 일시정지 메뉴 닫기 (외부에서 호출)
-    /// </summary>
+    
     public void ClosePauseMenu()
     {
         Resume();

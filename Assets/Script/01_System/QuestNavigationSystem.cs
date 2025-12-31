@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
+
 /// 퀘스트 네비게이션 시스템
 /// 현재는 기본 구조만 - 나중에 미니맵/화살표 등을 추가
-/// </summary>
+
 public class QuestNavigationSystem : MonoBehaviour
 {
     public static QuestNavigationSystem Instance { get; private set; }
@@ -44,9 +44,9 @@ public class QuestNavigationSystem : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 특정 NPC를 추적 대상으로 설정
-    /// </summary>
+    
     public void SetNavigationTarget(string npcId)
     {
         if (NPCInfoManager.Instance == null) return;
@@ -92,9 +92,9 @@ public class QuestNavigationSystem : MonoBehaviour
         Debug.LogWarning($"[Navigation] 씬에서 NPC를 찾을 수 없음: {npcId}");
     }
 
-    /// <summary>
+    
     /// 다른 맵에 있는 NPC로 가는 경로 표시
-    /// </summary>
+    
     private void ShowMapPathToTarget(Npcs npcInfo)
     {
         if (MapInfoManager.Instance == null) return;
@@ -123,9 +123,9 @@ public class QuestNavigationSystem : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 네비게이션 업데이트 (거리, 방향 계산)
-    /// </summary>
+    
     private void UpdateNavigation()
     {
         if (PlayerController.Instance == null || currentTargetNPC == null)
@@ -160,9 +160,9 @@ public class QuestNavigationSystem : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 네비게이션 종료
-    /// </summary>
+    
     public void ClearNavigation()
     {
         currentTargetNPC = null;
@@ -174,9 +174,9 @@ public class QuestNavigationSystem : MonoBehaviour
         Debug.Log("[Navigation] 추적 종료");
     }
 
-    /// <summary>
+    
     /// 현재 진행 중인 퀘스트의 첫 번째 목표를 추적
-    /// </summary>
+    
     public void TrackCurrentQuest(string questId)
     {
         if (QuestManager.Instance == null) return;

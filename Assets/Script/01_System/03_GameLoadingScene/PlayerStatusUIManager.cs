@@ -4,10 +4,10 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using Definitions;
 
-/// <summary>
+
 /// 플레이어 상태 UI 관리 스크립트
 /// HP, 경험치, 골드를 표시하고 슬라이더를 업데이트합니다.
-/// </summary>
+
 public class PlayerStatusUIManager : MonoBehaviour
 {
     [Header("UI References")]
@@ -44,9 +44,9 @@ public class PlayerStatusUIManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    /// <summary>
+    
     /// 씬이 로드될 때 호출됨
-    /// </summary>
+    
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"[PlayerStatusUI] OnSceneLoaded: {scene.name}");
@@ -87,18 +87,18 @@ public class PlayerStatusUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// PlayerStats 재연결
-    /// </summary>
+    
     private void ReconnectPlayerStats()
     {
         Debug.Log("[PlayerStatusUI] ReconnectPlayerStats 시작");
         FindAndConnectPlayerStats();
     }
 
-    /// <summary>
+    
     /// UI 초기 설정
-    /// </summary>
+    
     private void InitializeUI()
     {
         //  슬라이더를 읽기 전용으로 설정 (마우스로 조작 불가)
@@ -125,9 +125,9 @@ public class PlayerStatusUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// PlayerStatsComponent 찾기 및 연결
-    /// </summary>
+    
     private void FindAndConnectPlayerStats()
     {
         Debug.Log("[PlayerStatusUI] FindAndConnectPlayerStats 시작");
@@ -176,9 +176,9 @@ public class PlayerStatusUIManager : MonoBehaviour
         UpdateAllUI();
     }
 
-    /// <summary>
+    
     /// Stats 참조 업데이트 (PlayerStatsComponent에서 호출)
-    /// </summary>
+    
     public void RefreshStatsReference()
     {
         if (PlayerStatsComponent.Instance != null)
@@ -188,9 +188,9 @@ public class PlayerStatusUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 모든 UI 업데이트
-    /// </summary>
+    
     public void UpdateAllUI()
     {
         if (PlayerStatsComponent.Instance.Stats == null)
@@ -204,9 +204,9 @@ public class PlayerStatusUIManager : MonoBehaviour
         UpdateGoldUI();
     }
 
-    /// <summary>
+    
     /// HP UI 업데이트
-    /// </summary>
+    
     private void UpdateHPUI()
     {
         if (PlayerStatsComponent.Instance.Stats == null) return;
@@ -230,9 +230,9 @@ public class PlayerStatusUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 경험치 UI 업데이트
-    /// </summary>
+    
     private void UpdateExpUI()
     {
         if (PlayerStatsComponent.Instance.Stats == null) return;
@@ -258,9 +258,9 @@ public class PlayerStatusUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 골드 UI 업데이트
-    /// </summary>
+    
     private void UpdateGoldUI()
     {
         if (PlayerStatsComponent.Instance.Stats == null) return;

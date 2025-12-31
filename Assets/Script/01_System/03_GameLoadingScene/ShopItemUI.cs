@@ -4,9 +4,9 @@ using UnityEngine.EventSystems;
 using TMPro;
 using System;
 
-/// <summary>
+
 /// 상점 아이템 UI 항목 (마우스 호버 지원 + 구매/판매 버튼)
-/// </summary>
+
 public class ShopItemUI : MonoBehaviour
 {
     [Header("UI 요소")]
@@ -30,9 +30,9 @@ public class ShopItemUI : MonoBehaviour
         SetupIconTooltip();
     }
 
-    /// <summary>
+    
     /// 아이템 정보를 UI에 설정합니다.
-    /// </summary>
+    
     public void SetItemInfo(ItemData itemData, ShopItemData shopItemData, int price, bool is_buy = true ,string stockInfo = "")
     {
         this.itemData = itemData;
@@ -83,9 +83,9 @@ public class ShopItemUI : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 구매/판매 버튼 콜백 설정
-    /// </summary>
+    
     public void SetTransactionButtonCallback(Action callback)
     {
         transactionCallback = callback;
@@ -97,9 +97,9 @@ public class ShopItemUI : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 아이콘에 툴팁 이벤트 설정
-    /// </summary>
+    
     void SetupIconTooltip()
     {
         if (itemIcon == null) return;
@@ -123,9 +123,9 @@ public class ShopItemUI : MonoBehaviour
         trigger.triggers.Add(entryExit);
     }
 
-    /// <summary>
+    
     /// 아이콘에 마우스가 올라갔을 때
-    /// </summary>
+    
     void OnIconPointerEnter(PointerEventData eventData)
     {
         if (itemData != null)
@@ -134,9 +134,9 @@ public class ShopItemUI : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 아이콘에서 마우스가 벗어날 때
-    /// </summary>
+    
     void OnIconPointerExit(PointerEventData eventData)
     {
         ShopUIManager.Instance?.HideItemTooltip();

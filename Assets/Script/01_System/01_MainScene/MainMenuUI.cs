@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 메인 메뉴 UI 관리
-/// </summary>
+
 public class MainMenuUI : MonoBehaviour
 {
     [Header("Buttons")]

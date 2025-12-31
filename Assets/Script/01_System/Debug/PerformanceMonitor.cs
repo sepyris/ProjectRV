@@ -1,10 +1,10 @@
 using UnityEngine;
 using TMPro;
 
-/// <summary>
+
 /// 게임 성능을 실시간으로 표시하는 간단한 모니터
 /// FPS, 메모리 사용량, CPU 프레임 시간 등을 표시
-/// </summary>
+
 public class PerformanceMonitor : MonoBehaviour
 {
     [Header("UI 설정")]

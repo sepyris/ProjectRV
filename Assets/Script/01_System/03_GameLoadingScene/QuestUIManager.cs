@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Definitions;
 
-/// <summary>
+
 /// Q키로 열리는 독립적인 퀘스트 창 UI 관리
 /// PlayerController에서 호출됨
-/// </summary>
+
 public class QuestUIManager : MonoBehaviour,IClosableUI
 {
     public static QuestUIManager Instance { get; private set; }
@@ -335,10 +335,10 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
         // ================================
     }
 
-    /// <summary>
+    
     /// 상태 아이콘 가져오기
     ///  새로운 상태 흐름에 맞춰 수정 
-    /// </summary>
+    
     private string GetStatusIcon(QuestData quest)
     {
         switch (quest.status)
@@ -368,9 +368,9 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 퀘스트 목표 텍스트 생성 (완료 가능 상태 강조)
-    /// </summary>
+    
     private string GetQuestObjectives(QuestData quest)
     {
         if (quest.objectives == null || quest.objectives.Count == 0)
@@ -607,9 +607,9 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
     // 퀘스트 트래커 (핀 기능)
     // ==========================================
 
-    /// <summary>
+    
     /// 핀 버튼 클릭 시 호출
-    /// </summary>
+    
     private void OnPinButtonClicked(string questId, Button pinButton)
     {
         if (QuestTrackerUIManager.Instance == null)
@@ -661,9 +661,9 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
     // 퀘스트 매니저 이벤트 핸들러
     // ==========================================
 
-    /// <summary>
+    
     /// 퀘스트 상태 변경 시 호출 (QuestManager 이벤트)
-    /// </summary>
+    
     private void OnQuestStatusChanged(string questId, QuestStatus newStatus)
     {
         // 퀘스트 창이 열려있을 때만 자동 업데이트
@@ -674,9 +674,9 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 퀘스트 목표 업데이트 시 호출 (QuestManager 이벤트)
-    /// </summary>
+    
     private void OnQuestObjectiveUpdated(string questId)
     {
         // 퀘스트 창이 열려있을 때만 자동 업데이트

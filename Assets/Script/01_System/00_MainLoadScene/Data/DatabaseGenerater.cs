@@ -1,5 +1,4 @@
 ﻿using Definitions;
-using GameData.Common;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -72,7 +71,7 @@ public static class DatabaseGenerater
 
     }
 
-    //DialogueData 파싱
+    //Dialogue 데이터 파싱
     private static void ParseDialogDataCSV(string csvText, string soPath)
     {
         DialogueSequenceSO database = AssetDatabase.LoadAssetAtPath<DialogueSequenceSO>(soPath);
@@ -139,6 +138,7 @@ public static class DatabaseGenerater
         }
     }
 
+    //gatherable 데이터 파싱
     private static void ParseGatherableDataCSV(string csvText, string soPath)
     {
         GatherableDataSO database = AssetDatabase.LoadAssetAtPath<GatherableDataSO>(soPath);
@@ -204,6 +204,7 @@ public static class DatabaseGenerater
         }
     }
 
+    //item 데이터 파싱
     private static void ParseItemDataCSV(string csvText, string soPath)
     {
         ItemDataSO database = AssetDatabase.LoadAssetAtPath<ItemDataSO>(soPath);
@@ -320,6 +321,7 @@ public static class DatabaseGenerater
         }
     }
 
+    //quest 데이터 파싱
     public static void ParseQuestDataCSV(string csvText, string soPath)
     {
         QuestDataSO database = AssetDatabase.LoadAssetAtPath<QuestDataSO>(soPath);
@@ -428,7 +430,7 @@ public static class DatabaseGenerater
             Debug.LogWarning($"변환할 수 없는 CSV 파일입니다");
         }
     }
-
+    //npcinfo 데이터 파싱
     private static void ParseNPCInfoDataCSV(string csvText, string soPath)
     {
         NPCInfoSO database = AssetDatabase.LoadAssetAtPath<NPCInfoSO>(soPath);
@@ -479,7 +481,7 @@ public static class DatabaseGenerater
             Debug.LogWarning($"변환할 수 없는 CSV 파일입니다");
         }
     }
-
+    //monster 데이터 파싱
     private static void ParseMonsterDataCSV(string csvText, string soPath)
     {
         MonsterDataSO database = AssetDatabase.LoadAssetAtPath<MonsterDataSO>(soPath);
@@ -558,7 +560,7 @@ public static class DatabaseGenerater
             Debug.LogWarning($"변환할 수 없는 CSV 파일입니다");
         }
     }
-
+    //mapinfo 데이터 파싱
     private static void ParseMapInfoDataCSV(string csvText, string soPath)
     {
         MapInfoSO database = AssetDatabase.LoadAssetAtPath<MapInfoSO>(soPath);
@@ -608,7 +610,7 @@ public static class DatabaseGenerater
             Debug.LogWarning($"변환할 수 없는 CSV 파일입니다");
         }
     }
-
+    //shop 데이터 파싱
     private static void ParseShopDataCSV(string csvText, string soPath)
     {
         ShopDataSO database = AssetDatabase.LoadAssetAtPath<ShopDataSO>(soPath);
@@ -680,6 +682,8 @@ public static class DatabaseGenerater
             Debug.LogWarning($"변환할 수 없는 CSV 파일입니다");
         }
     }
+
+    //dungeon 데이터 파싱
     private static void ParseDungeonsDataCSV(string csvText, string soPath)
     {
         DungeonsDataSO database = AssetDatabase.LoadAssetAtPath<DungeonsDataSO>(soPath);
@@ -720,14 +724,14 @@ public static class DatabaseGenerater
             // 보상 아이템 테이블 파싱 (itemId:quantity:dropRate;itemId:quantity:dropRate)
             if (parts.Count > 7 && !string.IsNullOrWhiteSpace(parts[7]))
             {
-                dungeon.clearRewardItems = new List<GameData.Common.ItemReward>();
+                dungeon.clearRewardItems = new List<ItemReward>();
                 string rewardsStr = parts[7].Trim();
                 if (!string.IsNullOrEmpty(rewardsStr))
                 {
                     var rewards = rewardsStr.Split(';');
                     foreach (var r in rewards)
                     {
-                        dungeon.clearRewardItems.Add(new GameData.Common.ItemReward(r));
+                        dungeon.clearRewardItems.Add(new ItemReward(r));
                     }
                 }
             }
@@ -748,6 +752,7 @@ public static class DatabaseGenerater
         }
     }
 
+    //skill 데이터 파싱
     private static void ParseSkillDataCSV(string csvText, string soPath)
     {
         SkillDataSO database = AssetDatabase.LoadAssetAtPath<SkillDataSO>(soPath);
@@ -804,9 +809,9 @@ public static class DatabaseGenerater
     // DatabaseGenerater.cs의 ParseMonsterType 함수 다음에 추가하세요
     // ==========================================
 
-    /// <summary>
+    
     /// 시간 제한 타입 파싱
-    /// </summary>
+    
     private static TimeRestriction ParseTimeRestriction(string restrictionStr)
     {
         switch (restrictionStr.ToLower())
@@ -865,9 +870,9 @@ public static class DatabaseGenerater
                 return GatherType.None;
         }
     }
-    /// <summary>
+    
     /// 채집 도구 타입 파싱
-    /// </summary>
+    
     private static GatherToolType ParseGatherTool(string toolStr)
     {
         switch (toolStr.ToLower())
@@ -888,9 +893,9 @@ public static class DatabaseGenerater
         }
     }
 
-    /// <summary>
+    
     /// 아이템 타입 파싱
-    /// </summary>
+    
     private static ItemType ParseItemType(string typeStr)
     {
         switch (typeStr.ToLower())
@@ -905,9 +910,9 @@ public static class DatabaseGenerater
         }
     }
 
-    /// <summary>
+    
     /// 장비 슬롯 파싱
-    /// </summary>
+    
     private static EquipmentSlot ParseEquipSlot(string slotStr)
     {
         return slotStr.ToLower() switch
@@ -925,9 +930,9 @@ public static class DatabaseGenerater
         };
     }
 
-    /// <summary>
+    
     /// 몬스터 타입 파싱
-    /// </summary>
+    
     private static MonsterType ParseMonsterType(string typeStr)
     {
         switch (typeStr.ToLower())

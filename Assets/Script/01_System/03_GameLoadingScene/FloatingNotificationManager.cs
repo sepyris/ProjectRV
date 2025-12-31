@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 화면 고정 위치에 표시되는 알림 메시지 매니저
 /// 여러 메시지가 동시에 표시되며 Vertical Layout으로 정렬됨
-/// </summary>
+
 public class FloatingNotificationManager : MonoBehaviour
 {
     public static FloatingNotificationManager Instance { get; private set; }
@@ -58,17 +58,17 @@ public class FloatingNotificationManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 일반 알림 메시지 표시
-    /// </summary>
+    
     public void ShowNotification(string message)
     {
         ShowNotification(message, defaultTextColor);
     }
 
-    /// <summary>
+    
     /// 색상 지정 알림 메시지 표시
-    /// </summary>
+    
     public void ShowNotification(string message, Color textColor)
     {
         if (messagePrefab == null || messageContainer == null)
@@ -101,9 +101,9 @@ public class FloatingNotificationManager : MonoBehaviour
         activeMessages.Enqueue(messageObj);
     }
 
-    /// <summary>
+    
     /// 모든 메시지 즉시 제거
-    /// </summary>
+    
     public void ClearAllMessages()
     {
         while (activeMessages.Count > 0)

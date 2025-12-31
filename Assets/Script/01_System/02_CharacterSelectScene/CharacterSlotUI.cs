@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-/// <summary>
+
 /// 캐릭터 슬롯 UI
-/// </summary>
+
 public class CharacterSlotUI : MonoBehaviour, IPointerClickHandler
 {
     [Header("UI References")]

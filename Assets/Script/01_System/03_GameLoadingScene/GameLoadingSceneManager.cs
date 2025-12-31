@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-/// <summary>
+
 /// 게임 로딩 씬 매니저
 /// 캐릭터 데이터를 로드하고 게임 씬으로 전환하는 역할
-/// </summary>
+
 public class GameLoadingSceneManager : MonoBehaviour
 {
     [Header("로딩 설정")]
@@ -32,9 +32,9 @@ public class GameLoadingSceneManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 게임 데이터 로드 및 씬 전환
-    /// </summary>
+    
     private IEnumerator LoadGameData()
     {
         isLoading = true;
@@ -91,9 +91,9 @@ public class GameLoadingSceneManager : MonoBehaviour
         isLoading = false;
     }
 
-    /// <summary>
+    
     /// 로드할 씬 결정
-    /// </summary>
+    
     private string GetTargetScene()
     {
         if (CharacterSaveManager.Instance == null)

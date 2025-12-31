@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
+
 /// 캐릭터 슬롯 정보 (기존 CharacterStats 재사용)
-/// </summary>
+
 [System.Serializable]
 public class CharacterSlotData
 {
@@ -43,9 +43,9 @@ public class CharacterSlotData
     //  상점 재고 정보 추가 (캐릭터별로 따로 관리)
     public ShopStockSaveData shopStockData = new ShopStockSaveData();
 
-    /// <summary>
+    
     /// 새 캐릭터 생성
-    /// </summary>
+    
     public static CharacterSlotData CreateNew(string name, int slot)
     {
         // 기존 CharacterStats 사용
@@ -84,25 +84,25 @@ public class CharacterSlotData
         };
     }
 
-    /// <summary>
+    
     /// 마지막 플레이 시간 업데이트
-    /// </summary>
+    
     public void UpdateLastPlayed()
     {
         lastPlayedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
     }
 
-    /// <summary>
+    
     /// 플레이 시간 추가
-    /// </summary>
+    
     public void AddPlayTime(float seconds)
     {
         totalPlayTime += seconds;
     }
 
-    /// <summary>
+    
     /// 플레이 시간을 "XX시간 YY분" 형식으로 반환
-    /// </summary>
+    
     public string GetFormattedPlayTime()
     {
         int hours = Mathf.FloorToInt(totalPlayTime / 3600f);
@@ -110,9 +110,9 @@ public class CharacterSlotData
         return $"{hours}시간 {minutes}분";
     }
 
-    /// <summary>
+    
     /// CharacterStats 객체로 변환
-    /// </summary>
+    
     public CharacterStats ToCharacterStats()
     {
         CharacterStats stats = new CharacterStats();

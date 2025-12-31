@@ -1,14 +1,13 @@
 ﻿using Definitions;
-using GameData.Common;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// Quest 데이터를 저장하는 ScriptableObject
+
 public class QuestDataSO : ScriptableObject
 {
-    // Dictionary 대신 직렬화 가능한 List를 사용합니다. (Unity는 Dictionary를 Inspector에서 표시하지 못함)
-    // 데이터 접근을 빠르게 하기 위해 런타임에 List를 Dictionary로 변환할 것입니다.
     public List<QuestData> Items = new();
 }
 
@@ -47,9 +46,9 @@ public class QuestData
         return prerequisite.IsMet();
     }
 
-    /// <summary>
+    
     /// 퀘스트 힌트 파싱 - NPC 위치 힌트
-    /// </summary>
+    
     public string GetNPCLocationHint()
     {
         if (string.IsNullOrEmpty(questHint))
@@ -80,9 +79,9 @@ public class QuestData
         return hints.Count > 0 ? string.Join("\n", hints) : "";
     }
 
-    /// <summary>
+    
     /// 퀘스트 힌트 파싱 - 아이템 수집 힌트
-    /// </summary>
+    
     public string GetItemCollectionHint()
     {
         if (string.IsNullOrEmpty(questHint))
@@ -111,9 +110,9 @@ public class QuestData
         return hints.Count > 0 ? string.Join("\n", hints) : "";
     }
 
-    /// <summary>
+    
     /// 전체 퀘스트 힌트 (NPC + 아이템)
-    /// </summary>
+    
     public string GetFullQuestHint()
     {
         List<string> allHints = new();
@@ -129,9 +128,9 @@ public class QuestData
         return allHints.Count > 0 ? string.Join("\n\n", allHints) : "";
     }
 
-    /// <summary>
+    
     /// 기존 목표 기반 위치 힌트 (하위 호환성 유지)
-    /// </summary>
+    
     public string GetObjectiveLocationHint()
     {
         if (objectives == null || objectives.Count == 0)
@@ -158,9 +157,9 @@ public class QuestData
         return hints.Count > 0 ? string.Join("\n", hints) : "";
     }
 
-    /// <summary>
+    
     /// 퀘스트 목표가 모두 완료되었는지 확인 (Completed 상태 전환용)
-    /// </summary>
+    
     public bool IsCompleted()
     {
         foreach (var obj in objectives)
@@ -255,9 +254,9 @@ public class QuestObjective
     public bool IsCompleted => currentCount >= requiredCount;
 }
 
-/// <summary>
+
 /// 퀘스트 상태
-/// </summary>
+
 public enum QuestStatus
 {
     None,       // 퀘스트를 아직 받지 않음

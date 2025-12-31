@@ -1,10 +1,10 @@
 using UnityEngine;
 
-/// <summary>
+
 /// 플레이어의 원거리 공격 발사체
 /// 몬스터와 충돌 시 데미지를 주고 자동으로 파괴됨
 /// 거리 기반으로 자동 파괴 가능
-/// </summary>
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 public class PlayerProjectile : MonoBehaviour
@@ -63,9 +63,9 @@ public class PlayerProjectile : MonoBehaviour
         CheckDistanceDestroy();
     }
 
-    /// <summary>
+    
     /// 거리 기반 파괴 체크
-    /// </summary>
+    
     private void CheckDistanceDestroy()
     {
         // 현재까지 이동한 거리 계산
@@ -79,9 +79,9 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 발사체 초기화 (PlayerAttack에서 호출)
-    /// </summary>
+    
     public void Initialize(int damage, float crit, float critDmg, float acc, float distance)
     {
         baseDamage = damage;
@@ -91,9 +91,9 @@ public class PlayerProjectile : MonoBehaviour
         maxDistance = distance;
     }
 
-    /// <summary>
+    
     /// 관통 설정 (선택적)
-    /// </summary>
+    
     public void SetPenetration(bool enable, int maxCount = 1)
     {
         penetrateEnemies = enable;
@@ -101,9 +101,9 @@ public class PlayerProjectile : MonoBehaviour
         destroyOnHit = !enable;  // 관통이면 즉시 파괴 안함
     }
 
-    /// <summary>
+    
     /// Trigger 충돌 감지
-    /// </summary>
+    
     void OnTriggerEnter2D(Collider2D collision)
     {
         // 몬스터 레이어인지 확인
@@ -152,9 +152,9 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// Collision 충돌 감지 (Trigger가 아닌 경우)
-    /// </summary>
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Trigger 방식을 권장하지만, Collision 방식도 지원
@@ -187,9 +187,9 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 데미지 계산 (크리티컬 포함)
-    /// </summary>
+    
     private int CalculateDamage(ref bool is_critical)
     {
         float damageVariance = Random.Range(0.8f, 1.2f); // 80% ~ 120%
@@ -206,9 +206,9 @@ public class PlayerProjectile : MonoBehaviour
         return damage;
     }
 
-    /// <summary>
+    
     /// 충돌 이펙트 생성
-    /// </summary>
+    
     private void SpawnHitEffect(Vector3 position)
     {
         if (hitEffectPrefab != null)
@@ -218,9 +218,9 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 발사체 파괴
-    /// </summary>
+    
     private void DestroyProjectile()
     {
         // Trail Renderer 처리
@@ -233,9 +233,9 @@ public class PlayerProjectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    /// <summary>
+    
     /// 발사체 속도 설정 (외부에서 호출)
-    /// </summary>
+    
     public void SetVelocity(Vector2 velocity)
     {
         if (rb != null)
@@ -244,9 +244,9 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 발사체 방향으로 회전 (선택적)
-    /// </summary>
+    
     public void RotateTowardsVelocity()
     {
         if (rb != null && rb.velocity != Vector2.zero)
@@ -256,17 +256,17 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 현재 이동 거리 가져오기 (디버깅용)
-    /// </summary>
+    
     public float GetTraveledDistance()
     {
         return traveledDistance;
     }
 
-    /// <summary>
+    
     /// 남은 거리 가져오기 (디버깅용)
-    /// </summary>
+    
     public float GetRemainingDistance()
     {
         return maxDistance - traveledDistance;

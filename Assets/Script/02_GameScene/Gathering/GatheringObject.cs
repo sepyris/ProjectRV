@@ -1,15 +1,13 @@
-﻿using GameData.Common;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
-/// <summary>
+
 /// 채집 가능한 오브젝트 (약초, 광석 등)
 /// - CSV 데이터 기반으로 초기화
 /// - 입력 처리는 PlayerGathering에서 담당
-/// </summary>
+
 public class GatheringObject : MonoBehaviour
 {
     [Header("Gathering id")]
@@ -47,18 +45,18 @@ public class GatheringObject : MonoBehaviour
         SliderContainer.SetActive(false);
     }
 
-    /// <summary>
+    
     /// 채집물 id 설정 (외부에서 호출 가능, 주로 프리팹에 직접 설정됨)
-    /// </summary>
+    
     public void SetGatherableid(string id)
     {
         gatherableid = id;
         LoadGatherableData();
     }
 
-    /// <summary>
+    
     /// CSV에서 채집물 데이터 로드
-    /// </summary>
+    
     private void LoadGatherableData()
     {
         if (string.IsNullOrEmpty(gatherableid))
@@ -111,59 +109,59 @@ public class GatheringObject : MonoBehaviour
     {
         SliderContainer.SetActive(false);
     }
-    /// <summary>
+    
     /// 채집 가능 여부 확인
-    /// </summary>
+    
     public bool CanGather()
     {
         return !isGathered && gatherableData != null;
     }
 
-    /// <summary>
+    
     /// 프롬프트 표시 (PlayerGathering에서 호출)
-    /// </summary>
+    
     public void ShowPrompt()
     {
         if (interactPrompt != null && !isGathered)
             interactPrompt.SetActive(true);
     }
 
-    /// <summary>
+    
     /// 프롬프트 숨김 (PlayerGathering에서 호출)
-    /// </summary>
+    
     public void HidePrompt()
     {
         if (interactPrompt != null)
             interactPrompt.SetActive(false);
     }
 
-    /// <summary>
+    
     /// 채집물 이름 가져오기
-    /// </summary>
+    
     public string GetGatherableName()
     {
         return gatherableData != null ? gatherableData.gatherableName : gatherableid;
     }
 
-    /// <summary>
+    
     /// 필요한 도구 타입 가져오기
-    /// </summary>
+    
     public GatherToolType GetRequiredTool()
     {
         return gatherableData != null ? gatherableData.requiredTool : GatherToolType.None;
     }
 
-    /// <summary>
+    
     /// 채집 시간 가져오기
-    /// </summary>
+    
     public float GetGatherTime()
     {
         return gatherableData != null ? gatherableData.gatherTime : 1.0f;
     }
 
-    /// <summary>
+    
     /// 실제 채집 처리 (PlayerGathering에서 호출)
-    /// </summary>
+    
     /// <param name="hasRequiredTool">필요한 도구를 가지고 있는지 여부</param>
     public void Gather(bool hasRequiredTool = false)
     {
@@ -190,9 +188,9 @@ public class GatheringObject : MonoBehaviour
         Destroy(gameObject, 0.5f);
     }
 
-    /// <summary>
+    
     /// 드롭 테이블 처리 - 확률에 따라 아이템 드롭
-    /// </summary>
+    
     private void ProcessDropTable(bool hasRequiredTool)
     {
         if (gatherableData.dropItems == null || gatherableData.dropItems.Count == 0)
@@ -252,17 +250,17 @@ public class GatheringObject : MonoBehaviour
         itemIdToQuantity.Clear();
     }
 
-    /// <summary>
+    
     /// 스폰 영역 설정 (GatheringSpawnArea에서 호출)
-    /// </summary>
+    
     public void SetSpawnArea(GatheringSpawnArea spawnArea)
     {
         parentSpawnArea = spawnArea;
     }
 
-    /// <summary>
+    
     /// 강제 재생성 (외부에서 호출 가능)
-    /// </summary>
+    
     public void ForceRespawn()
     {
         if (isGathered)

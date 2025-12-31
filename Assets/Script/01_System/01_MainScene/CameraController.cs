@@ -71,10 +71,10 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 씬 로드 후 카메라를 재초기화합니다.
     /// GameDataManager에서 호출됩니다.
-    /// </summary>
+    
     public void ReInitialize()
     {
         // 1. 플레이어 타겟 다시 찾기
@@ -105,9 +105,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 플레이어를 찾아 타겟으로 설정합니다.
-    /// </summary>
+    
     private void FindPlayerTarget()
     {
         //플레이어 오브젝트 찾기
@@ -124,10 +124,10 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 맵 경계를 설정합니다.
     /// WorldBorder 태그를 가진 오브젝트들을 찾아 카메라 이동 범위를 제한합니다.
-    /// </summary>
+    
     private void SetupWorldBounds()
     {
         GameObject[] borderObjects = GameObject.FindGameObjectsWithTag(Def_Name.WORLD_BORDER_TAG);

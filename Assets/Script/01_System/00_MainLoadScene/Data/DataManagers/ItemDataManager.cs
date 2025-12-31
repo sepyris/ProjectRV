@@ -3,9 +3,9 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// CSV 파일에서 아이템 데이터를 로드하고 관리하는 싱글톤 매니저
-/// </summary>
+
+/// 아이템 데이터 관리 싱글톤
+
 public class ItemDataManager : MonoBehaviour
 {
     public static ItemDataManager Instance { get; private set; }
@@ -14,7 +14,9 @@ public class ItemDataManager : MonoBehaviour
     public ItemDataSO ItemDatabaseSO;
 
     private Dictionary<string, ItemData> itemDatabase = new Dictionary<string, ItemData>();
-
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
     void Awake()
     {
         if (Instance == null)
@@ -36,6 +38,10 @@ public class ItemDataManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
+    /// 데이터베이스 초기화 및 재구축
+    
     void BuildDictionary(ItemDataSO database)
     {
         itemDatabase.Clear();
@@ -57,9 +63,9 @@ public class ItemDataManager : MonoBehaviour
     // ==========================================
     // 조회 메서드
     // ==========================================
-    /// <summary>
+    
     /// 아이템 id로 데이터 가져오기
-    /// </summary>
+    
     public ItemData GetItemData(string itemId)
     {
         if (itemDatabase.TryGetValue(itemId, out ItemData data))
@@ -71,17 +77,17 @@ public class ItemDataManager : MonoBehaviour
         return null;
     }
 
-    /// <summary>
+    
     /// 모든 아이템 데이터 가져오기
-    /// </summary>
+    
     public Dictionary<string, ItemData> GetAllItems()
     {
         return itemDatabase;
     }
 
-    /// <summary>
+    
     /// 특정 타입의 아이템만 가져오기
-    /// </summary>
+    
     public Dictionary<string, ItemData> GetItemsByType(ItemType type)
     {
         var filteredItems = itemDatabase

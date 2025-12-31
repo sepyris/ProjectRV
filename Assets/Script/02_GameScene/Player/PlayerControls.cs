@@ -15,9 +15,9 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-/// <summary>
+
 /// Provides programmatic access to <see cref="InputActionAsset" />, <see cref="InputActionMap" />, <see cref="InputAction" /> and <see cref="InputControlScheme" /> instances defined in asset "Assets/Script/02_GameScene/Player/PlayerControls.inputactions".
-/// </summary>
+
 /// <remarks>
 /// This class is source generated and any manual edits will be discarded if the associated asset is reimported or modified.
 /// </remarks>
@@ -74,14 +74,14 @@ using UnityEngine.InputSystem.Utilities;
 /// </example>
 public partial class @PlayerControls: IInputActionCollection2, IDisposable
 {
-    /// <summary>
+    
     /// Provides access to the underlying asset instance.
-    /// </summary>
+    
     public InputActionAsset asset { get; }
 
-    /// <summary>
+    
     /// Constructs a new instance.
-    /// </summary>
+    
     public @PlayerControls()
     {
         asset = InputActionAsset.FromJson(@"{
@@ -530,9 +530,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerControls.Player.Disable() has not been called.");
     }
 
-    /// <summary>
+    
     /// Destroys this asset and all associated <see cref="InputAction"/> instances.
-    /// </summary>
+    
     public void Dispose()
     {
         UnityEngine.Object.Destroy(asset);
@@ -621,92 +621,92 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_QuickSlot9;
     private readonly InputAction m_Player_QuickSlot0;
     private readonly InputAction m_Player_Cancel;
-    /// <summary>
+    
     /// Provides access to input actions defined in input action map "Player".
-    /// </summary>
+    
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
 
-        /// <summary>
+        
         /// Construct a new instance of the input action map wrapper class.
-        /// </summary>
+        
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/Move".
-        /// </summary>
+        
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/Attack".
-        /// </summary>
+        
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/Interact".
-        /// </summary>
+        
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/ToggleQuest".
-        /// </summary>
+        
         public InputAction @ToggleQuest => m_Wrapper.m_Player_ToggleQuest;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/ToggleInventory".
-        /// </summary>
+        
         public InputAction @ToggleInventory => m_Wrapper.m_Player_ToggleInventory;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/ToggleStats".
-        /// </summary>
+        
         public InputAction @ToggleStats => m_Wrapper.m_Player_ToggleStats;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/ToggleEquipment".
-        /// </summary>
+        
         public InputAction @ToggleEquipment => m_Wrapper.m_Player_ToggleEquipment;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot1".
-        /// </summary>
+        
         public InputAction @QuickSlot1 => m_Wrapper.m_Player_QuickSlot1;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot2".
-        /// </summary>
+        
         public InputAction @QuickSlot2 => m_Wrapper.m_Player_QuickSlot2;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot3".
-        /// </summary>
+        
         public InputAction @QuickSlot3 => m_Wrapper.m_Player_QuickSlot3;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot4".
-        /// </summary>
+        
         public InputAction @QuickSlot4 => m_Wrapper.m_Player_QuickSlot4;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot5".
-        /// </summary>
+        
         public InputAction @QuickSlot5 => m_Wrapper.m_Player_QuickSlot5;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot6".
-        /// </summary>
+        
         public InputAction @QuickSlot6 => m_Wrapper.m_Player_QuickSlot6;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot7".
-        /// </summary>
+        
         public InputAction @QuickSlot7 => m_Wrapper.m_Player_QuickSlot7;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot8".
-        /// </summary>
+        
         public InputAction @QuickSlot8 => m_Wrapper.m_Player_QuickSlot8;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot9".
-        /// </summary>
+        
         public InputAction @QuickSlot9 => m_Wrapper.m_Player_QuickSlot9;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/QuickSlot0".
-        /// </summary>
+        
         public InputAction @QuickSlot0 => m_Wrapper.m_Player_QuickSlot0;
-        /// <summary>
+        
         /// Provides access to the underlying input action "Player/Cancel".
-        /// </summary>
+        
         public InputAction @Cancel => m_Wrapper.m_Player_Cancel;
-        /// <summary>
+        
         /// Provides access to the underlying input action map instance.
-        /// </summary>
+        
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
@@ -714,13 +714,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public void Disable() { Get().Disable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
-        /// <summary>
+        
         /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
-        /// </summary>
+        
         public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        /// <summary>
+        
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
+        
         /// <param name="instance">Callback instance.</param>
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
@@ -786,9 +786,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Cancel.canceled += instance.OnCancel;
         }
 
-        /// <summary>
+        
         /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
+        
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
@@ -851,9 +851,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Cancel.canceled -= instance.OnCancel;
         }
 
-        /// <summary>
+        
         /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />.
-        /// </summary>
+        
         /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
         public void RemoveCallbacks(IPlayerActions instance)
         {
@@ -861,9 +861,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 UnregisterCallbacks(instance);
         }
 
-        /// <summary>
+        
         /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
-        /// </summary>
+        
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
@@ -878,139 +878,139 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             AddCallbacks(instance);
         }
     }
-    /// <summary>
+    
     /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
-    /// </summary>
+    
     public PlayerActions @Player => new PlayerActions(this);
-    /// <summary>
+    
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
-    /// </summary>
+    
     /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
     /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
     public interface IPlayerActions
     {
-        /// <summary>
+        
         /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "ToggleQuest" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleQuest(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "ToggleInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleInventory(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "ToggleStats" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleStats(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "ToggleEquipment" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleEquipment(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot1(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot2(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot3(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot4(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot5(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot6" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot6(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot7" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot7(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot8" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot8(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot9" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot9(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "QuickSlot0" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuickSlot0(InputAction.CallbackContext context);
-        /// <summary>
+        
         /// Method invoked when associated input action "Cancel" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
+        
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
+
 /// 플레이어 장비 관리 싱글톤
 /// 장비 장착/해제 및 스탯 적용 담당
 /// 
@@ -11,7 +11,7 @@ using UnityEngine;
 /// 2. 장비 스탯을 누적 계산하여 정확하게 적용
 /// 3. GetTotalStatBonus() 메서드를 재활용하여 코드 중복 제거
 /// 4. 장비 정보 저장/로드 기능 추가
-/// </summary>
+
 public class EquipmentManager : MonoBehaviour
 {
     public static EquipmentManager Instance { get; private set; }
@@ -42,10 +42,10 @@ public class EquipmentManager : MonoBehaviour
 
     // ==================== 장비 장착/해제 ====================
 
-    /// <summary>
+    
     /// 장비 아이템 장착
     ///  개선: 인벤토리에서 아이템을 제거하여 슬롯 확보
-    /// </summary>
+    
     public bool EquipItem(string itemId)
     {
         ItemData data = ItemDataManager.Instance?.GetItemData(itemId);
@@ -155,10 +155,10 @@ public class EquipmentManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// 장비 아이템 해제
     ///  개선: 인벤토리에 아이템을 다시 추가
-    /// </summary>
+    
     public bool UnequipItem(EquipmentSlot slot)
     {
         if (!equippedItems.ContainsKey(slot))
@@ -196,10 +196,10 @@ public class EquipmentManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// 치장 아이템 장착
     ///  개선: 인벤토리에서 아이템을 제거하여 슬롯 확보
-    /// </summary>
+    
     private bool EquipCosmetic(InventoryItem inventoryItem, ItemData data)
     {
         CosmeticSlot slot = data.ConvertToCosmeticSlot(data.equipSlot);
@@ -240,10 +240,10 @@ public class EquipmentManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// 치장 아이템 해제
     ///  개선: 인벤토리에 아이템을 다시 추가
-    /// </summary>
+    
     public bool UnequipCosmetic(CosmeticSlot slot)
     {
         if (!cosmeticItems.ContainsKey(slot))
@@ -278,10 +278,10 @@ public class EquipmentManager : MonoBehaviour
 
     // ====================  스탯 적용 (GetTotalStatBonus 재활용)  ====================
 
-    /// <summary>
+    
     ///  모든 장착된 장비의 스탯을 합산하여 플레이어에게 적용
     /// GetTotalStatBonus() 메서드를 재활용하여 중복 제거
-    /// </summary>
+    
     public void RecalculateAndApplyAllEquipmentStats()
     {
         if (PlayerStatsComponent.Instance == null)
@@ -323,49 +323,49 @@ public class EquipmentManager : MonoBehaviour
 
     // ==================== 조회 메서드 ====================
 
-    /// <summary>
+    
     /// 특정 슬롯에 장착된 장비 가져오기
-    /// </summary>
+    
     public InventoryItem GetEquippedItem(EquipmentSlot slot)
     {
         return equippedItems.ContainsKey(slot) ? equippedItems[slot] : null;
     }
 
-    /// <summary>
+    
     /// 특정 슬롯에 장착된 치장 가져오기
-    /// </summary>
+    
     public InventoryItem GetCosmeticItem(CosmeticSlot slot)
     {
         return cosmeticItems.ContainsKey(slot) ? cosmeticItems[slot] : null;
     }
 
-    /// <summary>
+    
     /// 모든 장착된 장비 가져오기
-    /// </summary>
+    
     public Dictionary<EquipmentSlot, InventoryItem> GetAllEquippedItems()
     {
         return new Dictionary<EquipmentSlot, InventoryItem>(equippedItems);
     }
 
-    /// <summary>
+    
     /// 모든 장착된 치장 가져오기
-    /// </summary>
+    
     public Dictionary<CosmeticSlot, InventoryItem> GetAllCosmeticItems()
     {
         return new Dictionary<CosmeticSlot, InventoryItem>(cosmeticItems);
     }
 
-    /// <summary>
+    
     /// 해당 슬롯에 장비가 장착되어 있는지 확인
-    /// </summary>
+    
     public bool IsSlotEquipped(EquipmentSlot slot)
     {
         return equippedItems.ContainsKey(slot);
     }
 
-    /// <summary>
+    
     /// 해당 슬롯에 치장이 장착되어 있는지 확인
-    /// </summary>
+    
     public bool IsCosmeticSlotEquipped(CosmeticSlot slot)
     {
         return cosmeticItems.ContainsKey(slot);
@@ -373,10 +373,10 @@ public class EquipmentManager : MonoBehaviour
 
     // ====================  총 장비 보너스 계산 (재활용)  ====================
 
-    /// <summary>
+    
     /// 현재 장착된 모든 장비의 특정 스탯 보너스 합계
     ///  RecalculateAndApplyAllEquipmentStats()에서 재활용됨
-    /// </summary>
+    
     public int GetTotalStatBonus(StatType statType)
     {
         int total = 0;
@@ -420,9 +420,9 @@ public class EquipmentManager : MonoBehaviour
 
     // ==================== 인벤토리 용량 확인 ====================
 
-    /// <summary>
+    
     /// 장비를 해제할 수 있는지 확인 (인벤토리 공간 확인)
-    /// </summary>
+    
     public bool CanUnequip(EquipmentSlot slot)
     {
         if (!equippedItems.ContainsKey(slot))
@@ -436,9 +436,9 @@ public class EquipmentManager : MonoBehaviour
         return InventoryManager.Instance.GetAllItems().Count < 50; // maxSlots 하드코딩 대신 getter 필요
     }
 
-    /// <summary>
+    
     /// 치장을 해제할 수 있는지 확인 (인벤토리 공간 확인)
-    /// </summary>
+    
     public bool CanUnequipCosmetic(CosmeticSlot slot)
     {
         if (!cosmeticItems.ContainsKey(slot))
@@ -451,10 +451,10 @@ public class EquipmentManager : MonoBehaviour
     }
     // ====================  저장/로드 기능  ====================
 
-    /// <summary>
+    
     /// 장비 데이터를 저장 가능한 형식으로 변환
     ///  수정: InventoryItemSaveData 전체를 저장 (itemId만 저장하면 로드 시 인벤토리에서 못 찾음)
-    /// </summary>
+    
     public EquipmentSaveData ToSaveData()
     {
         EquipmentSaveData saveData = new EquipmentSaveData();
@@ -483,10 +483,10 @@ public class EquipmentManager : MonoBehaviour
         return saveData;
     }
 
-    /// <summary>
+    
     /// 저장된 장비 데이터를 로드
     ///  수정: InventoryItemSaveData에서 InventoryItem을 복원
-    /// </summary>
+    
     public void LoadFromSaveData(EquipmentSaveData saveData)
     {
         if (saveData == null)
@@ -567,9 +567,9 @@ public class EquipmentManager : MonoBehaviour
         Debug.Log($"[Equipment] 장비 로드 완료: {equippedItems.Count}개 장비, {cosmeticItems.Count}개 치장");
     }
 
-    /// <summary>
+    
     /// 모든 장비 해제 (초기화용)
-    /// </summary>
+    
     public void ClearAllEquipment()
     {
         equippedItems.Clear();

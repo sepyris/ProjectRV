@@ -1,8 +1,8 @@
 using Definitions;
-using GameData.Common;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// 몬스터 데이터를 저장하는 ScriptableObject
 public class MonsterDataSO : ScriptableObject
 {
     public List<MonsterData> Items = new List<MonsterData>();

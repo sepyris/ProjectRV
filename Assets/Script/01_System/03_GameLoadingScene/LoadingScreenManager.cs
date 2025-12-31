@@ -40,9 +40,9 @@ public class LoadingScreenManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 전역 로딩 화면 표시 (페이드 인)
-    /// </summary>
+    
     public void ShowGlobalLoading()
     {
         // 기존 자동 숨김 코루틴 정지
@@ -67,9 +67,9 @@ public class LoadingScreenManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 전역 로딩 화면 숨김 (페이드 아웃)
-    /// </summary>
+    
     public void HideGlobalLoading()
     {
         // 기존 페이드 코루틴 정지
@@ -94,9 +94,9 @@ public class LoadingScreenManager : MonoBehaviour
         Debug.Log("[Loading] 전역 로딩 화면 숨김.");
     }
 
-    /// <summary>
+    
     /// 안전장치 - 일정 시간 후 강제로 로딩 숨김
-    /// </summary>
+    
     public void ShowGlobalLoadingWithAutoHide(float maxDuration = 3f)
     {
         ShowGlobalLoading();
@@ -122,9 +122,9 @@ public class LoadingScreenManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 즉시 로딩 상태 해제 (긴급용)
-    /// </summary>
+    
     public void ForceStopLoading()
     {
         if (fadeCoroutine != null)

@@ -4,10 +4,10 @@ using TMPro;
 using System;
 using System.Collections.Generic;
 
-/// <summary>
+
 /// 공유 팝업(수량 입력, 확인, 경고)을 중앙에서 관리하는 매니저
 /// 팝업이 열릴 때 다른 모든 UI의 상호작용을 차단합니다
-/// </summary>
+
 public class PopupManager : MonoBehaviour, IClosableUI
 {
     public static PopupManager Instance { get; private set; }
@@ -125,9 +125,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
             warningPopupPanel.SetActive(false);
     }
 
-    /// <summary>
+    
     /// 팝업에 CanvasGroup 추가 및 설정
-    /// </summary>
+    
     private void SetupPopupCanvasGroup(GameObject popup)
     {
         if (popup == null) return;
@@ -142,9 +142,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
         canvasGroup.interactable = true;
     }
 
-    /// <summary>
+    
     /// UI 패널들의 CanvasGroup 미리 캐시
-    /// </summary>
+    
     private void CacheUICanvasGroups()
     {
         foreach (GameObject panel in uiPanelsToBlock)
@@ -161,9 +161,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 모든 UI 패널 상호작용 차단
-    /// </summary>
+    
     private void BlockAllUIPanels()
     {
         foreach (var kvp in panelCanvasGroups)
@@ -177,9 +177,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
         Debug.Log("[PopupManager] 모든 UI 패널 차단됨");
     }
 
-    /// <summary>
+    
     /// 모든 UI 패널 상호작용 복원
-    /// </summary>
+    
     private void UnblockAllUIPanels()
     {
         foreach (var kvp in panelCanvasGroups)
@@ -195,9 +195,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
 
     // ==================== 수량 입력 팝업 ====================
 
-    /// <summary>
+    
     /// 수량 입력 팝업 표시 (상점 거래용)
-    /// </summary>
+    
     public void ShowQuantityPopup(ItemData itemData, int maxQuantity, int price, bool isBuying, Action<int> onConfirm)
     {
         if (quantityPopupPanel == null) return;
@@ -237,9 +237,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
         UpdatePriceDisplay(1, price);
     }
 
-    /// <summary>
+    
     /// 수량 입력 팝업 표시 (아이템 버리기용)
-    /// </summary>
+    
     public void ShowDiscardQuantityPopup(ItemData itemData, int maxQuantity, Action<int> onConfirm)
     {
         if (quantityPopupPanel == null) return;
@@ -348,9 +348,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
 
     // ==================== 확인 팝업 ====================
 
-    /// <summary>
+    
     /// 확인 팝업 표시 (확인/취소 버튼)
-    /// </summary>
+    
     public void ShowConfirmPopup(string message, Action onConfirm, Action onCancel = null)
     {
         if (confirmPopupPanel == null) return;
@@ -413,9 +413,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
 
     // ==================== 경고 팝업 (확인 버튼만) ====================
 
-    /// <summary>
+    
     /// 경고 팝업 표시 (확인 버튼만)
-    /// </summary>
+    
     public void ShowWarningPopup(string message, Action onConfirm = null)
     {
         if (warningPopupPanel == null) return;
@@ -472,17 +472,17 @@ public class PopupManager : MonoBehaviour, IClosableUI
 
     // ==================== 공개 메서드 ====================
 
-    /// <summary>
+    
     /// 팝업이 현재 열려있는지 확인
-    /// </summary>
+    
     public bool IsAnyPopupOpen()
     {
         return isQuantityPopupOpen || isConfirmPopupOpen || isWarningPopupOpen;
     }
 
-    /// <summary>
+    
     /// 모든 팝업 강제 닫기
-    /// </summary>
+    
     public void CloseAllPopups()
     {
         if (isQuantityPopupOpen)
@@ -495,9 +495,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
             OnWarningPopupConfirm();
     }
 
-    /// <summary>
+    
     /// IClosableUI 구현 - ESC로 맨 위 팝업 닫기
-    /// </summary>
+    
     public void Close()
     {
         // 가장 최근에 열린 팝업부터 닫기
@@ -509,9 +509,9 @@ public class PopupManager : MonoBehaviour, IClosableUI
             CloseQuantityPopup();
     }
 
-    /// <summary>
+    
     /// IClosableUI 구현 - 현재 열린 팝업 Panel 반환
-    /// </summary>
+    
     public GameObject GetUIPanel()
     {
         return this.gameObject;

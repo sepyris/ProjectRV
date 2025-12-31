@@ -3,11 +3,11 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
-/// <summary>
+
 /// 세이브 포인트 - 특정 오브젝트와 상호작용하여 게임 저장
 /// - 저장 중 게임 일시정지
 /// - 저장 전 HP 완전 회복
-/// </summary>
+
 public class SavePointController : MonoBehaviour
 {
     [Header("Settings")]
@@ -56,9 +56,9 @@ public class SavePointController : MonoBehaviour
         // 이제 PlayerController의 Interact 액션으로 처리됨
     }
 
-    /// <summary>
+    
     /// PlayerController의 Interact 액션에서 호출되는 메서드
-    /// </summary>
+    
     public void TryInteract()
     {
         if (isPlayerNear && !isSaving)
@@ -91,9 +91,9 @@ public class SavePointController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 게임 저장 루틴 (코루틴)
-    /// </summary>
+    
     private IEnumerator SaveGameRoutine()
     {
         // 저장 시작
@@ -176,9 +176,9 @@ public class SavePointController : MonoBehaviour
         isSaving = false;
     }
 
-    /// <summary>
+    
     /// 플레이어 HP 회복
-    /// </summary>
+    
     private void HealPlayer()
     {
         if (PlayerController.Instance == null) return;
@@ -202,9 +202,9 @@ public class SavePointController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 회복 이펙트 재생
-    /// </summary>
+    
     private void PlayHealEffect()
     {
         if (healEffectPrefab != null && PlayerController.Instance != null)
@@ -214,9 +214,9 @@ public class SavePointController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 회복 사운드 재생
-    /// </summary>
+    
     private void PlayHealSound()
     {
         if (audioSource != null && healSound != null)
@@ -225,9 +225,9 @@ public class SavePointController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 저장 완료 이펙트 재생
-    /// </summary>
+    
     private void PlaySaveEffect()
     {
         if (saveEffectPrefab != null)
@@ -237,9 +237,9 @@ public class SavePointController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 저장 사운드 재생
-    /// </summary>
+    
     private void PlaySaveSound()
     {
         if (audioSource != null && saveSound != null)
@@ -248,9 +248,9 @@ public class SavePointController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// Gizmo로 세이브 포인트 위치 표시 (에디터에서만)
-    /// </summary>
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
@@ -262,9 +262,9 @@ public class SavePointController : MonoBehaviour
     }
 
     // ===== 추가: 외부에서 저장 가능하도록 =====
-    /// <summary>
+    
     /// 외부에서 저장 실행 (UI 버튼 등)
-    /// </summary>
+    
     public void TriggerSave()
     {
         if (!isSaving)

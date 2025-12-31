@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+/// 상점 데이터 관리 싱글톤
+
 public class ShopDataManager : MonoBehaviour
 {
     public static ShopDataManager Instance { get; private set; }
@@ -9,7 +12,11 @@ public class ShopDataManager : MonoBehaviour
     [Header("ScriptableObject")]
     [SerializeField] private ShopDataSO shopDataSO;
 
-    private Dictionary<string, ShopData> shopDictionary = new Dictionary<string, ShopData>();
+    private Dictionary<string, ShopData> shopDatabase= new Dictionary<string, ShopData>();
+
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
 
     void Awake()
     {
@@ -17,7 +24,14 @@ public class ShopDataManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadShopData();
+            if (shopDataSO != null)
+            {
+                BuildDictionary(shopDataSO);
+            }
+            else
+            {
+                Debug.LogWarning("[ShopDataManager] SO data is not assigned.");
+            }
         }
         else
         {
@@ -25,82 +39,41 @@ public class ShopDataManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// ShopDataSO에서 데이터를 로드하여 Dictionary에 저장합니다.
-    /// </summary>
-    void LoadShopData()
+    
+    /// 데이터베이스 초기화 및 재구축
+    
+    void BuildDictionary(ShopDataSO database)
     {
-        if (shopDataSO == null)
+        shopDatabase.Clear();
+        foreach (var item in database.Items)
         {
-            Debug.LogError("[ShopDataManager] ShopDataSO가 할당되지 않았습니다!");
-            return;
+            if (!shopDatabase.ContainsKey(item.shopid))
+            {
+                shopDatabase.Add(item.shopid, item);
+            }
+            else
+            {
+                Debug.LogWarning($"[SkillDataManager] Duplicate id found (SO): {item.shopid}");
+            }
         }
-
-        shopDictionary.Clear();
-
-        foreach (ShopData shopData in shopDataSO.Items)
-        {
-            shopDictionary[shopData.shopid] = shopData;
-        }
-
-        Debug.Log($"[ShopDataManager] 상점 데이터 로드 완료: {shopDictionary.Count}개의 상점");
+        Debug.Log($"[SkillDataManager] Loaded {shopDatabase.Count} skills from ScriptableObject.");
     }
 
-    /// <summary>
-    /// 특정 Shopid에 해당하는 ShopData를 반환합니다.
-    /// </summary>
+    // ==========================================
+    // 조회 메서드
+    // ==========================================
+
+    
+    /// 해당 Shopid에 해당하는 ShopData를 반환합니다.
+    
     public ShopData GetShopData(string shopid)
     {
-        if (shopDictionary.TryGetValue(shopid, out ShopData data))
+        if (shopDatabase.TryGetValue(shopid, out ShopData data))
         {
             return data;
         }
 
         Debug.LogWarning($"[ShopDataManager] 상점 id '{shopid}'를 찾을 수 없습니다.");
         return null;
-    }
-
-    /// <summary>
-    /// 모든 상점 id 목록을 반환합니다.
-    /// </summary>
-    public List<string> GetAllShopids()
-    {
-        return shopDictionary.Keys.ToList();
-    }
-
-    /// <summary>
-    /// 데이터 검증 (SystemInitializer에서 호출)
-    /// </summary>
-    public bool ValidateData()
-    {
-        if (shopDataSO == null)
-        {
-            Debug.LogError("[ShopDataManager] ShopDataSO가 할당되지 않았습니다!");
-            return false;
-        }
-
-        if (shopDataSO.Items == null || shopDataSO.Items.Count == 0)
-        {
-            Debug.LogError("[ShopDataManager] ShopDataSO에 상점 데이터가 없습니다!");
-            return false;
-        }
-
-        // 각 상점의 아이템 id 검증
-        foreach (ShopData shop in shopDataSO.Items)
-        {
-            foreach (ShopItemData item in shop.items)
-            {
-                // ItemDataManager를 통해 아이템 존재 확인
-                // 실제 ItemDataManager 구조에 맞게 수정 필요
-                // ItemData itemData = ItemDataManager.Instance?.GetItemData(item.itemid);
-                // if (itemData == null)
-                // {
-                //     Debug.LogWarning($"[ShopDataManager] 상점 '{shop.shopid}'에 존재하지 않는 아이템 id '{item.itemid}'가 있습니다!");
-                // }
-            }
-        }
-
-        Debug.Log($"[ShopDataManager] 데이터 검증 완료: {shopDataSO.Items.Count}개의 상점");
-        return true;
     }
 }

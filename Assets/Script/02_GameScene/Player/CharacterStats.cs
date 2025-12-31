@@ -99,9 +99,9 @@ public class CharacterStats
         OnStatsChanged?.Invoke();
     }
 
-    /// <summary>
+    
     ///  maxHP 변경 시 currentHP 조정
-    /// </summary>
+    
     private void AdjustCurrentHP(int oldMaxHP, int newMaxHP)
     {
         // maxHP 변화가 없으면 조정 불필요

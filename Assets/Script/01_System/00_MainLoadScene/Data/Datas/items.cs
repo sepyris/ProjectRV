@@ -3,14 +3,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// 아이템 데이터를 저장하는 ScriptableObject
 public class ItemDataSO : ScriptableObject
 {
     public List<ItemData> Items = new List<ItemData>();
 }
 
-/// <summary>
+
 /// 아이템 타입
-/// </summary>
+
 public enum ItemType
 {
     Equipment,   // 장비
@@ -19,10 +20,10 @@ public enum ItemType
     QuestItem    // 퀘스트 아이템
 }
 
-/// <summary>
+
 /// 장비 슬롯 타입 (확장됨)
 ///  Weapon이 MeleeWeapon과 RangedWeapon으로 분리됨
-/// </summary>
+
 public enum EquipmentSlot
 {
     None,
@@ -37,9 +38,9 @@ public enum EquipmentSlot
     Bracelet       // 팔찌
 }
 
-/// <summary>
+
 /// 치장 슬롯 타입
-/// </summary>
+
 public enum CosmeticSlot
 {
     None,
@@ -52,9 +53,9 @@ public enum CosmeticSlot
     Cape         // 망토 (팔찌 슬롯)
 }
 
-/// <summary>
+
 /// 아이템 데이터 (순수 데이터 클래스)
-/// </summary>
+
 [Serializable]
 public class ItemData
 {
@@ -85,9 +86,9 @@ public class ItemData
     // 치장 아이템 여부
     public bool isCosmetic;         // 치장 아이템인지 여부
 
-    /// <summary>
+    
     /// 소비 효과가 체력 회복인지 확인
-    /// </summary>
+    
     public bool IsHealEffect()
     {
         if (string.IsNullOrEmpty(consumableEffect))
@@ -97,9 +98,9 @@ public class ItemData
         return int.TryParse(consumableEffect, out _);
     }
 
-    /// <summary>
+    
     /// 체력 회복량 가져오기
-    /// </summary>
+    
     public int GetHealAmount()
     {
         if (IsHealEffect() && int.TryParse(consumableEffect, out int amount))
@@ -107,22 +108,22 @@ public class ItemData
         return 0;
     }
 
-    /// <summary>
+    
     /// 아이템 보상 리스트 가져오기
-    /// </summary>
-    public List<GameData.Common.ItemReward> GetItemRewards()
+    
+    public List<ItemReward> GetItemRewards()
     {
         if (IsHealEffect() || string.IsNullOrEmpty(consumableEffect))
             return null;
 
         // ItemReward 형식으로 파싱
-        List<GameData.Common.ItemReward> rewards = new List<GameData.Common.ItemReward>();
+        List<ItemReward> rewards = new List<ItemReward>();
         var items = consumableEffect.Split(';');
         foreach (var item in items)
         {
             if (!string.IsNullOrEmpty(item.Trim()))
             {
-                rewards.Add(new GameData.Common.ItemReward(item));
+                rewards.Add(new ItemReward(item));
             }
         }
         return rewards;

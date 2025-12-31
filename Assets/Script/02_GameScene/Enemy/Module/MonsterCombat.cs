@@ -56,9 +56,9 @@ public class MonsterCombat
         return false;
     }
 
-    /// <summary>
+    
     /// 근접 공격
-    /// </summary>
+    
     private void PerformMeleeAttack(Transform target)
     {
         lastAttackTime = Time.time;
@@ -89,9 +89,9 @@ public class MonsterCombat
         }
     }
 
-    /// <summary>
+    
     /// 원거리 공격 (발사체)
-    /// </summary>
+    
     private void PerformRangedAttack(Transform target)
     {
         lastAttackTime = Time.time;

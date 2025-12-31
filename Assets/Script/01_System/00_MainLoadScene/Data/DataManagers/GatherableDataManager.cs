@@ -1,11 +1,11 @@
-using GameData.Common;
+
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-/// <summary>
-/// CSV 파일에서 채집물 데이터를 로드하고 관리하는 싱글톤 매니저
-/// </summary>
+
+/// 채집물 데이터를 관리하는 싱글톤 매니저
+
 public class GatherableDataManager : MonoBehaviour
 {
     public static GatherableDataManager Instance { get; private set; }
@@ -15,6 +15,9 @@ public class GatherableDataManager : MonoBehaviour
 
     public Dictionary<string,GatherableData> gatherableDatabase = new();
 
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
     void Awake()
     {
         if (Instance == null)
@@ -36,6 +39,10 @@ public class GatherableDataManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
+    /// 데이터베이스 초기화 및 재구축
+    
     void BuildDictionary(GatherableDataSO database)
     {
         gatherableDatabase.Clear();
@@ -59,9 +66,9 @@ public class GatherableDataManager : MonoBehaviour
     // 조회 메서드
     // ==========================================
 
-    /// <summary>
+    
     /// 채집물 id로 데이터 가져오기
-    /// </summary>
+    
     public GatherableData GetGatherableData(string gatherableId)
     {
         if (gatherableDatabase.TryGetValue(gatherableId, out GatherableData data))
@@ -73,17 +80,17 @@ public class GatherableDataManager : MonoBehaviour
         return null;
     }
 
-    /// <summary>
+    
     /// 모든 채집물 데이터 가져오기
-    /// </summary>
+    
     public Dictionary<string, GatherableData> GetAllGatherables()
     {
         return gatherableDatabase;
     }
 
-    /// <summary>
+    
     /// 특정 도구가 필요한 채집물만 가져오기
-    /// </summary>
+    
     public Dictionary<string, GatherableData> GetGatherablesByTool(GatherToolType tool)
     {
         var filteredGatherables = gatherableDatabase

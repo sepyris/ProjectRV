@@ -322,9 +322,9 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
         itemDetailPanel.SetActive(false);
     }
 
-    /// <summary>
+    
     /// 패널이 화면 밖으로 나가지 않도록 위치를 조정합니다
-    /// </summary>
+    
     private Vector3 ClampToScreen(Vector3 position, RectTransform panelRect)
     {
         if (panelRect == null) return position;

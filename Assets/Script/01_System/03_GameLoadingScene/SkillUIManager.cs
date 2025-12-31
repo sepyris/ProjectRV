@@ -9,12 +9,11 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
     public static SkillUIManager Instance { get; private set; }
 
     [Header("메인 패널")]
-    private GameObject skillUIPanel;
-    private Button SkillUiCloseButton;
+    public GameObject skillUIPanel;
+    public Button SkillUiCloseButton;
 
     [Header("탭버튼")]
-    private Button ActiveSkillTabButton;
-
+    public Button ActiveSkillTabButton;
     public GameObject skillUIPrepabs;
 
     void Awake()

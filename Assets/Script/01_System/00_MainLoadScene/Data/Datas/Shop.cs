@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+/// 상점 데이터를 저장하는 ScriptableObject
 public class ShopDataSO : ScriptableObject
 {
     public List<ShopData> Items = new List<ShopData>(); // 다른 SO들과 동일하게 Items 사용
 }
-/// <summary>
+
 /// 상점에서 판매하는 아이템 정보
-/// </summary>
+
 [System.Serializable]
 public class ShopItemData
 {
@@ -23,9 +23,9 @@ public class ShopItemData
     }
 }
 
-/// <summary>
+
 /// 상점 데이터
-/// </summary>
+
 [System.Serializable]
 public class ShopData
 {

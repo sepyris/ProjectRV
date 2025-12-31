@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+
+/// 대화 데이터 관리 싱글톤
+
 public class DialogueDataManager : MonoBehaviour
 {
     public static DialogueDataManager Instance { get; private set; }
@@ -9,7 +12,10 @@ public class DialogueDataManager : MonoBehaviour
     public DialogueSequenceSO DialogueDatabaseSO;
 
     private readonly List<DialogueSequence> allDialogues = new();
-
+   
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
     void Awake()
     {
         if (Instance == null)
@@ -32,6 +38,7 @@ public class DialogueDataManager : MonoBehaviour
         }
     }
 
+    /// 데이터베이스 초기화 및 재구축
     void BuildDictionary(DialogueSequenceSO database)
     {
         allDialogues.Clear();
@@ -39,7 +46,13 @@ public class DialogueDataManager : MonoBehaviour
         Debug.Log($"[ItemDataManager] ScriptableObject에서 {allDialogues.Count}개의 아이템 로드 완료");
     }
 
-    // questId 없이 검색 (기본 대화용)
+    // ==========================================
+    // 조회 메서드
+    // ==========================================
+
+    
+    /// npcid와 dialogueType으로 검색
+    
     public List<DialogueLine> GetDialogueSequence(string npcId, string dialogueType)
     {
         foreach (var seq in allDialogues)
@@ -56,7 +69,9 @@ public class DialogueDataManager : MonoBehaviour
         return null;
     }
 
-    // questId와 함께 검색 (퀘스트 관련 대화용)
+    
+    /// npcid와 dialogueType, questId로 검색
+    
     public List<DialogueLine> GetDialogueSequence(string npcId, string dialogueType, string questId)
     {
         foreach (var seq in allDialogues)

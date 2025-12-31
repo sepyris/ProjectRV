@@ -3,10 +3,10 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 
-/// <summary>
+
 /// 개별 플로팅 메시지 항목
 /// 위로 올라가면서 페이드아웃되는 메시지
-/// </summary>
+
 public class FloatingMessage : MonoBehaviour
 {
     [Header("UI Components")]
@@ -34,9 +34,9 @@ public class FloatingMessage : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 텍스트만 있는 메시지 표시
-    /// </summary>
+    
     public void Show(string text, Color textColor)
     {
         if (messageText != null)
@@ -53,9 +53,9 @@ public class FloatingMessage : MonoBehaviour
         StartAnimation();
     }
 
-    /// <summary>
+    
     /// 아이콘 + 텍스트 메시지 표시 (아이템 획득용)
-    /// </summary>
+    
     public void Show(string text, Sprite icon, Color textColor)
     {
         if (messageText != null)

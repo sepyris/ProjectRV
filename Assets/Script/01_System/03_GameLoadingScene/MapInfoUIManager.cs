@@ -78,9 +78,9 @@ public class MapInfoUIManager : MonoBehaviour
         ClearMapInfo();
     }
 
-    /// <summary>
+    
     /// 현재 월드 위치를 기준으로 UI 위치 업데이트
-    /// </summary>
+    
     private void UpdatePosition()
     {
         if (mainCamera == null)
@@ -118,18 +118,18 @@ public class MapInfoUIManager : MonoBehaviour
         mapInfoPanel.position = screenPosition;
     }
 
-    /// <summary>
+    
     /// 월드 위치 설정
-    /// </summary>
+    
     public void SetWorldPosition(Vector3 worldPosition)
     {
         currentWorldPosition = worldPosition;
         UpdatePosition();
     }
 
-    /// <summary>
+    
     /// 맵 정보 표시
-    /// </summary>
+    
     public void SetMapInfo(string mapid, Vector3 worldPosition)
     {
         if (mapInfoPanel == null || MapInfoManager.Instance == null) return;
@@ -165,9 +165,9 @@ public class MapInfoUIManager : MonoBehaviour
         UpdatePosition();
     }
 
-    /// <summary>
+    
     /// 맵 정보 숨기기
-    /// </summary>
+    
     public void ClearMapInfo()
     {
         isActive = false;

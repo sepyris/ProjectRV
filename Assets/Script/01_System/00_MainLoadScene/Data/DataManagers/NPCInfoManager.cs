@@ -2,6 +2,7 @@
 using UnityEngine;
 
 
+/// NPC 데이터 관리 싱글톤
 
 public class NPCInfoManager : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class NPCInfoManager : MonoBehaviour
     public NPCInfoSO npdDataBaseSO;
 
     private readonly Dictionary<string, Npcs> npcInfoDictionary = new();
-
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
     void Awake()
     {
         if (Instance == null)
@@ -36,6 +39,9 @@ public class NPCInfoManager : MonoBehaviour
         }
     }
 
+    
+    /// 데이터베이스 초기화 및 재구축
+    
     void BuildDictionary(NPCInfoSO database)
     {
         npcInfoDictionary.Clear();
@@ -53,9 +59,13 @@ public class NPCInfoManager : MonoBehaviour
         Debug.Log($"[ItemDataManager] ScriptableObject에서 {npcInfoDictionary.Count}개의 아이템 로드 완료");
     }
 
-    /// <summary>
+    // ==========================================
+    // 조회 메서드
+    // ==========================================
+
+    
     /// NPC id로 이름 가져오기
-    /// </summary>
+    
     public string GetNPCName(string npcId)
     {
         if (npcInfoDictionary.TryGetValue(npcId, out Npcs data))
@@ -67,9 +77,9 @@ public class NPCInfoManager : MonoBehaviour
         return null;
     }
 
-    /// <summary>
+    
     /// NPC id로 전체 정보 가져오기
-    /// </summary>
+    
     public Npcs GetNPCInfo(string npcId)
     {
         if (npcInfoDictionary.TryGetValue(npcId, out Npcs data))

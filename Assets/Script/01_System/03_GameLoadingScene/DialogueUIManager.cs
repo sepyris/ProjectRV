@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Definitions;
 
-/// <summary>
+
 /// 대화 및 퀘스트 선택 UI 전체 관리
-/// </summary>
+
 public class DialogueUIManager : MonoBehaviour, IClosableUI
 {
     public static DialogueUIManager Instance { get; private set; }
@@ -385,9 +385,9 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 퀘스트 상태 아이콘 가져오기
-    /// </summary>
+    
     private string GetQuestStatusIcon(QuestStatus status, QuestData questData = null)
     {
         switch (status)
@@ -415,9 +415,9 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 퀘스트 선택 & 일상 대화 통합 (수정된 버전)
-    /// </summary>
+    
     private void ShowQuestOrDailySelection(NPCController npc, string afterQuestId = null)
     {
         List<string> activeQuests = npc.GetActiveQuests();
@@ -485,10 +485,10 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
         StartCoroutine(RefreshLayout());
     }
 
-    /// <summary>
+    
     /// 퀘스트 상태별 처리 (수정된 버전)
     ///  Accepted → Completed → Rewarded 흐름으로 수정 
-    /// </summary>
+    
     private void HandleQuestInteraction(NPCController npc, string questId)
     {
         Debug.Log($"[DialogueUI] HandleQuestInteraction 호출: {questId}");

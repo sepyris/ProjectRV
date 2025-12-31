@@ -1,8 +1,8 @@
 using UnityEngine;
 
-/// <summary>
+
 /// 몬스터의 원거리 공격 발사체
-/// </summary>
+
 public class MonsterProjectile : MonoBehaviour
 {
     private Vector2 direction;
@@ -16,9 +16,9 @@ public class MonsterProjectile : MonoBehaviour
     [SerializeField] private float lifetime = 1.5f; // 자동 파괴 시간
     [SerializeField] private bool destroyOnHit = true; // 충돌 시 파괴 여부
 
-    /// <summary>
+    
     /// 발사체 초기화
-    /// </summary>
+    
     public void Initialize(Vector2 dir, float spd, int dmg, bool critical, float acc)
     {
         direction = dir.normalized;

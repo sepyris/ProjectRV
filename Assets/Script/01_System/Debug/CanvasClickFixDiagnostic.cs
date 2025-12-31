@@ -2,10 +2,10 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-/// <summary>
+
 /// Canvas와 UI 버튼의 클릭 영역 문제를 진단하고 수정하는 스크립트
 /// Canvas 오브젝트에 붙여서 사용하세요.
-/// </summary>
+
 public class CanvasClickFixDiagnostic : MonoBehaviour
 {
     [Header("진단 설정")]

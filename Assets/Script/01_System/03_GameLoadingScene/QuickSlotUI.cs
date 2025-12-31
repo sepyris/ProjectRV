@@ -3,12 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-/// <summary>
+
 /// 개별 퀵슬롯 UI
 /// 드래그로 아이템/스킬 등록, 드래그로 밖으로 빼면 해제
 ///  호버 기능 추가: 아이템 상세 정보 표시
 ///  화면 밖으로 나가지 않도록 위치 자동 조정
-/// </summary>
+
 public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("UI 참조")]
@@ -53,18 +53,18 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    /// <summary>
+    
     /// 슬롯 인덱스 설정
-    /// </summary>
+    
     public void SetSlotIndex(int index)
     {
         slotIndex = index;
         UpdateKeyBindText();
     }
 
-    /// <summary>
+    
     /// 키 바인딩 텍스트 업데이트
-    /// </summary>
+    
     private void UpdateKeyBindText()
     {
         if (keyBindText != null)
@@ -75,9 +75,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    /// <summary>
+    
     /// 슬롯 변경 이벤트 핸들러
-    /// </summary>
+    
     private void OnSlotChanged(int index, QuickSlotData data)
     {
         if (index == slotIndex)
@@ -87,9 +87,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    /// <summary>
+    
     /// 슬롯 사용 이벤트 핸들러 (애니메이션 등)
-    /// </summary>
+    
     private void OnSlotUsed(int index)
     {
         if (index == slotIndex)
@@ -102,9 +102,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    /// <summary>
+    
     /// UI 업데이트
-    /// </summary>
+    
     private void UpdateUI()
     {
         //  슬롯 내용이 변경되면 ItemUIManager의 상세 패널 숨김 (호버 상태 리셋)
@@ -141,9 +141,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    /// <summary>
+    
     /// 소모품 UI 업데이트
-    /// </summary>
+    
     private void UpdateConsumableUI(string itemId)
     {
         if (ItemDataManager.Instance == null)
@@ -188,9 +188,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    /// <summary>
+    
     /// 스킬 UI 업데이트 (추후 확장)
-    /// </summary>
+    
     private void UpdateSkillUI(string skillId)
     {
         // TODO: 스킬 시스템 구현 후
@@ -210,9 +210,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
     //  호버 기능 추가
     // ==========================================
 
-    /// <summary>
+    
     /// 마우스 호버 시작 - 아이템 상세 정보 표시
-    /// </summary>
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
         // 슬롯이 비어있으면 무시
@@ -235,9 +235,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    /// <summary>
+    
     /// 마우스 호버 종료 - 상세 정보 숨기기
-    /// </summary>
+    
     public void OnPointerExit(PointerEventData eventData)
     {
         // 슬롯이 비어있으면 무시
@@ -258,9 +258,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
     // 드롭 및 클릭 처리
     // ==========================================
 
-    /// <summary>
+    
     /// 드롭 처리 - 아이템을 퀵슬롯에 등록
-    /// </summary>
+    
     public void OnDrop(PointerEventData eventData)
     {
         GameObject draggedObject = eventData.pointerDrag;
@@ -294,9 +294,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         // TODO: DraggableSkillUI에서 드롭된 경우 (스킬 시스템 구현 후)
     }
 
-    /// <summary>
+    
     /// 클릭 처리 - 퀵슬롯 사용
-    /// </summary>
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -317,9 +317,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    /// <summary>
+    
     /// 공개 메서드: 외부에서 UI 강제 업데이트
-    /// </summary>
+    
     public void RefreshUI()
     {
         if (QuickSlotManager.Instance != null)

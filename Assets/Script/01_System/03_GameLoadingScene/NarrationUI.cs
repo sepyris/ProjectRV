@@ -3,9 +3,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 나레이션 UI 표시 담당
-/// </summary>
+
 public class NarrationUI : MonoBehaviour
 {
     [Header("UI 요소")]
@@ -33,9 +33,9 @@ public class NarrationUI : MonoBehaviour
             skipProgressPanel.SetActive(false);
     }
 
-    /// <summary>
+    
     /// 나레이션 표시 (타이핑 효과 포함)
-    /// </summary>
+    
     public void Show(string text, NarrationConfig config)
     {
         currentConfig = config;
@@ -61,9 +61,9 @@ public class NarrationUI : MonoBehaviour
         StartTyping(text);
     }
 
-    /// <summary>
+    
     /// 타이핑 효과 시작
-    /// </summary>
+    
     private void StartTyping(string text)
     {
         if (typingCoroutine != null)
@@ -80,9 +80,9 @@ public class NarrationUI : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 타이핑 효과 코루틴
-    /// </summary>
+    
     private IEnumerator TypeText(string fullText)
     {
         narrationText.text = "";
@@ -97,17 +97,17 @@ public class NarrationUI : MonoBehaviour
         typingCoroutine = null;
     }
 
-    /// <summary>
+    
     /// 타이핑이 완료되었는지 여부
-    /// </summary>
+    
     public bool IsTypingComplete()
     {
         return isTypingComplete;
     }
 
-    /// <summary>
+    
     /// 타이핑 즉시 완료 (스킵용)
-    /// </summary>
+    
     public void CompleteTypingImmediately()
     {
         if (typingCoroutine != null)
@@ -118,9 +118,9 @@ public class NarrationUI : MonoBehaviour
         isTypingComplete = true;
     }
 
-    /// <summary>
+    
     /// 나레이션 숨기기
-    /// </summary>
+    
     public void HidePanel(bool instant = false)
     {
         // 스킵 진행바 숨김
@@ -129,9 +129,9 @@ public class NarrationUI : MonoBehaviour
 
         narrationPanel.SetActive(false);
     }
-    /// <summary>
+    
     /// 나레이션 숨기기
-    /// </summary>
+    
     public void HideProgress(bool instant = false)
     {
         // 스킵 진행바 숨김
@@ -139,9 +139,9 @@ public class NarrationUI : MonoBehaviour
             skipProgressPanel.SetActive(false);
     }
 
-    /// <summary>
+    
     /// 스킵 진행도 업데이트
-    /// </summary>
+    
     public void UpdateSkipProgress(float progress)
     {
         if (skipProgressPanel != null)
@@ -156,9 +156,9 @@ public class NarrationUI : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 조건에 따른 힌트 텍스트 반환
-    /// </summary>
+    
     private string GetConditionHintText(NarrationConditionType conditionType)
     {
         return conditionType switch

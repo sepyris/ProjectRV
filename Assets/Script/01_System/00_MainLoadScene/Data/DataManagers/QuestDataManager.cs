@@ -1,8 +1,11 @@
-﻿using GameData.Common;
+﻿
 using System.Collections.Generic;
 using UnityEditor;
 using Definitions;
 using UnityEngine;
+
+
+/// 퀘스트 데이터 관리 싱글톤
 
 public class QuestDataManager : MonoBehaviour
 {
@@ -13,7 +16,9 @@ public class QuestDataManager : MonoBehaviour
     public QuestDataSO questDatabaseSO;
 
     public Dictionary<string, QuestData> questList = new();
-
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
     void Awake()
     {
         if (Instance == null)
@@ -24,7 +29,9 @@ public class QuestDataManager : MonoBehaviour
             if (questDatabaseSO != null)
             {
 #if UNITY_EDITOR
-                
+                // Editor 모드에서는 퀘스트 상태 초기화를 위해 CSV 파일을 다시 빌드
+
+
                 Debug.LogWarning("[QuestDataManager] Editor 모드에서는 CSV 파일을 다시 빌드합니다.");
                 if (csvFile == null) return;
 
@@ -49,6 +56,9 @@ public class QuestDataManager : MonoBehaviour
         }
     }
 
+    
+    /// 데이터베이스 초기화 및 재구축
+    
     void BuildDictionary(QuestDataSO database)
     {
         questList.Clear();
@@ -66,6 +76,9 @@ public class QuestDataManager : MonoBehaviour
         Debug.Log($"[ItemDataManager] ScriptableObject에서 {questList.Count}개의 아이템 로드 완료");
     }
 
+    
+    /// 퀘스트매니저에 모든 퀘스트 등록
+    
     void RegisterAll()
     {
         foreach (var quest in questList)
@@ -73,15 +86,20 @@ public class QuestDataManager : MonoBehaviour
             QuestManager.Instance.RegisterQuest(quest.Value);
         }
     }
+    // ==========================================
+    // 조회 메서드
+    // ==========================================
 
-    // 수락 가능한 퀘스트 목록 가져오기
+    
+    /// 수락 가능한 퀘스트 목록 가져오기
+    
     public Dictionary<string, QuestData> GetAvailableQuests()
     {
         return questList;
     }
-    /// <summary>
+    
     /// 퀘스트 id로 데이터 가져오기
-    /// </summary>
+    
     public QuestData GetGatherableData(string questid)
     {
         if (questList.TryGetValue(questid, out QuestData data))

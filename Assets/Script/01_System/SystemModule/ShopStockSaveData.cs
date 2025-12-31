@@ -2,11 +2,11 @@
 using System.Linq;
 using UnityEngine;
 
-/// <summary>
+
 /// 상점 재고 저장 데이터 (캐릭터별)
 ///  임시 데이터 기능: 상점 거래는 임시 데이터에 기록되고, 세이브 시에만 실제 데이터에 반영
 ///  JsonUtility 호환: Dictionary 대신 List 사용
-/// </summary>
+
 [System.Serializable]
 public class ShopStockSaveData
 {
@@ -34,9 +34,9 @@ public class ShopStockSaveData
 
     // ==================== 초기화 ====================
 
-    /// <summary>
+    
     /// Dictionary 캐시 초기화
-    /// </summary>
+    
     private void EnsureDictionaries()
     {
         if (purchasedDict == null)
@@ -60,9 +60,9 @@ public class ShopStockSaveData
 
     // ==================== 구매 관련 메서드 ====================
 
-    /// <summary>
+    
     /// 제한 재고 아이템 구매 기록 (임시 데이터에 저장)
-    /// </summary>
+    
     public void RecordPurchase(string shopId, string itemId, int quantity)
     {
         string key = $"{shopId}_{itemId}";
@@ -83,9 +83,9 @@ public class ShopStockSaveData
         Debug.Log($"[ShopStock] 임시 구매 기록: {key} = {tempPurchasedItems[key]}개 (저장 안됨)");
     }
 
-    /// <summary>
+    
     /// 특정 아이템의 구매한 수량 가져오기 (임시 데이터 우선)
-    /// </summary>
+    
     public int GetPurchasedQuantity(string shopId, string itemId)
     {
         string key = $"{shopId}_{itemId}";
@@ -103,9 +103,9 @@ public class ShopStockSaveData
 
     // ==================== 재매입 관련 메서드 ====================
 
-    /// <summary>
+    
     /// 재매입 아이템 추가 (임시 데이터에 저장)
-    /// </summary>
+    
     public void AddRebuyItem(string itemId, int quantity)
     {
         if (tempRebuyItems.ContainsKey(itemId))
@@ -124,9 +124,9 @@ public class ShopStockSaveData
         Debug.Log($"[ShopStock] 임시 재매입 추가: {itemId} = {tempRebuyItems[itemId]}개 (저장 안됨)");
     }
 
-    /// <summary>
+    
     /// 재매입 아이템 수량 감소 (임시 데이터에서)
-    /// </summary>
+    
     public void ReduceRebuyItem(string itemId, int quantity)
     {
         // 임시 데이터가 없으면 실제 데이터에서 복사
@@ -148,9 +148,9 @@ public class ShopStockSaveData
         Debug.Log($"[ShopStock] 임시 재매입 감소: {itemId} = {tempRebuyItems[itemId]}개 (저장 안됨)");
     }
 
-    /// <summary>
+    
     /// 재매입 아이템 수량 가져오기 (임시 데이터 우선)
-    /// </summary>
+    
     public int GetRebuyQuantity(string itemId)
     {
         // 임시 데이터가 있으면 임시 데이터 반환
@@ -166,9 +166,9 @@ public class ShopStockSaveData
 
     // ==================== 임시 데이터 관리 ====================
 
-    /// <summary>
+    
     /// 임시 데이터를 실제 데이터에 커밋 (세이브 시 호출)
-    /// </summary>
+    
     public void CommitTempData()
     {
         if (!hasUnsavedChanges)
@@ -210,9 +210,9 @@ public class ShopStockSaveData
         Debug.Log($"[ShopStock] 저장될 데이터: 구매 {purchasedItems.Count}개, 재매입 {rebuyItems.Count}개");
     }
 
-    /// <summary>
+    
     /// Dictionary를 List로 동기화 (직렬화 전에 호출)
-    /// </summary>
+    
     private void SyncDictionariesToLists()
     {
         // 구매 데이터
@@ -230,9 +230,9 @@ public class ShopStockSaveData
         }
     }
 
-    /// <summary>
+    
     /// 임시 데이터 롤백 (저장 안하고 종료 시)
-    /// </summary>
+    
     public void RollbackTempData()
     {
         if (!hasUnsavedChanges)
@@ -247,17 +247,17 @@ public class ShopStockSaveData
         Debug.Log("[ShopStock] 임시 데이터 롤백 완료! (변경사항 취소됨)");
     }
 
-    /// <summary>
+    
     /// 저장되지 않은 변경사항이 있는지 확인
-    /// </summary>
+    
     public bool HasUnsavedChanges()
     {
         return hasUnsavedChanges;
     }
 
-    /// <summary>
+    
     /// 데이터 로드 후 초기화 (임시 데이터 클리어)
-    /// </summary>
+    
     public void OnDataLoaded()
     {
         tempPurchasedItems.Clear();
@@ -275,9 +275,9 @@ public class ShopStockSaveData
 
 // ==================== 직렬화 가능한 데이터 구조 ====================
 
-/// <summary>
+
 /// 상점 아이템 구매 기록 (JsonUtility 직렬화 가능)
-/// </summary>
+
 [System.Serializable]
 public class ShopItemPurchaseRecord
 {
@@ -285,9 +285,9 @@ public class ShopItemPurchaseRecord
     public int quantity;     // 구매한 수량
 }
 
-/// <summary>
+
 /// 재매입 아이템 기록 (JsonUtility 직렬화 가능)
-/// </summary>
+
 [System.Serializable]
 public class RebuyItemRecord
 {

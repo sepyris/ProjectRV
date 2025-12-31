@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 인벤토리 아이템을 드래그할 수 있게 해주는 컴포넌트
 /// 장비창으로 드래그하여 장착 가능
 /// 
@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// 1. dragVisual이 raycast를 차단하지 않도록 설정
 /// 2. 상점 팝업 대신 전용 버리기 팝업 사용
 /// 3. 드래그 중 UI 갱신으로 인한 잔상 문제 해결
-/// </summary>
+
 public class DraggableItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     //  현재 드래그 중인 인스턴스 추적 (정적 변수)
@@ -22,17 +22,17 @@ public class DraggableItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private CanvasGroup canvasGroup;
     private GameObject dragVisual;
 
-    /// <summary>
+    
     /// 드래그 중인 아이템이 있는지 확인
-    /// </summary>
+    
     public static bool IsDragging()
     {
         return currentDragging != null;
     }
 
-    /// <summary>
+    
     /// 진행 중인 드래그를 강제로 취소
-    /// </summary>
+    
     public static void CancelCurrentDrag()
     {
         if (currentDragging != null)
@@ -171,9 +171,9 @@ public class DraggableItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         CleanupDrag();
     }
 
-    /// <summary>
+    
     /// 인벤토리 UI 위에 있는지 확인 (장비창 제외!)
-    /// </summary>
+    
     private bool IsOverInventoryUI(GameObject target)
     {
         if (target == null) return false;
@@ -196,9 +196,9 @@ public class DraggableItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         return false;
     }
 
-    /// <summary>
+    
     ///  PopupManager를 통한 버리기 팝업 표시
-    /// </summary>
+    
     private void ShowDiscardConfirmation(InventoryItem discardItem, ItemData data)
     {
         if (PopupManager.Instance == null)
@@ -284,9 +284,9 @@ public class DraggableItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
     }
 
-    /// <summary>
+    
     /// 오브젝트가 파괴될 때 드래그 정리
-    /// </summary>
+    
     void OnDestroy()
     {
         //  이 오브젝트가 드래그 중이었다면 정리

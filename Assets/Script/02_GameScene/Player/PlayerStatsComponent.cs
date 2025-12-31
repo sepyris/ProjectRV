@@ -4,11 +4,11 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
+
 /// 플레이어 스탯 컴포넌트
 /// PlayerController에 붙여서 사용
 /// UI 업데이트를 직접 호출하는 방식으로 변경됨
-/// </summary>
+
 public class PlayerStatsComponent : MonoBehaviour
 {
     public static PlayerStatsComponent Instance { get; private set; }
@@ -90,9 +90,9 @@ public class PlayerStatsComponent : MonoBehaviour
         UnsubscribeFromEvents();
     }
 
-    /// <summary>
+    
     /// 씬 로드 이벤트 핸들러
-    /// </summary>
+    
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"[PlayerStats] OnSceneLoaded: {scene.name}");
@@ -139,9 +139,9 @@ public class PlayerStatsComponent : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 데이터를 재로드해야 하는지 확인
-    /// </summary>
+    
     private bool ShouldReloadStats()
     {
         //  첫 로드인 경우
@@ -177,9 +177,9 @@ public class PlayerStatsComponent : MonoBehaviour
         return shouldReload;
     }
 
-    /// <summary>
+    
     /// 마지막 로드한 캐릭터 ID 업데이트
-    /// </summary>
+    
     private void UpdateLastLoadedCharacter()
     {
         if (CharacterSaveManager.Instance != null &&
@@ -190,9 +190,9 @@ public class PlayerStatsComponent : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 캐릭터 스텟 재로드 (캐릭터 전환 시에만 호출)
-    /// </summary>
+    
     private void ReloadCharacterStats()
     {
         Debug.Log("[PlayerStats] ========================================");
@@ -230,9 +230,9 @@ public class PlayerStatsComponent : MonoBehaviour
         Debug.Log("[PlayerStats] ========================================");
     }
 
-    /// <summary>
+    
     /// 캐릭터 스텟 로드 (중요!)
-    /// </summary>
+    
     private void LoadCharacterStats()
     {
         Debug.Log("[PlayerStats] LoadCharacterStats 시작");
@@ -274,9 +274,9 @@ public class PlayerStatsComponent : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 이벤트 구독
-    /// </summary>
+    
     private void SubscribeToEvents()
     {
         //  기존 구독 먼저 해제 (중복 방지)
@@ -298,9 +298,9 @@ public class PlayerStatsComponent : MonoBehaviour
         Debug.Log("[PlayerStats] 이벤트 구독 완료");
     }
 
-    /// <summary>
+    
     /// 이벤트 구독 해제
-    /// </summary>
+    
     private void UnsubscribeFromEvents()
     {
         if (Stats != null)

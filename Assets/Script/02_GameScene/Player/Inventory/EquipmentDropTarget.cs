@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-/// <summary>
+
 /// 장비 슬롯에 아이템을 드롭할 수 있게 해주는 컴포넌트
 /// EquipmentSlotUI에 추가하여 사용
-/// </summary>
+
 public class EquipmentDropTarget : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private enum SlotMode
@@ -18,18 +18,18 @@ public class EquipmentDropTarget : MonoBehaviour, IDropHandler, IPointerEnterHan
     private CosmeticSlot cosmeticSlot;
     private bool isHighlighted = false;
 
-    /// <summary>
+    
     /// 장비 슬롯으로 초기화
-    /// </summary>
+    
     public void InitializeAsEquipment(EquipmentSlot slot)
     {
         mode = SlotMode.Equipment;
         equipmentSlot = slot;
     }
 
-    /// <summary>
+    
     /// 치장 슬롯으로 초기화
-    /// </summary>
+    
     public void InitializeAsCosmetic(CosmeticSlot slot)
     {
         mode = SlotMode.Cosmetic;
@@ -59,9 +59,9 @@ public class EquipmentDropTarget : MonoBehaviour, IDropHandler, IPointerEnterHan
         SetHighlight(false);
     }
 
-    /// <summary>
+    
     /// 아이템이 드롭되었을 때 호출
-    /// </summary>
+    
     public bool OnItemDropped(InventoryItem item)
     {
         if (item == null) return false;
@@ -149,9 +149,9 @@ public class EquipmentDropTarget : MonoBehaviour, IDropHandler, IPointerEnterHan
         return success;
     }
 
-    /// <summary>
+    
     /// 아이템이 이 슬롯에 장착 가능한지 확인
-    /// </summary>
+    
     private bool CanEquipItem(InventoryItem item)
     {
         if (item == null) return false;
@@ -176,9 +176,9 @@ public class EquipmentDropTarget : MonoBehaviour, IDropHandler, IPointerEnterHan
         }
     }
 
-    /// <summary>
+    
     /// 하이라이트 효과 설정
-    /// </summary>
+    
     private void SetHighlight(bool highlight)
     {
         isHighlighted = highlight;

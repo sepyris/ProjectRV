@@ -112,9 +112,9 @@ public class MapController : MonoBehaviour
     }
 
     // ===== 추가: 안전 지역 체크 메서드 =====
-    /// <summary>
+    
     /// 현재 맵이 안전 지역(Town)이면 리스폰 포인트로 등록
-    /// </summary>
+    
     private void CheckAndRegisterSafeZone()
     {
         if (MapInfoManager.Instance == null) return;
@@ -129,9 +129,9 @@ public class MapController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 현재 맵을 리스폰 포인트로 등록
-    /// </summary>
+    
     private void RegisterAsRespawnPoint()
     {
         if (CharacterSaveManager.Instance == null) return;

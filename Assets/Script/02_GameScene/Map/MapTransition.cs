@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-/// <summary>
+
 /// 맵 전환 트리거
 /// MapLoadingScene을 통해 맵 이동
-/// </summary>
+
 public class MapTransition : MonoBehaviour, IPointerDownHandler
 {
     [Header("Transition Settings")]
@@ -17,17 +17,17 @@ public class MapTransition : MonoBehaviour, IPointerDownHandler
 
     private bool debug_ini_flag = true;
 
-    /// <summary>
+    
     /// UI 클릭으로 전환 (미니맵 등)
-    /// </summary>
+    
     public void OnPointerDown(PointerEventData eventData)
     {
         GoToNewScene();
     }
 
-    /// <summary>
+    
     /// Collider 트리거로 전환 (포탈, 문 등)
-    /// </summary>
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(Def_Name.PLAYER_TAG) || other.GetComponentInParent<PlayerController>() != null)
@@ -36,9 +36,9 @@ public class MapTransition : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    /// <summary>
+    
     /// 맵 전환 실행
-    /// </summary>
+    
     private void GoToNewScene()
     {
         // 맵 ID로부터 실제 씬 이름 생성
@@ -70,9 +70,9 @@ public class MapTransition : MonoBehaviour, IPointerDownHandler
         MapLoadingManager.LoadMap(targetSceneName, targetSpawnPointid);
     }
 
-    /// <summary>
+    
     /// 플레이어 상태 저장
-    /// </summary>
+    
     private void SavePlayerState()
     {
         PlayerController player = FindObjectOfType<PlayerController>();
@@ -83,17 +83,17 @@ public class MapTransition : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    /// <summary>
+    
     /// 외부에서 맵 전환 호출 (코드로 전환할 때)
-    /// </summary>
+    
     public void TriggerTransition()
     {
         GoToNewScene();
     }
 
-    /// <summary>
+    
     /// Gizmo로 전환 지점 표시 (에디터에서만)
-    /// </summary>
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 using TMPro; // TextMeshPro 사용 시
 using Definitions;
 
-/// <summary>
+
 /// Text 컴포넌트에 다국어 키를 연결하여 자동으로 번역을 적용합니다.
 /// 언어가 변경되면 자동으로 텍스트가 업데이트되고 폰트도 언어에 맞게 변경됩니다.
-/// </summary>
+
 public class LocalizedText : MonoBehaviour
 {
     [Header("Localization")]
@@ -48,18 +48,18 @@ public class LocalizedText : MonoBehaviour
         LocalizationManager.OnLanguageChanged -= OnLanguageChanged;
     }
 
-    /// <summary>
+    
     /// 언어가 변경되었을 때 호출됩니다.
-    /// </summary>
+    
     private void OnLanguageChanged(LocalizationManager.Language newLanguage)
     {
         UpdateText();
     }
 
-    /// <summary>
+    
     /// 현재 언어에 맞는 텍스트로 업데이트합니다.
     /// 폰트가 할당되어 있으면 legacy Text / TMP 둘 다 적용합니다.
-    /// </summary>
+    
     public void UpdateText()
     {
         if (string.IsNullOrEmpty(localizationKey))

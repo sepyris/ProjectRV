@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 인벤토리 아이템 호버 및 더블클릭 처리
 /// 더블클릭 시 소모품 사용 또는 장비 장착
-/// </summary>
+
 public class ItemDetailUiManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private InventoryItem item;

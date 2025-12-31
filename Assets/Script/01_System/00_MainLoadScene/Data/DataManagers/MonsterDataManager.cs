@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-/// <summary>
-/// 몬스터 데이터를 로드하고 관리하는 싱글톤 매니저
-/// </summary>
+
+/// 몬스터 데이터 관리 싱글톤
+
 public class MonsterDataManager : MonoBehaviour
 {
     public static MonsterDataManager Instance { get; private set; }
@@ -13,7 +13,9 @@ public class MonsterDataManager : MonoBehaviour
     public MonsterDataSO monsterDatabaseSO;
 
     private readonly Dictionary<string, MonsterData> monsterDatabase = new();
-
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
     void Awake()
     {
         if (Instance == null)
@@ -36,6 +38,9 @@ public class MonsterDataManager : MonoBehaviour
         }
     }
 
+    
+    /// 데이터베이스 초기화 및 재구축
+    
     void BuildDictionary(MonsterDataSO database)
     {
         monsterDatabase.Clear();
@@ -57,9 +62,9 @@ public class MonsterDataManager : MonoBehaviour
     // 조회 메서드
     // ==========================================
 
-    /// <summary>
+    
     /// 몬스터 id로 데이터 가져오기
-    /// </summary>
+    
     public MonsterData GetMonsterData(string monsterId)
     {
         if (monsterDatabase.TryGetValue(monsterId, out MonsterData data))
@@ -71,17 +76,17 @@ public class MonsterDataManager : MonoBehaviour
         return null;
     }
 
-    /// <summary>
+    
     /// 모든 몬스터 데이터 가져오기
-    /// </summary>
+    
     public Dictionary<string, MonsterData> GetAllMonsters()
     {
         return monsterDatabase;
     }
 
-    /// <summary>
+    
     /// 특정 타입의 몬스터만 가져오기
-    /// </summary>
+    
     public Dictionary<string, MonsterData> GetMonstersByType(MonsterType type)
     {
         var filteredMonsters = monsterDatabase
@@ -90,9 +95,9 @@ public class MonsterDataManager : MonoBehaviour
         return filteredMonsters;
     }
 
-    /// <summary>
+    
     /// 특정 레벨 범위의 몬스터 가져오기
-    /// </summary>
+    
     public Dictionary<string, MonsterData> GetMonstersByLevelRange(int minLevel, int maxLevel)
     {
         var filteredMonsters = monsterDatabase

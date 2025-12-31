@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
+
 /// 나레이션 시스템 전체 관리
 /// - 대화 데이터는 DialogueDataManager에서 가져옴
 /// - ESC로 닫히지 않음
 /// - 플레이어 이동/조작 가능
 /// - F키 1.5초 홀드로 스킵
 /// - 타이핑 효과 지원
-/// </summary>
+
 public class NarrationManager : MonoBehaviour
 {
     public static NarrationManager Instance { get; private set; }
@@ -90,9 +90,9 @@ public class NarrationManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// F키 홀드 스킵 입력 처리
-    /// </summary>
+    
     private void HandleSkipInput()
     {
         float interactValue = playerControls.Player.Interact.ReadValue<float>();
@@ -133,9 +133,9 @@ public class NarrationManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 나레이션 재생 시작
-    /// </summary>
+    
     public void PlayNarration(string narrationId, NarrationConfig config)
     {
         if (isNarrationActive)
@@ -168,9 +168,9 @@ public class NarrationManager : MonoBehaviour
         narrationCoroutine = StartCoroutine(RunNarrationSequence());
     }
 
-    /// <summary>
+    
     /// 나레이션 시퀀스 실행
-    /// </summary>
+    
     private IEnumerator RunNarrationSequence()
     {
         while (currentLineIndex < currentLines.Count)
@@ -224,9 +224,9 @@ public class NarrationManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 나레이션 중단
-    /// </summary>
+    
     public void StopNarration()
     {
         isNarrationActive = false;
@@ -250,9 +250,9 @@ public class NarrationManager : MonoBehaviour
         PlayNarration("System_End", config);
     }
 
-    /// <summary>
+    
     /// 조건 충족 여부 체크
-    /// </summary>
+    
     private void CheckCondition()
     {
         if (currentConfig == null || conditionMet) return;
@@ -304,9 +304,9 @@ public class NarrationManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 외부에서 조건 충족을 알림 (아이템 획득, NPC 대화 등)
-    /// </summary>
+    
     public void TriggerCondition(NarrationConditionType conditionType, string data = "")
     {
         if (!isNarrationActive || currentConfig == null) return;
@@ -338,9 +338,9 @@ public class NarrationManager : MonoBehaviour
                                           currentConfig.conditionData == data));
     }
 
-    /// <summary>
+    
     /// 간편 호출: narrationId만으로 기본 설정 사용
-    /// </summary>
+    
     public void PlayNarration(string narrationId)
     {
         var config = new NarrationConfig

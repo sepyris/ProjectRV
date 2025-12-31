@@ -2,9 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 캐릭터 생성 UI
-/// </summary>
+
 public class CharacterCreateUI : MonoBehaviour
 {
     [Header("UI References")]

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using static MonsterAI;
 using Pathfinding; // A* Pathfinding Project
 
-/// <summary>
+
 /// 몬스터 이동 모듈 - A* Pathfinding
-/// </summary>
+
 public class MonsterMovement
 {
     private Rigidbody2D rb;
@@ -51,17 +51,17 @@ public class MonsterMovement
         pathUpdateInterval += Random.Range(-pathUpdateIntervalVariation, pathUpdateIntervalVariation);
     }
 
-    /// <summary>
+    
     /// 스폰 영역 설정
-    /// </summary>
+    
     public void SetSpawnArea(Collider2D areaCollider)
     {
         spawnAreaCollider = areaCollider;
     }
 
-    /// <summary>
+    
     /// 목표 위치로 이동 - A* Pathfinding 사용
-    /// </summary>
+    
     public void MoveToPosition(Vector2 targetPosition, float speedMultiplier = 1f, bool ignoreArea = false)
     {
         if (rb == null || seeker == null) return;
@@ -117,17 +117,17 @@ public class MonsterMovement
         }
     }
 
-    /// <summary>
+    
     /// 추적 모드 설정 (추적 중일 때 더 자주 경로 재계산)
-    /// </summary>
+    
     public void SetChasing(bool chasing)
     {
         isChasing = chasing;
     }
 
-    /// <summary>
+    
     /// 경로 계산 완료 콜백
-    /// </summary>
+    
     private void OnPathComplete(Path p)
     {
         if (!p.error)
@@ -142,9 +142,9 @@ public class MonsterMovement
         }
     }
 
-    /// <summary>
+    
     /// 계산된 경로를 따라 이동
-    /// </summary>
+    
     private void FollowPath(float speedMultiplier)
     {
         if (currentPath == null || currentWaypoint >= currentPath.vectorPath.Count)
@@ -191,9 +191,9 @@ public class MonsterMovement
         rb.velocity = finalVel;
     }
 
-    /// <summary>
+    
     /// 이동 정지
-    /// </summary>
+    
     public void Stop()
     {
         if (rb != null)
@@ -203,25 +203,25 @@ public class MonsterMovement
         currentPath = null;
     }
 
-    /// <summary>
+    
     /// 현재 위치 반환
-    /// </summary>
+    
     public Vector2 GetPosition()
     {
         return rb != null ? rb.position : Vector2.zero;
     }
 
-    /// <summary>
+    
     /// 목표까지의 거리 반환
-    /// </summary>
+    
     public float GetDistanceTo(Vector2 targetPosition)
     {
         return Vector2.Distance(GetPosition(), targetPosition);
     }
 
-    /// <summary>
+    
     /// 주변 대상과의 분리 벡터 계산 (겹침 방지)
-    /// </summary>
+    
     private Vector2 ComputeSeparation()
     {
         if (rb == null || separationRadius <= 0f) return Vector2.zero;
@@ -255,18 +255,18 @@ public class MonsterMovement
         return separation;
     }
 
-    /// <summary>
+    
     /// 위치를 스폰 영역 내로 제한
-    /// </summary>
+    
     private Vector2 ClampToSpawnArea(Vector2 position)
     {
         if (spawnAreaCollider == null) return position;
         return spawnAreaCollider.ClosestPoint(position);
     }
 
-    /// <summary>
+    
     /// 속도를 영역 내로 제한
-    /// </summary>
+    
     private Vector2 ClampVelocityToArea(Vector2 currentPos, Vector2 velocity)
     {
         Vector2 nextPos = currentPos + velocity * Time.fixedDeltaTime;
@@ -281,18 +281,18 @@ public class MonsterMovement
         return velocity;
     }
 
-    /// <summary>
+    
     /// 위치를 영역 내로 제한 (외부 호출용)
-    /// </summary>
+    
     public Vector2 ClampToArea(Vector2 position, Collider2D areaCollider)
     {
         if (areaCollider == null) return position;
         return areaCollider.ClosestPoint(position);
     }
 
-    /// <summary>
+    
     /// 속도 너무 느리면 멈춤 처리
-    /// </summary>
+    
     public void ClampVelocity()
     {
         if (rb == null) return;
@@ -300,9 +300,9 @@ public class MonsterMovement
             rb.velocity = Vector2.zero;
     }
 
-    /// <summary>
+    
     /// 부드럽게 위치 보정 (영역 복귀용)
-    /// </summary>
+    
     public void SmoothCorrection(Vector2 targetPosition, float lerpSpeed = 1f)
     {
         if (rb == null) return;

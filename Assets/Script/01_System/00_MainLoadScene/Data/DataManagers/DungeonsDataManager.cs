@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-/// <summary>
-/// CSV 파일에서 던전 데이터를 로드하고 관리하는 싱글톤 매니저
-/// </summary>
+
+/// 던전 데이터를 관리하는 싱글톤 매니저
+
 public class DungeonsDataManager : MonoBehaviour
 {
     public static DungeonsDataManager Instance { get; private set; }
@@ -14,6 +14,9 @@ public class DungeonsDataManager : MonoBehaviour
 
     private Dictionary<string, DungeonData> dungeonDatabase = new Dictionary<string, DungeonData>();
 
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
     void Awake()
     {
         if (Instance == null)
@@ -36,6 +39,9 @@ public class DungeonsDataManager : MonoBehaviour
         }
     }
 
+    
+    /// 데이터베이스 초기화 및 재구축
+    
     void BuildDictionary(DungeonsDataSO database)
     {
         dungeonDatabase.Clear();
@@ -57,9 +63,9 @@ public class DungeonsDataManager : MonoBehaviour
     // 조회 메서드
     // ==========================================
 
-    /// <summary>
+    
     /// 던전 ID로 데이터 가져오기
-    /// </summary>
+    
     public DungeonData GetDungeonData(string dungeonId)
     {
         if (dungeonDatabase.TryGetValue(dungeonId, out DungeonData data))
@@ -71,17 +77,17 @@ public class DungeonsDataManager : MonoBehaviour
         return null;
     }
 
-    /// <summary>
+    
     /// 모든 던전 데이터 가져오기
-    /// </summary>
+    
     public Dictionary<string, DungeonData> GetAllDungeons()
     {
         return dungeonDatabase;
     }
 
-    /// <summary>
+    
     /// 특정 레벨 범위의 던전 가져오기
-    /// </summary>
+    
     public List<DungeonData> GetDungeonsByLevelRange(int minLevel, int maxLevel)
     {
         return dungeonDatabase.Values
@@ -89,9 +95,9 @@ public class DungeonsDataManager : MonoBehaviour
             .ToList();
     }
 
-    /// <summary>
+    
     /// 시간 제한별 던전 가져오기
-    /// </summary>
+    
     public List<DungeonData> GetDungeonsByTimeRestriction(TimeRestriction timeRestriction)
     {
         return dungeonDatabase.Values

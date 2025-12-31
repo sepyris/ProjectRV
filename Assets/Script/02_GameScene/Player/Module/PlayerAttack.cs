@@ -71,9 +71,9 @@ public class PlayerAttack
             RangedAttack();
     }
 
-    /// <summary>
+    
     ///  개선된 근접 공격 - 부채꼴 범위 (가장 가까운 한 마리만)
-    /// </summary>
+    
     private void MeleeAttack()
     {
         Vector2 attackDirection = movement.LastMoveDirection.normalized;
@@ -136,9 +136,9 @@ public class PlayerAttack
         DrawArcGizmo(attackOrigin, attackDirection, meleeRange, meleeAngle);
     }
 
-    /// <summary>
+    
     /// 벡터 회전 유틸리티
-    /// </summary>
+    
     private Vector2 RotateVector(Vector2 vector, float degrees)
     {
         float radians = degrees * Mathf.Deg2Rad;
@@ -151,9 +151,9 @@ public class PlayerAttack
         );
     }
 
-    /// <summary>
+    
     /// 부채꼴 범위 시각화 (디버그용)
-    /// </summary>
+    
     private void DrawArcGizmo(Vector2 origin, Vector2 direction, float range, float angle)
     {
         float halfAngle = angle / 2f;

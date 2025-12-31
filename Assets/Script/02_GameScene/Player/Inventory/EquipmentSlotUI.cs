@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 통합 장비/치장 슬롯 UI
 /// 장비 탭과 치장 탭 모드에서 사용 가능
 /// 더블클릭으로 장착 해제
@@ -13,7 +13,7 @@ using UnityEngine.UI;
 /// 1. 무기 슬롯 더블클릭 시 MeleeWeapon과 RangedWeapon을 올바르게 판단
 /// 2. 상세 패널 위치를 명확하게 슬롯 기준으로 설정
 /// 3. 화면 밖으로 나가지 않도록 위치 자동 조정
-/// </summary>
+
 public class EquipmentSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Header("UI 컴포넌트")]
@@ -207,9 +207,9 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
     }
 
-    /// <summary>
+    
     ///  실제 장착된 슬롯 찾기 (무기 슬롯 특별 처리)
-    /// </summary>
+    
     private EquipmentSlot GetActualEquippedSlot(ItemData data)
     {
         // 무기 슬롯의 경우, 실제 데이터의 equipSlot을 사용
@@ -239,20 +239,20 @@ public class EquipmentSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         HideDetailPanel();
     }
 
-    /// <summary>
+    
     ///  상세 패널 숨김 (공개 메서드로 변경하여 외부에서도 호출 가능)
-    /// </summary>
+    
     public void HideDetailPanel()
     {
         if (detailPanel != null)
             detailPanel.SetActive(false);
     }
 
-    /// <summary>
+    
 
-    /// <summary>
+    
     ///  패널이 화면 밖으로 나가지 않도록 위치를 조정합니다
-    /// </summary>
+    
     private Vector3 ClampToScreen(Vector3 position, RectTransform panelRect)
     {
         if (panelRect == null) return position;

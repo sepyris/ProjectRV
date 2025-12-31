@@ -2,9 +2,9 @@
 using System.Xml.Linq;
 using UnityEngine;
 
-/// <summary>
+
 /// 몬스터 AI 모듈
-/// </summary>
+
 public class MonsterAI
 {
     private Transform transform;

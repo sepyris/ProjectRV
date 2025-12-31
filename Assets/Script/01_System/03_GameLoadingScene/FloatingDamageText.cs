@@ -2,10 +2,10 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
-/// <summary>
+
 /// 캐릭터/몬스터 위에 표시되는 데미지 텍스트
 /// 월드 스페이스에서 위로 떠오르며 페이드아웃
-/// </summary>
+
 public class FloatingDamageText : MonoBehaviour
 {
     [Header("UI Components")]
@@ -33,9 +33,9 @@ public class FloatingDamageText : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 데미지 텍스트 표시
-    /// </summary>
+    
     public void Show(int damage, Color textColor, bool isCritical = false)
     {
         if (damageText != null)
@@ -59,9 +59,9 @@ public class FloatingDamageText : MonoBehaviour
         StartCoroutine(AnimateCoroutine());
     }
 
-    /// <summary>
+    
     /// 텍스트만 표시 (힐, 버프 등)
-    /// </summary>
+    
     public void Show(string text, Color textColor)
     {
         if (damageText != null)

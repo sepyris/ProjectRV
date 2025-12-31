@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
+
 /// 채집 오브젝트(약초, 광석 등)를 자동으로 스폰하고 관리하는 영역
 /// 여러 종류의 채집물을 랜덤하게 스폰
-/// </summary>
+
 public class GatheringSpawnArea : MonoBehaviour
 {
     [Header("Spawn Settings")]
@@ -55,9 +55,9 @@ public class GatheringSpawnArea : MonoBehaviour
         EnsureAreaCollider();
     }
 
-    /// <summary>
+    
     /// 콜라이더 존재 확인 및 필요 시 생성
-    /// </summary>
+    
     private void EnsureAreaCollider()
     {
         if (areaCollider != null) return;
@@ -84,9 +84,9 @@ public class GatheringSpawnArea : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 채집 오브젝트 컨테이너 생성
-    /// </summary>
+    
     private void CreateGatheringsContainer()
     {
         if (gatheringsContainer != null) return;
@@ -121,9 +121,9 @@ public class GatheringSpawnArea : MonoBehaviour
         StartCoroutine(SpawnRoutine());
     }
 
-    /// <summary>
+    
     /// 주기적으로 채집 오브젝트 수를 확인하고 부족하면 스폰
-    /// </summary>
+    
     private IEnumerator SpawnRoutine()
     {
         while (true)
@@ -161,9 +161,9 @@ public class GatheringSpawnArea : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 채집 오브젝트 스폰 (랜덤 프리팹 선택)
-    /// </summary>
+    
     private void SpawnGatherings(int count)
     {
         if (gatheringPrefabs.Count == 0)
@@ -212,9 +212,9 @@ public class GatheringSpawnArea : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 영역 내 랜덤 위치 반환 (콜라이더.bounds 기반)
-    /// </summary>
+    
     private Vector2 GetRandomPositionInArea()
     {
         Vector2 basePosition;
@@ -260,9 +260,9 @@ public class GatheringSpawnArea : MonoBehaviour
         return basePosition;
     }
 
-    /// <summary>
+    
     /// 채집 오브젝트가 파괴되었을 때 호출됨 (일회성 오브젝트용)
-    /// </summary>
+    
     public void OnGatheringObjectDestroyed(GameObject obj)
     {
         if (spawnedGatherings.Contains(obj))
@@ -272,9 +272,9 @@ public class GatheringSpawnArea : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 모든 채집 오브젝트 강제 재생성
-    /// </summary>
+    
     [ContextMenu("Respawn All Gatherings")]
     public void RespawnAllGatherings()
     {
@@ -292,18 +292,18 @@ public class GatheringSpawnArea : MonoBehaviour
         Debug.Log("[GatheringSpawnArea] 모든 채집 오브젝트 강제 재생성 완료.");
     }
 
-    /// <summary>
+    
     /// 강제 스폰 (테스트용)
-    /// </summary>
+    
     [ContextMenu("Spawn One Gathering")]
     public void SpawnOneGathering()
     {
         SpawnGatherings(1);
     }
 
-    /// <summary>
+    
     /// 모든 채집 오브젝트 제거
-    /// </summary>
+    
     [ContextMenu("Clear All Gatherings")]
     public void ClearAllGatherings()
     {

@@ -2,6 +2,9 @@
 using System.Linq;
 using UnityEngine;
 
+
+/// 스킬 데이터 관리 싱글톤
+
 public class SkillDataManager : MonoBehaviour
 {
     public static SkillDataManager Instance { get; private set; }
@@ -9,7 +12,9 @@ public class SkillDataManager : MonoBehaviour
     public SkillDataSO skillDatabaseSO;
 
     private readonly Dictionary<string, SkillData> skillDatabase = new();
-
+    // ==========================================
+    // 초기화 메서드
+    // ==========================================
     void Awake()
     {
         if (Instance == null)
@@ -30,6 +35,9 @@ public class SkillDataManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    /// 데이터베이스 초기화 및 재구축
+    
     void BuildDictionary(SkillDataSO database)
     {
         skillDatabase.Clear();
@@ -47,9 +55,13 @@ public class SkillDataManager : MonoBehaviour
         Debug.Log($"[SkillDataManager] Loaded {skillDatabase.Count} skills from ScriptableObject.");
     }
 
-    /// <summary>
+    // ==========================================
+    // 조회 메서드
+    // ==========================================
+
+    
     /// 스킬 id로 데이터 가져오기
-    /// </summary> 
+     
     public SkillData GetSkillData(string skillid)
     {
         if (skillDatabase.TryGetValue(skillid, out SkillData data))
@@ -60,9 +72,9 @@ public class SkillDataManager : MonoBehaviour
         return null;
     }
 
-    /// <summary>
+    
     /// 직업단위로 스킬 가져오기
-    /// </summary>>
+    >
     public Dictionary<string, SkillData> GetJobSkills(string job)
     {
         var filteredSkills = skillDatabase

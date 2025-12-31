@@ -14,9 +14,9 @@ public static class SecureSaveLoad
     // 자동 클라우드 동기화 옵션
     private const bool AUTO_CLOUD_SYNC = true;
 
-    /// <summary>
+    
     /// 사용자별 암호화 키를 생성하고 저장 (최초 실행 시)
-    /// </summary>
+    
     private static bool GenerateAndSaveNewKey()
     {
         _encryptionKeyBytes = new byte[16];
@@ -59,9 +59,9 @@ public static class SecureSaveLoad
         }
     }
 
-    /// <summary>
+    
     /// 사용자별 암호화 키 로드
-    /// </summary>
+    
     private static bool LoadKey()
     {
         if (Def_System.USING_STEAM_CLOUD && SteamManager.Initialized)
@@ -111,9 +111,9 @@ public static class SecureSaveLoad
         }
     }
 
-    /// <summary>
+    
     /// XOR 암호화/복호화
-    /// </summary>
+    
     private static byte[] EncryptDecrypt(byte[] data)
     {
         if (_encryptionKeyBytes == null)
@@ -133,9 +133,9 @@ public static class SecureSaveLoad
         return result;
     }
 
-    /// <summary>
+    
     /// SHA256 해시 생성
-    /// </summary>
+    
     private static string CalculateHash(string json)
     {
         using (SHA256 sha256 = SHA256.Create())
@@ -150,10 +150,10 @@ public static class SecureSaveLoad
         }
     }
 
-    /// <summary>
+    
     /// 파일 저장: 암호화 및 해시 포함
     /// Steam 사용 여부와 관계없이 로컬 저장은 항상 수행
-    /// </summary>
+    
     public static void SaveData(string filePath, GlobalSaveData dataToSave)
     {
         // 1. 데이터에 해시 생성 및 삽입
@@ -210,10 +210,10 @@ public static class SecureSaveLoad
         }
     }
 
-    /// <summary>
+    
     /// 파일 로드: 복호화 및 무결성 검증
     /// 로컬 파일이 없으면 Steam Cloud에서 다운로드 시도 (Steam 사용 시)
-    /// </summary>
+    
     public static GlobalSaveData LoadData(string filePath)
     {
         byte[] encryptedBytes = null;
@@ -321,9 +321,9 @@ public static class SecureSaveLoad
         return loadedData;
     }
 
-    /// <summary>
+    
     /// 저장 파일 삭제 (로컬 + Steam Cloud)
-    /// </summary>
+    
     public static void DeleteSaveData(string filePath)
     {
         // 로컬 파일 삭제

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-/// <summary>
+
 /// 플레이어 인벤토리 관리 싱글톤
 /// Collect 타입 퀘스트와 자동 연동
-/// </summary>
+
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
@@ -37,9 +37,9 @@ public class InventoryManager : MonoBehaviour
 
     // ===== 아이템 추가 =====
 
-    /// <summary>
+    
     /// 아이템 추가
-    /// </summary>
+    
     public bool AddItem(string itemid, int quantity = 1)
     {
         ItemData data = ItemDataManager.Instance?.GetItemData(itemid);
@@ -104,9 +104,9 @@ public class InventoryManager : MonoBehaviour
 
     // ===== 아이템 제거 =====
 
-    /// <summary>
+    
     /// 아이템 제거
-    /// </summary>
+    
     public bool RemoveItem(string itemid, int quantity = 1)
     {
         int totalQty = GetItemQuantity(itemid);
@@ -147,9 +147,9 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// 퀘스트 진행 상황 업데이트
-    /// </summary>
+    
     private void UpdateQuestProgress(string itemid, int quantity)
     {
         if (QuestManager.Instance != null)
@@ -162,9 +162,9 @@ public class InventoryManager : MonoBehaviour
 
     // ===== 아이템 사용 =====
 
-    /// <summary>
+    
     /// 아이템 사용
-    /// </summary>
+    
     public bool UseItem(string itemid, CharacterStats stats = null)
     {
         InventoryItem item = items.FirstOrDefault(i => i.itemid == itemid);
@@ -196,9 +196,9 @@ public class InventoryManager : MonoBehaviour
         return used;
     }
 
-    /// <summary>
+    
     /// 아이템 효과 적용
-    /// </summary>
+    
     private bool ApplyItemEffect(ItemData data, CharacterStats stats)
     {
         switch (data.itemType)
@@ -233,33 +233,33 @@ public class InventoryManager : MonoBehaviour
 
     // ===== 조회 =====
 
-    /// <summary>
+    
     /// 아이템 소유 개수 확인
-    /// </summary>
+    
     public int GetItemQuantity(string itemid)
     {
         return items.Where(i => i.itemid == itemid).Sum(i => i.quantity);
     }
 
-    /// <summary>
+    
     /// 아이템 소유 여부 확인
-    /// </summary>
+    
     public bool HasItem(string itemid, int quantity = 1)
     {
         return GetItemQuantity(itemid) >= quantity;
     }
 
-    /// <summary>
+    
     /// 모든 아이템 가져오기
-    /// </summary>
+    
     public List<InventoryItem> GetAllItems()
     {
         return new List<InventoryItem>(items);
     }
 
-    /// <summary>
+    
     /// 특정 타입의 아이템만 가져오기
-    /// </summary>
+    
     public List<InventoryItem> GetItemsByType(ItemType type)
     {
         return items.Where(i => i.GetItemData()?.itemType == type).ToList();
@@ -267,9 +267,9 @@ public class InventoryManager : MonoBehaviour
 
     // ===== 저장/로드 =====
 
-    /// <summary>
+    
     /// 인벤토리 데이터 저장
-    /// </summary>
+    
     public InventorySaveData ToSaveData()
     {
         return new InventorySaveData
@@ -278,9 +278,9 @@ public class InventoryManager : MonoBehaviour
         };
     }
 
-    /// <summary>
+    
     /// 인벤토리 데이터 로드
-    /// </summary>
+    
     public void LoadFromData(InventorySaveData data)
     {
         items.Clear();
@@ -304,9 +304,9 @@ public class InventoryManager : MonoBehaviour
         Debug.Log($"[Inventory] 데이터 로드 완료 ({items.Count}개 아이템)");
     }
 
-    /// <summary>
+    
     /// 인벤토리 초기화 (새 게임)
-    /// </summary>
+    
     /// 
     public void ClearInventory()
     {
@@ -326,34 +326,34 @@ public class InventoryManager : MonoBehaviour
             Debug.Log($"- {name} x{item.quantity}");
         }
     }
-    /// <summary>
+    
     /// 특정 아이템 ID로 아이템 가져오기 (첫 번째 매칭 아이템)
-    /// </summary>
+    
     public InventoryItem GetItem(string itemId)
     {
         return items.FirstOrDefault(i => i.itemid == itemId);
     }
 
-    /// <summary>
+    
     /// 특정 아이템 ID의 모든 아이템 가져오기
-    /// </summary>
+    
     public List<InventoryItem> GetItems(string itemId)
     {
         return items.Where(i => i.itemid == itemId).ToList();
     }
 
-    /// <summary>
+    
     /// 사용 가능한 인벤토리 슬롯 수 반환
-    /// </summary>
+    
     public int GetAvailableSlots()
     {
         return maxSlots - items.Count;
     }
 }
 
-/// <summary>
+
 /// 인벤토리 저장 데이터
-/// </summary>
+
 [Serializable]
 public class InventorySaveData
 {

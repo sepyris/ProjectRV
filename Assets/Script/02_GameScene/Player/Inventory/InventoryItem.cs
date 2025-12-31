@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-/// <summary>
+
 /// 플레이어가 실제로 소유한 아이템 (인벤토리 슬롯)
-/// </summary>
+
 [Serializable]
 public class InventoryItem
 {
@@ -30,9 +30,9 @@ public class InventoryItem
         quantity = qty;
         isEquipped = false;
     }
-    /// <summary>
+    
     /// 아이템 데이터 가져오기 (캐싱)
-    /// </summary>
+    
     public ItemData GetItemData()
     {
         if (cachedData == null)
@@ -45,9 +45,9 @@ public class InventoryItem
         return cachedData;
     }
 
-    /// <summary>
+    
     /// 아이템 추가 가능 여부 (스택)
-    /// </summary>
+    
     public bool CanStack(int amount = 1)
     {
         ItemData data = GetItemData();
@@ -56,9 +56,9 @@ public class InventoryItem
         return quantity + amount <= data.maxStack;
     }
 
-    /// <summary>
+    
     /// 아이템 개수 추가
-    /// </summary>
+    
     public int AddQuantity(int amount)
     {
         ItemData data = GetItemData();
@@ -71,9 +71,9 @@ public class InventoryItem
         return actualAdd; // 실제로 추가된 개수 반환
     }
 
-    /// <summary>
+    
     /// 아이템 개수 감소
-    /// </summary>
+    
     public bool RemoveQuantity(int amount)
     {
         if (quantity >= amount)
@@ -84,9 +84,9 @@ public class InventoryItem
         return false;
     }
 
-    /// <summary>
+    
     /// 저장용 데이터로 변환
-    /// </summary>
+    
     public InventoryItemSaveData ToSaveData()
     {
         return new InventoryItemSaveData
@@ -97,9 +97,9 @@ public class InventoryItem
         };
     }
 
-    /// <summary>
+    
     /// 저장 데이터에서 복원
-    /// </summary>
+    
     public static InventoryItem FromSaveData(InventoryItemSaveData data)
     {
         return new InventoryItem(data.itemid, data.quantity)
@@ -109,9 +109,9 @@ public class InventoryItem
     }
 }
 
-/// <summary>
+
 /// 인벤토리 아이템 저장 데이터
-/// </summary>
+
 [Serializable]
 public class InventoryItemSaveData
 {

@@ -1,18 +1,18 @@
 using System;
 using UnityEngine;
 
-/// <summary>
+
 /// 나레이션 진행 모드
-/// </summary>
+
 public enum NarrationMode
 {
     Auto,        // 자동 진행 (타이핑 후 자동 넘김)
     Conditional  // 조건부 진행 (플레이어 행동 감지)
 }
 
-/// <summary>
+
 /// 조건 타입 정의
-/// </summary>
+
 public enum NarrationConditionType
 {
     None,              // 조건 없음 (Auto 모드용)
@@ -24,9 +24,9 @@ public enum NarrationConditionType
     Custom             // 커스텀 조건 (스크립트에서 직접 호출)
 }
 
-/// <summary>
+
 /// 나레이션 설정 데이터
-/// </summary>
+
 [Serializable]
 public class NarrationConfig
 {

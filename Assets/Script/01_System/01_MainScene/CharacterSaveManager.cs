@@ -4,12 +4,12 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
+
 /// 통합 저장 관리자
 /// - 캐릭터 슬롯 관리 (all_characters.sav)
 /// - 개별 캐릭터 게임 데이터 관리 (character_{id}.sav)
 /// - 씬 전환 및 플레이어 복원
-/// </summary>
+
 public class CharacterSaveManager : MonoBehaviour
 {
     public static CharacterSaveManager Instance { get; private set; }
@@ -70,9 +70,9 @@ public class CharacterSaveManager : MonoBehaviour
 
     // ==================== 캐릭터 슬롯 관리 (암호화 1차) ====================
 
-    /// <summary>
+    
     /// 전체 게임 시작 시 - 캐릭터 슬롯 로드 (복호화 1차)
-    /// </summary>
+    
     public void LoadAllCharacterSlots()
     {
         allCharactersData = LoadEncryptedSlotData();
@@ -88,9 +88,9 @@ public class CharacterSaveManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 전체 게임 종료 시 - 캐릭터 슬롯 저장 (암호화)
-    /// </summary>
+    
     public void SaveAllCharacterSlots()
     {
         //  상점 데이터 저장 여부 확인
@@ -163,9 +163,9 @@ public class CharacterSaveManager : MonoBehaviour
 
     // ==================== 캐릭터 생성/삭제 ====================
 
-    /// <summary>
+    
     /// 새 캐릭터 생성
-    /// </summary>
+    
     public CharacterSlotData CreateCharacter(string characterName, int slotIndex)
     {
         if (allCharactersData.IsFull)
@@ -211,9 +211,9 @@ public class CharacterSaveManager : MonoBehaviour
         return newCharacter;
     }
 
-    /// <summary>
+    
     /// 캐릭터 삭제
-    /// </summary>
+    
     public void DeleteCharacter(string characterid)
     {
         allCharactersData.RemoveCharacter(characterid);
@@ -225,9 +225,9 @@ public class CharacterSaveManager : MonoBehaviour
 
     // ==================== 캐릭터별 게임 시작/종료 ====================
 
-    /// <summary>
+    
     /// 캐릭터 게임 시작 (데이터 준비만)
-    /// </summary>
+    
     public void StartCharacterGame(string characterid)
     {
         Debug.Log($"[SaveManager] === StartCharacterGame: {characterid} ===");
@@ -265,9 +265,9 @@ public class CharacterSaveManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 캐릭터 전환 전 저장
-    /// </summary>
+    
     private void SaveCurrentCharacterBeforeSwitch()
     {
         if (CurrentCharacter == null) return;
@@ -295,10 +295,10 @@ public class CharacterSaveManager : MonoBehaviour
         Debug.Log($"[SaveManager] 캐릭터 데이터 저장 완료: {CurrentCharacter.stats.characterName}");
     }
 
-    /// <summary>
+    
     /// 캐릭터 게임 종료 (캐릭터 선택 화면으로)
     /// 세이브 포인트에서만 저장하므로 여기서는 초기화만 수행
-    /// </summary>
+    
     public void EndCharacterGame()
     {
         if (CurrentCharacter == null)
@@ -374,9 +374,9 @@ public class CharacterSaveManager : MonoBehaviour
 
     // ==================== 게임 데이터 관리 (암호화 2차) ====================
 
-    /// <summary>
+    
     /// 초기 게임 데이터 생성
-    /// </summary>
+    
     private void CreateInitialGameData(CharacterSlotData character)
     {
         Debug.Log($"[SaveManager] 초기 게임 데이터 생성 시작: {character.stats.characterName}");
@@ -408,9 +408,9 @@ public class CharacterSaveManager : MonoBehaviour
         Debug.Log($"[SaveManager] 초기 게임 데이터 생성 완료: {saveFileName}");
     }
 
-    /// <summary>
+    
     /// 게임 데이터 로드 (GameLoadingScene에서 호출)
-    /// </summary>
+    
     public void LoadCurrentCharacterGameData()
     {
         if (CurrentCharacter == null)
@@ -656,9 +656,9 @@ public class CharacterSaveManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// 게임 데이터 파일 삭제
-    /// </summary>
+    
     private void DeleteGameData(string characterid)
     {
         string saveFileName = $"character_{characterid}.sav";
@@ -668,9 +668,9 @@ public class CharacterSaveManager : MonoBehaviour
 
     // ==================== 씬 로드 및 전환 (기존 GameDataManager 기능) ====================
 
-    /// <summary>
+    
     /// 씬 로드 (이름으로)
-    /// </summary>
+    
     public void LoadSceneByName(string sceneName, string spawnPointid = "")
     {
         CurrentGlobalData.currentSceneName = sceneName;
@@ -681,9 +681,9 @@ public class CharacterSaveManager : MonoBehaviour
         StartCoroutine(LoadSceneAndRestore(sceneName));
     }
 
-    /// <summary>
+    
     /// 씬 로드 및 플레이어 복원
-    /// </summary>
+    
     private IEnumerator LoadSceneAndRestore(string sceneName)
     {
         if (string.IsNullOrEmpty(sceneName))
@@ -719,9 +719,9 @@ public class CharacterSaveManager : MonoBehaviour
         Debug.Log($"[SaveManager] 씬 '{sceneName}' 로드 및 복원 완료");
     }
 
-    /// <summary>
+    
     /// 플레이어 스폰 처리
-    /// </summary>
+    
     private IEnumerator HandlePlayerSpawn()
     {
         PlayerController player = FindObjectOfType<PlayerController>();
@@ -774,18 +774,18 @@ public class CharacterSaveManager : MonoBehaviour
         return allCharactersData;
     }
 
-    /// <summary>
+    
     /// 현재 플레이 중인 캐릭터 이름
-    /// </summary>
+    
     public string GetCurrentCharacterName()
     {
         return CurrentCharacter?.stats.characterName ?? "알 수 없음";
     }
 
 
-    /// <summary>
+    
     /// 현재 씬 이름
-    /// </summary>
+    
     public string GetCurrentSceneName()
     {
         return CurrentGlobalData.currentSceneName;
@@ -793,10 +793,10 @@ public class CharacterSaveManager : MonoBehaviour
 
     // ==================== 호환성 메서드 (기존 GameDataManager 메서드) ====================
 
-    /// <summary>
+    
     /// 게임 로드 (호환성용)
     /// 새 코드에서는 LoadSceneByName 사용 권장
-    /// </summary>
+    
     public void LoadGame(string slotName = "")
     {
         string sceneName = CurrentGlobalData.currentSceneName;
@@ -806,19 +806,19 @@ public class CharacterSaveManager : MonoBehaviour
         LoadSceneByName(sceneName);
     }
 
-    /// <summary>
+    
     /// 서브씬 상태 저장 (호환성용)
     /// 새 코드에서는 CurrentGlobalData.subSceneState에 직접 접근 권장
-    /// </summary>
+    
     public void SaveSubSceneState(SubSceneData data)
     {
         CurrentGlobalData.subSceneState = data;
     }
 
-    /// <summary>
+    
     /// 서브씬 상태 로드 (호환성용)
     /// 새 코드에서는 CurrentGlobalData.subSceneState에 직접 접근 권장
-    /// </summary>
+    
     public SubSceneData LoadSubSceneState()
     {
         return CurrentGlobalData.subSceneState;
@@ -827,9 +827,9 @@ public class CharacterSaveManager : MonoBehaviour
 
 // ==================== 데이터 클래스 정의 ====================
 
-/// <summary>
+
 /// 글로벌 저장 데이터 (개별 캐릭터 게임 데이터)
-/// </summary>
+
 [System.Serializable]
 public class GlobalSaveData
 {
@@ -845,9 +845,9 @@ public class GlobalSaveData
     public Vector3 lastSafeZonePosition = Vector3.zero;
 }
 
-/// <summary>
+
 /// 서브씬 저장 데이터
-/// </summary>
+
 [System.Serializable]
 public struct SubSceneData
 {

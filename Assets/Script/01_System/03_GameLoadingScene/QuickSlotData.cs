@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-/// <summary>
+
 /// 퀵슬롯 아이템 타입
-/// </summary>
+
 public enum QuickSlotType
 {
     Empty,      // 빈 슬롯
@@ -11,9 +11,9 @@ public enum QuickSlotType
     Skill       // 스킬 (추후 확장용)
 }
 
-/// <summary>
+
 /// 퀵슬롯에 저장되는 데이터
-/// </summary>
+
 [Serializable]
 public class QuickSlotData
 {
@@ -30,9 +30,9 @@ public class QuickSlotData
         skillId = null;
     }
 
-    /// <summary>
+    
     /// 소모품 아이템 설정
-    /// </summary>
+    
     public void SetConsumable(string id)
     {
         slotType = QuickSlotType.Consumable;
@@ -40,9 +40,9 @@ public class QuickSlotData
         skillId = null;
     }
 
-    /// <summary>
+    
     /// 스킬 설정
-    /// </summary>
+    
     public void SetSkill(string id)
     {
         slotType = QuickSlotType.Skill;
@@ -50,9 +50,9 @@ public class QuickSlotData
         itemId = null;
     }
 
-    /// <summary>
+    
     /// 슬롯 비우기
-    /// </summary>
+    
     public void Clear()
     {
         slotType = QuickSlotType.Empty;
@@ -60,17 +60,17 @@ public class QuickSlotData
         skillId = null;
     }
 
-    /// <summary>
+    
     /// 빈 슬롯인지 확인
-    /// </summary>
+    
     public bool IsEmpty()
     {
         return slotType == QuickSlotType.Empty;
     }
 
-    /// <summary>
+    
     /// 저장 데이터로 변환
-    /// </summary>
+    
     public QuickSlotSaveData ToSaveData()
     {
         return new QuickSlotSaveData
@@ -82,9 +82,9 @@ public class QuickSlotData
         };
     }
 
-    /// <summary>
+    
     /// 저장 데이터에서 복원
-    /// </summary>
+    
     public static QuickSlotData FromSaveData(QuickSlotSaveData data)
     {
         QuickSlotData slot = new QuickSlotData(data.slotIndex);
@@ -95,9 +95,9 @@ public class QuickSlotData
     }
 }
 
-/// <summary>
+
 /// 퀵슬롯 저장 데이터
-/// </summary>
+
 [Serializable]
 public class QuickSlotSaveData
 {

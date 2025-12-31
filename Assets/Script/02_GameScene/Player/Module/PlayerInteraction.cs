@@ -2,9 +2,9 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
+
 /// 플레이어의 채집 및 NPC 상호작용 관리
-/// </summary>
+
 public class PlayerInteraction
 {
     private readonly Transform playerTransform;
@@ -29,9 +29,9 @@ public class PlayerInteraction
         this.animationController = animController;
     }
 
-    /// <summary>
+    
     /// New Input System용 상호작용 메서드
-    /// </summary>
+    
     public void TryInteract()
     {
         if (ControlsLocked || IsGathering) return;
@@ -51,9 +51,9 @@ public class PlayerInteraction
         }
     }
 
-    /// <summary>
+    
     /// 매 프레임 가장 가까운 상호작용 오브젝트 감지
-    /// </summary>
+    
     public void UpdateNearestInteractable()
     {
         if (ControlsLocked || IsGathering)

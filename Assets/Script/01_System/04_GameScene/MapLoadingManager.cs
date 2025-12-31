@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 using Definitions;
 
-/// <summary>
+
 /// MapLoadingScene에서 사용
 /// 맵 간 이동 시 로딩 화면 표시 (데이터 로드 없음)
-/// </summary>
+
 public class MapLoadingManager : MonoBehaviour
 {
     public static string TargetSceneName { get; set; } = "";
@@ -134,9 +134,9 @@ public class MapLoadingManager : MonoBehaviour
         TargetSpawnPointid = "";
     }
 
-    /// <summary>
+    
     /// 로딩 텍스트 업데이트
-    /// </summary>
+    
     private void UpdateLoadingText(string text)
     {
         if (loadingText != null)
@@ -145,9 +145,9 @@ public class MapLoadingManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 진행률 바 업데이트
-    /// </summary>
+    
     private void UpdateProgress(float progress)
     {
         if (progressBar != null)
@@ -156,9 +156,9 @@ public class MapLoadingManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 외부에서 맵 로딩 시작 (정적 메서드)
-    /// </summary>
+    
     public static void LoadMap(string sceneName, string spawnPointid = "")
     {
         if (string.IsNullOrEmpty(sceneName))

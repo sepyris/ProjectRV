@@ -23,9 +23,9 @@ public class PlayerHUD : MonoBehaviour
 
     // ==================== UI 레이어 관리 ====================
 
-    /// <summary>
+    
     /// UI를 열 때 호출 - 맨 위로 올림
-    /// </summary>
+    
     public void RegisterUI(IClosableUI ui)
     {
         if (ui == null) return;
@@ -42,9 +42,9 @@ public class PlayerHUD : MonoBehaviour
         Debug.Log($"[PlayerHUD] UI 등록: {ui.GetUIPanel().name}, 총 {openedUIs.Count}개");
     }
 
-    /// <summary>
+    
     /// UI를 닫을 때 호출
-    /// </summary>
+    
     public void UnregisterUI(IClosableUI ui)
     {
         if (openedUIs.Contains(ui))
@@ -54,10 +54,10 @@ public class PlayerHUD : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// UiDragger에서 사용
     /// 드래그시에 선택된 UI를 맨위로 설정
-    /// </summary>
+    
     public void SetTopUI(GameObject ui_panel)
     {
         IClosableUI current_ui = null;
@@ -75,10 +75,10 @@ public class PlayerHUD : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// PlayerController의 Cancel 입력에서 호출
     /// 맨 위 UI 닫기
-    /// </summary>
+    
     public void CloseTopUI()
     {
         if (openedUIs.Count == 0)
@@ -93,9 +93,9 @@ public class PlayerHUD : MonoBehaviour
         topUI.Close();
     }
 
-    /// <summary>
+    
     /// 모든 UI 닫기
-    /// </summary>
+    
     public void CloseAllUIs()
     {
         while (openedUIs.Count > 0)
@@ -104,25 +104,25 @@ public class PlayerHUD : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 열린 UI 개수
-    /// </summary>
+    
     public int GetOpenUICount()
     {
         return openedUIs.Count;
     }
 
-    /// <summary>
+    
     /// UI가 하나라도 열려있는지
-    /// </summary>
+    
     public bool IsAnyUIOpen()
     {
         return openedUIs.Count > 0;
     }
 
-    /// <summary>
+    
     /// 맨 위 UI 가져오기
-    /// </summary>
+    
     public GameObject GetTopUIPanel()
     {
         if (openedUIs.Count > 0)

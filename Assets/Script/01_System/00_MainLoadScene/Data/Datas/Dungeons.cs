@@ -1,19 +1,19 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using GameData.Common;
 
-/// <summary>
+
+
 /// 던전 데이터를 저장하는 ScriptableObject
-/// </summary>
+
 public class DungeonsDataSO : ScriptableObject
 {
     public List<DungeonData> Items = new List<DungeonData>();
 }
 
-/// <summary>
+
 /// 시간 제한 타입
-/// </summary>
+
 public enum TimeRestriction
 {
     None,      // 제한 없음
@@ -21,9 +21,9 @@ public enum TimeRestriction
     Day        // 주간만 입장 가능
 }
 
-/// <summary>
+
 /// 던전 데이터 클래스
-/// </summary>
+
 [Serializable]
 public class DungeonData
 {

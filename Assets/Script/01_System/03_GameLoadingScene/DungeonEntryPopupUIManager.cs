@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
-/// <summary>
+
 /// 던전 입장 팝업을 관리하는 매니저
-/// </summary>
+
 public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
 {
     [Header("UI References")]
@@ -45,9 +45,9 @@ public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
             popupPanel.SetActive(false);
     }
 
-    /// <summary>
+    
     /// 던전 입장 팝업 열기
-    /// </summary>
+    
     /// <param name="dungeonId">던전 ID</param>
     public void OpenDungeonEntryPopup(string dungeonId)
     {
@@ -77,9 +77,9 @@ public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
         // UpdatePartyMemberList(); // 파티 기능 추가 시 구현
     }
 
-    /// <summary>
+    
     /// 던전 정보 UI 업데이트
-    /// </summary>
+    
     private void UpdateDungeonInfo()
     {
         if (currentDungeonData == null) return;
@@ -103,10 +103,10 @@ public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
             dungeonNameText.text = currentDungeonData.dungeonName;
     }
 
-    /// <summary>
+    
     /// 예상 획득 아이템 리스트 업데이트
     /// ItemDetailUiManager의 호버 기능을 활용
-    /// </summary>
+    
     private void UpdateItemRewardList()
     {
         if (currentDungeonData == null || itemListContainer == null) return;
@@ -190,9 +190,9 @@ public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 아이템 리스트 초기화
-    /// </summary>
+    
     private void ClearItemRewardList()
     {
         if (itemListContainer == null) return;
@@ -203,9 +203,9 @@ public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 파티원 리스트 업데이트 (향후 파티 기능 추가 시 구현)
-    /// </summary>
+    
     private void UpdatePartyMemberList()
     {
         // TODO: 파티 시스템 구현 시 작성
@@ -225,9 +225,9 @@ public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
         // }
     }
 
-    /// <summary>
+    
     /// 파티원 리스트 초기화
-    /// </summary>
+    
     private void ClearPartyMemberList()
     {
         if (partyMemberContainer == null) return;
@@ -238,9 +238,9 @@ public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 던전 입장 버튼 클릭 시
-    /// </summary>
+    
     private void OnEnterDungeon()
     {
         if (currentDungeonData == null)
@@ -260,9 +260,9 @@ public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
         ClosePopup();
     }
 
-    /// <summary>
+    
     /// 팝업 닫기
-    /// </summary>
+    
     public void ClosePopup()
     {
         if (popupPanel != null)

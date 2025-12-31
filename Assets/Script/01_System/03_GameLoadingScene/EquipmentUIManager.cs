@@ -3,12 +3,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 장비창 UI 관리
 /// 장비 탭과 치장 탭을 제공하며 더블클릭으로 장착/해제
 /// 
 ///  수정사항: weaponSlot이 MeleeWeapon과 RangedWeapon 둘 다 처리
-/// </summary>
+
 public class EquipmentUIManager : MonoBehaviour, IClosableUI
 {
     public static EquipmentUIManager Instance { get; private set; }
@@ -270,9 +270,9 @@ public class EquipmentUIManager : MonoBehaviour, IClosableUI
         RefreshCosmeticSlot(cosmeticcapeSlot, CosmeticSlot.Cape);
     }
 
-    /// <summary>
+    
     ///  무기 슬롯 특별 처리: MeleeWeapon과 RangedWeapon 둘 다 체크
-    /// </summary>
+    
     private void RefreshWeaponSlot()
     {
         if (weaponSlot == null) return;
@@ -313,9 +313,9 @@ public class EquipmentUIManager : MonoBehaviour, IClosableUI
         slotUI.UpdateSlot(item);
     }
 
-    /// <summary>
+    
     ///  모든 슬롯의 상세 패널 숨김
-    /// </summary>
+    
     private void HideAllDetailPanels()
     {
         // 장비 슬롯들의 상세 패널 숨김

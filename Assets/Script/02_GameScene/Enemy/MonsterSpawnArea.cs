@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
+
 /// 몬스터 스폰 영역 (여러 종류의 몬스터 지원)
-/// </summary>
+
 public class MonsterSpawnArea : MonoBehaviour
 {
     [Header("Spawn Settings")]
@@ -55,9 +55,9 @@ public class MonsterSpawnArea : MonoBehaviour
         EnsureAreaCollider();
     }
 
-    /// <summary>
+    
     /// 콜라이더 존재 확인 및 필요 시 생성
-    /// </summary>
+    
     private void EnsureAreaCollider()
     {
         if (areaCollider != null) return;
@@ -84,9 +84,9 @@ public class MonsterSpawnArea : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 몬스터 컨테이너 생성
-    /// </summary>
+    
     private void CreateMonstersContainer()
     {
         if (monstersContainer != null) return;
@@ -121,9 +121,9 @@ public class MonsterSpawnArea : MonoBehaviour
         StartCoroutine(SpawnRoutine());
     }
 
-    /// <summary>
+    
     /// 주기적으로 몬스터 수를 확인하고 부족하면 스폰
-    /// </summary>
+    
     private IEnumerator SpawnRoutine()
     {
         while (true)
@@ -222,9 +222,9 @@ public class MonsterSpawnArea : MonoBehaviour
 
 
 
-    /// <summary>
+    
     /// 영역 내 랜덤 위치 반환
-    /// </summary>
+    
     private Vector2 GetRandomPositionInArea()
     {
         Vector2 basePosition;
@@ -270,9 +270,9 @@ public class MonsterSpawnArea : MonoBehaviour
         return basePosition;
     }
 
-    /// <summary>
+    
     /// 몬스터가 죽었을 때 호출됨
-    /// </summary>
+    
     public void OnMonsterDied(GameObject monster)
     {
         if (spawnedMonsters.Contains(monster))
@@ -282,18 +282,18 @@ public class MonsterSpawnArea : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 강제 스폰 (테스트용)
-    /// </summary>
+    
     [ContextMenu("Spawn One Monster")]
     public void SpawnOneMonster()
     {
         SpawnMonsters(1);
     }
 
-    /// <summary>
+    
     /// 모든 몬스터 제거
-    /// </summary>
+    
     [ContextMenu("Clear All Monsters")]
     public void ClearAllMonsters()
     {

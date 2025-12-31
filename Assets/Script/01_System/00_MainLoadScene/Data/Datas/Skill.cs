@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// 스킬 데이터를 저장하는 ScriptableObject
 public class SkillDataSO : ScriptableObject
 {
     public List<SkillData> Items = new List<SkillData>();

@@ -2,11 +2,11 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-/// <summary>
+
 /// 퀵슬롯에서 아이템을 드래그하여 제거할 수 있는 컴포넌트
 /// QuickSlotUI에 추가로 붙여서 사용
 ///  수정: 퀵슬롯 간 이동 기능 추가
-/// </summary>
+
 public class DraggableQuickSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private QuickSlotUI quickSlotUI;
@@ -144,9 +144,9 @@ public class DraggableQuickSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandl
         }
     }
 
-    /// <summary>
+    
     /// QuickSlotUI로부터 슬롯 인덱스 가져오기
-    /// </summary>
+    
     private int GetSlotIndex()
     {
         if (quickSlotUI != null)

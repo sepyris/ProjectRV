@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
+
 /// QuestManager (Collect와 Gather 구분)
 /// - Collect: 현재 인벤토리 포함, 이미 가지고 있으면 바로 완료
 /// - Gather: 퀘스트 수락 후 새로 획득한 아이템만 카운트
-/// </summary>
+
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance { get; private set; }
@@ -14,14 +14,14 @@ public class QuestManager : MonoBehaviour
     private Dictionary<string, QuestData> questDictionary = new Dictionary<string, QuestData>();
 
     // ===== 이벤트 추가 =====
-    /// <summary>
+    
     /// 퀘스트 상태가 변경될 때 발생하는 이벤트
-    /// </summary>
+    
     public event System.Action<string, QuestStatus> OnQuestStatusChanged;
 
-    /// <summary>
+    
     /// 퀘스트 목표가 업데이트될 때 발생하는 이벤트
-    /// </summary>
+    
     public event System.Action<string> OnQuestObjectiveUpdated;
     // =======================
 
@@ -125,9 +125,9 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// Collect 타입 목표는 퀘스트 수락 시 현재 인벤토리를 확인하여 초기값 설정
-    /// </summary>
+    
     private void InitializeCollectObjectives(QuestData quest)
     {
         if (InventoryManager.Instance == null) return;
@@ -151,9 +151,9 @@ public class QuestManager : MonoBehaviour
         CheckQuestCompletion(quest);
     }
 
-    /// <summary>
+    
     /// 퀘스트 완료 조건 체크 (목표는 완료되지만 상태는 Accepted 유지)
-    /// </summary>
+    
     private void CheckQuestCompletion(QuestData quest)
     {
         if (quest.status != QuestStatus.Accepted) return;
@@ -231,9 +231,9 @@ public class QuestManager : MonoBehaviour
     #endregion
 
     #region 목표(객체) 업데이트 (핵심)
-    /// <summary>
+    
     /// 지정된 퀘스트의 특정 타겟 목표를 업데이트한다.
-    /// </summary>
+    
     public void UpdateObjective(string questId, string targetId, int count)
     {
         var q = GetQuestData(questId);
@@ -262,9 +262,9 @@ public class QuestManager : MonoBehaviour
     #endregion
 
     #region 이전 API 호환성 메서드
-    /// <summary>
+    
     /// 몬스터 처치 업데이트
-    /// </summary>
+    
     public void UpdateKillProgress(string monsterId)
     {
         if (string.IsNullOrEmpty(monsterId)) return;
@@ -283,9 +283,9 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 아이템 획득 업데이트 (Collect와 Gather 모두 처리)
-    /// </summary>
+    
     public void UpdateItemProgress(string itemId, int amount = 1)
     {
         if (string.IsNullOrEmpty(itemId) || amount <= 0) return;
@@ -310,9 +310,9 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// Collect 타입 목표 업데이트 - 현재 인벤토리 개수로 동기화
-    /// </summary>
+    
     private void UpdateCollectProgress(string questId, string itemId)
     {
         if (InventoryManager.Instance == null) return;
@@ -348,9 +348,9 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// NPC 대화로 인한 진행 업데이트
-    /// </summary>
+    
     public void UpdateDialogueProgress(string npcId)
     {
         if (string.IsNullOrEmpty(npcId)) return;
@@ -371,10 +371,10 @@ public class QuestManager : MonoBehaviour
     #endregion
 
     #region Collect 타입 전용 메서드
-    /// <summary>
+    
     /// 모든 진행중인 퀘스트의 Collect 목표를 인벤토리 상태로 갱신
     /// (아이템을 버렸을 때 호출)
-    /// </summary>
+    
     public void RefreshAllCollectObjectives()
     {
         if (InventoryManager.Instance == null) return;
@@ -395,9 +395,9 @@ public class QuestManager : MonoBehaviour
     }
     #endregion
     #region Save/Load
-    /// <summary>
+    
     /// 모든 퀘스트 초기화
-    /// </summary>
+    
     public void ResetAllQuests()
     {
         foreach (var quest in questDictionary.Values)
@@ -411,9 +411,9 @@ public class QuestManager : MonoBehaviour
         Debug.Log("[QuestManager] 모든 퀘스트 초기화");
     }
 
-    /// <summary>
+    
     /// 퀘스트 데이터를 저장 형식으로 변환
-    /// </summary>
+    
     public AllQuestsSaveData ToSaveData()
     {
         AllQuestsSaveData saveData = new AllQuestsSaveData();
@@ -446,9 +446,9 @@ public class QuestManager : MonoBehaviour
         return saveData;
     }
 
-    /// <summary>
+    
     /// 저장된 퀘스트 데이터 로드
-    /// </summary>
+    
     public void LoadFromData(AllQuestsSaveData saveData)
     {
         if (saveData == null || saveData.quests == null)
@@ -482,9 +482,9 @@ public class QuestManager : MonoBehaviour
     #endregion
 
     #region NPC Icon Update
-    /// <summary>
+    
     /// 모든 NPC의 상태 아이콘을 업데이트합니다
-    /// </summary>
+    
     private void UpdateAllNPCIcons()
     {
         NPCController[] allNPCs = FindObjectsOfType<NPCController>();
@@ -495,9 +495,9 @@ public class QuestManager : MonoBehaviour
     }
 
     #region Item Consumption
-    /// <summary>
+    
     /// 수집/채집 퀘스트의 아이템을 인벤토리에서 소모합니다
-    /// </summary>
+    
     private void ConsumeQuestItems(QuestData quest)
     {
         if (InventoryManager.Instance == null) return;

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-/// <summary>
+
 /// 경험치 관리 싱글톤 매니저
 /// 다른 스크립트에서 쉽게 경험치를 지급할 수 있도록 함
-/// </summary>
+
 public class ExperienceManager : MonoBehaviour
 {
     public static ExperienceManager Instance { get; private set; }
@@ -32,9 +32,9 @@ public class ExperienceManager : MonoBehaviour
         }
     }
    
-    /// <summary>
+    
     /// 플레이어에게 골드 지급
-    /// </summary>
+    
     public void AddGold(int baseAmount, bool is_multiple = false)
     {
         if (PlayerController.Instance == null)
@@ -61,9 +61,9 @@ public class ExperienceManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 플레이어에게 경험치 지급
-    /// </summary>
+    
     public void AddExp(int baseAmount, bool is_multiple = false)
     {
         if (PlayerController.Instance == null)
@@ -90,52 +90,52 @@ public class ExperienceManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 퀘스트 완료 시 경험치 지급
-    /// </summary>
+    
     public void GiveQuestReward(int rewardExp)
     {
         AddExp(rewardExp);
         Debug.Log($"[ExpManager] 퀘스트 보상 경험치 지급: {rewardExp}");
     }
 
-    /// <summary>
+    
     /// 경험치 배율 설정 (이벤트, 버프 등에 사용)
-    /// </summary>
+    
     public void SetExpMultiplier(float multiplier)
     {
         expMultiplier = Mathf.Max(0.1f, multiplier);
         Debug.Log($"[ExpManager] 경험치 배율 변경: x{expMultiplier}");
     }
 
-    /// <summary>
+    
     /// 골드 배율 설정 (이벤트, 버프 등에 사용)
-    /// </summary>
+    
     public void SetGoldMultiplier(float multiplier)
     {
         goldMultiplier = Mathf.Max(0.1f, multiplier);
         Debug.Log($"[ExpManager] 골드 배율 변경: x{goldMultiplier}");
     }
 
-    /// <summary>
+    
     /// 현재 경험치 배율 반환
-    /// </summary>
+    
     public float GetExpMultiplier()
     {
         return expMultiplier;
     }
 
-    /// <summary>
+    
     /// 현재 골드 배율 반환
-    /// </summary>
+    
     public float GetGoldMultiplier()
     {
         return goldMultiplier;
     }
 
-    /// <summary>
+    
     /// 레벨별 필요 경험치 계산 (커스텀 테이블 사용)
-    /// </summary>
+    
     public int GetRequiredExpForLevel(int level)
     {
         if (useCustomExpTable && customExpTable != null && level <= customExpTable.Length)

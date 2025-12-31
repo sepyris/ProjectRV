@@ -421,9 +421,9 @@ public class ShopUIManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 골드 부족 경고 팝업 표시
-    /// </summary>
+    
     void ShowInsufficientGoldWarning(int requiredGold, int quantity)
     {
         if (PopupManager.Instance == null) return;
@@ -434,9 +434,9 @@ public class ShopUIManager : MonoBehaviour, IClosableUI
         PopupManager.Instance.ShowWarningPopup(message);
     }
 
-    /// <summary>
+    
     /// 구매 전 골드 확인
-    /// </summary>
+    
     bool CheckGoldBeforePurchase()
     {
         if (PlayerStatsComponent.Instance == null) return false;

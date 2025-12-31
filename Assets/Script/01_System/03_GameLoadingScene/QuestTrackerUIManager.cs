@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Definitions;
 
-/// <summary>
+
 /// 진행중인 퀘스트를 화면에 고정하여 표시하는 알림창 시스템
 /// 최대 5~8개의 퀘스트를 추적할 수 있음
-/// </summary>
+
 public class QuestTrackerUIManager : MonoBehaviour
 {
     public static QuestTrackerUIManager Instance { get; private set; }
@@ -98,9 +98,9 @@ public class QuestTrackerUIManager : MonoBehaviour
     // 패널 크기 관리
     // ==========================================
 
-    /// <summary>
+    
     /// 퀘스트 데이터를 기반으로 아이템의 높이를 계산
-    /// </summary>
+    
     private float CalculateItemHeight(QuestData quest)
     {
         if (quest == null || quest.objectives == null)
@@ -113,9 +113,9 @@ public class QuestTrackerUIManager : MonoBehaviour
         return height;
     }
 
-    /// <summary>
+    
     /// trackerPanel의 높이를 현재 퀘스트 수에 맞게 동적으로 조절
-    /// </summary>
+    
     private void UpdatePanelSize()
     {
         if (trackerPanelRect == null)
@@ -170,9 +170,9 @@ public class QuestTrackerUIManager : MonoBehaviour
     // 퀘스트 추적 추가/제거
     // ==========================================
 
-    /// <summary>
+    
     /// 퀘스트를 트래커에 추가
-    /// </summary>
+    
     public bool AddTrackedQuest(string questId)
     {
         // 이미 추적 중인지 확인
@@ -215,9 +215,9 @@ public class QuestTrackerUIManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// 퀘스트를 트래커에서 제거
-    /// </summary>
+    
     public bool RemoveTrackedQuest(string questId)
     {
         if (!trackedQuestIds.Contains(questId))
@@ -246,17 +246,17 @@ public class QuestTrackerUIManager : MonoBehaviour
         return true;
     }
 
-    /// <summary>
+    
     /// 퀘스트가 추적 중인지 확인
-    /// </summary>
+    
     public bool IsQuestTracked(string questId)
     {
         return trackedQuestIds.Contains(questId);
     }
 
-    /// <summary>
+    
     /// 모든 추적 중인 퀘스트 제거
-    /// </summary>
+    
     public void ClearAllTrackedQuests()
     {
         foreach (var item in trackerItems.Values)
@@ -279,9 +279,9 @@ public class QuestTrackerUIManager : MonoBehaviour
     // UI 생성 및 업데이트
     // ==========================================
 
-    /// <summary>
+    
     /// 트래커 아이템 UI 생성
-    /// </summary>
+    
     private void CreateTrackerItem(QuestData quest)
     {
         if (trackerItemPrefab == null || trackerListContainer == null)
@@ -343,9 +343,9 @@ public class QuestTrackerUIManager : MonoBehaviour
         Debug.Log($"[QuestTracker] 트래커 아이템 생성: {quest.questId} (높이: {itemHeight}px)");
     }
 
-    /// <summary>
+    
     /// 특정 퀘스트의 트래커 UI 업데이트
-    /// </summary>
+    
     private void UpdateTrackerItem(string questId)
     {
         if (!trackerItems.TryGetValue(questId, out GameObject itemObj) || itemObj == null)
@@ -389,9 +389,9 @@ public class QuestTrackerUIManager : MonoBehaviour
         Debug.Log($"[QuestTracker] 트래커 아이템 업데이트: {questId} (높이: {newHeight}px)");
     }
 
-    /// <summary>
+    
     /// 퀘스트 목표 텍스트 생성
-    /// </summary>
+    
     private string GetObjectivesText(QuestData quest)
     {
         if (quest.objectives == null || quest.objectives.Count == 0)
@@ -432,9 +432,9 @@ public class QuestTrackerUIManager : MonoBehaviour
         return string.Join("\n", objectiveTexts);
     }
 
-    /// <summary>
+    
     /// 목표 타입을 한글로 변환
-    /// </summary>
+    
     private string GetObjectiveTypeText(QuestType type)
     {
         switch (type)
@@ -456,9 +456,9 @@ public class QuestTrackerUIManager : MonoBehaviour
     // 이벤트 핸들러
     // ==========================================
 
-    /// <summary>
+    
     /// 제거 버튼 클릭 시 호출
-    /// </summary>
+    
     private void OnRemoveButtonClicked(string questId)
     {
         RemoveTrackedQuest(questId);
@@ -470,9 +470,9 @@ public class QuestTrackerUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 퀘스트 상태 변경 시 호출
-    /// </summary>
+    
     private void OnQuestStatusChanged(string questId, QuestStatus newStatus)
     {
         //  QuestUIManager가 열려있으면 항상 업데이트 (퀘스트 추적 여부 무관) 
@@ -504,9 +504,9 @@ public class QuestTrackerUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 퀘스트 목표 업데이트 시 호출
-    /// </summary>
+    
     private void OnQuestObjectiveUpdated(string questId)
     {
         //  QuestUIManager가 열려있으면 항상 업데이트 
@@ -526,25 +526,25 @@ public class QuestTrackerUIManager : MonoBehaviour
     // 공개 유틸리티 메서드
     // ==========================================
 
-    /// <summary>
+    
     /// 현재 추적 중인 퀘스트 수
-    /// </summary>
+    
     public int GetTrackedQuestCount()
     {
         return trackedQuestIds.Count;
     }
 
-    /// <summary>
+    
     /// 추적 가능 여부 확인
-    /// </summary>
+    
     public bool CanTrackMoreQuests()
     {
         return trackedQuestIds.Count < maxTrackedQuests;
     }
 
-    /// <summary>
+    
     /// 추적 중인 모든 퀘스트 ID 가져오기
-    /// </summary>
+    
     public List<string> GetTrackedQuestIds()
     {
         return new List<string>(trackedQuestIds);

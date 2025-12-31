@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// <summary>
+
 /// 퀵슬롯 UI 전체 관리자
 /// 10개의 퀵슬롯 UI를 관리하고 업데이트
-/// </summary>
+
 public class QuickSlotUIManager : MonoBehaviour
 {
     public static QuickSlotUIManager Instance { get; private set; }
@@ -45,9 +45,9 @@ public class QuickSlotUIManager : MonoBehaviour
     {
     }
 
-    /// <summary>
+    
     /// 슬롯 UI 초기화
-    /// </summary>
+    
     private void InitializeSlotUIs()
     {
         if (quickSlotUIs == null || quickSlotUIs.Length == 0)
@@ -68,9 +68,9 @@ public class QuickSlotUIManager : MonoBehaviour
         Debug.Log($"[QuickSlotUIManager] {quickSlotUIs.Length}개의 퀵슬롯 UI 초기화");
     }
 
-    /// <summary>
+    
     /// 모든 슬롯 UI 새로고침
-    /// </summary>
+    
     public void RefreshAllSlots()
     {
         foreach (var slotUI in quickSlotUIs)
@@ -82,9 +82,9 @@ public class QuickSlotUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 특정 슬롯 UI 새로고침
-    /// </summary>
+    
     public void RefreshSlot(int slotIndex)
     {
         if (slotIndex >= 0 && slotIndex < quickSlotUIs.Length && quickSlotUIs[slotIndex] != null)
@@ -93,9 +93,9 @@ public class QuickSlotUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 패널 가시성 토글
-    /// </summary>
+    
     public void ToggleQuickSlotPanel()
     {
         isPanelVisible = !isPanelVisible;
@@ -105,9 +105,9 @@ public class QuickSlotUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 패널 표시/숨기기
-    /// </summary>
+    
     public void SetPanelVisible(bool visible)
     {
         isPanelVisible = visible;
@@ -117,9 +117,9 @@ public class QuickSlotUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 특정 아이템이 등록된 슬롯 하이라이트 (선택사항)
-    /// </summary>
+    
     public void HighlightItemSlots(string itemId)
     {
         if (QuickSlotManager.Instance == null)

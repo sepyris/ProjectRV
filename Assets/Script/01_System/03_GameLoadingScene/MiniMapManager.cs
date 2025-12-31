@@ -118,9 +118,9 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
         Debug.Log("[MiniMap] Maximize Panel 설정 완료");
     }
 
-    /// <summary>
+    
     /// 확대 맵 열기
-    /// </summary>
+    
     private void OpenMaximizeMap()
     {
         if (maximize_Minimap_Panel != null)
@@ -136,9 +136,9 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 확대 맵 닫기
-    /// </summary>
+    
     private void CloseMaximizeMap()
     {
         if (maximize_Minimap_Panel != null)
@@ -375,10 +375,10 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
         }
     }
 
-    /// <summary>
+    
     /// 플레이어의 자식 오브젝트 중에서 미니맵 오브젝트를 자동으로 찾습니다.
     /// MinimapObject 레이어를 가진 오브젝트를 찾습니다.
-    /// </summary>
+    
     private void FindPlayerMinimapObject()
     {
         if (player == null) return;
@@ -398,10 +398,10 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
         Debug.LogWarning("[MiniMap] 플레이어의 미니맵 오브젝트를 찾지 못했습니다. Inspector에서 수동으로 할당해주세요.");
     }
 
-    /// <summary>
+    
     /// 현재 카메라 크기에 따라 플레이어 미니맵 오브젝트의 크기를 조정합니다.
     /// 기준: 맵 50x50, 카메라 사이즈 27, 플레이어 크기 1x1
-    /// </summary>
+    
     private void UpdatePlayerMinimapObjectScale()
     {
         if (playerMinimapObject == null || minimapCamera == null)
@@ -525,9 +525,9 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
         playerMinimapObject = null; // 씬 전환 시 플레이어 오브젝트 참조도 초기화
     }
 
-    /// <summary>
+    
     /// 외부에서 플레이어 미니맵 오브젝트를 수동으로 설정할 때 사용
-    /// </summary>
+    
     public void SetPlayerMinimapObject(GameObject obj)
     {
         playerMinimapObject = obj;

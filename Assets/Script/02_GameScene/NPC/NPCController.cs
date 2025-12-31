@@ -4,10 +4,10 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-/// <summary>
+
 /// NPC 컨트롤러 - 플레이어 중심 상호작용
 /// 여러 퀘스트 지원 + 선행 조건 체크
-/// </summary>
+
 public class NPCController : MonoBehaviour
 {
     public enum NPCType { Dialogue, Quest, Shop }
@@ -61,9 +61,9 @@ public class NPCController : MonoBehaviour
         UpdateNameDisplay();
     }
 
-    /// <summary>
+    
     /// NPC 상태 아이콘 업데이트 (여러 퀘스트 상태를 종합)
-    /// </summary>
+    
     public void UpdateStatusIcon()
     {
         if (statusIconRenderer == null) return;
@@ -118,11 +118,11 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 여러 퀘스트 중 가장 우선순위 높은 아이콘 반환
     /// 우선순위: 완료 가능 > 진행 중 > 수락 가능
     ///  선행 조건을 만족하는 퀘스트만 표시 
-    /// </summary>
+    
     private Sprite GetQuestIconSprite()
     {
         if (QuestManager.Instance == null || questIds.Count == 0)
@@ -189,9 +189,9 @@ public class NPCController : MonoBehaviour
         return dialogueOnlySprite;
     }
 
-    /// <summary>
+    
     /// 이 NPC가 퀘스트 목표에 포함되어 있는지 체크
-    /// </summary>
+    
     private bool IsQuestObjectiveForThisNPC(QuestData quest)
     {
         if (quest == null || quest.objectives == null) return false;
@@ -206,9 +206,9 @@ public class NPCController : MonoBehaviour
         return false;
     }
 
-    /// <summary>
+    
     /// PlayerInteraction에서 호출: 프롬프트 표시
-    /// </summary>
+    
     public void ShowPrompt()
     {
         if (interactPromptObject != null)
@@ -218,9 +218,9 @@ public class NPCController : MonoBehaviour
         UpdateStatusIcon();
     }
 
-    /// <summary>
+    
     /// PlayerInteraction에서 호출: 프롬프트 숨김
-    /// </summary>
+    
     public void HidePrompt()
     {
         if (interactPromptObject != null)
@@ -229,9 +229,9 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// PlayerInteraction에서 호출: NPC와 상호작용 시작
-    /// </summary>
+    
     public void Interact()
     {
         // 퀘스트 NPC인 경우, 대화 시작 전에 None 상태 퀘스트를 Offered로 전환
@@ -275,20 +275,20 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    /// <summary>
+    
     /// 대화 종료 시 DialogueUIManager에서 호출
-    /// </summary>
+    
     public void OnInteractionClosed()
     {
         // 상태 아이콘 업데이트
         UpdateStatusIcon();
     }
 
-    /// <summary>
+    
     /// 현재 활성화된 퀘스트 목록 반환
     ///  선행 조건을 만족하는 퀘스트만 포함 
     ///  Rewarded 상태는 제외 
-    /// </summary>
+    
     public List<string> GetActiveQuests()
     {
         List<string> activeQuests = new List<string>();
@@ -337,16 +337,16 @@ public class NPCController : MonoBehaviour
         return activeQuests;
     }
 
-    /// <summary>
+    
     /// 특정 퀘스트가 이 NPC에게 있는지 확인
-    /// </summary>
+    
     public bool HasQuest(string questId)
     {
         return questIds.Contains(questId);
     }
-    /// <summary>
+    
     /// Gizmo로 세이브 포인트 위치 표시 (에디터에서만)
-    /// </summary>
+    
     private void OnDrawGizmos()
     {
         //Gizmos.color = Color.cyan;
