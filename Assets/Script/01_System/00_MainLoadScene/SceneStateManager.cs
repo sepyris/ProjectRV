@@ -2,6 +2,7 @@ using Definitions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//씬 상태 매니저
 public class SceneStateManager : MonoBehaviour
 {
     public static SceneStateManager Instance { get; private set; }

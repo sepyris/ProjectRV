@@ -2,11 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
-///  수정: 5대 기본 스탯에 장비 보너스를 합산해서 표시
-/// 기존: stats.strength만 표시 (기본값만)
-/// 수정: stats.strength + stats.equip_strength (최종값)
-
 public class CharacterStatUIManager : MonoBehaviour,IClosableUI
 {
     public static CharacterStatUIManager Instance { get; private set; }

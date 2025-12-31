@@ -416,7 +416,7 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
     }
 
     
-    /// 퀘스트 선택 & 일상 대화 통합 (수정된 버전)
+    /// 퀘스트 선택 & 일상 대화 통합
     
     private void ShowQuestOrDailySelection(NPCController npc, string afterQuestId = null)
     {
@@ -486,8 +486,7 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
     }
 
     
-    /// 퀘스트 상태별 처리 (수정된 버전)
-    ///  Accepted → Completed → Rewarded 흐름으로 수정 
+    /// 퀘스트 상태별 처리
     
     private void HandleQuestInteraction(NPCController npc, string questId)
     {

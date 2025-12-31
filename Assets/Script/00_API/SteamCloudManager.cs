@@ -13,7 +13,7 @@ public class SteamCloudManager : MonoBehaviour
         m_FileWriteAsyncComplete = Callback<RemoteStorageFileWriteAsyncComplete_t>.Create(OnFileWriteAsyncComplete);
     }
 
-    // 📢 추가: 콜백 해제 (메모리 누수 방지)
+    //  추가: 콜백 해제 (메모리 누수 방지)
     void OnDestroy()
     {
         if (m_FileWriteAsyncComplete != null)
@@ -45,7 +45,7 @@ public class SteamCloudManager : MonoBehaviour
             return;
         }
 
-        // 📢 추가: 스팀 초기화 확인
+        //  추가: 스팀 초기화 확인
         if (!SteamManager.Initialized)
         {
             Debug.LogWarning("[SteamCloud] Steam이 초기화되지 않아 클라우드 저장을 건너뜁니다.");

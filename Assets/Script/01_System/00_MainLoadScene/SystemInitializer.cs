@@ -22,14 +22,6 @@ public class SystemInitializer : MonoBehaviour
 
     void Start()
     {
-#if UNITY_EDITOR
-        // 🔧 A* Pathfinding Project의 자동 업데이트 체크 비활성화
-        if (EditorPrefs.GetBool("AstarCheckForUpdates", true))
-        {
-            EditorPrefs.SetBool("AstarCheckForUpdates", false);
-            Debug.Log("[SystemInit] A* Update Checker 비활성화 완료");
-        }
-#endif
         StartCoroutine(InitializeSystem());
     }
 

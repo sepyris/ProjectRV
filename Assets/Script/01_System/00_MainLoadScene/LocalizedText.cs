@@ -1,9 +1,9 @@
 ﻿// LocalizedText.cs
-// 📢 신규: Text 컴포넌트에 붙여서 언어 변경 시 자동 업데이트
+//  신규: Text 컴포넌트에 붙여서 언어 변경 시 자동 업데이트
 
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // TextMeshPro 사용 시
+using TMPro;
 using Definitions;
 
 

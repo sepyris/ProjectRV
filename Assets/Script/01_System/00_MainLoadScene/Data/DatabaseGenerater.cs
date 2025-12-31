@@ -93,7 +93,7 @@ public static class DatabaseGenerater
             string trimmed = raw.TrimStart();
             if (trimmed.StartsWith("#")) continue;
 
-            //  CSV 구조: npcId, DialogueType, Questid, Text (4개 컬럼) 
+            //  CSV 구조: npcId, DialogueType, Questid, Text
             var parts = SplitCSVLine(raw);
             if (parts.Count < 4) continue;
 
@@ -102,7 +102,7 @@ public static class DatabaseGenerater
             string questId = parts[2].Trim();
             string text = parts[3].Trim();
 
-            // 새로운 시퀀스 시작 (npcId와 dialogueType이 모두 있는 경우)
+            // 새로운 시퀀스 시작
             if (!string.IsNullOrEmpty(npcId) && !string.IsNullOrEmpty(dialogueType))
             {
                 currentSequence = new DialogueSequence
@@ -456,7 +456,7 @@ public static class DatabaseGenerater
 
             string npcId = parts[0].Trim();
             if (string.IsNullOrEmpty(npcId)) continue;
-
+            // CSV 구조: npcId    npcName npcTitle    npcDescription  mapId
             Npcs info = new()
             {
                 npcId = npcId,
@@ -586,7 +586,7 @@ public static class DatabaseGenerater
 
             string mapId = parts[0].Trim();
             if (string.IsNullOrEmpty(mapId)) continue;
-
+            // CSV 구조: mapId    mapName mapType mapRecommendedLevel parentMapId
             Maps info = new()
             {
                 mapId = mapId,
@@ -951,7 +951,7 @@ public static class DatabaseGenerater
 
 
 
-    // 💡 함수를 public static으로 선언해야 다른 파일에서 접근 가능합니다.
+    //  함수를 public static으로 선언해야 다른 파일에서 접근 가능합니다.
 
     public static List<string> GetLinesFromCSV(string csvText)
     {

@@ -180,7 +180,7 @@ public class NarrationManager : MonoBehaviour
             var line = currentLines[currentLineIndex];
             narrationUI.Show(line.Text, currentConfig);
             //나레이션 UI설정될때까지 조금 대기
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             // 모드에 따라 대기
             if (currentConfig.mode == NarrationMode.Auto)

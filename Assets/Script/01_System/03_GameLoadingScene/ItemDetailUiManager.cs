@@ -121,7 +121,7 @@ public class ItemDetailUiManager : MonoBehaviour, IPointerEnterHandler, IPointer
         ItemData data = item.GetItemData();
         if (data == null) return;
 
-        // ? 새 시스템에서는 장착된 아이템이 인벤토리에서 제거되므로
+        //새 시스템에서는 장착된 아이템이 인벤토리에서 제거되므로
         // isEquipped 체크는 사실상 불필요하지만, 안전을 위해 유지
         if (item.isEquipped)
         {

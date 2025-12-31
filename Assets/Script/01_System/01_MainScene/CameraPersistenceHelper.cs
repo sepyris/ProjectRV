@@ -43,7 +43,7 @@ public class CameraPersistenceHelper : MonoBehaviour
             return;
         }
 
-        // 1️⃣ 씬의 카메라 정리
+        // 1️ 씬의 카메라 정리
         Camera[] allCams = FindObjectsOfType<Camera>(true);
         foreach (var cam in allCams)
         {
@@ -57,7 +57,7 @@ public class CameraPersistenceHelper : MonoBehaviour
             Debug.Log($"[CameraPersistenceHelper] Disabled scene camera: {cam.gameObject.name}");
         }
 
-        // 2️⃣ Canvas 재연결
+        // 2️ Canvas 재연결
         Canvas[] allCanvases = FindObjectsOfType<Canvas>(true);
         foreach (var cv in allCanvases)
         {

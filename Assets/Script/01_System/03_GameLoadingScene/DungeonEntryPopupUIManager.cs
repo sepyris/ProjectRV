@@ -48,7 +48,6 @@ public class DungeonEntryPopupManager : MonoBehaviour, IClosableUI
     
     /// 던전 입장 팝업 열기
     
-    /// <param name="dungeonId">던전 ID</param>
     public void OpenDungeonEntryPopup(string dungeonId)
     {
         // 던전 데이터 가져오기

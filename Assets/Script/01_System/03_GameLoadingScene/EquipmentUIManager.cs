@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 /// 장비창 UI 관리
 /// 장비 탭과 치장 탭을 제공하며 더블클릭으로 장착/해제
-/// 
-///  수정사항: weaponSlot이 MeleeWeapon과 RangedWeapon 둘 다 처리
 
 public class EquipmentUIManager : MonoBehaviour, IClosableUI
 {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-/// 몬스터 스폰 영역 관리 모듈 - 배회 개선 버전
+/// 몬스터 스폰 영역 관리 모듈
 
 public class MonsterSpawnManager
 {

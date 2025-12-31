@@ -74,7 +74,6 @@ public class SkillDataManager : MonoBehaviour
 
     
     /// 직업단위로 스킬 가져오기
-    >
     public Dictionary<string, SkillData> GetJobSkills(string job)
     {
         var filteredSkills = skillDatabase

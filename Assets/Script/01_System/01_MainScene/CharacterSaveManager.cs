@@ -61,7 +61,6 @@ public class CharacterSaveManager : MonoBehaviour
         else
         {
             //  SaveCurrentCharacterGameData()가 성공해도 한 번 더 슬롯 저장
-            // 이유: 상점 데이터가 allCharactersData에도 반영되도록
             SaveAllCharacterSlots();
         }
 
