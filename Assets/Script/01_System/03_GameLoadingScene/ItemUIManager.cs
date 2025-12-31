@@ -35,7 +35,6 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemDescriptionText;
     public TextMeshProUGUI itemStatsText;
-    // useButton과 discardButton은 제거됨 - 더블클릭과 드래그로 대체
 
     // 처음 열릴 때만 초기화
     private bool isInitialized = false;
@@ -140,7 +139,6 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
             isInitialized = true;
         }
         PlayerHUD.Instance?.RegisterUI(this);
-        //UpdateTabButtons();
         RefreshItemList();
         Debug.Log("[ItemUI] 인벤토리 창 열림");
     }
@@ -175,29 +173,11 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
     private void SwitchTab(ItemTab tab)
     {
         currentTab = tab;
-        //UpdateTabButtons();
         RefreshItemList();
 
         // 탭 전환 시 상세정보 숨김
         if (itemDetailPanel != null)
             itemDetailPanel.SetActive(false);
-    }
-
-    private void UpdateTabButtons()
-    {
-        UpdateTabButtonColor(equipmentTabButton, currentTab == ItemTab.Equipment, new Color(1f, 0.8f, 0.5f));
-        UpdateTabButtonColor(usingitemTabButton, currentTab == ItemTab.Consumable, new Color(0.5f, 1f, 0.5f));
-        UpdateTabButtonColor(etcitemTabButton, currentTab == ItemTab.Material, new Color(0.7f, 0.7f, 1f));
-        UpdateTabButtonColor(questitemTabButton, currentTab == ItemTab.QuestItem, new Color(1f, 0.5f, 0.8f));
-    }
-
-    private void UpdateTabButtonColor(Button button, bool isActive, Color activeColor)
-    {
-        if (button == null) return;
-
-        var colors = button.colors;
-        colors.normalColor = isActive ? activeColor : Color.white;
-        button.colors = colors;
     }
 
     // ==========================================
@@ -515,12 +495,6 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
             default: return "없음";
         }
     }
-
-    // ==========================================
-    // 버튼 클릭 이벤트 - 제거됨
-    // ==========================================
-    // OnUseButtonClicked와 OnDiscardButtonClicked 메서드 제거됨
-    // 더블클릭(ItemDetailUiManager)과 드래그(DiscardableItemUI)로 대체됨
 
     // ==========================================
     // 이벤트 핸들러

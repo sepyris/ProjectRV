@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
     {
         HandleSingleton();
         InitializeInputSystem();
-        
     }
 
     void Start()

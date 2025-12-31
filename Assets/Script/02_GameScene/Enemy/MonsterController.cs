@@ -6,33 +6,37 @@ using UnityEngine.UI;
 
 public class MonsterController : MonoBehaviour
 {
+    // ==================== Inspector Settings ====================
     [Header("Monster id")]
     [SerializeField] private string monsterid;
 
-    [Header("Visual")]
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Animator animator;
-    [SerializeField] private GameObject rangeAttackProjectile;
-
-    private MonsterData monsterData;
-    private CharacterStats stats;
-    private bool isDead = false;
-
+    // ==================== Components ====================
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private GameObject rangeAttackProjectile;
+    private TextMeshProUGUI monsterNameText;
+    private GameObject SliderContainer;
+    private Slider hpSlider;
+
+    // ==================== Modules ====================
     private MonsterMovement movement;
     private MonsterAI ai;
     private MonsterCombat combat;
     private MonsterSpawnManager spawnManager;
     private DamageTextSpawner damageTextSpawner;
 
+    // ==================== State Variables ====================
+    private CharacterStats stats;
+    private bool isDead = false;
+    // ==================== Data ====================
+    private MonsterData monsterData;
+    // ==================== Other ====================
     private Transform playerTransform;
     private MonsterSpawnArea parentSpawnArea;
     private Collider2D cachedSpawnAreaCollider;
 
-    [Header("Monster UI")]
-    [SerializeField] private TextMeshProUGUI monsterNameText;
-    [SerializeField] private GameObject SliderContainer;
-    [SerializeField] private Slider hpSlider;
+    
 
     void Awake()
     {
