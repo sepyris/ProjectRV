@@ -337,7 +337,6 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
 
     
     /// 상태 아이콘 가져오기
-    ///  새로운 상태 흐름에 맞춰 수정 
     
     private string GetStatusIcon(QuestData quest)
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,8 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
     public Button ActiveSkillTabButton;
     public GameObject skillUIPrepabs;
 
+    private bool isOpen = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -28,27 +31,49 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
             Destroy(gameObject);
         }
         skillUIPanel.SetActive(false);
-    }
+        SetupButtons();
 
-    // Start is called before the first frame update
-    void Start()
+    }
+    private void SetupButtons()
     {
-        
+        if (SkillUiCloseButton != null)
+            SkillUiCloseButton.onClick.AddListener(CloseSkillUI);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenSkillUI()
     {
-        
+        if (isOpen) return;
+
+        // 대화 중이면 열지 않음
+        if (DialogueUIManager.Instance != null && DialogueUIManager.Instance.IsDialogueOpen)
+            return;
+
+        isOpen = true;
+        skillUIPanel.SetActive(true);
+        PlayerHUD.Instance?.RegisterUI(this);
     }
 
+    public void CloseSkillUI()
+    {
+        if (!isOpen) return;
+
+        isOpen = false;
+        skillUIPanel.SetActive(false);
+        PlayerHUD.Instance?.UnregisterUI(this);
+    }
+    public bool IsSkillUIOpen()
+    {
+        return isOpen;
+    }
     public void Close()
     {
-        throw new System.NotImplementedException();
+        CloseSkillUI();
     }
 
     public GameObject GetUIPanel()
     {
-        throw new System.NotImplementedException();
+        return skillUIPanel;
     }
+
+
 }

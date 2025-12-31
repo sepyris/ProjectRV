@@ -66,7 +66,7 @@ public class GameLoadingSceneManager : MonoBehaviour
         string characterName = CharacterSaveManager.Instance.CurrentCharacter.stats.characterName;
         Debug.Log($"[GameLoading] '{characterName}' 캐릭터 데이터 로딩 중...");
 
-        //  여기가 핵심! LoadGame 대신 LoadCurrentCharacterGameData 호출
+        
         CharacterSaveManager.Instance.LoadCurrentCharacterGameData();
 
         // 3. 로드할 씬 결정

@@ -42,7 +42,7 @@ public class CanvasClickFixDiagnostic : MonoBehaviour
 
         if (canvas == null)
         {
-            Debug.LogError("❌ Canvas 컴포넌트를 찾을 수 없습니다!");
+            Debug.LogError(" Canvas 컴포넌트를 찾을 수 없습니다!");
             return;
         }
 
@@ -57,14 +57,14 @@ public class CanvasClickFixDiagnostic : MonoBehaviour
             Debug.Log($"  Camera: {(canvas.worldCamera != null ? canvas.worldCamera.name : "없음!")}");
             if (canvas.worldCamera == null)
             {
-                Debug.LogWarning("⚠️ Render Mode가 Camera인데 카메라가 할당되지 않았습니다!");
+                Debug.LogWarning(" Render Mode가 Camera인데 카메라가 할당되지 않았습니다!");
             }
         }
 
         // 2. Canvas Scaler 확인
         if (canvasScaler == null)
         {
-            Debug.LogWarning("⚠️ CanvasScaler가 없습니다! 이것이 문제의 원인일 수 있습니다.");
+            Debug.LogWarning(" CanvasScaler가 없습니다! 이것이 문제의 원인일 수 있습니다.");
         }
         else
         {
@@ -85,7 +85,7 @@ public class CanvasClickFixDiagnostic : MonoBehaviour
 
                 if (Mathf.Abs(currentAspect - referenceAspect) > 0.2f)
                 {
-                    Debug.LogWarning("⚠️ 화면 비율과 레퍼런스 비율이 크게 다릅니다! 이것이 문제의 원인일 수 있습니다.");
+                    Debug.LogWarning(" 화면 비율과 레퍼런스 비율이 크게 다릅니다! 이것이 문제의 원인일 수 있습니다.");
                 }
             }
             else if (canvasScaler.uiScaleMode == CanvasScaler.ScaleMode.ConstantPixelSize)
@@ -104,7 +104,7 @@ public class CanvasClickFixDiagnostic : MonoBehaviour
 
             if (canvasRect.localScale != Vector3.one)
             {
-                Debug.LogWarning("⚠️ Canvas의 Scale이 (1,1,1)이 아닙니다! 클릭 영역 문제의 원인일 수 있습니다.");
+                Debug.LogWarning(" Canvas의 Scale이 (1,1,1)이 아닙니다! 클릭 영역 문제의 원인일 수 있습니다.");
             }
         }
 
@@ -112,7 +112,7 @@ public class CanvasClickFixDiagnostic : MonoBehaviour
         GraphicRaycaster raycaster = GetComponent<GraphicRaycaster>();
         if (raycaster == null)
         {
-            Debug.LogError("❌ GraphicRaycaster가 없습니다! UI 클릭이 불가능합니다.");
+            Debug.LogError(" GraphicRaycaster가 없습니다! UI 클릭이 불가능합니다.");
         }
         else
         {
@@ -140,28 +140,28 @@ public class CanvasClickFixDiagnostic : MonoBehaviour
             // 버튼의 Scale 확인
             if (buttonRect.localScale != Vector3.one)
             {
-                Debug.LogWarning($"  ⚠️ {button.gameObject.name}: Scale이 비정상 ({buttonRect.localScale})");
+                Debug.LogWarning($"   {button.gameObject.name}: Scale이 비정상 ({buttonRect.localScale})");
                 misalignedCount++;
             }
 
             // 버튼의 Pivot 확인
             if (buttonRect.pivot != new Vector2(0.5f, 0.5f))
             {
-                Debug.Log($"  ℹ️ {button.gameObject.name}: Pivot이 중앙이 아님 ({buttonRect.pivot})");
+                Debug.Log($"   {button.gameObject.name}: Pivot이 중앙이 아님 ({buttonRect.pivot})");
             }
 
             // Image raycastTarget 확인
             Image image = button.GetComponent<Image>();
             if (image != null && !image.raycastTarget)
             {
-                Debug.LogWarning($"  ⚠️ {button.gameObject.name}: Image의 Raycast Target이 꺼져있음");
+                Debug.LogWarning($"   {button.gameObject.name}: Image의 Raycast Target이 꺼져있음");
                 misalignedCount++;
             }
         }
 
         if (misalignedCount > 0)
         {
-            Debug.LogWarning($"⚠️ {misalignedCount}개의 버튼에 문제가 발견되었습니다.");
+            Debug.LogWarning($" {misalignedCount}개의 버튼에 문제가 발견되었습니다.");
         }
         else
         {
@@ -259,7 +259,7 @@ public class CanvasClickFixDiagnostic : MonoBehaviour
             // Button interactable 확인
             if (!button.interactable)
             {
-                Debug.LogWarning($"  ⚠️ {button.gameObject.name}: Interactable이 꺼져있습니다 (수동 확인 필요)");
+                Debug.LogWarning($"   {button.gameObject.name}: Interactable이 꺼져있습니다 (수동 확인 필요)");
             }
 
             if (wasFixed)

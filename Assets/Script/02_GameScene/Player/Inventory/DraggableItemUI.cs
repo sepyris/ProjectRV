@@ -5,11 +5,6 @@ using UnityEngine.UI;
 
 /// 인벤토리 아이템을 드래그할 수 있게 해주는 컴포넌트
 /// 장비창으로 드래그하여 장착 가능
-/// 
-///  핵심 수정:
-/// 1. dragVisual이 raycast를 차단하지 않도록 설정
-/// 2. 상점 팝업 대신 전용 버리기 팝업 사용
-/// 3. 드래그 중 UI 갱신으로 인한 잔상 문제 해결
 
 public class DraggableItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -79,13 +74,12 @@ public class DraggableItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         dragRect.position = rectTransform.position;
         dragRect.sizeDelta = rectTransform.sizeDelta;
 
-        //  핵심: dragVisual이 raycast를 차단하지 않도록 설정
         CanvasGroup dragVisualCanvasGroup = dragVisual.GetComponent<CanvasGroup>();
         if (dragVisualCanvasGroup == null)
         {
             dragVisualCanvasGroup = dragVisual.AddComponent<CanvasGroup>();
         }
-        dragVisualCanvasGroup.blocksRaycasts = false;  // 이게 핵심!
+        dragVisualCanvasGroup.blocksRaycasts = false;
         dragVisualCanvasGroup.alpha = 0.7f;  // 약간 투명하게
 
         // 원본은 투명하게

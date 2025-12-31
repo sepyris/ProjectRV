@@ -30,8 +30,8 @@ public enum EquipmentSlot
     Helmet,        // 모자
     Armor,         // 옷
     Shoes,         // 신발
-    MeleeWeapon,   //  근거리 무기 (기존 Weapon 대체)
-    RangedWeapon,  //  원거리 무기 (새로 추가)
+    MeleeWeapon,   //  근거리 무기
+    RangedWeapon,  //  원거리 무기
     SubWeapon,     // 보조무기
     Ring,          // 반지
     Necklace,      // 목걸이

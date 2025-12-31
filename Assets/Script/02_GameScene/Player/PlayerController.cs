@@ -152,6 +152,7 @@ public class PlayerController : MonoBehaviour
         playerControls.Player.ToggleInventory.performed += OnToggleInventoryPerformed;
         playerControls.Player.ToggleStats.performed += OnToggleStatsPerformed;
         playerControls.Player.ToggleEquipment.performed += OnToggleEquipmentPerformed;
+        playerControls.Player.ToggleSkill.performed += OnToggleSkillPerformed;
 
         // Cancel (Close Top UI)
         playerControls.Player.Cancel.performed += OnCancel;
@@ -340,6 +341,15 @@ public class PlayerController : MonoBehaviour
             return;
 
         PlayerHUD.Instance.ToggleEquipmentUI();
+    }
+
+    private void OnToggleSkillPerformed(InputAction.CallbackContext context)
+    {
+        // 대화 중이면 장비창 열지 않음
+        if (DialogueUIManager.Instance != null && DialogueUIManager.Instance.IsDialogueOpen)
+            return;
+
+        PlayerHUD.Instance.ToggleSkillUI();
     }
     private void OnCancel(InputAction.CallbackContext context)
     {

@@ -191,7 +191,7 @@ public class PlayerInteraction
         // 채집 애니메이션 재생
         animationController?.PlayAnimation("Gather");
 
-        // --- 👇 키 입력으로 중지 가능한 부분 👇 ---
+        // ---  키 입력으로 중지 가능한 부분  ---
         float gatherTime = targetObject.GetGatherTime();
         float elapsedTime = 0f;
 
@@ -209,13 +209,13 @@ public class PlayerInteraction
                 currentNearestGathering = null;
                 targetObject.CancelProgress();
                 targetObject.ShowPrompt();
-                yield break; // 👈 코루틴 즉시 종료
+                yield break; //  코루틴 즉시 종료
             }
             targetObject.UpdateProgress(elapsedTime / gatherTime);
             elapsedTime += Time.deltaTime;
-            yield return null; // 👈 다음 프레임까지 대기
+            yield return null; //  다음 프레임까지 대기
         }
-        // --- 👆 키 입력으로 중지 가능한 부분 👆 ---
+        // ---  키 입력으로 중지 가능한 부분  ---
 
         // 채집 완료 처리 (정상 종료 시에만 실행)
         targetObject.Gather(hasTool);

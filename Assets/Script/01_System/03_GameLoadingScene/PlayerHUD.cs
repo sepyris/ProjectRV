@@ -23,9 +23,9 @@ public class PlayerHUD : MonoBehaviour
 
     // ==================== UI 레이어 관리 ====================
 
-    
+
     /// UI를 열 때 호출 - 맨 위로 올림
-    
+
     public void RegisterUI(IClosableUI ui)
     {
         if (ui == null) return;
@@ -42,9 +42,9 @@ public class PlayerHUD : MonoBehaviour
         Debug.Log($"[PlayerHUD] UI 등록: {ui.GetUIPanel().name}, 총 {openedUIs.Count}개");
     }
 
-    
+
     /// UI를 닫을 때 호출
-    
+
     public void UnregisterUI(IClosableUI ui)
     {
         if (openedUIs.Contains(ui))
@@ -54,31 +54,31 @@ public class PlayerHUD : MonoBehaviour
         }
     }
 
-    
+
     /// UiDragger에서 사용
     /// 드래그시에 선택된 UI를 맨위로 설정
-    
+
     public void SetTopUI(GameObject ui_panel)
     {
         IClosableUI current_ui = null;
         foreach (var ui in openedUIs)
         {
-            if(ui.GetUIPanel() == ui_panel)
+            if (ui.GetUIPanel() == ui_panel)
             {
                 current_ui = ui;
                 break;
             }
         }
-        if(current_ui != null)
+        if (current_ui != null)
         {
             RegisterUI(current_ui);
         }
     }
 
-    
+
     /// PlayerController의 Cancel 입력에서 호출
     /// 맨 위 UI 닫기
-    
+
     public void CloseTopUI()
     {
         if (openedUIs.Count == 0)
@@ -93,9 +93,9 @@ public class PlayerHUD : MonoBehaviour
         topUI.Close();
     }
 
-    
+
     /// 모든 UI 닫기
-    
+
     public void CloseAllUIs()
     {
         while (openedUIs.Count > 0)
@@ -104,25 +104,25 @@ public class PlayerHUD : MonoBehaviour
         }
     }
 
-    
+
     /// 열린 UI 개수
-    
+
     public int GetOpenUICount()
     {
         return openedUIs.Count;
     }
 
-    
+
     /// UI가 하나라도 열려있는지
-    
+
     public bool IsAnyUIOpen()
     {
         return openedUIs.Count > 0;
     }
 
-    
+
     /// 맨 위 UI 가져오기
-    
+
     public GameObject GetTopUIPanel()
     {
         if (openedUIs.Count > 0)
@@ -168,5 +168,16 @@ public class PlayerHUD : MonoBehaviour
             EquipmentUIManager.Instance.CloseEquipmentUI();
         else
             EquipmentUIManager.Instance.OpenEquipmentUI();
+    }
+
+    public void ToggleSkillUI()
+    {
+        if (SkillUIManager.Instance == null) return;
+
+        if (SkillUIManager.Instance.IsSkillUIOpen())
+            SkillUIManager.Instance.CloseSkillUI();
+        else
+            SkillUIManager.Instance.OpenSkillUI();
+
     }
 }

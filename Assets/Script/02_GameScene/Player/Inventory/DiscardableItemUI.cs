@@ -6,11 +6,6 @@ using UnityEngine.UI;
 /// 모든 아이템을 드래그하여 버릴 수 있게 해주는 컴포넌트
 /// UI 밖으로 드래그하면 아이템 버리기 팝업 표시
 /// 장비 아이템은 DraggableItemUI와 함께 사용됨
-/// 
-///  핵심 수정:
-/// 1. dragVisual이 raycast를 차단하지 않도록 설정
-/// 2. 상점 팝업 대신 전용 버리기 팝업 사용
-/// 3. 드래그 중 UI 갱신으로 인한 잔상 문제 해결
 
 public class DiscardableItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -88,13 +83,12 @@ public class DiscardableItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler,
         dragRect.position = rectTransform.position;
         dragRect.sizeDelta = rectTransform.sizeDelta;
 
-        //  핵심: dragVisual이 raycast를 차단하지 않도록 설정
         CanvasGroup dragVisualCanvasGroup = dragVisual.GetComponent<CanvasGroup>();
         if (dragVisualCanvasGroup == null)
         {
             dragVisualCanvasGroup = dragVisual.AddComponent<CanvasGroup>();
         }
-        dragVisualCanvasGroup.blocksRaycasts = false;  // 이게 핵심!
+        dragVisualCanvasGroup.blocksRaycasts = false;
         dragVisualCanvasGroup.alpha = 0.7f;  // 약간 투명하게
 
         // 원본은 투명하게

@@ -86,7 +86,6 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
         }
     }
 
-    // ===== 새로 추가: Maximize Panel 설정 =====
     private void SetupMaximizePanel()
     {
         // 초기에는 패널 숨기기

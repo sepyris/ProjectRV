@@ -432,7 +432,7 @@ public class CharacterSaveManager : MonoBehaviour
 
         if (!System.IO.File.Exists(savePath))
         {
-            Debug.LogWarning($"[SaveManager] ❌ 저장 파일이 존재하지 않습니다!");
+            Debug.LogWarning($"[SaveManager]  저장 파일이 존재하지 않습니다!");
             Debug.LogWarning($"[SaveManager] 초기 데이터로 시작합니다.");
 
             CurrentGlobalData = new GlobalSaveData();
@@ -455,7 +455,7 @@ public class CharacterSaveManager : MonoBehaviour
 
         if (gameData == null)
         {
-            Debug.LogError($"[SaveManager] ❌ 파일 로드 실패 (복호화 실패?)");
+            Debug.LogError($"[SaveManager]  파일 로드 실패 (복호화 실패?)");
             CurrentGlobalData = new GlobalSaveData();
 
             if (InventoryManager.Instance != null) InventoryManager.Instance.ClearInventory();
@@ -497,7 +497,7 @@ public class CharacterSaveManager : MonoBehaviour
             }
             else
             {
-                Debug.Log($"[SaveManager] ℹ️ 저장된 인벤토리 데이터 없음");
+                Debug.Log($"[SaveManager]  저장된 인벤토리 데이터 없음");
             }
         }
 
@@ -518,7 +518,7 @@ public class CharacterSaveManager : MonoBehaviour
                 // 3. 퀘스트 내역 출력
                 foreach (var quest in gameData.questData.quests)
                 {
-                    Debug.Log($"  📜 {quest.questId}: {quest.status}");
+                    Debug.Log($"   {quest.questId}: {quest.status}");
                 }
 
                 // 4. 로드
@@ -530,7 +530,7 @@ public class CharacterSaveManager : MonoBehaviour
             }
             else
             {
-                Debug.Log($"[SaveManager] ℹ️ 저장된 퀘스트 데이터 없음");
+                Debug.Log($"[SaveManager]  저장된 퀘스트 데이터 없음");
             }
         }
 

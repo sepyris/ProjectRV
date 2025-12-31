@@ -5,11 +5,6 @@ using UnityEngine.UI;
 
 /// 장착된 장비를 드래그하여 해제할 수 있게 해주는 컴포넌트
 /// EquipmentSlotUI에 추가하여 사용
-/// 
-///  핵심 수정:
-/// 1. dragVisual이 raycast를 차단하지 않도록 설정
-/// 2. currentItem null 체크 강화
-/// 3. 무기 슬롯 드래그 시 실제 장착된 슬롯(MeleeWeapon/RangedWeapon) 찾기
 
 public class DraggableEquipmentUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -109,7 +104,6 @@ public class DraggableEquipmentUI : MonoBehaviour, IBeginDragHandler, IDragHandl
             RectTransform dragRect = dragVisual.GetComponent<RectTransform>();
             dragRect.position = rectTransform.position;
 
-            //  핵심: dragVisual이 raycast를 차단하지 않도록 설정
             CanvasGroup dragVisualCanvasGroup = dragVisual.GetComponent<CanvasGroup>();
             if (dragVisualCanvasGroup == null)
             {

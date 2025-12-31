@@ -480,6 +480,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         if (EquipmentUIManager.Instance != null)
             EquipmentUIManager.Instance.CloseEquipmentUI();
 
+        if(SkillUIManager.Instance != null)
+            SkillUIManager.Instance.CloseSkillUI();
+
         if (pauseMenuPanel != null)
             pauseMenuPanel.SetActive(false);
 

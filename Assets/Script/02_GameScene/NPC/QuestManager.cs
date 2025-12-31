@@ -230,7 +230,7 @@ public class QuestManager : MonoBehaviour
     }
     #endregion
 
-    #region 목표(객체) 업데이트 (핵심)
+    #region 목표(객체) 업데이트
     
     /// 지정된 퀘스트의 특정 타겟 목표를 업데이트한다.
     

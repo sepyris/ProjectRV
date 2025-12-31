@@ -166,4 +166,13 @@ public class CharacterCreateUI : MonoBehaviour
             errorMessageText.gameObject.SetActive(false);
         }
     }
+
+    public void OnEnterPressed(string input)
+    {
+        // 엔터(Submit) 키를 눌러서 입력이 끝난 경우인지 확인
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            confirmButton.onClick.Invoke(); // 버튼의 클릭 이벤트를 강제로 실행
+        }
+    }
 }

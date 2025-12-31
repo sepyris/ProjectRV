@@ -132,6 +132,7 @@ public class ShopUIManager : MonoBehaviour, IClosableUI
             EquipmentUIManager.Instance?.CloseEquipmentUI();
         }
 
+
         currentBuyMode = ShopMode.Buy;
         currentSellMode = ShopMode.SellEquipment;
         RefreshAllUI();
