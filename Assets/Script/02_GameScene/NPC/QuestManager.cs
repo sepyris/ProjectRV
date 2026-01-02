@@ -23,6 +23,8 @@ public class QuestManager : MonoBehaviour
     /// 퀘스트 목표가 업데이트될 때 발생하는 이벤트
     /// </summary>
     public event System.Action<string> OnQuestObjectiveUpdated;
+
+
     // =======================
 
     void Awake()

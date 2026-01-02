@@ -45,7 +45,7 @@ namespace Definitions
         public const string SCENE_PREFIX_TOWN = "Map_Town_";
         public const string SCENE_PREFIX_FIELD = "Map_Field_";
         public const string SCENE_PREFIX_DUNGEON = "Map_Dungeon_";
-        public const string SCENE_NAME_DEFAULT_MAP = "Map_Town_Tutorial01";
+        public const string SCENE_NAME_DEFAULT_MAP = "Map_Town_FOR_001";
 
         // 입력 축
         public const string HORIZONTAL = "Horizontal";

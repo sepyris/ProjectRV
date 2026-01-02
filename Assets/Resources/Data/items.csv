@@ -55,3 +55,5 @@ quest_key_dungeon,던전 열쇠,QuestItem,던전을 여는 열쇠,1,0,0,Icons/Qu
 quest_ring_lost,잃어버린 반지,QuestItem,누군가의 반지,1,0,0,Icons/Quest/ring_lost,FALSE,,,,,,,,,,,
 quest_tooth_wolf,늑대 이빨,QuestItem,늑대 사냥 증표,99,0,0,Icons/Quest/tooth_wolf,FALSE,,,,,,,,,,,
 quest_feather_phoenix,불사조 깃털,QuestItem,전설의 불사조 깃털,1,0,0,Icons/Quest/feather_phoenix,FALSE,,,,,,,,,,,
+quest_rumo_letter,루모의편지,QuestItem,,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
+quest_rura_letter,루라의편지,QuestItem,,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,

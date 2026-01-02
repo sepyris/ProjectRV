@@ -47,11 +47,11 @@ MonoBehaviour:
       \uD638\uAE30\uC2EC\uC774 \uB9CE\uC2B5\uB2C8\uB2E4."
     level: 3
     monsterType: 0
-    isAggressive: 1
-    isRanged: 1
+    isAggressive: 0
+    isRanged: 0
     attackSpeed: 1.2
     moveSpeed: 2.5
-    detectionRange: 3
+    detectionRange: 8
     strBonus: 5
     dexBonus: 5
     intBonus: 1

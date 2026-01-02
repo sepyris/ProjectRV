@@ -19,5 +19,5 @@ MonoBehaviour:
       limitedStock: -1
     - itemid: quest_letter_mayor
       limitedStock: 1
-    - itemid: staff_wooden
+    - itemid: sword_wooden
       limitedStock: -1

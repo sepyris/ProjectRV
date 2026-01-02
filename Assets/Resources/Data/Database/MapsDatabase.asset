@@ -16,421 +16,421 @@ MonoBehaviour:
   - mapId: TTK_001
     mapName: "\uC774\uB984\uC5C6\uB294\uACF5\uAC04"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: FOR_001
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: FOR_101
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB3D9\uCABD - \uC0C8\uC2F9 \uC232"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: FOR_102
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB3D9\uCABD - \uD478\uB978 \uC232"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: FOR_103
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB3D9\uCABD - \uAE4A\uC740 \uC232"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: FOR_104
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uBD81\uCABD - \uCE7C\uB370\uB77C \uAC00\uB294
       \uAE38"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: FOR_105
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB0A8\uCABD - \uD37C\uD329\uD1A0\uB9AC
       \uAC00\uB294 \uAE38"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: FOR_106
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB0A8\uB3D9\uCABD - \uC2DC\uC624\uB9AC\uC548
       \uAC00\uB294 \uAE381"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: FOR_107
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB0A8\uB3D9\uCABD - \uC2DC\uC624\uB9AC\uC548
       \uAC00\uB294 \uAE382"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_001
     mapName: "\uCE7C\uB370\uB77C \uC2A4\uD504\uB9C1\uC2A4"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_002
     mapName: "\uC11C\uBA40 \uAC00\uB4E0"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_003
     mapName: "\uC11C\uBA40 \uAC00\uB4E0 - \uC628\uCC9C"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_101
     mapName: "\uB124\uC774\uCC98\uD480 - \uB77C\uC6B4\uC9C0"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_102
     mapName: "\uB124\uC774\uCC98\uD480 - 1\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_103
     mapName: "\uB124\uC774\uCC98\uD480 - 2\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_104
     mapName: "\uCE7C\uB370\uB77C \uC2A4\uD504\uB9C1\uC2A4 - \uC560\uC2DC \uD0C0\uC6B4
       \uAC00\uB294 \uAE38"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_005
     mapName: "\uC560\uC2DC \uD0C0\uC6B4"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_105
     mapName: "\uC560\uC2DC \uD0C0\uC6B4 \uC11C\uCABD - \uD654\uC0B0\uC7AC \uD544\uB4DC
       1"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_106
     mapName: "\uC560\uC2DC \uD0C0\uC6B4 \uC11C\uCABD - \uD654\uC0B0\uC7AC \uD544\uB4DC
       2"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_107
     mapName: "\uC560\uC2DC \uB9C8\uC6B4\uD2B8 - \uB4F1\uC0B0\uB85C \uC785\uAD6C"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_108
     mapName: "\uC560\uC2DC \uB9C8\uC6B4\uD2B8 - \uB4F1\uC0B0\uB85C 1"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_109
     mapName: "\uC560\uC2DC \uB9C8\uC6B4\uD2B8 - \uB4F1\uC0B0\uB85C 2"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_110
     mapName: "\uC560\uC2DC \uB9C8\uC6B4\uD2B8 - \uC774\uB984\uC5C6\uB294 \uC628\uCC9C"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_111
     mapName: "\uCE7C\uB370\uB77C \uC2A4\uD504\uB9C1\uC2A4 - \uD3A0\uB9AC\uC2A4\uD0C0\uC6B4
       \uAC00\uB294 \uAE38"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_201
     mapName: "\uB9E4\uBAB0\uB41C \uAD6C \uCE7C\uB370\uB77C 1\uAD6C\uC5ED"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_202
     mapName: "\uB9E4\uBAB0\uB41C \uAD6C \uCE7C\uB370\uB77C 2\uAD6C\uC5ED"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_203
     mapName: "\uB9E4\uBAB0\uB41C \uAD6C \uCE7C\uB370\uB77C \uBCF4\uC2A4\uBC29"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_205
     mapName: "\uC560\uC2DC \uB9C8\uC6B4\uD2B8 \uCD5C\uC2EC\uBD801"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_206
     mapName: "\uC560\uC2DC \uB9C8\uC6B4\uD2B8 \uCD5C\uC2EC\uBD802"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: CAL_207
     mapName: "\uC560\uC2DC \uB9C8\uC6B4\uD2B8 \uCD5C\uC2EC\uBD803"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_001
     mapName: "\uD37C\uD329\uD1A0\uB9AC"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_101
     mapName: "\uD37C\uD329\uD1A0\uB9AC - \uB18D\uC7A5 1\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_102
     mapName: "\uD37C\uD329\uD1A0\uB9AC - \uB18D\uC7A5 2\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_103
     mapName: "\uD37C\uD329\uD1A0\uB9AC - \uB18D\uC7A5 3\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_104
     mapName: "\uD37C\uD329\uD1A0\uB9AC - \uB18D\uC7A5 4\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_105
     mapName: "\uD37C\uD329\uD1A0\uB9AC - \uB18D\uC7A5 5\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_106
     mapName: "\uD37C\uD329\uD1A0\uB9AC - \uC2DC\uC624\uB9AC\uC548 \uAC00\uB294 \uAE38"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_002
     mapName: "\uBE14\uB8F8\uD329\uD1A0\uB9AC"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_003
     mapName: "\uBE14\uB8F8\uD329\uD1A0\uB9AC - 2\uCE35"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_108
     mapName: "\uBE14\uB8F8\uD329\uD1A0\uB9AC - 2\uCE35 1\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_109
     mapName: "\uBE14\uB8F8\uD329\uD1A0\uB9AC - 2\uCE35 2\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_110
     mapName: "\uBE14\uB8F8\uD329\uD1A0\uB9AC - 2\uCE35 3\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_004
     mapName: "\uBE14\uB8F8\uD329\uD1A0\uB9AC - 3\uCE35"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_111
     mapName: "\uBE14\uB8F8\uD329\uD1A0\uB9AC - \uC9C0\uD558 1\uCE35"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_112
     mapName: "\uBE14\uB8F8\uD329\uD1A0\uB9AC - \uC9C0\uD558 2\uCE35"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_201
     mapName: "\uD3D0\uAE30\uB41C \uC5F0\uAD6C\uC18C - 1\uAD6C\uC5ED"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_202
     mapName: "\uD3D0\uAE30\uB41C \uC5F0\uAD6C\uC18C - 2\uAD6C\uC5ED"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_203
     mapName: "\uD3D0\uAE30\uB41C \uC5F0\uAD6C\uC18C - 3\uAD6C\uC5ED"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_204
     mapName: "\uBD80\uC0B0\uBB3C \uC5F0\uAD6C\uC18C \uCD5C\uC2EC\uBD80 - 1\uAD6C\uC5ED"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_205
     mapName: "\uBD80\uC0B0\uBB3C \uC5F0\uAD6C\uC18C \uCD5C\uC2EC\uBD80 - 2\uAD6C\uC5ED"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: PER_206
     mapName: "\uBD80\uC0B0\uBB3C \uC5F0\uAD6C\uC18C \uCD5C\uC2EC\uBD80 - 3\uAD6C\uC5ED"
     mapType: Dungeon
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: SER_001
     mapName: "\uC138\uB808\uB2C8\uD2F0 \uBE44\uCE58"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: SER_002
     mapName: "\uC138\uB808\uB2C8\uD2F0 \uBE44\uCE58 - \uC120\uCC29\uC7A5"
     mapType: Town
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: SER_101
     mapName: "\uC624\uC158\uBE0C\uB9AC\uC988 - 2\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: SER_102
     mapName: "\uC624\uC158\uBE0C\uB9AC\uC988 - 1\uAD6C\uC5ED"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: SER_103
     mapName: "\uC138\uB808\uB2C8\uD2F0 \uBE44\uCE58 - \uBC31\uC0AC\uC7A5"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: SER_104
     mapName: "\uC138\uB808\uB2C8\uD2F0 \uBE44\uCE58 - \uD551\uD06C\uC0CC\uB4DC"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: SER_105
     mapName: "\uC138\uB808\uB2C8\uD2F0 \uBE44\uCE58 - \uC5F0\uC548"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []
   - mapId: SER_106
     mapName: "\uC138\uB808\uB2C8\uD2F0 \uBE44\uCE58 - \uC808\uBCBD"
     mapType: Field
-    mapDescription: 
-    parentMapId: 
+    mapRecommendedLevel: 
     spawnPoint: {x: 0, y: 0, z: 0}
+    parentMapId: 
     connectedMaps: []

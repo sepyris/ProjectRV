@@ -8,15 +8,16 @@ public class MonsterController : MonoBehaviour
     // ==================== Inspector Settings ====================
     [Header("Monster id")]
     [SerializeField] private string monsterid;
+    [Header("Monster UI")]
+    [SerializeField] private TextMeshProUGUI monsterNameText;
+    [SerializeField] private GameObject SliderContainer;
+    [SerializeField] private Slider hpSlider;
 
     // ==================== Components ====================
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private GameObject rangeAttackProjectile;
-    private TextMeshProUGUI monsterNameText;
-    private GameObject SliderContainer;
-    private Slider hpSlider;
 
     // ==================== Modules ====================
     private MonsterMovement movement;
@@ -276,6 +277,11 @@ public class MonsterController : MonoBehaviour
                 if (monsterData.dropGold > 0)
                 {
                     FloatingItemManager.Instance?.ShowItemMessage("Gold", monsterData.dropGold);
+                }
+                // 퀘스트 매니저에 몬스터킬 알림
+                if (QuestManager.Instance != null)
+                {
+                    QuestManager.Instance.UpdateKillProgress(monsterid);
                 }
             }
         }

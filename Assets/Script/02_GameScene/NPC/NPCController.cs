@@ -56,14 +56,24 @@ public class NPCController : MonoBehaviour
         {
             interactPromptObject.SetActive(false);
         }
-
+        // 퀘스트 매니저의 이벤트 구독
+        if (QuestManager.Instance != null)
+        {
+            //모든 퀘스트는 퀘스트에서 관리하기에 구독 취소는 안함
+            QuestManager.Instance.OnQuestStatusChanged += OnQuestStatusChanged;
+        }
         // 이름 초기화 및 위치 설정
         UpdateNameDisplay();
     }
 
-    
+    private void OnQuestStatusChanged(string questId, QuestStatus newStatus)
+    {
+        UpdateStatusIcon();
+    }
+
+
     /// NPC 상태 아이콘 업데이트 (여러 퀘스트 상태를 종합)
-    
+
     public void UpdateStatusIcon()
     {
         if (statusIconRenderer == null) return;

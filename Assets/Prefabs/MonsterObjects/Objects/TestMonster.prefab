@@ -167,7 +167,7 @@ RectTransform:
   m_Father: {fileID: 1524162534644630892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -0.000020981, y: 0.0000085831}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -227,7 +227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2798422416023310769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -593,10 +593,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterid: monster_1000001
-  spriteRenderer: {fileID: 0}
-  animator: {fileID: 0}
   monsterNameText: {fileID: 3014115323751035196}
-  SliderContainer: {fileID: 8954734261904605562}
+  SliderContainer: {fileID: 2600008083718113132}
   hpSlider: {fileID: 3452926575715697979}
 --- !u!50 &7484706044964790226
 Rigidbody2D:

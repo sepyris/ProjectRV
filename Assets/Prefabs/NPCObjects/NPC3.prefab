@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 3166102862950758364}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: -0.04, z: 0}
+  m_LocalPosition: {x: 1.14, y: -0.12, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -450,8 +450,8 @@ Transform:
   m_GameObject: {fileID: 6406343023719068104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.981, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0.04, y: 0.99, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 516872715177528282}
@@ -497,12 +497,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 506976a1169b4b745984de9242504917, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8eccc802fd6358a4eb22d50ff53e647c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 1237544459566318075}
   - component: {fileID: 244522595325780101}
   m_Layer: 9
-  m_Name: NPC2
+  m_Name: NPC3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -613,16 +613,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcType: 1
-  npcId: npc_0002
-  questIds: []
+  npcId: npc_0003
+  questIds:
+  - Quest_004
   statusIconObject: {fileID: 6406343023719068104}
   statusIconRenderer: {fileID: 5442045853951357591}
   interactPromptObject: {fileID: 3166102862950758364}
-  questOfferSprite: {fileID: 21300000, guid: 2620fc4e8c916264d8722da50ddeb026, type: 3}
-  questProgressSprite: {fileID: 21300000, guid: bb92e1fc9a106784485a73dfcd5f8530, type: 3}
-  questCompleteSprite: {fileID: 21300000, guid: e47a9f8277c8b94438189fef7d8ed2cf, type: 3}
-  dialogueOnlySprite: {fileID: 21300000, guid: f717a29dd5dd2204a83b44a8a360323f, type: 3}
-  shopOnlySprite: {fileID: 21300000, guid: 506976a1169b4b745984de9242504917, type: 3}
+  questOfferSprite: {fileID: 21300000, guid: ded3d19ef08bea746b66fbf36d1239ab, type: 3}
+  questProgressSprite: {fileID: 21300000, guid: d26580a76c6faa142889f120e1ce0127, type: 3}
+  questCompleteSprite: {fileID: 21300000, guid: 4b824161af0583f4daa5666c304e5651, type: 3}
+  dialogueOnlySprite: {fileID: 21300000, guid: 8eccc802fd6358a4eb22d50ff53e647c, type: 3}
+  shopOnlySprite: {fileID: 21300000, guid: 9a8f21da88338f94084ede027442a729, type: 3}
   nullSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   npcNameText: {fileID: 3588671879924268694}
 --- !u!50 &1237544459566318075
@@ -760,7 +761,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 506976a1169b4b745984de9242504917, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8eccc802fd6358a4eb22d50ff53e647c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

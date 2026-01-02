@@ -14,26 +14,109 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Items:
   - questId: Quest_001
-    questName: "\uCC98\uC74C \uD558\uB294 \uD018\uC2A4\uD2B8"
-    description: "\uCC98\uC74C \uD558\uB294 \uD018\uC2A4\uD2B8\uC785\uB2C8\uB2E4.\r\n\uC0C1\uC778\uC5D0\uAC8C\uC11C
-      \uC544\uC774\uD15C\uC744 \uC0AC\uC624\uC138\uC694"
+    questName: "\uB9C8\uC744 \uB300\uD45C\uC640 \uC778\uC0AC"
+    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
     prerequisite:
       type: 1
       value: 1
+    preAcceptReward: 
+    questHint: 
+    objectives: []
+    rewardGold: 0
+    rewardExp: 70
+    rewards: []
+    status: 0
+  - questId: Quest_002
+    questName: "\uCCAB \uBC88\uC9F8 \uAC70\uB798"
+    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    prerequisite:
+      type: 3
+      value: Quest_001:Rewarded
     preAcceptReward: item:gold_coin:20
     questHint: 
     objectives:
     - type: 2
-      targetId: quest_letter_mayor
+      targetId: potion_hp_small
       requiredCount: 1
       currentCount: 0
-    rewardGold: 100
-    rewardExp: 50
+    rewardGold: 0
+    rewardExp: 70
     rewards:
-    - itemId: sword_wooden
+    - itemId: potion_hp_small
+      quantity: 5
+      dropRate: 100
+    status: 0
+  - questId: Quest_003
+    questName: "\uC548\uBD80\uB97C \uC804\uD574\uC694"
+    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    prerequisite:
+      type: 3
+      value: Quest_002:Rewarded
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: quest_rumo_letter
+      requiredCount: 1
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 70
+    rewards: []
+    status: 0
+  - questId: Quest_004
+    questName: "\uC57D\uCD08\uB97C \uCE90 \uBD10\uC694"
+    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    prerequisite:
+      type: 3
+      value: Quest_003:Accepted
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: herb_healing
+      requiredCount: 5
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 70
+    rewards:
+    - itemId: quest_rumo_letter
       quantity: 1
       dropRate: 100
-    - itemId: armor_leather
+    status: 0
+  - questId: Quest_005
+    questName: "\uC804\uD22C\uB97C \uC900\uBE44\uD558\uBA70"
+    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    prerequisite:
+      type: 3
+      value: Quest_003:Rewarded
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: quest_rura_letter
+      requiredCount: 1
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 70
+    rewards: []
+    status: 0
+  - questId: Quest_006
+    questName: "\uCCAB \uC804\uD22C \uC5F0\uC2B5"
+    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    prerequisite:
+      type: 3
+      value: Quest_005:Accepted
+    preAcceptReward: item:sword_wooden:1;item:staff_wooden:1;armor_leather:1
+    questHint: 
+    objectives:
+    - type: 1
+      targetId: monster_1000001
+      requiredCount: 5
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 70
+    rewards:
+    - itemId: quest_rura_letter
       quantity: 1
       dropRate: 100
     status: 0

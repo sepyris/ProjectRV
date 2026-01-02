@@ -618,6 +618,7 @@ MonoBehaviour:
   - Quest_001
   - Quest_002
   - Quest_003
+  - Quest_005
   statusIconObject: {fileID: 6406343023719068104}
   statusIconRenderer: {fileID: 5442045853951357591}
   interactPromptObject: {fileID: 3166102862950758364}
