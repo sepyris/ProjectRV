@@ -106,7 +106,7 @@ MonoBehaviour:
     prerequisite:
       type: 3
       value: Quest_005:Accepted
-    preAcceptReward: item:sword_wooden:1;item:staff_wooden:1;armor_leather:1
+    preAcceptReward: item:sword_wooden:1;item:staff_wooden:1;item:armor_leather:1
     questHint: 
     objectives:
     - type: 1

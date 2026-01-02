@@ -4,4 +4,4 @@ Quest_002,첫 번째 거래,"""처음하는 퀘스트 입니다""",QuestStatus,Q
 Quest_003,안부를 전해요,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_002:Rewarded,,,Collect:quest_rumo_letter:1,,70,
 Quest_004,약초를 캐 봐요,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_003:Accepted,,,Collect:herb_healing:5,quest_rumo_letter:1,70,
 Quest_005,전투를 준비하며,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_003:Rewarded,,,Collect:quest_rura_letter:1,,70,
-Quest_006,첫 전투 연습,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_005:Accepted,item:sword_wooden:1;item:staff_wooden:1;armor_leather:1,,Kill:monster_1000001:5,quest_rura_letter:1,70,
+Quest_006,첫 전투 연습,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_005:Accepted,item:sword_wooden:1;item:staff_wooden:1;item:armor_leather:1,,Kill:monster_1000001:5,quest_rura_letter:1,70,
