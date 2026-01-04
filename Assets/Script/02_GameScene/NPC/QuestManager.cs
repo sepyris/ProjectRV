@@ -118,7 +118,7 @@ public class QuestManager : MonoBehaviour
             InitializeCollectObjectives(q);
 
             Debug.Log($"[QuestManager] Quest Accepted: {questId}");
-
+            TutorialManager.Instance.ShowNarrationUi(questId);
             // 이벤트 발생
             OnQuestStatusChanged?.Invoke(questId, q.status);
         }
@@ -218,7 +218,7 @@ public class QuestManager : MonoBehaviour
 
             q.status = QuestStatus.Rewarded;
             Debug.Log($"[QuestManager] Quest Rewarded: {questId}");
-
+            TutorialManager.Instance.CloseNarrationUi();
             // 이벤트 발생
             OnQuestStatusChanged?.Invoke(questId, q.status);
         }

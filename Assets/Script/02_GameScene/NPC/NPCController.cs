@@ -16,7 +16,7 @@ public class NPCController : MonoBehaviour
     public NPCType npcType = NPCType.Dialogue;
     public string npcId;
 
-    [Header("퀘스트 NPC - 여러 퀘스트 할당 가능")]
+    [Header("아이디-퀘스트아이디,상점 아이디도 포함")]
     [Tooltip("이 NPC가 관리하는 퀘스트 id 목록")]
     public List<string> questIds = new List<string>();
 
@@ -25,6 +25,7 @@ public class NPCController : MonoBehaviour
     [SerializeField] private GameObject statusIconObject;
     [Tooltip("상태 아이콘의 SpriteRenderer")]
     [SerializeField] private SpriteRenderer statusIconRenderer;
+    [SerializeField] private GameObject minimap_object;
 
     [Tooltip("NPC 옆 상호작용 프롬프트 GameObject (E키 표시)")]
     [SerializeField] private GameObject interactPromptObject;
@@ -46,6 +47,10 @@ public class NPCController : MonoBehaviour
         if (statusIconObject != null)
         {
             statusIconObject.SetActive(true);
+        }
+        if(minimap_object != null)
+        {
+            minimap_object.SetActive(true);
         }
 
         // 상태 아이콘 스프라이트 초기 업데이트

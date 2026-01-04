@@ -258,7 +258,7 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
         switch (currentTab)
         {
             case QuestTab.Available:
-                return allQuests.Where(q => q.status == QuestStatus.None || q.status == QuestStatus.Offered).ToList();
+                return allQuests.Where(q => (q.status == QuestStatus.None || q.status == QuestStatus.Offered) && q.CanAccept()).ToList();
 
             case QuestTab.InProgress:
                 //  InProgress 탭: Accepted와 Completed 상태 모두 표시 

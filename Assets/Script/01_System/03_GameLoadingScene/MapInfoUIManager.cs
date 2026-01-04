@@ -3,24 +3,14 @@ using UnityEngine;
 
 public class MapInfoUIManager : MonoBehaviour
 {
-    private static MapInfoUIManager instance;
-    public static MapInfoUIManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<MapInfoUIManager>();
-            }
-            return instance;
-        }
-    }
+    public static MapInfoUIManager Instance {  get; private set; }
 
     [Header("UI References")]
     [SerializeField] private Canvas canvas;
     [SerializeField] private RectTransform mapInfoPanel;
     [SerializeField] private TextMeshProUGUI mapNameText;
     [SerializeField] private TextMeshProUGUI mapLevelText;
+
 
     [Header("Settings")]
     [SerializeField] private Vector2 screenOffset = new Vector2(0, 100);
@@ -31,12 +21,12 @@ public class MapInfoUIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else if (instance != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
             return;

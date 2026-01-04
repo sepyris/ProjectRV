@@ -12,6 +12,7 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
     public RawImage minimapDisplay;
     public RenderTexture minimapTexture;
     public TextMeshProUGUI Map_Name;
+    public TextMeshProUGUI minimap_Time_Text;
 
     [Header("Maximize_References")]
     public GameObject maximize_Minimap_Panel;
@@ -46,6 +47,15 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
     [Tooltip("WorldBorder를 찾지 못했을 때 사용할 기본 orthographicSize")]
     public float defaultOrthographicSize = 50f;
 
+    [Header("설정")]
+    [Tooltip("현실의 몇 분을 게임의 하루로 할 것인가")]
+    public float realLifeMinutesPerDay = 24f;
+
+    [Header("현재 상태")]
+    [Range(0, 24)]
+    public float currentTime = 8f; // 0~24시 (8시는 아침 8시 시작)
+    public float timeMultiplier;
+
     private Transform player;
     private float nextUpdateTime = 0f;
     private bool isSetupComplete = false;
@@ -69,7 +79,7 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
         SetupMinimapCamera();
         SetupRenderTextureIfNeeded();
         SetupMaximizePanel();
-
+        timeMultiplier = 24f / (realLifeMinutesPerDay * 60f);
         Debug.Log("[MiniMap] 초기 설정 완료. 게임 씬 대기 중...");
     }
 
@@ -84,6 +94,25 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
                 TryFindGameScene();
             }
         }
+        // 시간에 흐름 반영
+        currentTime += Time.deltaTime * timeMultiplier;
+
+        if (currentTime >= 24f)
+        {
+            currentTime = 0f;
+        }
+
+        // --- AM/PM 변환 구간 ---
+        int hours = Mathf.FloorToInt(currentTime);
+        int minutes = Mathf.FloorToInt((currentTime - hours) * 60);
+
+        string ampm = (hours >= 12) ? "PM" : "AM";
+        int displayHours = hours % 12;
+        if (displayHours == 0) displayHours = 12; // 0시와 12시를 '12'로 표시
+
+        // UI 텍스트 업데이트
+        minimap_Time_Text.text = string.Format("{0} {1:00}:{2:00}", ampm, displayHours, minutes);
+
     }
 
     private void SetupMaximizePanel()
@@ -248,7 +277,7 @@ public class MiniMapManager : MonoBehaviour, IClosableUI
             Debug.Log($"[MiniMap] WorldBorder 없음. 기본 크기 사용: {defaultOrthographicSize}");
         }
 
-        minimapCamera.cullingMask = (Def_Layer_Mask_Values.LAYER_MASK_DEFAULT) | (Def_Layer_Mask_Values.LAYER_MASK_MINIMAP_OBJECT);
+        minimapCamera.cullingMask = (Def_Layer_Mask_Values.LAYER_MASK_DEFAULT) | (Def_Layer_Mask_Values.LAYER_MASK_MINIMAP_OBJECT) | (Def_Layer_Mask_Values.LAYER_MASK_WALL);
         minimapCamera.clearFlags = CameraClearFlags.SolidColor;
         minimapCamera.backgroundColor = backgroundColor;
         minimapCamera.depth = -100;
