@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 /// <summary>
 /// 아이템과 스킬 사용 처리 통합 핸들러
@@ -206,36 +207,41 @@ public static class UsageHandler
             return false;
         }
 
-        // 5. TODO: 쿨타임 체크
-        // if (IsSkillOnCooldown(skillId)) return false;
+        // 5. 쿨타임 체크
+        if (SkillCooldownManager.Instance.IsOnCooldown(skillId))
+        {
+            Debug.Log($"[UsageHandler] {data.skillName} 쿨타임 중");
+            return false;
+        }
 
-        // 6. TODO: 마나/리소스 체크
-        // if (!HasEnoughResource(data)) return false;
+        // 6. 스킬 생성
+        SkillBase skill = SkillFactory.CreateSkillById(skillId);
+        if (skill == null)
+        {
+            Debug.LogError($"[UsageHandler] 스킬 생성 실패: {skillId}");
+            return false;
+        }
 
-        // 7. 스킬 효과 발동
-        ApplySkillEffects(data);
+        // 7. 플레이어 Transform 가져오기
+        Transform playerTransform = PlayerController.Instance?.transform;
+        if (playerTransform == null)
+        {
+            Debug.LogWarning("[UsageHandler] PlayerController가 없음");
+            return false;
+        }
 
-        // 8. TODO: 쿨타임 시작
-        // StartSkillCooldown(skillId, data.cooldown);
+        // 8. 타겟 위치 계산 (임시)
+        Vector3 targetPosition = playerTransform.position + playerTransform.forward * 5f;
 
-        Debug.Log($"[UsageHandler] {data.skillName} 스킬 사용");
-        return true;
-    }
-
-    /// <summary>
-    /// 스킬 효과 적용
-    /// </summary>
-    private static void ApplySkillEffects(SkillData data)
-    {
-        // TODO: 스킬 효과 구현
-        // 현재는 로그만 출력
-        Debug.Log($"[UsageHandler] 스킬 '{data.skillName}' 효과 발동 (미구현)");
-
-        // 예시:
-        // - 데미지 스킬: 타겟에게 데미지
-        // - 버프 스킬: 플레이어 스탯 증가
-        // - 힐 스킬: 체력 회복
-        // - 투사체 스킬: 발사체 생성
+        // 9. 스킬 사용
+        bool used = skill.Use(playerTransform, targetPosition);
+        if (used)
+        {
+            // 쿨타임 시작 (매니저에 등록)
+            SkillCooldownManager.Instance.StartCooldown(skillId, data.cooldown);
+            Debug.Log($"[UsageHandler] {data.skillName} 스킬 사용");
+        }
+        return used;
     }
 
     // ==================== UI 갱신 ====================

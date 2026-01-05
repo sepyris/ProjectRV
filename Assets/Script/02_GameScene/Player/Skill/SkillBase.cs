@@ -17,18 +17,6 @@ public abstract class SkillBase
         currentCooldown = 0f;
     }
 
-    // ===== 각 스킬이 오버라이드할 설정들 =====
-
-    protected virtual SkillType Type => SkillType.Damage;
-    protected virtual SkillTargetType TargetType => SkillTargetType.Enemy;
-    protected virtual float Range => 2f;
-    protected virtual float Radius => 0f;
-    protected virtual float CastTime => 0f;
-    protected virtual int ProjectileCount => 0;
-    protected virtual float ProjectileSpeed => 10f;
-    protected virtual string EffectPrefabPath => "";
-    protected virtual string ProjectilePrefabPath => "";
-
     // ===== 공통 속성 =====
 
     public string SkillId => skillData.skillId;
@@ -112,24 +100,6 @@ public abstract class SkillBase
         return skillData.damageRate + (skillData.levelUpDamageRate * (currentLevel - 1));
     }
 
-    // ===== 유틸리티 =====
-
-    /// <summary>
-    /// 이펙트 생성
-    /// </summary>
-    protected GameObject SpawnEffect(Vector3 position, Quaternion rotation)
-    {
-        if (string.IsNullOrEmpty(EffectPrefabPath))
-            return null;
-
-        GameObject prefab = Resources.Load<GameObject>(EffectPrefabPath);
-        if (prefab != null)
-        {
-            return Object.Instantiate(prefab, position, rotation);
-        }
-        return null;
-    }
-
     /// <summary>
     /// 사운드 재생
     /// </summary>
@@ -141,19 +111,6 @@ public abstract class SkillBase
         // TODO: 사운드 매니저 연동
         Debug.Log($"[Skill] Playing sound: {soundPath}");
     }
-}
-
-// ===== Enum 정의 =====
-
-public enum SkillType
-{
-    Damage,
-    Heal,
-    Projectile,
-    Area,
-    Buff,
-    Dash,
-    Summon
 }
 
 public enum SkillTargetType
