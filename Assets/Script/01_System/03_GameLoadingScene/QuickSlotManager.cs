@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 
 /// 퀵슬롯 시스템 관리자
@@ -137,9 +138,7 @@ public class QuickSlotManager : MonoBehaviour
         return true;
     }
 
-    
-    /// 퀵슬롯에 스킬 등록 (추후 확장용)
-    
+    /// 퀵슬롯에 스킬 등록
     public bool RegisterSkill(int slotIndex, string skillId)
     {
         if (!IsValidSlotIndex(slotIndex))
@@ -148,7 +147,26 @@ public class QuickSlotManager : MonoBehaviour
             return false;
         }
 
-        // TODO: 스킬 데이터 검증 (스킬 시스템 구현 후)
+        // 스킬 데이터 검증
+        if (SkillDataManager.Instance != null)
+        {
+            SkillData skillData = SkillDataManager.Instance.GetSkillData(skillId);
+            if (skillData == null)
+            {
+                Debug.LogWarning($"[QuickSlotManager] 스킬을 찾을 수 없음: {skillId}");
+                return false;
+            }
+        }
+
+        // 플레이어가 해당 스킬을 보유하고 있는지 확인
+        if (SkillManager.Instance != null)
+        {
+            if (!SkillManager.Instance.HasSkill(skillId))
+            {
+                Debug.LogWarning($"[QuickSlotManager] 보유하지 않은 스킬: {skillId}");
+                return false;
+            }
+        }
 
         quickSlots[slotIndex].SetSkill(skillId);
         OnQuickSlotChanged?.Invoke(slotIndex, quickSlots[slotIndex]);
@@ -156,9 +174,9 @@ public class QuickSlotManager : MonoBehaviour
         return true;
     }
 
-    
+
     /// 퀵슬롯 비우기
-    
+
     public void ClearSlot(int slotIndex)
     {
         if (!IsValidSlotIndex(slotIndex))
@@ -232,140 +250,43 @@ public class QuickSlotManager : MonoBehaviour
         OnQuickSlotUsed?.Invoke(slotIndex);
     }
 
-    
+
     /// 소모품 사용 (수정됨 - 체력 회복 OR 아이템 지급)
-    
+
     private void UseConsumable(int slotIndex, string itemId)
     {
-        // 인벤토리에 아이템이 있는지 확인
-        if (InventoryManager.Instance == null)
-        {
-            Debug.LogWarning("[QuickSlotManager] InventoryManager가 없음");
-            return;
-        }
+        bool used = UsageHandler.UseConsumable(itemId, removeFromInventory: true);
 
-        InventoryItem item = InventoryManager.Instance.GetItem(itemId);
-        if (item == null || item.quantity <= 0)
+        if (used)
         {
-            Debug.LogWarning($"[QuickSlotManager] 인벤토리에 아이템이 없음: {itemId}");
-            // 슬롯 비우기
-            ClearSlot(slotIndex);
-            return;
-        }
+            UsageHandler.RefreshAllRelatedUIs();
 
-        // 아이템 데이터 가져오기
-        ItemData itemData = item.GetItemData();
-        if (itemData == null)
-        {
-            Debug.LogWarning($"[QuickSlotManager] 아이템 데이터를 찾을 수 없음: {itemId}");
-            return;
-        }
-
-        //  consumableEffect 처리
-        if (string.IsNullOrEmpty(itemData.consumableEffect))
-        {
-            Debug.LogWarning($"[QuickSlotManager] {itemData.itemName}은(는) 사용 효과가 없습니다.");
-            return;
-        }
-
-        //  체력 회복 효과인지 확인
-        if (itemData.IsHealEffect())
-        {
-            int healAmount = itemData.GetHealAmount();
-            if (healAmount > 0 && PlayerStatsComponent.Instance != null)
+            // 아이템 소진 시 슬롯 비우기
+            InventoryItem remainingItem = InventoryManager.Instance.GetItem(itemId);
+            if (remainingItem == null || remainingItem.quantity <= 0)
             {
-                if (PlayerStatsComponent.Instance.Stats.currentHP == PlayerStatsComponent.Instance.Stats.maxHP)
-                {
-
-                    FloatingNotificationManager.Instance.ShowNotification("체력이 가득 차 있습니다.");
-                    return;
-                }
-                else
-                {
-                    PlayerStatsComponent.Instance.Stats.Heal(healAmount);
-                    Debug.Log($"[QuickSlotManager] {itemData.itemName} 사용 - HP {healAmount} 회복");
-                }
+                ClearSlot(slotIndex);
             }
-        }
-        //  아이템 지급 효과
-        else
-        {
-            var rewards = itemData.GetItemRewards();
-            if (rewards != null && rewards.Count > 0)
-            {
-                //  사전 검증: 모든 보상을 받을 수 있는 공간이 있는지 확인
-                if (InventoryManager.Instance != null)
-                {
-                    int requiredSlots = CalculateRequiredSlots(rewards);
-                    int availableSlots = InventoryManager.Instance.GetAvailableSlots();
-
-                    if (availableSlots < requiredSlots)
-                    {
-                        PopupManager.Instance.ShowWarningPopup($"인벤토리가 가득차서 사용할수 없습니다.\n{requiredSlots}칸을 비우고 다시 사용해주세요");
-                        return; // 사용 취소
-                    }
-                }
-
-                Debug.Log($"[QuickSlotManager] {itemData.itemName} 사용 - 아이템 획득");
-
-                foreach (var reward in rewards)
-                {
-                    if (InventoryManager.Instance != null)
-                    {
-                        bool added = InventoryManager.Instance.AddItem(reward.itemId, reward.quantity);
-
-                        if (added)
-                        {
-                            // 획득한 아이템 정보 표시
-                            string rewardName = reward.GetItemName();
-                            if (FloatingNotificationManager.Instance != null)
-                            {
-                                FloatingNotificationManager.Instance.ShowNotification($"{rewardName} :{reward.quantity} 획득!");
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        // 인벤토리에서 아이템 1개 제거
-        InventoryManager.Instance.RemoveItem(itemId, 1);
-
-        // UI 갱신
-        if (ItemUIManager.Instance != null)
-        {
-            ItemUIManager.Instance.RefreshUI();
-        }
-        if (QuickSlotUIManager.Instance != null)
-        {
-            QuickSlotUIManager.Instance.RefreshAllSlots();
-        }
-        if (EquipmentUIManager.Instance != null)
-        {
-            EquipmentUIManager.Instance.RefreshUI();
-        }
-
-
-        // 아이템이 모두 소진되면 슬롯 비우기
-        InventoryItem remainingItem = InventoryManager.Instance.GetItem(itemId);
-        if (remainingItem == null || remainingItem.quantity <= 0)
-        {
-            ClearSlot(slotIndex);
         }
     }
 
-    
+
     /// 스킬 사용 (추후 확장용)
-    
+
     private void UseSkill(int slotIndex, string skillId)
     {
-        // TODO: 스킬 시스템 구현
-        Debug.Log($"[QuickSlotManager] 스킬 사용: {skillId} (미구현)");
+        bool used = UsageHandler.UseSkill(skillId);
+
+        if (used)
+        {
+            Debug.Log($"[QuickSlotManager] 스킬 사용: {skillId}");
+            UsageHandler.RefreshAllRelatedUIs();
+        }
     }
 
-    
+
     /// 특정 아이템이 퀵슬롯에 등록되어 있는지 확인
-    
+
     public bool IsItemInQuickSlot(string itemId)
     {
         for (int i = 0; i < maxSlots; i++)

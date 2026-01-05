@@ -785,7 +785,8 @@ public static class DatabaseGenerater
                 maxLevel = ParseInt(parts[5].Trim(), 1),
                 cooldown = ParseFloat(parts[6].Trim(), 0f),
                 damageRate = ParseFloat(parts[7].Trim(), 0f),
-                levelUpDamageRate = ParseFloat(parts[8].Trim(), 0f)
+                levelUpDamageRate = ParseFloat(parts[8].Trim(), 0f),
+                skillIconPath = parts[9].Trim(),
             };
             database.Items.Add(skill);
         }

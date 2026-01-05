@@ -20,4 +20,14 @@ public class SkillData
     public float cooldown;
     public float damageRate;
     public float levelUpDamageRate;
+    public string skillIconPath;
+
+    // 유틸리티 메서드
+    public float GetDamageAtLevel(int level)
+    {
+        if (level <= 1) return damageRate;
+        return damageRate + (levelUpDamageRate * (level - 1));
+    }
 }
+
+

@@ -206,15 +206,7 @@ public class InventoryManager : MonoBehaviour
             case ItemType.Consumable:
                 if (stats != null)
                 {
-                    // 체력 회복
-                    if (data.GetHealAmount() > 0)
-                    {
-                        //stats.SetDamageTextSpawner(PlayerStatsComponent.Instance.Stats.SetDamageTextSpawner(PlayerController.Instance.GetComponent<DamageTextSpawner>()))
-                        stats.Heal(data.GetHealAmount());
-                        Debug.Log($"[Inventory] HP +{data.GetHealAmount()}");
-                    }
-
-                    return true;
+                    return UsageHandler.UseConsumable(data.itemId, removeFromInventory: false);
                 }
                 break;
 

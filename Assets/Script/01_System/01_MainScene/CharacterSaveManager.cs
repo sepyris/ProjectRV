@@ -199,6 +199,12 @@ public class CharacterSaveManager : MonoBehaviour
             EquipmentManager.Instance.ClearAllEquipment();
         }
 
+        if (SkillManager.Instance != null)
+        {
+            Debug.Log("[SaveManager] 스킬 매니저 초기화");
+            SkillManager.Instance.ClearAllSkills();
+        }
+
         // 새 캐릭터 슬롯 데이터 생성
         CharacterSlotData newCharacter = CharacterSlotData.CreateNew(characterName, slotIndex);
         allCharactersData.AddCharacter(newCharacter);
@@ -560,6 +566,13 @@ public class CharacterSaveManager : MonoBehaviour
             CurrentCharacter.shopStockData.OnDataLoaded();
             Debug.Log($"[SaveManager] 상점 재고 데이터 로드 완료 (임시 데이터 초기화됨)");
         }
+        // 스킬 로드
+        if (SkillManager.Instance != null)
+        {
+            SkillManager.Instance.LoadFromData(CurrentGlobalData.skillData);
+            Debug.Log($"[SaveManager] 스킬 로드: {CurrentGlobalData.skillData?.skills?.Count ?? 0}개");
+        }
+
 
         Debug.Log($"[SaveManager] ====================================");
         Debug.Log($"[SaveManager] 캐릭터 데이터 로드 완료");
@@ -621,6 +634,12 @@ public class CharacterSaveManager : MonoBehaviour
         {
             CurrentCharacter.quickSlots = QuickSlotManager.Instance.GetSaveData();
             Debug.Log($"[SaveManager] 퀵슬롯 저장: {CurrentCharacter?.quickSlots.Count ?? 0}개");
+        }
+        //스킬 저장
+        if (SkillManager.Instance != null)
+        {
+            CurrentGlobalData.skillData = SkillManager.Instance.ToSaveData();
+            Debug.Log($"[SaveManager] 스킬 저장: {CurrentGlobalData.skillData?.skills?.Count ?? 0}개");
         }
 
         //  장비 저장 추가
@@ -838,6 +857,7 @@ public class GlobalSaveData
     public SubSceneData subSceneState = new SubSceneData();
     public InventorySaveData inventoryData = new InventorySaveData();
     public AllQuestsSaveData questData = new AllQuestsSaveData();
+    public SkillSaveData skillData = new SkillSaveData();
     public string integrityHash = "";
     public string lastSafeZoneScene = "";
     public string lastSafeZoneSpawnPoint = "";

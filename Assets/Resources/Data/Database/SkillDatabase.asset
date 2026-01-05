@@ -23,3 +23,164 @@ MonoBehaviour:
     cooldown: 5
     damageRate: 200
     levelUpDamageRate: 20
+    skillIconPath: 
+  - skillId: Skill_002
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_003
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_004
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_005
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_006
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_007
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_008
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_009
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_010
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_011
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_012
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_013
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_014
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_015
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_016
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 
+  - skillId: Skill_017
+    skillName: 
+    description: 
+    requiredJob: 
+    requiredLevel: 1
+    maxLevel: 1
+    cooldown: 0
+    damageRate: 0
+    levelUpDamageRate: 0
+    skillIconPath: 

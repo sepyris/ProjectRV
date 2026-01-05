@@ -1,2 +1,18 @@
-skillId,skillName,description,requiredJob,requiredLevel,maxLevel,cooldown,damageRate,levelUpDamageRate
-Skill_001,파이어볼,"""바라보는 방향으로 불덩어리를 날립니다.""",Mage,5,10,5,200,20
+skillId,skillName,description,requiredJob,requiredLevel,maxLevel,cooldown,damageRate,levelUpDamageRate,skillIconPath
+Skill_001,파이어볼,"""바라보는 방향으로 불덩어리를 날립니다.""",Mage,5,10,5,200,20,
+Skill_002,,,,,,,,,
+Skill_003,,,,,,,,,
+Skill_004,,,,,,,,,
+Skill_005,,,,,,,,,
+Skill_006,,,,,,,,,
+Skill_007,,,,,,,,,
+Skill_008,,,,,,,,,
+Skill_009,,,,,,,,,
+Skill_010,,,,,,,,,
+Skill_011,,,,,,,,,
+Skill_012,,,,,,,,,
+Skill_013,,,,,,,,,
+Skill_014,,,,,,,,,
+Skill_015,,,,,,,,,
+Skill_016,,,,,,,,,
+Skill_017,,,,,,,,,

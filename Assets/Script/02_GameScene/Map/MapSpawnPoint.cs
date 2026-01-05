@@ -5,12 +5,21 @@ using UnityEditor;
 
 public class MapSpawnPoint : MonoBehaviour
 {
+    
     [Header("Spawn Point Info")]
     public string spawnPointid;
     public string nextMapid;
 
     [Header("UI Settings")]
     [SerializeField] private Vector3 uiWorldOffset = Vector3.up * 0.3f;
+
+    private void Start()
+    {
+        if(GetComponent<SpriteRenderer>() != null)
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

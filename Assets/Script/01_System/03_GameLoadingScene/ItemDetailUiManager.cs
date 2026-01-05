@@ -5,10 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
+/// <summary>
 /// 인벤토리 아이템 호버 및 더블클릭 처리
 /// 더블클릭 시 소모품 사용 또는 장비 장착
-
+/// 수정: UsableItemHandler 사용
+/// </summary>
 public class ItemDetailUiManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private InventoryItem item;
@@ -89,29 +90,22 @@ public class ItemDetailUiManager : MonoBehaviour, IPointerEnterHandler, IPointer
         ItemData data = item.GetItemData();
         if (data == null) return;
 
-        // 스탯 시스템 가져오기
-        CharacterStats stats = null;
-        if (PlayerController.Instance != null)
-        {
-            var statsComp = PlayerController.Instance.GetComponent<PlayerStatsComponent>();
-            if (statsComp != null)
-                stats = statsComp.Stats;
-        }
-
-        // 아이템 사용
-        bool used = InventoryManager.Instance?.UseItem(item.itemid, stats) ?? false;
+        // ===  UsableItemHandler 사용 ===
+        // removeFromInventory = false: InventoryManager.UseItem()에서 제거하므로
+        bool used = UsageHandler.UseConsumable(item.itemid, removeFromInventory: false);
 
         if (used)
         {
+            // 인벤토리에서 아이템 제거 (InventoryManager.UseItem 패턴 유지)
+            if (InventoryManager.Instance != null)
+            {
+                InventoryManager.Instance.RemoveItem(item.itemid, 1);
+            }
+
             Debug.Log($"[ItemDetailUI] {data.itemName} 사용됨 (더블클릭)");
 
             // UI 갱신
-            if (uiManager != null)
-                uiManager.RefreshUI();
-            if(QuickSlotUIManager.Instance != null)
-            {
-                QuickSlotUIManager.Instance.RefreshAllSlots();
-            }
+            UsageHandler.RefreshAllRelatedUIs();
         }
     }
 
@@ -121,7 +115,7 @@ public class ItemDetailUiManager : MonoBehaviour, IPointerEnterHandler, IPointer
         ItemData data = item.GetItemData();
         if (data == null) return;
 
-        //새 시스템에서는 장착된 아이템이 인벤토리에서 제거되므로
+        // 새 시스템에서는 장착된 아이템이 인벤토리에서 제거되므로
         // isEquipped 체크는 사실상 불필요하지만, 안전을 위해 유지
         if (item.isEquipped)
         {
@@ -138,17 +132,7 @@ public class ItemDetailUiManager : MonoBehaviour, IPointerEnterHandler, IPointer
             Debug.Log($"[ItemDetailUI] {data.itemName} 장착됨 (더블클릭)");
 
             // UI 갱신
-            if (uiManager != null)
-                uiManager.RefreshUI();
-            if (QuickSlotUIManager.Instance != null)
-            {
-                QuickSlotUIManager.Instance.RefreshAllSlots();
-            }
-            
-
-            // 장비창 UI도 갱신
-            if (EquipmentUIManager.Instance != null)
-                EquipmentUIManager.Instance.RefreshAllSlots();
+            UsageHandler.RefreshAllRelatedUIs();
         }
     }
 }

@@ -1,59 +1,15 @@
 itemID,itemName,itemType,description,maxStack,buyPrice,sellPrice,iconPath,disposable,consumableEffect,equipSlot,attackBonus,defenseBonus,hpBonus,strBonus,dexBonus,intBonus,lukBonus,tecBonus,isCosmetic
 sword_wooden,나무 검,Equipment,기본적인 나무 검,1,100,50,Icons/Weapons/sword_wooden,TRUE,,MeleeWeapon,8,0,0,3,0,0,0,0,FALSE
-sword_iron,철 검,Equipment,튼튼한 철 검,1,500,250,Icons/Weapons/sword_iron,TRUE,,MeleeWeapon,15,0,0,5,2,0,0,0,FALSE
-sword_steel,강철 검,Equipment,날카로운 강철 검,1,1200,600,Icons/Weapons/sword_steel,TRUE,,MeleeWeapon,25,0,0,8,3,0,0,2,FALSE
-sword_golden,황금 검,Equipment,화려한 치장용 검,1,2000,1000,Icons/Weapons/sword_golden,TRUE,,MeleeWeapon,0,0,0,0,0,0,0,0,TRUE
 staff_wooden,나무 지팡이,Equipment,"""나무로 만들어진 지팡이
 그냥 나뭇가지인가?""",1,120,60,Icons/Weapons/staff_wooden,TRUE,,RangedWeapon,7,0,0,0,0,4,0,0,FALSE
-staff_crystal,수정 지팡이,Equipment,"""화려한 수정 지팡이""",1,600,300,Icons/Weapons/staff_crystal,TRUE,,RangedWeapon,14,0,0,0,0,6,2,0,FALSE
-staff_fire,화염 지팡이,Equipment,"""불을 낼거 같은 지팡이
-그냥 빨간색일뿐인걸까?""",1,1500,750,Icons/Weapons/staff_fire,TRUE,,RangedWeapon,28,0,0,0,0,8,4,3,FALSE
-helmet_leather,가죽 모자,Equipment,가벼운 가죽 모자,1,80,40,Icons/Armor/helmet_leather,TRUE,,Helmet,0,5,10,0,1,0,0,0,FALSE
-helmet_iron,철 투구,Equipment,튼튼한 철 투구,1,400,200,Icons/Armor/helmet_iron,TRUE,,Helmet,0,12,25,2,0,0,0,0,FALSE
-helmet_steel,강철 투구,Equipment,견고한 강철 투구,1,900,450,Icons/Armor/helmet_steel,TRUE,,Helmet,0,20,40,3,0,0,0,1,FALSE
 armor_leather,가죽 갑옷,Equipment,기본 가죽 갑옷,1,150,75,Icons/Armor/armor_leather,TRUE,,Armor,0,10,30,1,2,0,0,0,FALSE
-armor_chainmail,사슬 갑옷,Equipment,튼튼한 사슬 갑옷,1,700,350,Icons/Armor/armor_chainmail,TRUE,,Armor,0,22,60,3,0,0,0,0,FALSE
-armor_plate,판금 갑옷,Equipment,최고급 판금 갑옷,1,1800,900,Icons/Armor/armor_plate,TRUE,,Armor,0,35,100,5,0,0,0,2,FALSE
-shoes_leather,가죽 신발,Equipment,편안한 가죽 신발,1,60,30,Icons/Armor/shoes_leather,TRUE,,Shoes,0,3,5,0,2,0,0,0,FALSE
-boots_iron,철 부츠,Equipment,무거운 철 부츠,1,300,150,Icons/Armor/boots_iron,TRUE,,Shoes,0,8,15,1,0,0,0,0,FALSE
-boots_steel,강철 부츠,Equipment,견고한 강철 부츠,1,700,350,Icons/Armor/boots_steel,TRUE,,Shoes,0,15,30,2,1,0,0,1,FALSE
-ring_bronze,청동 반지,Equipment,평범한 청동 반지,1,200,100,Icons/Accessories/ring_bronze,TRUE,,Ring,2,1,5,1,1,1,1,0,FALSE
-ring_silver,은 반지,Equipment,빛나는 은 반지,1,800,400,Icons/Accessories/ring_silver,TRUE,,Ring,5,3,10,2,2,2,2,1,FALSE
-ring_gold,금 반지,Equipment,화려한 금 반지,1,2000,1000,Icons/Accessories/ring_gold,TRUE,,Ring,8,5,20,3,3,3,3,2,FALSE
-necklace_simple,단순한 목걸이,Equipment,소박한 목걸이,1,250,125,Icons/Accessories/necklace_simple,TRUE,,Necklace,0,2,15,0,0,2,1,0,FALSE
-necklace_ruby,루비 목걸이,Equipment,붉은 루비 목걸이,1,1200,600,Icons/Accessories/necklace_ruby,TRUE,,Necklace,3,5,30,0,0,4,2,1,FALSE
-bracelet_leather,가죽 팔찌,Equipment,기본 가죽 팔찌,1,150,75,Icons/Accessories/bracelet_leather,TRUE,,Bracelet,1,1,10,1,1,0,1,1,FALSE
-bracelet_silver,은 팔찌,Equipment,우아한 은 팔찌,1,900,450,Icons/Accessories/bracelet_silver,TRUE,,Bracelet,3,3,25,2,2,0,2,2,FALSE
-shield_wooden,나무 방패,Equipment,기본 나무 방패,1,100,50,Icons/Weapons/shield_wooden,TRUE,,SubWeapon,0,8,15,2,0,0,0,0,FALSE
-shield_iron,철 방패,Equipment,튼튼한 철 방패,1,500,250,Icons/Weapons/shield_iron,TRUE,,SubWeapon,0,18,35,4,0,0,0,0,FALSE
-dagger_iron,철 단검,Equipment,빠른 철 단검,1,300,150,Icons/Weapons/dagger_iron,TRUE,,SubWeapon,6,0,0,0,4,0,0,2,FALSE
 potion_hp_small,작은 체력 물약,Consumable,체력 50 회복,99,50,25,Icons/Potions/hp_small,TRUE,50,,,,,,,,,,
 potion_hp_medium,중간 체력 물약,Consumable,체력 150 회복,99,150,75,Icons/Potions/hp_medium,TRUE,150,,,,,,,,,,
 potion_hp_large,큰 체력 물약,Consumable,체력 300 회복,99,400,200,Icons/Potions/hp_large,TRUE,300,,,,,,,,,,
 potion_hp_full,완전 회복 물약,Consumable,체력 완전 회복,20,1000,500,Icons/Potions/hp_full,TRUE,9999,,,,,,,,,,
 treasure_box_basic,기본 보물상자,Consumable,열면 아이템 획득,10,0,0,Icons/Items/treasure_basic,TRUE,gold_coin:100:100;potion_hp_small:3:80,,,,,,,,,,
-treasure_box_silver,은 보물상자,Consumable,좋은 아이템 획득,5,0,0,Icons/Items/treasure_silver,TRUE,gold_coin:500:100;potion_hp_medium:5:100;ore_iron:10:50,,,,,,,,,,
-treasure_box_gold,금 보물상자,Consumable,최고급 아이템 획득,3,0,0,Icons/Items/treasure_gold,TRUE,gold_coin:1000:100;potion_hp_large:10:100;ore_steel:5:80;gem_ruby:1:20,,,,,,,,,,
-lunchbox_basic,기본 도시락,Consumable,간단한 식사,50,30,15,Icons/Items/lunchbox,TRUE,80,,,,,,,,,,
 gold_coin,금화,Material,"""기본 화폐 판매시 5골드를 얻을수 있다""",9999,5,5,Icons/Materials/gold_coin,TRUE,,,,,,,,,,,
-wood_log,통나무,Material,나무를 베어 얻은 통나무,999,5,2,Icons/Materials/wood_log,TRUE,,,,,,,,,,,
-ore_iron,철광석,Material,철을 제련할 수 있는 광석,999,20,10,Icons/Materials/ore_iron,TRUE,,,,,,,,,,,
-ore_steel,강철 주괴,Material,정제된 강철,999,100,50,Icons/Materials/ore_steel,TRUE,,,,,,,,,,,
-leather_piece,가죽 조각,Material,동물 가죽 조각,999,15,7,Icons/Materials/leather,TRUE,,,,,,,,,,,
-cloth_roll,천 두루마리,Material,옷감용 천,999,10,5,Icons/Materials/cloth,TRUE,,,,,,,,,,,
 herb_healing,치유 약초,Material,약을 만드는 약초,999,30,15,Icons/Materials/herb_healing,TRUE,,,,,,,,,,,
-gem_ruby,루비,Material,붉은 보석,99,500,250,Icons/Materials/gem_ruby,TRUE,,,,,,,,,,,
-gem_sapphire,사파이어,Material,푸른 보석,99,500,250,Icons/Materials/gem_sapphire,TRUE,,,,,,,,,,,
-feather_bird,새 깃털,Material,가벼운 깃털,999,8,4,Icons/Materials/feather,TRUE,,,,,,,,,,,
-bone_monster,몬스터 뼈,Material,몬스터의 뼈,999,12,6,Icons/Materials/bone,TRUE,,,,,,,,,,,
-slime_gel,슬라임 젤,Material,끈적한 슬라임 젤,999,5,2,Icons/Materials/slime_gel,TRUE,,,,,,,,,,,
-quest_letter_mayor,촌장의 편지,QuestItem,촌장이 쓴 편지,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
-quest_herb_rare,희귀 약초,QuestItem,찾기 힘든 희귀 약초,1,0,0,Icons/Quest/herb_rare,FALSE,,,,,,,,,,,
-quest_crystal_blue,푸른 수정,QuestItem,신비한 푸른 수정,1,0,0,Icons/Quest/crystal_blue,FALSE,,,,,,,,,,,
-quest_map_ancient,고대 지도,QuestItem,오래된 보물 지도,1,0,0,Icons/Quest/map_ancient,FALSE,,,,,,,,,,,
-quest_key_dungeon,던전 열쇠,QuestItem,던전을 여는 열쇠,1,0,0,Icons/Quest/key_dungeon,FALSE,,,,,,,,,,,
-quest_ring_lost,잃어버린 반지,QuestItem,누군가의 반지,1,0,0,Icons/Quest/ring_lost,FALSE,,,,,,,,,,,
-quest_tooth_wolf,늑대 이빨,QuestItem,늑대 사냥 증표,99,0,0,Icons/Quest/tooth_wolf,FALSE,,,,,,,,,,,
-quest_feather_phoenix,불사조 깃털,QuestItem,전설의 불사조 깃털,1,0,0,Icons/Quest/feather_phoenix,FALSE,,,,,,,,,,,
 quest_rumo_letter,루모의편지,QuestItem,,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
 quest_rura_letter,루라의편지,QuestItem,,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
+skill_fireball,파이어볼스크롤,Consumable,파이어볼을 배울수있는 스킬 스크롤,1,500,250,Icons/Quest/letter,TRUE,Skill_001,,,,,,,,,,

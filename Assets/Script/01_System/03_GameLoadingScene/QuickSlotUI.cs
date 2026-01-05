@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 
 /// 개별 퀵슬롯 UI
@@ -188,18 +189,43 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    
-    /// 스킬 UI 업데이트 (추후 확장)
-    
+    /// 스킬 UI 업데이트
     private void UpdateSkillUI(string skillId)
     {
-        // TODO: 스킬 시스템 구현 후
-        if (iconImage != null)
+        if (SkillDataManager.Instance == null)
+            return;
+
+        SkillData skillData = SkillDataManager.Instance.GetSkillData(skillId);
+        if (skillData == null)
         {
-            // 임시로 기본 스킬 아이콘 표시
-            iconImage.color = Color.cyan;
+            Debug.LogWarning($"[QuickSlotUI] 스킬 데이터를 찾을 수 없음: {skillId}");
+            return;
         }
 
+        // 아이콘 표시
+        if (iconImage != null)
+        {
+            if (!string.IsNullOrEmpty(skillData.skillIconPath))
+            {
+                Sprite icon = Resources.Load<Sprite>(skillData.skillIconPath);
+                if (icon != null)
+                {
+                    iconImage.sprite = icon;
+                    iconImage.color = Color.white;
+                }
+                else
+                {
+                    Debug.LogWarning($"[QuickSlotUI] 스킬 아이콘을 찾을 수 없음: {skillData.skillIconPath}");
+                    iconImage.color = Color.cyan;
+                }
+            }
+            else
+            {
+                iconImage.color = Color.cyan;
+            }
+        }
+
+        // 스킬은 수량 표시 안 함
         if (quantityText != null)
         {
             quantityText.gameObject.SetActive(false);
@@ -210,16 +236,16 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
     //  호버 기능 추가
     // ==========================================
 
-    
+
     /// 마우스 호버 시작 - 아이템 상세 정보 표시
-    
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         // 슬롯이 비어있으면 무시
         if (slotData == null || slotData.IsEmpty())
             return;
 
-        // 소모품일 경우만 상세 정보 표시
+        // 아이템중 소모품일 경우만 상세 정보 표시
         if (slotData.slotType == QuickSlotType.Consumable)
         {
             // InventoryManager에서 아이템 가져오기
@@ -233,6 +259,12 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
                 }
             }
         }
+        //스킬일 경우 상세 정보 표시
+        if (slotData.slotType == QuickSlotType.Skill)
+        {
+
+        }
+
     }
 
     
@@ -251,6 +283,11 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
             {
                 ItemUIManager.Instance.HideDetailPanelOnHoverExit();
             }
+        }
+        //
+        if(slotData.slotType == QuickSlotType.Skill)
+        {
+
         }
     }
 
@@ -290,8 +327,24 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
             }
             return;
         }
-
-        // TODO: DraggableSkillUI에서 드롭된 경우 (스킬 시스템 구현 후)
+        DraggableSkillUi draggableSkill = draggedObject.GetComponent<DraggableSkillUi>();
+        if (draggableSkill != null)
+        {
+            PlayerSkillData skill = draggableSkill.GetSkillData();
+            if (skill != null)
+            {
+                SkillData skilldata = skill.GetSkillData();
+                if (skilldata != null)
+                {
+                    // 소모품만 퀵슬롯에 등록 가능
+                    if (QuickSlotManager.Instance != null)
+                    {
+                        QuickSlotManager.Instance.RegisterSkill(slotIndex, skilldata.skillId);
+                    }
+                }
+            }
+            return;
+        }
     }
 
     

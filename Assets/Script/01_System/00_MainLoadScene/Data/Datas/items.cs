@@ -123,10 +123,31 @@ public class ItemData
         {
             if (!string.IsNullOrEmpty(item.Trim()))
             {
-                rewards.Add(new ItemReward(item));
+                if(ItemDataManager.Instance.GetItemData(item) != null)
+                {
+                    rewards.Add(new ItemReward(item));
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
         return rewards;
+    }
+    public string GetSkill()
+    {
+        if (IsHealEffect() || string.IsNullOrEmpty(consumableEffect))
+            return null;
+        if(SkillDataManager.Instance != null)
+        {
+            SkillData skill = SkillDataManager.Instance.GetSkillData(consumableEffect);
+            if (skill != null)
+            {
+                return consumableEffect;
+            }
+        }
+        return null;
     }
 
     public CosmeticSlot ConvertToCosmeticSlot(EquipmentSlot slot)

@@ -17,7 +17,7 @@ MonoBehaviour:
     items:
     - itemid: potion_hp_small
       limitedStock: -1
-    - itemid: quest_letter_mayor
-      limitedStock: 1
     - itemid: sword_wooden
+      limitedStock: -1
+    - itemid: skill_fireball
       limitedStock: -1
