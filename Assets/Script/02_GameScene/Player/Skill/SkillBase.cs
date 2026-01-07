@@ -107,7 +107,6 @@ public abstract class SkillBase
 
         return skillData.damageRate + (skillData.levelUpDamageRate * (currentLevel - 1));
     }
-
     public float GetCurrentModifier()
     {
         return skillData.GetModifierAtLevel(currentLevel);
@@ -129,17 +128,5 @@ public abstract class SkillBase
             return Object.Instantiate(prefab, position, rotation);
         }
         return null;
-    }
-
-    /// <summary>
-    /// 사운드 재생
-    /// </summary>
-    protected void PlaySound(string soundPath)
-    {
-        if (string.IsNullOrEmpty(soundPath))
-            return;
-
-        // TODO: 사운드 매니저 연동
-        Debug.Log($"[Skill] Playing sound: {soundPath}");
     }
 }
