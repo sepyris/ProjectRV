@@ -12230,6 +12230,7 @@ GameObject:
   - component: {fileID: 551918404}
   - component: {fileID: 551918407}
   - component: {fileID: 551918408}
+  - component: {fileID: 551918409}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -12318,6 +12319,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d9adbb3d434870458750ea4f36fbb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &551918409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551918401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c995c717bd57f43b56654fb6c1fe07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &556357755
@@ -44975,6 +44988,16 @@ MonoBehaviour:
     equip_attackBonus: 0
     equip_defenseBonus: 0
     equip_HPBonus: 0
+    skill_attackBonus: 0
+    skill_defenseBonus: 0
+    skill_HPBonus: 0
+    skill_criticalChance: 0
+    skill_criticalDamage: 0
+    skill_evasionRate: 0
+    skill_accuracy: 0
+    baseMoveSpeed: 5
+    equip_moveSpeedBonus: 0
+    skill_moveSpeedBonus: 0
   playerName: Hero
   startLevel: 1
   statusUI: {fileID: 0}

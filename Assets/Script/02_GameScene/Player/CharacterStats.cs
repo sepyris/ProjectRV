@@ -38,6 +38,23 @@ public class CharacterStats
     public int equip_defenseBonus = 0;
     public int equip_HPBonus = 0;
 
+    [Header("스킬스텟")]
+    public float skill_attackBonus = 0f;
+    public float skill_defenseBonus = 0f;
+    public float skill_HPBonus = 0f;
+    public float skill_criticalChance = 0f;
+    public float skill_criticalDamage = 0f;
+    public float skill_evasionRate = 0f;
+    public float skill_accuracy = 0f;
+
+    [Header("이동 관련")]
+    public float baseMoveSpeed = 5f;           // 기본 이동속도
+    public float equip_moveSpeedBonus = 0f;   // 장비 이동속도 보너스 (고정값)
+    public float skill_moveSpeedBonus = 0f;   // 스킬 이동속도 보너스 (%)
+
+    // 계산된 이동속도 (읽기 전용)
+    public float moveSpeed { get; private set; }
+
     public event Action OnStatsChanged;
     public event Action OnLevelUp;
     public event Action OnDeath;
@@ -83,15 +100,29 @@ public class CharacterStats
         int oldMaxHP = maxHP;
 
         // 평화로운 RPG 밸런스
-        //              기본값  스탯 계수                                                                          장비 보너스
-        attackPower = 15 + (Mathf.FloorToInt((strength + equip_strength) * 0.35f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.2f)) + equip_attackBonus;
-        defense = 5 + (Mathf.FloorToInt((strength + equip_strength) * 0.15f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.1f)) + equip_defenseBonus;
-        maxHP = 100 + (((level - 1) * 10) + Mathf.FloorToInt((strength + equip_strength) * 1.2f)) + equip_HPBonus;
+        //                  기본값   스탯 계수
+        
 
-        accuracy = 60 + Mathf.FloorToInt((technique + equip_technique) * 0.25f) + Mathf.FloorToInt((luck + equip_luck) * 0.15f);
-        evasionRate = 2 + Mathf.FloorToInt((dexterity + equip_dexterity) * 0.2f) + Mathf.FloorToInt((luck + equip_luck) * 0.12f);
-        criticalChance = 2 + Mathf.FloorToInt((luck + equip_luck) * 0.2f) + Mathf.FloorToInt((technique + equip_technique) * 0.15f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.08f);
-        criticalDamage = 150 + Mathf.FloorToInt(((strength + equip_strength) + (intelligence + equip_intelligence) + (dexterity + equip_dexterity) + (luck + equip_luck) + (technique + equip_technique)) * 0.075f);
+        float base_attackPower =       (15 +    (Mathf.FloorToInt((strength + equip_strength) * 0.35f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.2f))  + equip_attackBonus);
+        float base_defense =           (5 +     (Mathf.FloorToInt((strength + equip_strength) * 0.15f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.1f)) + equip_defenseBonus);
+        float base_maxHP =             (100 +   (((level - 1) * 10) + Mathf.FloorToInt((strength + equip_strength) * 1.2f)) + equip_HPBonus);
+
+        float base_accuracy =          (60 +    Mathf.FloorToInt((technique + equip_technique) * 0.25f) + Mathf.FloorToInt((luck + equip_luck) * 0.15f)) + skill_accuracy;
+        float base_evasionRate =       (2 +     Mathf.FloorToInt((dexterity + equip_dexterity) * 0.2f) + Mathf.FloorToInt((luck + equip_luck) * 0.12f)) + skill_evasionRate;
+        float base_criticalChance =    (2 +     Mathf.FloorToInt((luck + equip_luck) * 0.2f) + Mathf.FloorToInt((technique + equip_technique) * 0.15f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.08f)) + skill_criticalChance;
+        float base_criticalDamage =    (150 +   Mathf.FloorToInt(((strength + equip_strength) + (intelligence + equip_intelligence) + (dexterity + equip_dexterity) + (luck + equip_luck) + (technique + equip_technique)) * 0.075f)) + skill_criticalDamage;
+
+        attackPower = Mathf.FloorToInt(base_attackPower + (base_attackPower * (skill_attackBonus / 100)));
+        defense = Mathf.FloorToInt(base_defense + (base_defense * (skill_defenseBonus / 100)));
+        maxHP = Mathf.FloorToInt(base_maxHP + (base_maxHP * (skill_HPBonus / 100)));
+        
+        // 방식: (기본속도 + 장비 고정값) * (1 + 스킬%)
+        float basePluEquip = baseMoveSpeed + equip_moveSpeedBonus;
+        moveSpeed = basePluEquip * (1 + skill_moveSpeedBonus);
+
+        // 최소/최대 속도 제한 (선택)
+        moveSpeed = Mathf.Clamp(moveSpeed, 1f, 15f);
+
 
         //  HP 조정 로직 (장비 장착/해제 시)
         AdjustCurrentHP(oldMaxHP, maxHP);

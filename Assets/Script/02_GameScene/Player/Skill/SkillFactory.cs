@@ -1,4 +1,6 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 /// <summary>
 /// 스킬 팩토리
@@ -16,37 +18,79 @@ public static class SkillFactory
             Debug.LogError("[SkillFactory] skillData가 null입니다.");
             return null;
         }
-        /*
-        switch (skillData.skillType)
+
+        if(skillData.skillId == "Skill_001")
         {
-            case SkillType.Damage:
-                return new DamageSkill(skillData, level);
-
-            case SkillType.Heal:
-                return new HealSkill(skillData, level);
-
-            case SkillType.Projectile:
-                return new ProjectileSkill(skillData, level);
-
-            case SkillType.Area:
-                return new AreaSkill(skillData, level);
-
-            case SkillType.Buff:
-                return new BuffSkill(skillData, level);
-
-            case SkillType.Dash:
-                return new DashSkill(skillData, level);
-
-            case SkillType.Summon:
-                return new SummonSkill(skillData, level);
-
-            // TODO: 다른 스킬 타입 추가
-
-            default:
-                Debug.LogWarning($"[SkillFactory] 지원하지 않는 스킬 타입: {skillData.skillType}");
-                return new DamageSkill(skillData, level); // 기본값
+            return new FullSwing(skillData,level);
         }
-        */
+        if (skillData.skillId == "Skill_002")
+        {
+            return new MagicMissile(skillData, level);
+        }
+        if (skillData.skillId == "Skill_003")
+        {
+            return new FirstAid(skillData, level);
+        }
+        if (skillData.skillId == "Skill_004")
+        {
+            return new LightSteps(skillData, level);
+        }
+        if (skillData.skillId == "Skill_005")
+        {
+            return new BashDash(skillData, level);
+        }
+        if (skillData.skillId == "Skill_006")
+        {
+            return new MultiSlash(skillData, level);
+        }
+        if (skillData.skillId == "Skill_007")
+        {
+            return new BraveHeart(skillData, level);
+        }
+        if (skillData.skillId == "Skill_008")
+        {
+            return new DaggerThrow(skillData, level);
+        }
+        if (skillData.skillId == "Skill_009")
+        {
+            return new Toughness(skillData, level);
+        }
+        if (skillData.skillId == "Skill_010")
+        {
+            return new WeaponMastery(skillData, level);
+        }
+        if (skillData.skillId == "Skill_011")
+        {
+            return new GuardStance(skillData, level);
+        }
+        if (skillData.skillId == "Skill_012")
+        {
+            return new FireBall(skillData, level);
+        }
+        if (skillData.skillId == "Skill_013")
+        {
+            return new FrostField(skillData, level);
+        }
+        if (skillData.skillId == "Skill_014")
+        {
+            return new LightningCircle(skillData, level);
+        }
+        if (skillData.skillId == "Skill_015")
+        {
+            return new Heal(skillData, level);
+        }
+        if (skillData.skillId == "Skill_016")
+        {
+            return new Afterimage(skillData, level);
+        }
+        if (skillData.skillId == "Skill_017")
+        {
+            return new ManaControl(skillData, level);
+        }
+        if (skillData.skillId == "Skill_018")
+        {
+            return new MentalTraining(skillData, level);
+        }
         return null;
     }
 

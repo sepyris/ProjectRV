@@ -345,7 +345,7 @@ public class MonsterController : MonoBehaviour
     }
 
     public MonsterData GetMonsterData() => monsterData;
-    public bool IsDead() => isDead;
+    public bool IsDead() => stats.currentHP <= 0;
     public CharacterStats GetStats() => stats;
     public MonsterAI GetAI() => ai;
     public MonsterCombat GetCombat() => combat;

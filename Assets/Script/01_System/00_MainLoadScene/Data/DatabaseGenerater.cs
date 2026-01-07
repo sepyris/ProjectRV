@@ -773,20 +773,21 @@ public static class DatabaseGenerater
             if (trimmed.StartsWith("#")) continue;
 
             var parts = SplitCSVLine(raw);
-            //CSV 구조:skillId	skillName	description	requiredJob	requiredLevel	maxLevel	cooldown	damageRate	levelUpDamageRate
+            //CSV 구조:skillId	skillName	description	skillType	requiredJob	requiredLevel	maxLevel	cooldown	damageRate	levelUpDamageRate	skillIconPath
             if (parts.Count < 9) continue;
             SkillData skill = new SkillData
             {
                 skillId = parts[0].Trim(),
                 skillName = parts[1].Trim(),
                 description = parts[2].Trim(),
-                requiredJob = parts[3].Trim(),
-                requiredLevel = ParseInt(parts[4].Trim(), 1),
-                maxLevel = ParseInt(parts[5].Trim(), 1),
-                cooldown = ParseFloat(parts[6].Trim(), 0f),
-                damageRate = ParseFloat(parts[7].Trim(), 0f),
-                levelUpDamageRate = ParseFloat(parts[8].Trim(), 0f),
-                skillIconPath = parts[9].Trim(),
+                skillType = ParseSkillType(parts[3].Trim()),
+                requiredJob = parts[4].Trim(),
+                requiredLevel = ParseInt(parts[5].Trim(), 1),
+                maxLevel = ParseInt(parts[6].Trim(), 1),
+                cooldown = ParseFloat(parts[7].Trim(), 0f),
+                damageRate = ParseFloat(parts[8].Trim(), 0f),
+                levelUpDamageRate = ParseFloat(parts[9].Trim(), 0f),
+                skillIconPath = parts[10].Trim(),
             };
             database.Items.Add(skill);
         }
@@ -871,9 +872,26 @@ public static class DatabaseGenerater
                 return GatherType.None;
         }
     }
-    
+    private static SkillType ParseSkillType(string skilltype)
+    {
+        switch (skilltype.ToLower())
+        {
+            case "active":
+                return SkillType.Active;
+            case "buff":
+                return SkillType.Active;
+            case "passive":
+                return SkillType.Passive;
+            case "none":
+                return SkillType.None;
+            default:
+                Debug.LogWarning($"[SkillDataManager] 알 수 없는 스킬 타입: {skilltype}");
+                return SkillType.None;
+        }
+    }
+
     /// 채집 도구 타입 파싱
-    
+
     private static GatherToolType ParseGatherTool(string toolStr)
     {
         switch (toolStr.ToLower())

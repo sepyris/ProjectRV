@@ -1,4 +1,5 @@
 using UnityEngine;
+using Definitions;
 
 /// <summary>
 /// 스킬 실행 기본 클래스
@@ -17,25 +18,17 @@ public abstract class SkillBase
         currentCooldown = 0f;
     }
 
-    // ===== 각 스킬이 오버라이드할 설정들 =====
-
-    protected virtual SkillType Type => SkillType.Damage;
-    protected virtual SkillTargetType TargetType => SkillTargetType.Enemy;
-    protected virtual float Range => 2f;
-    protected virtual float Radius => 0f;
-    protected virtual float CastTime => 0f;
-    protected virtual int ProjectileCount => 0;
-    protected virtual float ProjectileSpeed => 10f;
-    protected virtual string EffectPrefabPath => "";
-    protected virtual string ProjectilePrefabPath => "";
-
     // ===== 공통 속성 =====
 
     public string SkillId => skillData.skillId;
     public string SkillName => skillData.skillName;
+    public string Description => skillData.description;
+    public SkillType SkillType => skillData.skillType;
+    public int CurrentLevel => currentLevel;
+    public int MaxLevel => skillData.maxLevel;
     public bool IsOnCooldown => currentCooldown > 0f;
     public float CooldownRemaining => currentCooldown;
-    public float CooldownProgress => 1f - (currentCooldown / skillData.cooldown);
+    public float CooldownProgress => skillData.cooldown > 0 ? 1f - (currentCooldown / skillData.cooldown) : 1f;
 
     // ===== 쿨타임 관리 =====
 
@@ -77,7 +70,7 @@ public abstract class SkillBase
 
     // ===== 스킬 실행 =====
 
-    public bool Use(Transform caster, Vector3 targetPosition, Transform targetTransform = null)
+    public virtual bool Use(Transform caster, Vector3 targetPosition, Transform targetTransform = null)
     {
         if (!CanUse())
             return false;
@@ -89,13 +82,16 @@ public abstract class SkillBase
     }
 
     /// <summary>
-    /// 스킬 효과 실행 (각 스킬이 구현)
+    /// 스킬 효과 실행 (액티브 스킬이 구현)
     /// </summary>
-    protected abstract void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform);
+    protected virtual void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform)
+    {
+        // 기본 구현 없음 (패시브는 사용 안 함)
+    }
 
     // ===== 레벨업 =====
 
-    public void LevelUp()
+    public virtual void LevelUp()
     {
         if (currentLevel < skillData.maxLevel)
         {
@@ -112,17 +108,22 @@ public abstract class SkillBase
         return skillData.damageRate + (skillData.levelUpDamageRate * (currentLevel - 1));
     }
 
+    public float GetCurrentModifier()
+    {
+        return skillData.GetModifierAtLevel(currentLevel);
+    }
+
     // ===== 유틸리티 =====
 
     /// <summary>
     /// 이펙트 생성
     /// </summary>
-    protected GameObject SpawnEffect(Vector3 position, Quaternion rotation)
+    protected GameObject SpawnEffect(string effectPath, Vector3 position, Quaternion rotation)
     {
-        if (string.IsNullOrEmpty(EffectPrefabPath))
+        if (string.IsNullOrEmpty(effectPath))
             return null;
 
-        GameObject prefab = Resources.Load<GameObject>(EffectPrefabPath);
+        GameObject prefab = Resources.Load<GameObject>(effectPath);
         if (prefab != null)
         {
             return Object.Instantiate(prefab, position, rotation);
@@ -141,26 +142,4 @@ public abstract class SkillBase
         // TODO: 사운드 매니저 연동
         Debug.Log($"[Skill] Playing sound: {soundPath}");
     }
-}
-
-// ===== Enum 정의 =====
-
-public enum SkillType
-{
-    Damage,
-    Heal,
-    Projectile,
-    Area,
-    Buff,
-    Dash,
-    Summon
-}
-
-public enum SkillTargetType
-{
-    Self,
-    Enemy,
-    Direction,
-    Ground,
-    Area
 }

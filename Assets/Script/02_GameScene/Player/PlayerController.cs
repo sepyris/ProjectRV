@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     // ==================== Inspector Settings ====================
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
+    private bool isDashing = false;
+    public bool IsDashing => isDashing;
 
     [Header("Attack Settings")]
     [SerializeField] private PlayerAttack.AttackType attackType = PlayerAttack.AttackType.Melee;
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     // ==================== Modules ====================
-    private PlayerMovement movement;
+    public PlayerMovement movement { get; private set; }  // public으로
     private PlayerAttack attack;
     private PlayerInteraction interaction;
     private PlayerAnimationController animationController;
@@ -86,6 +88,9 @@ public class PlayerController : MonoBehaviour
     {
         if (controlsLocked || IsLoadingActive())
             return;
+
+        // ===== 이동속도 동기화 추가 =====
+        UpdateMoveSpeed();
 
         // 상호작용 대상 업데이트 (E키는 Input Actions로 처리)
         if (!IsAttacking && !IsGathering)
@@ -169,7 +174,27 @@ public class PlayerController : MonoBehaviour
     {
         // Movement
         movement = new PlayerMovement(rb);
-        movement.MoveSpeed = moveSpeed;
+
+        // ===== 이동속도 초기화 수정 =====
+        if (PlayerStatsComponent.Instance != null)
+        {
+            // Stats의 baseMoveSpeed가 0이면 Inspector 값으로 초기화
+            if (PlayerStatsComponent.Instance.Stats.baseMoveSpeed == 0)
+            {
+                PlayerStatsComponent.Instance.Stats.baseMoveSpeed = moveSpeed;
+                PlayerStatsComponent.Instance.Stats.RecalculateStats();
+            }
+
+            // Stats에서 계산된 moveSpeed 사용
+            movement.MoveSpeed = PlayerStatsComponent.Instance.Stats.moveSpeed;
+            Debug.Log($"[PlayerController] 이동속도 초기화: {movement.MoveSpeed}");
+        }
+        else
+        {
+            // Stats가 없으면 Inspector 값 사용 (fallback)
+            movement.MoveSpeed = moveSpeed;
+            Debug.LogWarning("[PlayerController] PlayerStatsComponent 없음 - Inspector 값 사용");
+        }
 
         // Animation
         if (animator != null)
@@ -369,6 +394,21 @@ public class PlayerController : MonoBehaviour
         }
     }
     // ==================== Movement & Actions ====================
+    private void UpdateMoveSpeed()
+    {
+        if (movement != null && PlayerStatsComponent.Instance != null)
+        {
+            float newSpeed = PlayerStatsComponent.Instance.Stats.moveSpeed;
+
+            // 속도가 변경되었을 때만 업데이트 (최적화)
+            if (Mathf.Abs(movement.MoveSpeed - newSpeed) > 0.01f)
+            {
+                movement.MoveSpeed = newSpeed;
+                // Debug.Log($"[PlayerController] 이동속도 업데이트: {newSpeed:F2}");
+            }
+        }
+    }
+
     private void UpdateMovement()
     {
         // 공격 중이거나 채집 중일 때 이동 입력 무시
@@ -404,6 +444,80 @@ public class PlayerController : MonoBehaviour
         movement?.ApplyMovement();
         boundaryLimiter?.ApplyBoundaryLimit();
     }
+
+    public void Dash(Vector2 direction, float distance, float duration, 
+                 System.Action<Vector2> onDashTick = null, 
+                 System.Action onComplete = null)
+{
+    if (isDashing)
+    {
+        Debug.LogWarning("[PlayerController] 이미 대쉬 중입니다.");
+        return;
+    }
+    
+    StartCoroutine(DashCoroutine(direction, distance, duration, onDashTick, onComplete));
+}
+
+private IEnumerator DashCoroutine(Vector2 direction, float distance, float duration,
+                                   System.Action<Vector2> onDashTick, System.Action onComplete)
+{
+    isDashing = true;
+    
+    // 입력 잠금
+    SetControlsLocked(true);
+    
+    // 시작 위치
+    Vector2 startPos = transform.position;
+    Vector2 targetPos = startPos + direction.normalized * distance;
+    
+    // 벽 체크 (선택)
+    RaycastHit2D hit = Physics2D.Raycast(startPos, direction, distance, LayerMask.GetMask("Wall", "BlockingObject"));
+    if (hit.collider != null)
+    {
+        // 벽까지만 이동
+        targetPos = hit.point - direction.normalized * 0.2f;  // 약간 여유
+    }
+    
+    float elapsed = 0f;
+    
+    while (elapsed < duration)
+    {
+        elapsed += Time.deltaTime;
+        float t = Mathf.Clamp01(elapsed / duration);
+        
+        // EaseOutCubic (빠르게 시작, 천천히 끝)
+        float easeT = 1f - Mathf.Pow(1f - t, 3f);
+        
+        Vector2 newPos = Vector2.Lerp(startPos, targetPos, easeT);
+        
+        // Rigidbody 이동
+        if (rb != null)
+        {
+            rb.MovePosition(newPos);
+        }
+        
+        // 매 프레임 콜백 (BashDash용 충돌 체크)
+        onDashTick?.Invoke(newPos);
+        
+        yield return null;
+    }
+    
+    // 최종 위치 보정
+    if (rb != null)
+    {
+        rb.MovePosition(targetPos);
+        rb.velocity = Vector2.zero;
+    }
+    
+    // 입력 해제
+    SetControlsLocked(false);
+    isDashing = false;
+    
+    // 완료 콜백
+    onComplete?.Invoke();
+    
+    Debug.Log($"[PlayerController] 대쉬 완료: {distance}m");
+}
 
     // ==================== Scene Management ====================
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -554,11 +668,10 @@ public class PlayerController : MonoBehaviour
             attack.meleeRange = meleeRange;
             attack.projectilePrefab = projectilePrefab;
             attack.projectileSpeed = projectileSpeed;
-            attack.projectileMaxDistance = projectileMaxDistance;  // 발사체 최대 거리 업데이트
+            attack.projectileMaxDistance = projectileMaxDistance;
 
             if (PlayerStatsComponent.Instance != null)
             {
-
                 attack.attackDamage = PlayerStatsComponent.Instance.Stats.attackPower;
                 attack.criticalChance = PlayerStatsComponent.Instance.Stats.criticalChance;
                 attack.criticalDamage = PlayerStatsComponent.Instance.Stats.criticalDamage;
@@ -569,7 +682,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        // ===== 이동속도 업데이트 추가 =====
+        if (movement != null && PlayerStatsComponent.Instance != null)
+        {
+            movement.MoveSpeed = PlayerStatsComponent.Instance.Stats.moveSpeed;
+            Debug.Log($"[PlayerController] UpdateStats - 이동속도: {movement.MoveSpeed:F2}");
+        }
     }
+
     public void SetAttackType(EquipmentSlot slot)
     {
         if (attack != null && (slot == EquipmentSlot.MeleeWeapon || slot == EquipmentSlot.RangedWeapon))

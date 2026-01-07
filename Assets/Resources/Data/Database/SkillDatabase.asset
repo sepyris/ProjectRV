@@ -14,173 +14,216 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Items:
   - skillId: Skill_001
-    skillName: "\uD30C\uC774\uC5B4\uBCFC"
-    description: "\uBC14\uB77C\uBCF4\uB294 \uBC29\uD5A5\uC73C\uB85C \uBD88\uB369\uC5B4\uB9AC\uB97C
-      \uB0A0\uB9BD\uB2C8\uB2E4."
-    requiredJob: Mage
-    requiredLevel: 5
+    skillName: "\uD798\uAECF \uD718\uB450\uB974\uAE30"
+    description: "[\uC561\uD2F0\uBE0C]\n\uBB34\uAE30\uC5D0 \uD798\uC744 \uC2E4\uC5B4
+      \uC815\uBA74\uC758 \uC801\uC744 \uD06C\uAC8C \uD718\uB458\uB7EC \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    skillType: 0
+    requiredJob: novice
+    requiredLevel: 1
     maxLevel: 10
     cooldown: 5
-    damageRate: 200
+    damageRate: 170
     levelUpDamageRate: 20
     skillIconPath: 
   - skillId: Skill_002
-    skillName: 
-    description: 
-    requiredJob: 
+    skillName: "\uB9E4\uC9C1\uBBF8\uC0AC\uC77C"
+    description: "[\uC561\uD2F0\uBE0C]\n\uB9C8\uB098\uB85C \uB9CC\uB4E4\uC5B4\uC9C4
+      \uBBF8\uC0AC\uC77C\uC744 \uB0A0\uB9BD\uB2C8\uB2E4"
+    skillType: 0
+    requiredJob: novice
     requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    maxLevel: 10
+    cooldown: 5
+    damageRate: 70
+    levelUpDamageRate: 5
     skillIconPath: 
   - skillId: Skill_003
-    skillName: 
-    description: 
-    requiredJob: 
+    skillName: "\uC751\uAE09\uCC98\uCE58"
+    description: "[\uC561\uD2F0\uBE0C]\n\uC751\uAE09\uCC98\uCE58\uB97C \uD569\uB2C8\uB2E4"
+    skillType: 0
+    requiredJob: novice
     requiredLevel: 1
     maxLevel: 1
-    cooldown: 0
-    damageRate: 0
+    cooldown: 20
+    damageRate: 10
     levelUpDamageRate: 0
     skillIconPath: 
   - skillId: Skill_004
-    skillName: 
-    description: 
-    requiredJob: 
+    skillName: "\uAC00\uBCBC\uC6B4 \uBC1C\uAC78\uC74C"
+    description: "[\uBC84\uD504]\n\uBAB8\uC774 \uAC00\uBCBC\uC6CC\uC9D1\uB2C8\uB2E4\n\uC774\uB3D9\uC18D\uB3C4\uAC00
+      \uBE68\uB77C\uC9D1\uB2C8\uB2E4"
+    skillType: 0
+    requiredJob: novice
     requiredLevel: 1
     maxLevel: 1
-    cooldown: 0
-    damageRate: 0
+    cooldown: 30
+    damageRate: 30
     levelUpDamageRate: 0
     skillIconPath: 
   - skillId: Skill_005
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    skillName: "\uB3CC\uC9C4"
+    description: "[\uC561\uD2F0\uBE0C]\n\uAC00\uAE4C\uC6B4\uC801\uC5D0\uAC8C \uB3CC\uC9C4
+      \uD569\uB2C8\uB2E4"
+    skillType: 0
+    requiredJob: warrior
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 10
+    damageRate: 250
+    levelUpDamageRate: 20
     skillIconPath: 
   - skillId: Skill_006
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    skillName: "\uC5F0\uC18D\uBCA0\uAE30"
+    description: "[\uC561\uD2F0\uBE0C]\n\uC801\uC744 \uC5EC\uB7EC \uBC88 \uC5F0\uC18D\uD574\uC11C
+      \uBCA0\uC5B4 \uBC84\uB9BD\uB2C8\uB2E4."
+    skillType: 0
+    requiredJob: warrior
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 10
+    damageRate: 60
+    levelUpDamageRate: 5
     skillIconPath: 
   - skillId: Skill_007
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    skillName: "\uB4E0\uB4E0\uD55C \uB9C8\uC74C"
+    description: "[\uBC84\uD504]\n\uB9C8\uC74C\uC744 \uB2E4\uC7A1\uC544\uC11C \uACF5\uACA9\uB825\uACFC
+      \uBC29\uC5B4\uB825\uC744 \uB192\uC785\uB2C8\uB2E4."
+    skillType: 0
+    requiredJob: warrior
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 60
+    damageRate: 20
+    levelUpDamageRate: 1
     skillIconPath: 
   - skillId: Skill_008
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    skillName: "\uB2E8\uAC80\uD22C\uCC99"
+    description: "[\uC561\uD2F0\uBE0C]\n\uBA40\uB9AC \uC788\uB294 \uC801\uC5D0\uAC8C
+      \uC791\uC740 \uB2E8\uAC80\uC744 \uB358\uC9D1\uB2C8\uB2E4."
+    skillType: 0
+    requiredJob: warrior
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 10
+    damageRate: 70
+    levelUpDamageRate: 5
     skillIconPath: 
   - skillId: Skill_009
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
+    skillName: "\uAC15\uC778\uD55C \uC0DD\uBA85\uB825"
+    description: "[\uD328\uC2DC\uBE0C]\n\uAE30\uCD08 \uCCB4\uB825 \uD6C8\uB828\uC744
+      \uC2DC\uC791\uD574\uC11C \uC804\uBCF4\uB2E4 \uB9F7\uC9D1\uC774 \uC870\uAE08
+      \uB354 \uC88B\uC544\uC9D1\uB2C8\uB2E4."
+    skillType: 1
+    requiredJob: warrior
+    requiredLevel: 10
+    maxLevel: 10
     cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    damageRate: 5
+    levelUpDamageRate: 2
     skillIconPath: 
   - skillId: Skill_010
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
+    skillName: "\uBB34\uAE30\uC219\uB828"
+    description: "[\uD328\uC2DC\uBE0C]\n\uBB34\uAE30\uB97C \uC81C\uB300\uB85C \uB2E4\uB8E8\uB294
+      \uBC95\uC744 \uBC30\uC6CC \uACF5\uACA9\uB825\uC774 \uC62C\uB77C\uAC11\uB2C8\uB2E4."
+    skillType: 1
+    requiredJob: warrior
+    requiredLevel: 10
+    maxLevel: 10
     cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    damageRate: 5
+    levelUpDamageRate: 2
     skillIconPath: 
   - skillId: Skill_011
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
+    skillName: "\uC218\uD638\uC758\uB9C8\uC74C\uAC00\uC9D0"
+    description: "[\uD328\uC2DC\uBE0C]\n\uC801\uC758 \uACF5\uACA9\uC744 \uC815\uBA74\uC73C\uB85C
+      \uBC1B\uB294 \uBC95\uC744 \uBC30\uC6CC \uBC29\uC5B4\uB825\uC774 \uC62C\uB77C\uAC11\uB2C8\uB2E4."
+    skillType: 1
+    requiredJob: warrior
+    requiredLevel: 10
+    maxLevel: 10
     cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    damageRate: 5
+    levelUpDamageRate: 2
     skillIconPath: 
   - skillId: Skill_012
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    skillName: "\uD30C\uC774\uC5B4\uBCFC"
+    description: "[\uC561\uD2F0\uBE0C]\n\uBC14\uB77C\uBCF4\uB294 \uBC29\uD5A5\uC73C\uB85C
+      \uBD88\uB369\uC5B4\uB9AC\uB97C \uB0A0\uB9BD\uB2C8\uB2E4."
+    skillType: 0
+    requiredJob: mage
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 10
+    damageRate: 300
+    levelUpDamageRate: 20
     skillIconPath: 
   - skillId: Skill_013
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    skillName: "\uD504\uB85C\uC2A4\uD2B8\uD544\uB4DC"
+    description: "[\uC561\uD2F0\uBE0C]\n\uBD80\uCC44\uAF34\uBAA8\uC591\uC73C\uB85C
+      \uC5BC\uC74C\uC7A5\uD310\uC744 \uB9CC\uB4ED\uB2C8\uB2E4"
+    skillType: 0
+    requiredJob: mage
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 10
+    damageRate: 200
+    levelUpDamageRate: 10
     skillIconPath: 
   - skillId: Skill_014
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    skillName: "\uB77C\uC774\uD2B8\uB2DD\uC11C\uD074"
+    description: "[\uC561\uD2F0\uBE0C]\n\uB0B4 \uC8FC\uBCC0\uC73C\uB85C \uC804\uAE30\uB97C
+      \uBFDC\uC5B4 \uADFC\uCC98\uC758 \uC801\uB4E4\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    skillType: 0
+    requiredJob: mage
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 10
+    damageRate: 100
+    levelUpDamageRate: 15
     skillIconPath: 
   - skillId: Skill_015
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    skillName: "\uD790"
+    description: "[\uC561\uD2F0\uBE0C]\n\uCCB4\uB825\uC744 \uD68C\uBCF5\uD569\uB2C8\uB2E4"
+    skillType: 0
+    requiredJob: mage
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 20
+    damageRate: 20
+    levelUpDamageRate: 1
     skillIconPath: 
   - skillId: Skill_016
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
-    cooldown: 0
+    skillName: "\uB9C8\uB825\uC794\uC0C1"
+    description: "[\uC561\uD2F0\uBE0C]\n\uC794\uC0C1\uC744 \uB0A8\uAE30\uACE0 \uC774\uB3D9\uD569\uB2C8\uB2E4"
+    skillType: 0
+    requiredJob: mage
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 10
     damageRate: 0
     levelUpDamageRate: 0
     skillIconPath: 
   - skillId: Skill_017
-    skillName: 
-    description: 
-    requiredJob: 
-    requiredLevel: 1
-    maxLevel: 1
+    skillName: "\uB9C8\uB098\uC81C\uC5B4"
+    description: "[\uD328\uC2DC\uBE0C]\n\uB9C8\uB098\uB97C \uD55C\uB370 \uBAA8\uC73C\uB294
+      \uBC95\uC744 \uBC30\uC6CC \uB9C8\uBC95 \uACF5\uACA9\uB825\uC774 \uC62C\uB77C\uAC11\uB2C8\uB2E4."
+    skillType: 1
+    requiredJob: mage
+    requiredLevel: 10
+    maxLevel: 10
     cooldown: 0
-    damageRate: 0
-    levelUpDamageRate: 0
+    damageRate: 5
+    levelUpDamageRate: 2
+    skillIconPath: 
+  - skillId: Skill_018
+    skillName: "\uC815\uC2E0\uC218\uC591"
+    description: "[\uD328\uC2DC\uBE0C]\n\uB9C8\uC74C\uC744 \uCC28\uBD84\uD788 \uAC00\uB77C\uC549\uD788\uB294
+      \uBC95\uC744 \uBC30\uC6CC \uBC29\uC5B4\uB825\uC774 \uC62C\uB77C\uAC11\uB2C8\uB2E4."
+    skillType: 1
+    requiredJob: mage
+    requiredLevel: 10
+    maxLevel: 10
+    cooldown: 0
+    damageRate: 5
+    levelUpDamageRate: 2
     skillIconPath: 
