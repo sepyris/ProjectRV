@@ -29,11 +29,6 @@ public class SkillData
         if (level <= 1) return damageRate;
         return damageRate + (levelUpDamageRate * (level - 1));
     }
-    public float GetModifierAtLevel(int level)
-    {
-        if (level <= 1) return damageRate;
-        return damageRate + (levelUpDamageRate * (level - 1));
-    }
 }
 public enum SkillType
 {

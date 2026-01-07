@@ -10,6 +10,11 @@ public class FirstAid : ActiveSkillBase
 
     protected override void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform)
     {
-        throw new System.NotImplementedException();
+        PlayerStatsComponent playerStats = caster.GetComponent<PlayerStatsComponent>();
+
+        float healRate = GetCurrentDamage();
+        int healamount = Mathf.FloorToInt(playerStats.Stats.maxHP * (healRate / 100f));
+
+        playerStats.Stats.Heal(healamount);
     }
 }

@@ -10,7 +10,7 @@ public class Toughness : PassiveSkillBase
 
     protected override void OnApply(CharacterStats stats)
     {
-        float hpbonus = GetCurrentModifier();
+        float hpbonus = GetCurrentDamage();
 
         stats.skill_HPBonus += Mathf.FloorToInt(hpbonus);
         stats.RecalculateStats();
@@ -19,7 +19,7 @@ public class Toughness : PassiveSkillBase
 
     protected override void OnRemove(CharacterStats stats)
     {
-        float hpbonus = GetCurrentModifier();
+        float hpbonus = GetCurrentDamage();
 
         stats.skill_HPBonus -= Mathf.FloorToInt(hpbonus);
         stats.RecalculateStats();

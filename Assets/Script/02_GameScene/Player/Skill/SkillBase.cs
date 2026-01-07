@@ -107,10 +107,6 @@ public abstract class SkillBase
 
         return skillData.damageRate + (skillData.levelUpDamageRate * (currentLevel - 1));
     }
-    public float GetCurrentModifier()
-    {
-        return skillData.GetModifierAtLevel(currentLevel);
-    }
 
     // ===== 유틸리티 =====
 

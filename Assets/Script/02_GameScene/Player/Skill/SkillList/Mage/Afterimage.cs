@@ -55,7 +55,6 @@ public class Afterimage : ActiveSkillBase
             () => {
                 // 도착 위치 이펙트
                 SpawnEffect(EFFECT_PATH, caster.position, Quaternion.identity);
-                Debug.Log("[Afterimage] 순간이동 완료!");
             }
         );
 

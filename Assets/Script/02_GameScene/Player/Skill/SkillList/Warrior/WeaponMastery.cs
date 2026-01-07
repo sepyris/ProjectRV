@@ -10,7 +10,7 @@ public class WeaponMastery : PassiveSkillBase
 
     protected override void OnApply(CharacterStats stats)
     {
-        float attackBonus = GetCurrentModifier();
+        float attackBonus = GetCurrentDamage();
 
         stats.skill_attackBonus += Mathf.FloorToInt(attackBonus);
         stats.RecalculateStats();
@@ -18,7 +18,7 @@ public class WeaponMastery : PassiveSkillBase
 
     protected override void OnRemove(CharacterStats stats)
     {
-        float attackBonus = GetCurrentModifier();
+        float attackBonus = GetCurrentDamage();
 
         stats.skill_attackBonus += Mathf.FloorToInt(attackBonus);
         stats.RecalculateStats();

@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class BashDash : ActiveSkillBase
 {
@@ -8,12 +7,10 @@ public class BashDash : ActiveSkillBase
     private const string SLASH_EFFECT_PATH = "Effects/SlashEffect";
 
     private const float TARGET_SEARCH_RADIUS = 8f;  // 적 탐색 반경
-    private const float DASH_DISTANCE = 5f;          // 대쉬 거리 (적 없을 때)
+    private const float DASH_DISTANCE = 5f;          // 대쉬 거리
     private const float DASH_DURATION = 0.3f;
     private const float SLASH_RANGE = 2.5f;          // 휘두르기 범위
     private const float SLASH_ANGLE = 150f;          // 휘두르기 각도
-
-    private HashSet<MonsterController> dashHitMonsters = new HashSet<MonsterController>();
 
     public BashDash(SkillData data, int level = 1) : base(data, level)
     {
@@ -23,7 +20,7 @@ public class BashDash : ActiveSkillBase
     {
         PlayerController player = caster.GetComponent<PlayerController>();
         PlayerStatsComponent playerStats = caster.GetComponent<PlayerStatsComponent>();
-        PlayerMovement movement = player?.GetComponent<PlayerController>()?.movement;
+        PlayerMovement movement = player?.movement;
 
         if (player == null || playerStats == null)
         {
@@ -61,24 +58,18 @@ public class BashDash : ActiveSkillBase
             Debug.Log($"[BashDash] 적 없음. 바라보는 방향으로 돌진: {dashDirection}");
         }
 
-        // 데미지 계산
+        // 데미지 계산 (휘두르기만)
         float skillDamageRate = GetCurrentDamage();
-        int dashDamage = Mathf.FloorToInt(playerStats.Stats.attackPower * skillDamageRate / 100f);
-        int slashDamage = Mathf.FloorToInt(playerStats.Stats.attackPower * (skillDamageRate * 1.2f) / 100f);  // 휘두르기는 20% 더 강함
+        int slashDamage = Mathf.FloorToInt(playerStats.Stats.attackPower * skillDamageRate / 100f);
 
-        dashHitMonsters.Clear();
-
-        // 2단계: 대쉬 실행
+        // 2단계: 대쉬 실행 (충돌 체크 없음)
         player.Dash(
             dashDirection,
             dashDistance,
             DASH_DURATION,
-            (currentPos) => {
-                // 대쉬 중 충돌 체크
-                CheckDashCollision(currentPos, dashDamage, playerStats.Stats);
-            },
+            null,  // ← onDashTick = null (충돌 체크 제거)
             () => {
-                // 3단계: 대쉬 완료 후 휘두르기
+                // 3단계: 대쉬 완료 후 휘두르기만
                 if (player is MonoBehaviour mono)
                 {
                     mono.StartCoroutine(PerformSlashAttack(caster, dashDirection, slashDamage, playerStats.Stats));
@@ -115,34 +106,6 @@ public class BashDash : ActiveSkillBase
         }
 
         return nearest;
-    }
-
-    /// <summary>
-    /// 대쉬 중 충돌 체크
-    /// </summary>
-    private void CheckDashCollision(Vector2 currentPos, int damage, CharacterStats stats)
-    {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(currentPos, 0.8f, LayerMask.GetMask("Monster"));
-
-        foreach (Collider2D hit in hits)
-        {
-            MonsterController monster = hit.GetComponent<MonsterController>();
-
-            if (monster != null && !dashHitMonsters.Contains(monster))
-            {
-                dashHitMonsters.Add(monster);
-
-                bool isCritical = Random.Range(0f, 100f) <= stats.criticalChance;
-                int finalDamage = damage;
-
-                if (isCritical)
-                {
-                    finalDamage = Mathf.FloorToInt(damage * (stats.criticalDamage / 100f));
-                }
-
-                monster.TakeDamage(finalDamage, isCritical, stats.accuracy);
-            }
-        }
     }
 
     /// <summary>
@@ -190,8 +153,5 @@ public class BashDash : ActiveSkillBase
         SpawnEffect(SLASH_EFFECT_PATH, effectPosition, Quaternion.Euler(0, 0, effectAngle));
 
         Debug.Log($"[BashDash] 휘두르기로 {hitCount}명 공격!");
-
-        // 대쉬 중 맞은 적 리스트 초기화
-        dashHitMonsters.Clear();
     }
 }

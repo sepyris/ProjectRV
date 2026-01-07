@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class BraveHeart : ActiveSkillBase
 {
-    private const string BUFF_ID = "BraveHeart";
-    private const string EFFECT_PATH = "Effects/BuffEffect";
-
     public BraveHeart(SkillData data, int level = 1) : base(data, level)
     {
     }
@@ -13,12 +10,12 @@ public class BraveHeart : ActiveSkillBase
     {
         // 버프 수치 계산
         float buffPercent = GetCurrentDamage() / 100f;
-        float buffDuration = skillData.cooldown / 2f;  // ← 이걸 사용!
+        float buffDuration = skillData.cooldown / 2f;
 
         // BuffManager로 버프 적용
         BuffManager.Instance.ApplyBuff(
-            BUFF_ID,
-            "든든한 마음",
+            skillData.skillId,
+            skillData.skillName,
             buffDuration,  // ← buff_duration 말고 buffDuration!
             (stats) => {
                 stats.skill_attackBonus += buffPercent;
@@ -33,6 +30,6 @@ public class BraveHeart : ActiveSkillBase
         );
 
         // 이펙트
-        SpawnEffect(EFFECT_PATH, caster.position, Quaternion.identity);
+        SpawnEffect("", caster.position, Quaternion.identity);
     }
 }

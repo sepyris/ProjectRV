@@ -10,7 +10,7 @@ public class GuardStance : PassiveSkillBase
 
     protected override void OnApply(CharacterStats stats)
     {
-        float defenseBonus = GetCurrentModifier();
+        float defenseBonus = GetCurrentDamage();
 
         stats.skill_defenseBonus += Mathf.FloorToInt(defenseBonus);
         stats.RecalculateStats();
@@ -19,7 +19,7 @@ public class GuardStance : PassiveSkillBase
 
     protected override void OnRemove(CharacterStats stats)
     {
-        float defenseBonus = GetCurrentModifier();
+        float defenseBonus = GetCurrentDamage();
 
         stats.skill_defenseBonus -= Mathf.FloorToInt(defenseBonus);
         stats.RecalculateStats();
