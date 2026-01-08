@@ -19,5 +19,47 @@ MonoBehaviour:
       limitedStock: -1
     - itemid: sword_wooden
       limitedStock: -1
-    - itemid: skill_fireball
+    - itemid: staff_wooden
+      limitedStock: -1
+  - shopid: Shop_02
+    items:
+    - itemid: SkillScrollFullSwing
+      limitedStock: -1
+    - itemid: SkillScrollMagicMissile
+      limitedStock: -1
+    - itemid: SkillScrollFirstAid
+      limitedStock: -1
+    - itemid: SkillScrollLightSteps
+      limitedStock: -1
+  - shopid: Shop_03
+    items:
+    - itemid: SkillScrollBashDash
+      limitedStock: -1
+    - itemid: SkillScrollMultiSlash
+      limitedStock: -1
+    - itemid: SkillScrollBraveHeart
+      limitedStock: -1
+    - itemid: SkillScrollDaggerThrow
+      limitedStock: -1
+    - itemid: SkillScrollToughness
+      limitedStock: -1
+    - itemid: SkillScrollWeaponMastery
+      limitedStock: -1
+    - itemid: SkillScrollGuardStance
+      limitedStock: -1
+  - shopid: Shop_04
+    items:
+    - itemid: SkillScrollFireBall
+      limitedStock: -1
+    - itemid: SkillScrollFrostField
+      limitedStock: -1
+    - itemid: SkillScrollLightningCircle
+      limitedStock: -1
+    - itemid: SkillScrollHeal
+      limitedStock: -1
+    - itemid: SkillScrollAfterimage
+      limitedStock: -1
+    - itemid: SkillScrollManaControl
+      limitedStock: -1
+    - itemid: SkillScrollMentalTraining
       limitedStock: -1

@@ -39,13 +39,13 @@ MonoBehaviour:
     position: {x: 0, y: 0}
   - npcId: npc_0005
     npcName: "\uB8E8\uD0A4"
-    npcTitle: 
+    npcTitle: "\uCD08\uBCF4\uC790\uB9C8\uC2A4\uD130"
     npcDescription: 
     mapId: 
     position: {x: 0, y: 0}
   - npcId: npc_0006
     npcName: "\uB8E8\uB098"
-    npcTitle: 
+    npcTitle: "\uB9C8\uBC95\uC0AC\uB9C8\uC2A4\uD130"
     npcDescription: 
     mapId: 
     position: {x: 0, y: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
     position: {x: 0, y: 0}
   - npcId: npc_0011
     npcName: "\uBBF8\uBBF8"
-    npcTitle: 
+    npcTitle: "\uC804\uC0AC\uB9C8\uC2A4\uD130"
     npcDescription: 
     mapId: 
     position: {x: 0, y: 0}

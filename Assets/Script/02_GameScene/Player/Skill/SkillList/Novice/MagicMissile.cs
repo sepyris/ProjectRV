@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class MagicMissile : ActiveSkillBase
 {
-    private const string PROJECTILE_PATH = "Prefabs/Skills/MagicMissileProjectile";
+    private const string PROJECTILE_PATH = "SkillsPrefabs/MagicMissileProjectile";
     private const float PROJECTILE_SPEED = 18f;
     private const float PROJECTILE_DISTANCE = 15f;
     private const float SEARCH_RADIUS = 10f;
@@ -154,6 +154,7 @@ public class MagicMissile : ActiveSkillBase
             );
 
             projectile.SetVelocity(direction * PROJECTILE_SPEED);
+            projectile.SetIgnoreWalls(true);
 
             // 유도 컴포넌트 추가
             HomingComponent homing = projectileObj.AddComponent<HomingComponent>();

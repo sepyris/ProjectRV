@@ -15,7 +15,7 @@ MonoBehaviour:
   Items:
   - questId: Quest_001
     questName: "\uB9C8\uC744 \uB300\uD45C\uC640 \uC778\uC0AC"
-    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8\uC5D0\uC694"
     prerequisite:
       type: 1
       value: 1
@@ -23,16 +23,16 @@ MonoBehaviour:
     questHint: 
     objectives: []
     rewardGold: 0
-    rewardExp: 70
+    rewardExp: 50
     rewards: []
     status: 0
   - questId: Quest_002
     questName: "\uCCAB \uBC88\uC9F8 \uAC70\uB798"
-    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    description: "\uC0C1\uC810\uC744 \uC774\uC6A9\uD574\uBD10\uC694"
     prerequisite:
       type: 3
       value: Quest_001:Rewarded
-    preAcceptReward: item:gold_coin:20
+    preAcceptReward: item:gold_coin:10
     questHint: 
     objectives:
     - type: 2
@@ -40,7 +40,7 @@ MonoBehaviour:
       requiredCount: 1
       currentCount: 0
     rewardGold: 0
-    rewardExp: 70
+    rewardExp: 60
     rewards:
     - itemId: potion_hp_small
       quantity: 5
@@ -48,7 +48,7 @@ MonoBehaviour:
     status: 0
   - questId: Quest_003
     questName: "\uC548\uBD80\uB97C \uC804\uD574\uC694"
-    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    description: "\uB2E4\uB978 \uC8FC\uBBFC\uC744 \uB9CC\uB098\uBD10\uC694"
     prerequisite:
       type: 3
       value: Quest_002:Rewarded
@@ -60,12 +60,15 @@ MonoBehaviour:
       requiredCount: 1
       currentCount: 0
     rewardGold: 0
-    rewardExp: 70
-    rewards: []
+    rewardExp: 80
+    rewards:
+    - itemId: armor_leather
+      quantity: 1
+      dropRate: 100
     status: 0
   - questId: Quest_004
     questName: "\uC57D\uCD08\uB97C \uCE90 \uBD10\uC694"
-    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    description: "\uCC98\uC74C\uD558\uB294 \uCC44\uC9D1\uC774\uC5D0\uC694"
     prerequisite:
       type: 3
       value: Quest_003:Accepted
@@ -85,7 +88,7 @@ MonoBehaviour:
     status: 0
   - questId: Quest_005
     questName: "\uC804\uD22C\uB97C \uC900\uBE44\uD558\uBA70"
-    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    description: "\uB610 \uB2E4\uB978 \uC8FC\uBBFC\uC744 \uB9CC\uB098\uBD10\uC694"
     prerequisite:
       type: 3
       value: Quest_003:Rewarded
@@ -97,16 +100,16 @@ MonoBehaviour:
       requiredCount: 1
       currentCount: 0
     rewardGold: 0
-    rewardExp: 70
+    rewardExp: 100
     rewards: []
     status: 0
   - questId: Quest_006
     questName: "\uCCAB \uC804\uD22C \uC5F0\uC2B5"
-    description: "\uCC98\uC74C\uD558\uB294 \uD018\uC2A4\uD2B8 \uC785\uB2C8\uB2E4"
+    description: "\uBAAC\uC2A4\uD130\uB97C \uC4F0\uB7EC\uB728\uB824\uBD10\uC694"
     prerequisite:
       type: 3
       value: Quest_005:Accepted
-    preAcceptReward: item:sword_wooden:1;item:staff_wooden:1;item:armor_leather:1
+    preAcceptReward: item:sword_wooden:1;item:staff_wooden:1
     questHint: 
     objectives:
     - type: 1
@@ -114,9 +117,12 @@ MonoBehaviour:
       requiredCount: 5
       currentCount: 0
     rewardGold: 0
-    rewardExp: 70
+    rewardExp: 90
     rewards:
     - itemId: quest_rura_letter
+      quantity: 1
+      dropRate: 100
+    - itemId: SkillScrollFullSwing
       quantity: 1
       dropRate: 100
     status: 0

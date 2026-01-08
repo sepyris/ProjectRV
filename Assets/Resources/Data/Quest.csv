@@ -1,7 +1,7 @@
 QuestID,QuestName,Description,PrerequisiteType,PrerequisiteValue,PreAcceptReward,QuestHint,Objectives,Rewards,RewardExp,RewardGold
-Quest_001,마을 대표와 인사,"""처음하는 퀘스트 입니다""",Level,1,,,,,70,
-Quest_002,첫 번째 거래,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_001:Rewarded,item:gold_coin:20,,Collect:potion_hp_small:1,potion_hp_small:5,70,
-Quest_003,안부를 전해요,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_002:Rewarded,,,Collect:quest_rumo_letter:1,,70,
-Quest_004,약초를 캐 봐요,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_003:Accepted,,,Collect:herb_healing:5,quest_rumo_letter:1,70,
-Quest_005,전투를 준비하며,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_003:Rewarded,,,Collect:quest_rura_letter:1,,70,
-Quest_006,첫 전투 연습,"""처음하는 퀘스트 입니다""",QuestStatus,Quest_005:Accepted,item:sword_wooden:1;item:staff_wooden:1;item:armor_leather:1,,Kill:monster_1000001:5,quest_rura_letter:1,70,
+Quest_001,마을 대표와 인사,"""처음하는 퀘스트에요""",Level,1,,,,,50,
+Quest_002,첫 번째 거래,"""상점을 이용해봐요""",QuestStatus,Quest_001:Rewarded,item:gold_coin:10,,Collect:potion_hp_small:1,potion_hp_small:5,60,
+Quest_003,안부를 전해요,"""다른 주민을 만나봐요""",QuestStatus,Quest_002:Rewarded,,,Collect:quest_rumo_letter:1,armor_leather:1,80,
+Quest_004,약초를 캐 봐요,"""처음하는 채집이에요""",QuestStatus,Quest_003:Accepted,,,Collect:herb_healing:5,quest_rumo_letter:1,70,
+Quest_005,전투를 준비하며,"""또 다른 주민을 만나봐요""",QuestStatus,Quest_003:Rewarded,,,Collect:quest_rura_letter:1,,100,
+Quest_006,첫 전투 연습,"""몬스터를 쓰러뜨려봐요""",QuestStatus,Quest_005:Accepted,item:sword_wooden:1;item:staff_wooden:1,,Kill:monster_1000001:5,quest_rura_letter:1;SkillScrollFullSwing:1,90,

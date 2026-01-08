@@ -1,38 +1,37 @@
 skillId,skillName,description,skillType,requiredJob,requiredLevel,maxLevel,cooldown,damageRate,levelUpDamageRate,skillIconPath
 Skill_001,힘껏 휘두르기,"""[액티브]
-무기에 힘을 실어 정면의 적을 크게 휘둘러 공격합니다.""",Active,novice,1,10,5,170,20,
+무기에 힘을 실어 정면의 적을 크게 휘둘러 공격합니다.""",Active,novice,1,10,5,170,20,Icons/Skills/FullSwing
 Skill_002,매직미사일,"""[액티브]
-마나로 만들어진 미사일을 날립니다""",Active,novice,1,10,5,70,5,
+마나로 만들어진 미사일을 날립니다""",Active,novice,1,10,5,70,5,Icons/Skills/MagicMissile
 Skill_003,응급처치,"""[액티브]
-응급처치를 합니다""",Active,novice,1,1,20,10,0,
+응급처치를 합니다""",Active,novice,1,1,20,10,0,Icons/Skills/FirstAid
 Skill_004,가벼운 발걸음,"""[버프]
-몸이 가벼워집니다
-이동속도가 빨라집니다""",Buff,novice,1,1,30,30,0,
-Skill_005,돌진,"[액티브]
-가까운적에게 돌진 합니다",Active,warrior,10,10,10,250,20,
+몸이 가벼워져 이동속도가 빨라집니다""",Buff,novice,1,1,30,30,0,Icons/Skills/LightSteps
+Skill_005,돌진,"""[액티브]
+가까운적에게 돌진 합니다""",Active,warrior,10,10,10,250,20,Icons/Skills/BashDash
 Skill_006,연속베기,"""[액티브]
-적을 여러 번 연속해서 베어 버립니다.""",Active,warrior,10,10,10,60,5,
+적을 여러 번 연속해서 베어 버립니다.""",Active,warrior,10,10,10,60,5,Icons/Skills/MultiSlash
 Skill_007,든든한 마음,"""[버프]
-마음을 다잡아서 공격력과 방어력을 높입니다.""",Buff,warrior,10,10,60,20,1,
+마음을 다잡아서 공격력과 방어력을 높입니다.""",Buff,warrior,10,10,60,20,1,Icons/Skills/BraveHeart
 Skill_008,단검투척,"""[액티브]
-멀리 있는 적에게 작은 단검을 던집니다.""",Active,warrior,10,10,10,70,5,
+멀리 있는 적에게 작은 단검을 던집니다.""",Active,warrior,10,10,10,70,5,Icons/Skills/DaggerThrow
 Skill_009,강인한 생명력,"""[패시브]
-기초 체력 훈련을 시작해서 전보다 맷집이 조금 더 좋아집니다.""",Passive,warrior,10,10,0,5,2,
+기초 체력 훈련을 시작해서 전보다 맷집이 조금 더 좋아집니다.""",Passive,warrior,10,10,0,5,2,Icons/Skills/Toughness
 Skill_010,무기숙련,"""[패시브]
-무기를 제대로 다루는 법을 배워 공격력이 올라갑니다.""",Passive,warrior,10,10,0,5,2,
+무기를 제대로 다루는 법을 배워 공격력이 올라갑니다.""",Passive,warrior,10,10,0,5,2,Icons/Skills/WeaponMastery
 Skill_011,수호의마음가짐,"""[패시브]
-적의 공격을 정면으로 받는 법을 배워 방어력이 올라갑니다.""",Passive,warrior,10,10,0,5,2,
+적의 공격을 정면으로 받는 법을 배워 방어력이 올라갑니다.""",Passive,warrior,10,10,0,5,2,Icons/Skills/GuardStance
 Skill_012,파이어볼,"""[액티브]
-바라보는 방향으로 불덩어리를 날립니다.""",Active,mage,10,10,10,300,20,
+바라보는 방향으로 불덩어리를 날립니다.""",Active,mage,10,10,10,300,20,Icons/Skills/FireBall
 Skill_013,프로스트필드,"""[액티브]
-부채꼴모양으로 얼음장판을 만듭니다""",Active,mage,10,10,10,200,10,
+부채꼴모양으로 얼음장판을 만듭니다""",Active,mage,10,10,10,200,10,Icons/Skills/FrostField
 Skill_014,라이트닝서클,"""[액티브]
-내 주변으로 전기를 뿜어 근처의 적들을 공격합니다.""",Active,mage,10,10,10,100,15,
+내 주변으로 전기를 뿜어 근처의 적들을 공격합니다.""",Active,mage,10,10,10,100,15,Icons/Skills/LightningCircle
 Skill_015,힐,"""[액티브]
-체력을 회복합니다""",Active,mage,10,10,20,20,1,
+체력을 회복합니다""",Active,mage,10,10,20,20,1,Icons/Skills/Heal
 Skill_016,마력잔상,"""[액티브]
-잔상을 남기고 이동합니다""",Active,mage,10,10,10,0,0,
+잔상을 남기고 이동합니다""",Active,mage,10,10,10,0,0,Icons/Skills/Afterimage
 Skill_017,마나제어,"""[패시브]
-마나를 한데 모으는 법을 배워 마법 공격력이 올라갑니다.""",Passive,mage,10,10,0,5,2,
+마나를 한데 모으는 법을 배워 공격력이 올라갑니다.""",Passive,mage,10,10,0,5,2,Icons/Skills/ManaControl
 Skill_018,정신수양,"""[패시브]
-마음을 차분히 가라앉히는 법을 배워 방어력이 올라갑니다.""",Passive,mage,10,10,0,5,2,
+마음을 차분히 가라앉히는 법을 배워 방어력이 올라갑니다.""",Passive,mage,10,10,0,5,2,Icons/Skills/MentalTraining

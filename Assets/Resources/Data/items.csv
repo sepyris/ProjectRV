@@ -3,13 +3,66 @@ sword_wooden,나무 검,Equipment,기본적인 나무 검,1,100,50,Icons/Weapons
 staff_wooden,나무 지팡이,Equipment,"""나무로 만들어진 지팡이
 그냥 나뭇가지인가?""",1,120,60,Icons/Weapons/staff_wooden,TRUE,,RangedWeapon,7,0,0,0,0,4,0,0,FALSE
 armor_leather,가죽 갑옷,Equipment,기본 가죽 갑옷,1,150,75,Icons/Armor/armor_leather,TRUE,,Armor,0,10,30,1,2,0,0,0,FALSE
-potion_hp_small,작은 체력 물약,Consumable,체력 50 회복,99,50,25,Icons/Potions/hp_small,TRUE,50,,,,,,,,,,
+potion_hp_small,작은 체력 물약,Consumable,체력 50을 회복하는 작은 포션,99,50,25,Icons/Potions/hp_small,TRUE,50,,,,,,,,,,
 potion_hp_medium,중간 체력 물약,Consumable,체력 150 회복,99,150,75,Icons/Potions/hp_medium,TRUE,150,,,,,,,,,,
 potion_hp_large,큰 체력 물약,Consumable,체력 300 회복,99,400,200,Icons/Potions/hp_large,TRUE,300,,,,,,,,,,
 potion_hp_full,완전 회복 물약,Consumable,체력 완전 회복,20,1000,500,Icons/Potions/hp_full,TRUE,9999,,,,,,,,,,
 treasure_box_basic,기본 보물상자,Consumable,열면 아이템 획득,10,0,0,Icons/Items/treasure_basic,TRUE,gold_coin:100:100;potion_hp_small:3:80,,,,,,,,,,
 gold_coin,금화,Material,"""기본 화폐 판매시 5골드를 얻을수 있다""",9999,5,5,Icons/Materials/gold_coin,TRUE,,,,,,,,,,,
 herb_healing,치유 약초,Material,약을 만드는 약초,999,30,15,Icons/Materials/herb_healing,TRUE,,,,,,,,,,,
-quest_rumo_letter,루모의편지,QuestItem,,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
-quest_rura_letter,루라의편지,QuestItem,,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
-skill_fireball,파이어볼스크롤,Consumable,파이어볼을 배울수있는 스킬 스크롤,1,500,250,Icons/Quest/letter,TRUE,Skill_001,,,,,,,,,,
+quest_rumo_letter,루모의편지,QuestItem,루모가 루루에게 쓴 안부 편지,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
+quest_rura_letter,루라의편지,QuestItem,루라가 루루에게 쓴 안부 편지,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
+SkillScrollFullSwing,힘껏 휘두르기 스크롤,Consumable,"[액티브][초보자]
+힘껏 휘두르기 스킬을 배울수 있다
+무기에 힘을 실어 정면의 적을 크게 휘둘러 공격합니다.",1,500,250,Icons/SkillScroll/SkillScrollFullSwing,TRUE,Skill_001,,,,,,,,,,
+SkillScrollMagicMissile,매직미사일 스크롤,Consumable,"[액티브][초보자]
+매직미사일 스킬을 배울수 있다
+마나로 만들어진 미사일을 날립니다",1,500,250,Icons/SkillScroll/SkillScrollMagicMissile,TRUE,Skill_002,,,,,,,,,,
+SkillScrollFirstAid,응급처치 스크롤,Consumable,"[액티브][초보자]
+응급처치 스킬을 배울수 있다
+응급처치를 합니다",1,500,250,Icons/SkillScroll/SkillScrollFirstAid,TRUE,Skill_003,,,,,,,,,,
+SkillScrollLightSteps,가벼운 발걸음 스크롤,Consumable,"[버프][초보자]
+가벼운 발걸음 스킬을 배울수 있다
+몸이 가벼워져 이동속도가 빨라집니다",1,500,250,Icons/SkillScroll/SkillScrollLightSteps,TRUE,Skill_004,,,,,,,,,,
+SkillScrollBashDash,돌진 스크롤,Consumable,"[액티브][전사]
+돌진 스킬을 배울수 있다
+가까운적에게 돌진 합니다",1,2000,1000,Icons/SkillScroll/SkillScrollBashDash,TRUE,Skill_005,,,,,,,,,,
+SkillScrollMultiSlash,연속베기 스크롤,Consumable,"[액티브][전사]
+연속베기 스킬을 배울수 있다
+적을 여러 번 연속해서 베어 버립니다.",1,2000,1000,Icons/SkillScroll/SkillScrollMultiSlash,TRUE,Skill_006,,,,,,,,,,
+SkillScrollBraveHeart,든든한 마음 스크롤,Consumable,"[버프][전사]
+든든한 마음 스킬을 배울수 있다
+마음을 다잡아서 공격력과 방어력을 높입니다.",1,2000,1000,Icons/SkillScroll/SkillScrollBraveHeart,TRUE,Skill_007,,,,,,,,,,
+SkillScrollDaggerThrow,단검투척 스크롤,Consumable,"[액티브][전사]
+단검투척 스킬을 배울수 있다
+멀리 있는 적에게 작은 단검을 던집니다.",1,2000,1000,Icons/SkillScroll/SkillScrollDaggerThrow,TRUE,Skill_008,,,,,,,,,,
+SkillScrollToughness,강인한 생명력 스크롤,Consumable,"[패시브][전사]
+강인한 생명력 스킬을 배울수 있다
+기초 체력 훈련을 시작해서 전보다 맷집이 조금 더 좋아집니다.",1,3000,1500,Icons/SkillScroll/SkillScrollToughness,TRUE,Skill_009,,,,,,,,,,
+SkillScrollWeaponMastery,무기숙련 스크롤,Consumable,"[패시브][전사]
+무기숙련 스킬을 배울수 있다
+무기를 제대로 다루는 법을 배워 공격력이 올라갑니다.",1,3000,1500,Icons/SkillScroll/SkillScrollWeaponMastery,TRUE,Skill_010,,,,,,,,,,
+SkillScrollGuardStance,수호의마음가짐 스크롤,Consumable,"[패시브][전사]
+수호의마음가짐 스킬을 배울수 있다
+적의 공격을 정면으로 받는 법을 배워 방어력이 올라갑니다.",1,3000,1500,Icons/SkillScroll/SkillScrollGuardStance,TRUE,Skill_011,,,,,,,,,,
+SkillScrollFireBall,파이어볼 스크롤,Consumable,"[액티브][마법사]
+파이어볼 스킬을 배울수 있다
+바라보는 방향으로 불덩어리를 날립니다.",1,2000,1000,Icons/SkillScroll/SkillScrollFireBall,TRUE,Skill_012,,,,,,,,,,
+SkillScrollFrostField,프로스트필드 스크롤,Consumable,"[액티브][마법사]
+프로스트필드 스킬을 배울수 있다
+부채꼴모양으로 얼음장판을 만듭니다",1,2000,1000,Icons/SkillScroll/SkillScrollFrostField,TRUE,Skill_013,,,,,,,,,,
+SkillScrollLightningCircle,라이트닝서클 스크롤,Consumable,"[액티브][마법사]
+라이트닝서클 스킬을 배울수 있다
+내 주변으로 전기를 뿜어 근처의 적들을 공격합니다.",1,2000,1000,Icons/SkillScroll/SkillScrollLightningCircle,TRUE,Skill_014,,,,,,,,,,
+SkillScrollHeal,힐 스크롤,Consumable,"[액티브][마법사]
+힐 스킬을 배울수 있다
+체력을 회복합니다",1,2000,1000,Icons/SkillScroll/SkillScrollHeal,TRUE,Skill_015,,,,,,,,,,
+SkillScrollAfterimage,마력잔상 스크롤,Consumable,"[액티브][마법사]
+마력잔상 스킬을 배울수 있다
+잔상을 남기고 이동합니다",1,2000,1000,Icons/SkillScroll/SkillScrollAfterimage,TRUE,Skill_016,,,,,,,,,,
+SkillScrollManaControl,마나제어 스크롤,Consumable,"[패시브][마법사]
+마나제어 스킬을 배울수 있다
+마나를 한데 모으는 법을 배워 공격력이 올라갑니다.",1,3000,1500,Icons/SkillScroll/SkillScrollManaControl,TRUE,Skill_017,,,,,,,,,,
+SkillScrollMentalTraining,정신수양 스크롤,Consumable,"[패시브][마법사]
+정신수양 스킬을 배울수 있다
+마음을 차분히 가라앉히는 법을 배워 방어력이 올라갑니다.",1,3000,1500,Icons/SkillScroll/SkillScrollMentalTraining,TRUE,Skill_018,,,,,,,,,,

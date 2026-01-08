@@ -22,10 +22,10 @@ MonoBehaviour:
     gatherTime: 2
     dropItems:
     - itemId: herb_healing
-      quantity: 3
+      quantity: 1
       dropRate: 100
     - itemId: herb_healing
-      quantity: 2
+      quantity: 1
       dropRate: 50
   - gatherableid: ore_node_iron
     gatherableName: "\uCCA0\uAD11\uC11D \uAD11\uB9E5"

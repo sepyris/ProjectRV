@@ -110,10 +110,14 @@ public abstract class SkillBase
 
     // ===== 유틸리티 =====
 
+    // SkillBase.cs의 SpawnEffect 메서드 교체
+
+    // ===== 유틸리티 =====
+
     /// <summary>
-    /// 이펙트 생성
+    /// 이펙트 생성 (좌우 반전 지원)
     /// </summary>
-    protected GameObject SpawnEffect(string effectPath, Vector3 position, Quaternion rotation)
+    protected GameObject SpawnEffect(string effectPath, Vector3 position, Quaternion rotation, bool flipY = false)
     {
         if (string.IsNullOrEmpty(effectPath))
             return null;
@@ -121,8 +125,59 @@ public abstract class SkillBase
         GameObject prefab = Resources.Load<GameObject>(effectPath);
         if (prefab != null)
         {
-            return Object.Instantiate(prefab, position, rotation);
+            GameObject effect = Object.Instantiate(prefab, position, rotation);
+
+            // 왼쪽 방향이면 Y축 스케일 반전
+            if (flipY)
+            {
+                Vector3 scale = effect.transform.localScale;
+                scale.y *= -1;
+                effect.transform.localScale = scale;
+            }
+
+            // 자동 삭제 처리
+            Animator animator = effect.GetComponent<Animator>();
+            if (animator != null)
+            {
+                float destroyTime = GetAnimationLength(animator);
+                Object.Destroy(effect, destroyTime);
+            }
+            else
+            {
+                Object.Destroy(effect, 0.5f);
+            }
+
+            return effect;
         }
         return null;
+    }
+
+    /// <summary>
+    /// 애니메이션 길이 가져오기
+    /// </summary>
+    private float GetAnimationLength(Animator animator)
+    {
+        if (animator == null || animator.runtimeAnimatorController == null)
+            return 0.5f;
+
+        RuntimeAnimatorController controller = animator.runtimeAnimatorController;
+        if (controller.animationClips.Length > 0)
+        {
+            return controller.animationClips[0].length;
+        }
+
+        return 0.5f;
+    }
+
+    /// <summary>
+    /// 사운드 재생
+    /// </summary>
+    protected void PlaySound(string soundPath)
+    {
+        if (string.IsNullOrEmpty(soundPath))
+            return;
+
+        // TODO: 사운드 매니저 연동
+        Debug.Log($"[Skill] Playing sound: {soundPath}");
     }
 }

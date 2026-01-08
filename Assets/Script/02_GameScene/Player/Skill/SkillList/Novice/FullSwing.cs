@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FullSwing : ActiveSkillBase
 {
-    private const string SLASH_EFFECT_PATH = "Effects/SlashEffect";
+    private const string SLASH_EFFECT_PATH = "SkillsPrefabs/FullSwing";
     private const float SLASH_RANGE = 2.0f;          // 공격 범위
     private const float SLASH_ANGLE = 120f;          // 공격 각도
 
@@ -79,7 +79,8 @@ public class FullSwing : ActiveSkillBase
         // 휘두르기 이펙트
         Vector3 effectPosition = caster.position + (Vector3)attackDirection * 1.2f;
         float effectAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
-        SpawnEffect(SLASH_EFFECT_PATH, effectPosition, Quaternion.Euler(0, 0, effectAngle));
+        bool isFacingLeft = attackDirection.x < 0;
+        SpawnEffect(SLASH_EFFECT_PATH, effectPosition, Quaternion.Euler(0, 0, effectAngle),isFacingLeft);
 
         Debug.Log($"[FullSwing] {hitCount}명 공격!");
     }

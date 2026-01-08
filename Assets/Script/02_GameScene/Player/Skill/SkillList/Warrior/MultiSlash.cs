@@ -137,7 +137,8 @@ public class MultiSlash : ActiveSkillBase
         // 베기 이펙트
         Vector3 effectPosition = caster.position + (Vector3)attackDirection * 1.2f;
         float effectAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
-        SpawnEffect(SLASH_EFFECT_PATH, effectPosition, Quaternion.Euler(0, 0, effectAngle));
+        bool isFacingLeft = attackDirection.x < 0;
+        SpawnEffect(SLASH_EFFECT_PATH, effectPosition, Quaternion.Euler(0, 0, effectAngle), isFacingLeft);
 
         Debug.Log($"[MultiSlash] {slashNumber}번째 베기: {hitCount}명 공격");
 

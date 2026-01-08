@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 
 /// 개별 퀵슬롯 UI

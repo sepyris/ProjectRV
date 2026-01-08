@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FireBall : ActiveSkillBase
 {
-    private const string PROJECTILE_PATH = "Prefabs/Skills/FireBallProjectile";
+    private const string PROJECTILE_PATH = "SkillsPrefabs/FireBallProjectile";
     private const float PROJECTILE_SPEED = 12f;
     private const float PROJECTILE_DISTANCE = 10f;
 
@@ -68,6 +68,7 @@ public class FireBall : ActiveSkillBase
             );
 
             projectile.SetVelocity(direction * PROJECTILE_SPEED);
+            projectile.SetIgnoreWalls(true);
         }
         else
         {

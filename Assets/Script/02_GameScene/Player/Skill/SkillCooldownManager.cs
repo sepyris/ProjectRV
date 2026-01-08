@@ -14,6 +14,7 @@ public class SkillCooldownManager : MonoBehaviour
 
     // 이벤트: 쿨타임 시작 시
     public event System.Action<string, float> OnCooldownStarted;
+
     // 이벤트: 쿨타임 완료 시
     public event System.Action<string> OnCooldownCompleted;
 
@@ -35,10 +36,14 @@ public class SkillCooldownManager : MonoBehaviour
         // 모든 쿨타임 업데이트
         List<string> completedSkills = new List<string>();
 
-        foreach (var kvp in cooldowns)
+        List<string> skillIds = new List<string>(cooldowns.Keys);
+
+        foreach (string skillId in skillIds)
         {
-            string skillId = kvp.Key;
-            float remaining = kvp.Value;
+            if (!cooldowns.ContainsKey(skillId))
+                continue;
+
+            float remaining = cooldowns[skillId];
 
             if (remaining > 0f)
             {

@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class SkillUIManager : MonoBehaviour,IClosableUI
 {
@@ -21,6 +18,8 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
     [Header("스킬 리스트")]
     public Transform SkillListContainer;
     public GameObject skillUIPrepabs;
+
+    private List<SkillSlotUI> activeSkillSlots = new List<SkillSlotUI>();
 
     private enum SkillTab
     {
@@ -121,6 +120,20 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
 
         Debug.Log($"[ItemUI] {currentTab} 탭: {items.Count}개 아이템 표시");
     }
+    private void Update()
+    {
+        if (!isOpen) return;
+
+        // 모든 스킬 슬롯 쿨타임 업데이트
+        foreach (var slot in activeSkillSlots)
+        {
+            if (slot != null)
+            {
+                slot.UpdateCooldown();
+            }
+        }
+    }
+
     private List<PlayerSkillData> GetItemsForCurrentTab()
     {
         if (SkillManager.Instance == null)
@@ -142,22 +155,33 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
     private void CreateSkillListItem(PlayerSkillData skill)
     {
         GameObject itemObj = Instantiate(skillUIPrepabs, SkillListContainer);
-        Image itemImage = itemObj.GetComponent<Image>();
-        Button itemButton = itemObj.GetComponent<Button>();
-        TextMeshProUGUI itemText = itemObj.GetComponentInChildren<TextMeshProUGUI>();
-
-        // 1. 호버 및 더블클릭 핸들러 컴포넌트를 가져오거나 추가
-        /*
-        ItemDetailUiManager hoverHandler = itemObj.GetComponent<ItemDetailUiManager>();
-        if (hoverHandler == null)
-        {
-            hoverHandler = itemObj.AddComponent<ItemDetailUiManager>();
-        }
-        hoverHandler.Initialize(skill, this);
-        */
 
         SkillData data = skill.GetSkillData();
         if (data == null) return;
+
+        // ===== 이름으로 자식 찾기 =====
+
+        Image iconImage = itemObj.transform.Find("SkillIconImage")?.GetComponent<Image>();
+        TextMeshProUGUI descriptionText = itemObj.transform.Find("SkillDescText")?.GetComponent<TextMeshProUGUI>();
+        Transform infoPanel = itemObj.transform.Find("SkillNamePanel");
+        Slider expSlider = itemObj.transform.Find("SkillExp")?.GetComponent<Slider>();
+
+        TextMeshProUGUI skillNameText = infoPanel?.Find("SkillNameText")?.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI skillLevelText = infoPanel?.Find("SkillLevelText")?.GetComponent<TextMeshProUGUI>();
+
+        Image cooldownOverlay = itemObj.transform.Find("SkillCooldownImage")?.GetComponent<Image>();
+        TextMeshProUGUI cooldownText = itemObj.transform.Find("SkillCooldownText")?.GetComponent<TextMeshProUGUI>();
+
+        // ===== SkillSlotUI 컴포넌트 추가 =====
+
+        SkillSlotUI slotUI = itemObj.GetComponent<SkillSlotUI>();
+        if (slotUI == null)
+        {
+            slotUI = itemObj.AddComponent<SkillSlotUI>();
+        }
+        slotUI.Initialize(iconImage, cooldownOverlay, cooldownText, skill);
+
+        // ===== 드래그 컴포넌트 =====
 
         DraggableSkillUi draggable = itemObj.GetComponent<DraggableSkillUi>();
         if (draggable == null)
@@ -166,26 +190,32 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         }
         draggable.Initialize(skill);
 
-        // 4. 아이템 이름 표시
-        if (itemText != null)
-        {
-            string displayText = "";
-            itemText.text = displayText;
-        }
-        //5. 아이템 아이콘 표시
-        Sprite itemIcon = itemImage.sprite;
-        if (itemIcon != null && !string.IsNullOrEmpty(data.skillIconPath))
+        // ===== 아이콘 설정 =====
+
+        if (iconImage != null && !string.IsNullOrEmpty(data.skillIconPath))
         {
             Sprite icon = Resources.Load<Sprite>(data.skillIconPath);
             if (icon != null)
             {
-                itemImage.sprite = icon;
-            }
-            else
-            {
-                Debug.LogWarning($"[ShopItemUI] 아이콘을 찾을 수 없음: {data.skillIconPath}");
+                iconImage.sprite = icon;
             }
         }
+
+        // ===== 텍스트 설정 =====
+
+        if (skillNameText != null)
+            skillNameText.text = data.skillName;
+
+        if (skillLevelText != null)
+            skillLevelText.text = $"Lv.{skill.skillLevel}";
+
+        if (descriptionText != null)
+            descriptionText.text = data.description;
+
+        // ===== 경험치 =====
+
+        if (expSlider != null)
+            expSlider.value = skill.GetExpProgress();
     }
 
     private void OnSkillChanged()

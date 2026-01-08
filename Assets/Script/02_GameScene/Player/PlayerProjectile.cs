@@ -19,6 +19,7 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] private bool destroyOnHit = true;
     [SerializeField] private bool penetrateEnemies = false;  // 관통 기능
     [SerializeField] private int maxPenetrationCount = 1;    // 관통 가능 횟수
+    [SerializeField] private bool ignoreWalls = false;       // 벽 무시 (스킬용, 평타는 false)
 
     [Header("Lifetime Settings")]
     [SerializeField] private float maxDistance = 2f;        // 최대 이동 거리 (외부에서 설정)
@@ -100,10 +101,13 @@ public class PlayerProjectile : MonoBehaviour
         maxPenetrationCount = maxCount;
         destroyOnHit = !enable;  // 관통이면 즉시 파괴 안함
     }
+    public void SetIgnoreWalls(bool ignore)
+    {
+        ignoreWalls = ignore;
+    }
 
-    
     /// Trigger 충돌 감지
-    
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         // 몬스터 레이어인지 확인
@@ -117,7 +121,7 @@ public class PlayerProjectile : MonoBehaviour
                 int finalDamage = CalculateDamage(ref is_critical);
 
                 // 몬스터에게 데미지 적용
-                int actualDamage = monster.TakeDamage(finalDamage,is_critical, accuracy);
+                int actualDamage = monster.TakeDamage(finalDamage, is_critical, accuracy);
 
                 if (actualDamage > 0)
                 {
@@ -146,15 +150,25 @@ public class PlayerProjectile : MonoBehaviour
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") ||
                  collision.gameObject.layer == LayerMask.NameToLayer("BlockingObject"))
         {
+            // 벽 무시 옵션 체크
+            if (ignoreWalls)
+            {
+                // 스킬 발사체는 벽을 통과
+                Debug.Log($"[PlayerProjectile] 벽 통과 (스킬)");
+                return;
+            }
+
+            // 평타 발사체는 벽에 막힘
             Debug.Log($"[PlayerProjectile] 벽에 충돌! (이동 거리: {traveledDistance:F2}m)");
             SpawnHitEffect(collision.transform.position);
             DestroyProjectile();
         }
     }
 
-    
+
+
     /// Collision 충돌 감지 (Trigger가 아닌 경우)
-    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Trigger 방식을 권장하지만, Collision 방식도 지원
@@ -181,15 +195,22 @@ public class PlayerProjectile : MonoBehaviour
         }
         else
         {
+            // 벽 무시 옵션 체크
+            if (ignoreWalls)
+            {
+                Debug.Log($"[PlayerProjectile] 벽 통과 (스킬)");
+                return;
+            }
+
             // 다른 물체와 충돌 시 파괴
             SpawnHitEffect(collision.contacts[0].point);
             DestroyProjectile();
         }
     }
 
-    
+
     /// 데미지 계산 (크리티컬 포함)
-    
+
     private int CalculateDamage(ref bool is_critical)
     {
         float damageVariance = Random.Range(0.8f, 1.2f); // 80% ~ 120%

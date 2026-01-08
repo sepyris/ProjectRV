@@ -42,6 +42,9 @@ public class PlayerAttack
     public void SetMovement(PlayerMovement movement) => this.movement = movement;
     public void SetAnimationController(PlayerAnimationController anim) => this.animationController = anim;
 
+
+    private const string MELEE_EFFECT_PATH = "SkillsPrefabs/NormalAttack";
+
     // New Input System
     public void PerformAttack()
     {
@@ -71,39 +74,39 @@ public class PlayerAttack
             RangedAttack();
     }
 
-    
-    ///  개선된 근접 공격 - 부채꼴 범위 (가장 가까운 한 마리만)
-    
     private void MeleeAttack()
     {
         Vector2 attackDirection = movement.LastMoveDirection.normalized;
         Vector2 playerPos = PlayerController.Instance.transform.position;
-        Vector2 attackOrigin = playerPos + attackDirection * 0.3f;
 
-        int monsterLayer = LayerMask.GetMask("Monster");
+        // ===== 이펙트를 먼저 표시 (공격 시도 시 항상) =====
 
-        // 부채꼴 범위 내의 모든 몬스터 탐지
-        float halfAngle = meleeAngle / 2f;
-        float angleStep = meleeAngle / (meleeRayCount - 1);
+        Vector3 effectPosition = playerPos + (Vector2)attackDirection * 0.7f;
+        float effectAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
+
+        bool isFacingLeft = attackDirection.x < 0;
+
+        SpawnMeleeEffect(effectPosition, effectAngle, isFacingLeft);
+
+        // ===== 오버랩 방식으로 몬스터 탐지 =====
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(playerPos, meleeRange, LayerMask.GetMask("Monster"));
 
         MonsterController closestMonster = null;
         float closestDistance = float.MaxValue;
 
-        for (int i = 0; i < meleeRayCount; i++)
+        foreach (Collider2D hit in hits)
         {
-            // 현재 레이의 각도 계산
-            float currentAngle = -halfAngle + (angleStep * i);
-            Vector2 rayDirection = RotateVector(attackDirection, currentAngle);
-
-            // 레이캐스트
-            RaycastHit2D hit = Physics2D.Raycast(attackOrigin, rayDirection, meleeRange, monsterLayer);
-
-            if (hit.collider != null)
+            MonsterController monster = hit.GetComponent<MonsterController>();
+            if (monster != null && !monster.IsDead())
             {
-                var monster = hit.collider.GetComponent<MonsterController>();
-                if (monster != null)
+                // 각도 체크 (부채꼴 범위)
+                Vector2 toMonster = (hit.transform.position - (Vector3)playerPos).normalized;
+                float angle = Vector2.Angle(attackDirection, toMonster);
+
+                if (angle <= meleeAngle / 2f)
                 {
-                    float distance = hit.distance;
+                    float distance = Vector2.Distance(playerPos, hit.transform.position);
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;
@@ -113,32 +116,87 @@ public class PlayerAttack
             }
         }
 
-        //  가장 가까운 몬스터만 공격
+        // ===== 가장 가까운 몬스터 공격 =====
+
         if (closestMonster != null && !hitMonstersThisAttack.Contains(closestMonster))
         {
-            float damageVariance = Random.Range(0.8f, 1.2f); // 80% ~ 120%
+            // 데미지 계산
+            float damageVariance = Random.Range(0.8f, 1.2f);
             int damage = Mathf.RoundToInt(attackDamage * damageVariance);
-            //크리티컬 확률 계산
+
+            // 크리티컬 체크
             bool isCritical = false;
             if (Random.Range(0f, 100f) <= criticalChance)
             {
-                //크리티컬 데미지 계산(데미지는 %로 작성되어 150이면 1.5배)
                 damage = (int)(damage * (criticalDamage / 100f));
                 isCritical = true;
             }
 
+            // 데미지 적용
             closestMonster.TakeDamage(damage, isCritical);
             hitMonstersThisAttack.Add(closestMonster);
+
             Debug.Log($"[PlayerAttack] {closestMonster.GetMonsterName()} 공격 성공! (거리: {closestDistance:F2})");
         }
-
-        // 부채꼴 범위 시각화 (에디터용)
-        DrawArcGizmo(attackOrigin, attackDirection, meleeRange, meleeAngle);
+        else
+        {
+            Debug.Log("[PlayerAttack] 빗나감!");
+        }
     }
 
-    
+    private void SpawnMeleeEffect(Vector3 position, float angle, bool flipY = false)
+    {
+        GameObject prefab = Resources.Load<GameObject>(MELEE_EFFECT_PATH);
+        if (prefab != null)
+        {
+            GameObject effect = Object.Instantiate(prefab, position, Quaternion.Euler(0, 0, angle));
+            if (flipY)
+            {
+                Vector3 scale = effect.transform.localScale;
+                scale.y *= -1;
+                effect.transform.localScale = scale;
+            }
+            // 자동 삭제 처리
+            Animator animator = effect.GetComponent<Animator>();
+            if (animator != null)
+            {
+                // 애니메이션 길이만큼 대기 후 삭제
+                float destroyTime = GetAnimationLength(animator);
+                Object.Destroy(effect, destroyTime);
+            }
+            else
+            {
+                // 애니메이션 없으면 0.5초 후 삭제
+                Object.Destroy(effect, 0.5f);
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"[PlayerAttack] 이펙트 프리팹을 찾을 수 없음: {MELEE_EFFECT_PATH}");
+        }
+    }
+
+    /// <summary>
+    /// 애니메이션 길이 가져오기
+    /// </summary>
+    private float GetAnimationLength(Animator animator)
+    {
+        if (animator == null || animator.runtimeAnimatorController == null)
+            return 0.5f;
+
+        // 첫 번째 애니메이션 클립의 길이 반환
+        RuntimeAnimatorController controller = animator.runtimeAnimatorController;
+        if (controller.animationClips.Length > 0)
+        {
+            return controller.animationClips[0].length;
+        }
+
+        return 0.5f;
+    }
+
+
     /// 벡터 회전 유틸리티
-    
+
     private Vector2 RotateVector(Vector2 vector, float degrees)
     {
         float radians = degrees * Mathf.Deg2Rad;

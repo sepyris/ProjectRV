@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DaggerThrow : ActiveSkillBase
 {
-    private const string PROJECTILE_PATH = "Prefabs/Skills/DaggerProjectile";
+    private const string PROJECTILE_PATH = "SkillsPrefabs/DaggerProjectile";
     private const float PROJECTILE_SPEED = 15f;
     private const float PROJECTILE_DISTANCE = 12f;
     private const float SEARCH_RADIUS = 8f;
@@ -201,6 +201,7 @@ public class DaggerThrow : ActiveSkillBase
             );
 
             projectile.SetVelocity(direction * PROJECTILE_SPEED);
+            projectile.SetIgnoreWalls(true);
 
             // 유도 컴포넌트 추가
             HomingComponent homing = projectileObj.AddComponent<HomingComponent>();

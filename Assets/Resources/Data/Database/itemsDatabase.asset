@@ -77,7 +77,7 @@ MonoBehaviour:
   - itemId: potion_hp_small
     itemName: "\uC791\uC740 \uCCB4\uB825 \uBB3C\uC57D"
     itemType: 1
-    description: "\uCCB4\uB825 50 \uD68C\uBCF5"
+    description: "\uCCB4\uB825 50\uC744 \uD68C\uBCF5\uD558\uB294 \uC791\uC740 \uD3EC\uC158"
     maxStack: 99
     buyPrice: 50
     sellPrice: 25
@@ -218,7 +218,8 @@ MonoBehaviour:
   - itemId: quest_rumo_letter
     itemName: "\uB8E8\uBAA8\uC758\uD3B8\uC9C0"
     itemType: 3
-    description: 
+    description: "\uB8E8\uBAA8\uAC00 \uB8E8\uB8E8\uC5D0\uAC8C \uC4F4 \uC548\uBD80
+      \uD3B8\uC9C0"
     maxStack: 1
     buyPrice: 0
     sellPrice: 0
@@ -238,7 +239,8 @@ MonoBehaviour:
   - itemId: quest_rura_letter
     itemName: "\uB8E8\uB77C\uC758\uD3B8\uC9C0"
     itemType: 3
-    description: 
+    description: "\uB8E8\uB77C\uAC00 \uB8E8\uB8E8\uC5D0\uAC8C \uC4F4 \uC548\uBD80
+      \uD3B8\uC9C0"
     maxStack: 1
     buyPrice: 0
     sellPrice: 0
@@ -255,17 +257,395 @@ MonoBehaviour:
     lukBonus: 0
     tecBonus: 0
     isCosmetic: 0
-  - itemId: skill_fireball
-    itemName: "\uD30C\uC774\uC5B4\uBCFC\uC2A4\uD06C\uB864"
+  - itemId: SkillScrollFullSwing
+    itemName: "\uD798\uAECF \uD718\uB450\uB974\uAE30 \uC2A4\uD06C\uB864"
     itemType: 1
-    description: "\uD30C\uC774\uC5B4\uBCFC\uC744 \uBC30\uC6B8\uC218\uC788\uB294 \uC2A4\uD0AC
-      \uC2A4\uD06C\uB864"
+    description: "[\uC561\uD2F0\uBE0C][\uCD08\uBCF4\uC790]\n\uD798\uAECF \uD718\uB450\uB974\uAE30
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uBB34\uAE30\uC5D0 \uD798\uC744
+      \uC2E4\uC5B4 \uC815\uBA74\uC758 \uC801\uC744 \uD06C\uAC8C \uD718\uB458\uB7EC
+      \uACF5\uACA9\uD569\uB2C8\uB2E4."
     maxStack: 1
     buyPrice: 500
     sellPrice: 250
-    iconPath: Icons/Quest/letter
+    iconPath: Icons/SkillScroll/SkillScrollFullSwing
     disposable: 1
     consumableEffect: Skill_001
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollMagicMissile
+    itemName: "\uB9E4\uC9C1\uBBF8\uC0AC\uC77C \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uCD08\uBCF4\uC790]\n\uB9E4\uC9C1\uBBF8\uC0AC\uC77C
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uB9C8\uB098\uB85C \uB9CC\uB4E4\uC5B4\uC9C4
+      \uBBF8\uC0AC\uC77C\uC744 \uB0A0\uB9BD\uB2C8\uB2E4"
+    maxStack: 1
+    buyPrice: 500
+    sellPrice: 250
+    iconPath: Icons/SkillScroll/SkillScrollMagicMissile
+    disposable: 1
+    consumableEffect: Skill_002
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollFirstAid
+    itemName: "\uC751\uAE09\uCC98\uCE58 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uCD08\uBCF4\uC790]\n\uC751\uAE09\uCC98\uCE58
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uC751\uAE09\uCC98\uCE58\uB97C
+      \uD569\uB2C8\uB2E4"
+    maxStack: 1
+    buyPrice: 500
+    sellPrice: 250
+    iconPath: Icons/SkillScroll/SkillScrollFirstAid
+    disposable: 1
+    consumableEffect: Skill_003
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollLightSteps
+    itemName: "\uAC00\uBCBC\uC6B4 \uBC1C\uAC78\uC74C \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uBC84\uD504][\uCD08\uBCF4\uC790]\n\uAC00\uBCBC\uC6B4 \uBC1C\uAC78\uC74C
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uBAB8\uC774 \uAC00\uBCBC\uC6CC\uC838
+      \uC774\uB3D9\uC18D\uB3C4\uAC00 \uBE68\uB77C\uC9D1\uB2C8\uB2E4"
+    maxStack: 1
+    buyPrice: 500
+    sellPrice: 250
+    iconPath: Icons/SkillScroll/SkillScrollLightSteps
+    disposable: 1
+    consumableEffect: Skill_004
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollBashDash
+    itemName: "\uB3CC\uC9C4 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uC804\uC0AC]\n\uB3CC\uC9C4 \uC2A4\uD0AC\uC744
+      \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uAC00\uAE4C\uC6B4\uC801\uC5D0\uAC8C \uB3CC\uC9C4
+      \uD569\uB2C8\uB2E4"
+    maxStack: 1
+    buyPrice: 2000
+    sellPrice: 1000
+    iconPath: Icons/SkillScroll/SkillScrollBashDash
+    disposable: 1
+    consumableEffect: Skill_005
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollMultiSlash
+    itemName: "\uC5F0\uC18D\uBCA0\uAE30 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uC804\uC0AC]\n\uC5F0\uC18D\uBCA0\uAE30 \uC2A4\uD0AC\uC744
+      \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uC801\uC744 \uC5EC\uB7EC \uBC88 \uC5F0\uC18D\uD574\uC11C
+      \uBCA0\uC5B4 \uBC84\uB9BD\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 2000
+    sellPrice: 1000
+    iconPath: Icons/SkillScroll/SkillScrollMultiSlash
+    disposable: 1
+    consumableEffect: Skill_006
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollBraveHeart
+    itemName: "\uB4E0\uB4E0\uD55C \uB9C8\uC74C \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uBC84\uD504][\uC804\uC0AC]\n\uB4E0\uB4E0\uD55C \uB9C8\uC74C \uC2A4\uD0AC\uC744
+      \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uB9C8\uC74C\uC744 \uB2E4\uC7A1\uC544\uC11C
+      \uACF5\uACA9\uB825\uACFC \uBC29\uC5B4\uB825\uC744 \uB192\uC785\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 2000
+    sellPrice: 1000
+    iconPath: Icons/SkillScroll/SkillScrollBraveHeart
+    disposable: 1
+    consumableEffect: Skill_007
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollDaggerThrow
+    itemName: "\uB2E8\uAC80\uD22C\uCC99 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uC804\uC0AC]\n\uB2E8\uAC80\uD22C\uCC99 \uC2A4\uD0AC\uC744
+      \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uBA40\uB9AC \uC788\uB294 \uC801\uC5D0\uAC8C
+      \uC791\uC740 \uB2E8\uAC80\uC744 \uB358\uC9D1\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 2000
+    sellPrice: 1000
+    iconPath: Icons/SkillScroll/SkillScrollDaggerThrow
+    disposable: 1
+    consumableEffect: Skill_008
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollToughness
+    itemName: "\uAC15\uC778\uD55C \uC0DD\uBA85\uB825 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uD328\uC2DC\uBE0C][\uC804\uC0AC]\n\uAC15\uC778\uD55C \uC0DD\uBA85\uB825
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uAE30\uCD08 \uCCB4\uB825
+      \uD6C8\uB828\uC744 \uC2DC\uC791\uD574\uC11C \uC804\uBCF4\uB2E4 \uB9F7\uC9D1\uC774
+      \uC870\uAE08 \uB354 \uC88B\uC544\uC9D1\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 3000
+    sellPrice: 1500
+    iconPath: Icons/SkillScroll/SkillScrollToughness
+    disposable: 1
+    consumableEffect: Skill_009
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollWeaponMastery
+    itemName: "\uBB34\uAE30\uC219\uB828 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uD328\uC2DC\uBE0C][\uC804\uC0AC]\n\uBB34\uAE30\uC219\uB828 \uC2A4\uD0AC\uC744
+      \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uBB34\uAE30\uB97C \uC81C\uB300\uB85C \uB2E4\uB8E8\uB294
+      \uBC95\uC744 \uBC30\uC6CC \uACF5\uACA9\uB825\uC774 \uC62C\uB77C\uAC11\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 3000
+    sellPrice: 1500
+    iconPath: Icons/SkillScroll/SkillScrollWeaponMastery
+    disposable: 1
+    consumableEffect: Skill_010
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollGuardStance
+    itemName: "\uC218\uD638\uC758\uB9C8\uC74C\uAC00\uC9D0 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uD328\uC2DC\uBE0C][\uC804\uC0AC]\n\uC218\uD638\uC758\uB9C8\uC74C\uAC00\uC9D0
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uC801\uC758 \uACF5\uACA9\uC744
+      \uC815\uBA74\uC73C\uB85C \uBC1B\uB294 \uBC95\uC744 \uBC30\uC6CC \uBC29\uC5B4\uB825\uC774
+      \uC62C\uB77C\uAC11\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 3000
+    sellPrice: 1500
+    iconPath: Icons/SkillScroll/SkillScrollGuardStance
+    disposable: 1
+    consumableEffect: Skill_011
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollFireBall
+    itemName: "\uD30C\uC774\uC5B4\uBCFC \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uB9C8\uBC95\uC0AC]\n\uD30C\uC774\uC5B4\uBCFC
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uBC14\uB77C\uBCF4\uB294
+      \uBC29\uD5A5\uC73C\uB85C \uBD88\uB369\uC5B4\uB9AC\uB97C \uB0A0\uB9BD\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 2000
+    sellPrice: 1000
+    iconPath: Icons/SkillScroll/SkillScrollFireBall
+    disposable: 1
+    consumableEffect: Skill_012
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollFrostField
+    itemName: "\uD504\uB85C\uC2A4\uD2B8\uD544\uB4DC \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uB9C8\uBC95\uC0AC]\n\uD504\uB85C\uC2A4\uD2B8\uD544\uB4DC
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uBD80\uCC44\uAF34\uBAA8\uC591\uC73C\uB85C
+      \uC5BC\uC74C\uC7A5\uD310\uC744 \uB9CC\uB4ED\uB2C8\uB2E4"
+    maxStack: 1
+    buyPrice: 2000
+    sellPrice: 1000
+    iconPath: Icons/SkillScroll/SkillScrollFrostField
+    disposable: 1
+    consumableEffect: Skill_013
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollLightningCircle
+    itemName: "\uB77C\uC774\uD2B8\uB2DD\uC11C\uD074 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uB9C8\uBC95\uC0AC]\n\uB77C\uC774\uD2B8\uB2DD\uC11C\uD074
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uB0B4 \uC8FC\uBCC0\uC73C\uB85C
+      \uC804\uAE30\uB97C \uBFDC\uC5B4 \uADFC\uCC98\uC758 \uC801\uB4E4\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 2000
+    sellPrice: 1000
+    iconPath: Icons/SkillScroll/SkillScrollLightningCircle
+    disposable: 1
+    consumableEffect: Skill_014
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollHeal
+    itemName: "\uD790 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uB9C8\uBC95\uC0AC]\n\uD790 \uC2A4\uD0AC\uC744
+      \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uCCB4\uB825\uC744 \uD68C\uBCF5\uD569\uB2C8\uB2E4"
+    maxStack: 1
+    buyPrice: 2000
+    sellPrice: 1000
+    iconPath: Icons/SkillScroll/SkillScrollHeal
+    disposable: 1
+    consumableEffect: Skill_015
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollAfterimage
+    itemName: "\uB9C8\uB825\uC794\uC0C1 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uC561\uD2F0\uBE0C][\uB9C8\uBC95\uC0AC]\n\uB9C8\uB825\uC794\uC0C1
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uC794\uC0C1\uC744 \uB0A8\uAE30\uACE0
+      \uC774\uB3D9\uD569\uB2C8\uB2E4"
+    maxStack: 1
+    buyPrice: 2000
+    sellPrice: 1000
+    iconPath: Icons/SkillScroll/SkillScrollAfterimage
+    disposable: 1
+    consumableEffect: Skill_016
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollManaControl
+    itemName: "\uB9C8\uB098\uC81C\uC5B4 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uD328\uC2DC\uBE0C][\uB9C8\uBC95\uC0AC]\n\uB9C8\uB098\uC81C\uC5B4
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uB9C8\uB098\uB97C \uD55C\uB370
+      \uBAA8\uC73C\uB294 \uBC95\uC744 \uBC30\uC6CC \uACF5\uACA9\uB825\uC774 \uC62C\uB77C\uAC11\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 3000
+    sellPrice: 1500
+    iconPath: Icons/SkillScroll/SkillScrollManaControl
+    disposable: 1
+    consumableEffect: Skill_017
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: SkillScrollMentalTraining
+    itemName: "\uC815\uC2E0\uC218\uC591 \uC2A4\uD06C\uB864"
+    itemType: 1
+    description: "[\uD328\uC2DC\uBE0C][\uB9C8\uBC95\uC0AC]\n\uC815\uC2E0\uC218\uC591
+      \uC2A4\uD0AC\uC744 \uBC30\uC6B8\uC218 \uC788\uB2E4\n\uB9C8\uC74C\uC744 \uCC28\uBD84\uD788
+      \uAC00\uB77C\uC549\uD788\uB294 \uBC95\uC744 \uBC30\uC6CC \uBC29\uC5B4\uB825\uC774
+      \uC62C\uB77C\uAC11\uB2C8\uB2E4."
+    maxStack: 1
+    buyPrice: 3000
+    sellPrice: 1500
+    iconPath: Icons/SkillScroll/SkillScrollMentalTraining
+    disposable: 1
+    consumableEffect: Skill_018
     equipSlot: 0
     attackBonus: 0
     defenseBonus: 0
