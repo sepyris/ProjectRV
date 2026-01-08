@@ -326,18 +326,10 @@ public class SkillManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        float deltaTime = Time.deltaTime;
-
-        // 쿨타임 업데이트
-        foreach (var kvp in skillInstances)
-        {
-            kvp.Value.UpdateCooldown(deltaTime);
-        }
-
         // 후딜레이 업데이트 추가
         if (isInSkillDelay)
         {
-            skillDelayRemaining -= deltaTime;
+            skillDelayRemaining -= Time.deltaTime;
             if (skillDelayRemaining <= 0f)
             {
                 isInSkillDelay = false;

@@ -16,6 +16,7 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
     [SerializeField] private TextMeshProUGUI quantityText;
     [SerializeField] private TextMeshProUGUI keyBindText;
     [SerializeField] private Image cooldownOverlay; // 쿨다운 표시용 (선택사항)
+    [SerializeField] private TextMeshProUGUI cooldownText;
 
     [Header("설정")]
     [SerializeField] private int slotIndex; // 0~9
@@ -23,8 +24,23 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
 
     private QuickSlotData slotData;
 
+    private SkillBase currentSkill;
+    private bool isOnCooldown = false;
+
     void Start()
     {
+        if (cooldownOverlay != null)
+        {
+            cooldownOverlay.fillAmount = 0f;
+            cooldownOverlay.enabled = false;
+        }
+
+        if (cooldownText != null)
+        {
+            cooldownText.enabled = false;
+        }
+
+        // 기존 코드
         // QuickSlotManager 이벤트 구독
         if (QuickSlotManager.Instance != null)
         {
@@ -52,10 +68,78 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
             QuickSlotManager.Instance.OnQuickSlotUsed -= OnSlotUsed;
         }
     }
+    void Update()
+    {
+        UpdateCooldown();
+    }
 
-    
+    /// <summary>
+    /// 쿨타임 업데이트
+    /// </summary>
+    private void UpdateCooldown()
+    {
+        if (currentSkill == null)
+            return;
+
+        if (currentSkill.IsOnCooldown)
+        {
+            // 쿨타임 시작
+            if (!isOnCooldown)
+            {
+                isOnCooldown = true;
+                if (cooldownOverlay != null)
+                    cooldownOverlay.enabled = true;
+                if (cooldownText != null)
+                    cooldownText.enabled = true;
+            }
+
+            // 쿨타임 진행도
+            float progress = currentSkill.CooldownProgress;  // 0 → 1
+            float fillAmount = 1f - progress;  // 1 → 0
+
+            if (cooldownOverlay != null)
+            {
+                cooldownOverlay.fillAmount = fillAmount;
+            }
+
+            // 남은 시간
+            if (cooldownText != null)
+            {
+                float remaining = currentSkill.CooldownRemaining;
+
+                if (remaining >= 1f)
+                {
+                    cooldownText.text = Mathf.Ceil(remaining).ToString();
+                }
+                else
+                {
+                    cooldownText.text = remaining.ToString("F1");
+                }
+            }
+        }
+        else
+        {
+            // 쿨타임 종료
+            if (isOnCooldown)
+            {
+                isOnCooldown = false;
+
+                if (cooldownOverlay != null)
+                {
+                    cooldownOverlay.fillAmount = 0f;
+                    cooldownOverlay.enabled = false;
+                }
+
+                if (cooldownText != null)
+                {
+                    cooldownText.enabled = false;
+                }
+            }
+        }
+    }
+
     /// 슬롯 인덱스 설정
-    
+
     public void SetSlotIndex(int index)
     {
         slotIndex = index;
@@ -75,21 +159,39 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    
+
     /// 슬롯 변경 이벤트 핸들러
-    
+
     private void OnSlotChanged(int index, QuickSlotData data)
     {
         if (index == slotIndex)
         {
             slotData = data;
+
+            if (data == null || data.IsEmpty() || data.slotType != QuickSlotType.Skill)
+            {
+                currentSkill = null;
+
+                // 쿨타임 UI 초기화
+                if (cooldownOverlay != null)
+                {
+                    cooldownOverlay.fillAmount = 0f;
+                    cooldownOverlay.enabled = false;
+                }
+
+                if (cooldownText != null)
+                {
+                    cooldownText.enabled = false;
+                }
+            }
+
             UpdateUI();
         }
     }
 
-    
+
     /// 슬롯 사용 이벤트 핸들러 (애니메이션 등)
-    
+
     private void OnSlotUsed(int index)
     {
         if (index == slotIndex)
@@ -115,6 +217,15 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
 
         if (slotData == null || slotData.IsEmpty())
         {
+            currentSkill = null;
+            isOnCooldown = false;
+
+            // 쿨타임 UI 초기화
+            if (cooldownOverlay != null)
+            {
+                cooldownOverlay.fillAmount = 0f;
+                cooldownOverlay.enabled = false;
+            }
             // 빈 슬롯
             if (iconImage != null)
             {
@@ -132,6 +243,7 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         switch (slotData.slotType)
         {
             case QuickSlotType.Consumable:
+                currentSkill = null;
                 UpdateConsumableUI(slotData.itemId);
                 break;
 
@@ -146,6 +258,8 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
     
     private void UpdateConsumableUI(string itemId)
     {
+        currentSkill = null;
+
         if (ItemDataManager.Instance == null)
             return;
 
@@ -189,6 +303,11 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
     }
 
     /// 스킬 UI 업데이트
+    // QuickSlotUI.cs - UpdateSkillUI() 수정
+
+    /// <summary>
+    /// 스킬 UI 업데이트
+    /// </summary>
     private void UpdateSkillUI(string skillId)
     {
         if (SkillDataManager.Instance == null)
@@ -198,10 +317,39 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         if (skillData == null)
         {
             Debug.LogWarning($"[QuickSlotUI] 스킬 데이터를 찾을 수 없음: {skillId}");
+            currentSkill = null;
             return;
         }
 
-        // 아이콘 표시
+        // ===== 스킬 인스턴스 가져오기 =====
+
+        if (SkillManager.Instance != null)
+        {
+            currentSkill = SkillManager.Instance.GetSkillInstance(skillId);
+
+
+            if (currentSkill != null && !currentSkill.IsOnCooldown)
+            {
+                // 쿨타임이 아닐 때만 UI 초기화
+                if (cooldownOverlay != null)
+                {
+                    cooldownOverlay.fillAmount = 0f;
+                    cooldownOverlay.enabled = false;
+                }
+
+                if (cooldownText != null)
+                {
+                    cooldownText.enabled = false;
+                }
+            }
+        }
+        else
+        {
+            currentSkill = null;
+        }
+
+        // ===== 아이콘 설정 =====
+
         if (iconImage != null)
         {
             if (!string.IsNullOrEmpty(skillData.skillIconPath))
@@ -335,7 +483,10 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
                 SkillData skilldata = skill.GetSkillData();
                 if (skilldata != null)
                 {
-                    // 소모품만 퀵슬롯에 등록 가능
+                    if (skilldata.skillType == SkillType.Passive)
+                    {
+                        return;
+                    }
                     if (QuickSlotManager.Instance != null)
                     {
                         QuickSlotManager.Instance.RegisterSkill(slotIndex, skilldata.skillId);

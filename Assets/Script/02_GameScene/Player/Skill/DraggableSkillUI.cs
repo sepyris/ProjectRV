@@ -80,6 +80,7 @@ public class DraggableSkillUi : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
         SkillData data = skillData.GetSkillData();
         if (data == null) return;
+        if (data.skillType == SkillType.Passive) return; // 패시브스킬은 드래그 안됨
 
         // 이미 다른 드래그가 진행 중이면 취소
         if (currentDragging != null && currentDragging != this)

@@ -11,7 +11,6 @@ public class ShopItemUI : MonoBehaviour
 {
     [Header("UI 요소")]
     public TextMeshProUGUI itemNameText;
-    public TextMeshProUGUI descriptionText; // 아이템 설명 (공통)
     public TextMeshProUGUI priceText;
     public TextMeshProUGUI stockText; // 보유 수량 (판매 시, 장비 제외)
     public Image itemIcon;
@@ -40,10 +39,6 @@ public class ShopItemUI : MonoBehaviour
 
         if (itemNameText != null)
             itemNameText.text = itemData.itemName;
-
-        // 아이템 설명 (항상 표시)
-        if (descriptionText != null)
-            descriptionText.text = itemData.description;
 
         if (priceText != null)
             priceText.text = $"{price}G";

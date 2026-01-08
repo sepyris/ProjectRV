@@ -9,13 +9,11 @@ public abstract class SkillBase
 {
     protected SkillData skillData;
     protected int currentLevel;
-    protected float currentCooldown;
 
     public SkillBase(SkillData data, int level = 1)
     {
         skillData = data;
         currentLevel = level;
-        currentCooldown = 0f;
     }
 
     // ===== 공통 속성 =====
@@ -26,30 +24,57 @@ public abstract class SkillBase
     public SkillType SkillType => skillData.skillType;
     public int CurrentLevel => currentLevel;
     public int MaxLevel => skillData.maxLevel;
-    public bool IsOnCooldown => currentCooldown > 0f;
-    public float CooldownRemaining => currentCooldown;
-    public float CooldownProgress => skillData.cooldown > 0 ? 1f - (currentCooldown / skillData.cooldown) : 1f;
 
     // ===== 쿨타임 관리 =====
 
-    public void UpdateCooldown(float deltaTime)
-    {
-        if (currentCooldown > 0f)
-        {
-            currentCooldown -= deltaTime;
-            if (currentCooldown < 0f)
-                currentCooldown = 0f;
-        }
-    }
-
     protected void StartCooldown()
     {
-        currentCooldown = skillData.cooldown;
+        if (SkillCooldownManager.Instance != null)
+        {
+            SkillCooldownManager.Instance.StartCooldown(skillData.skillId, skillData.cooldown);
+            Debug.Log($"[SkillBase] {SkillName} 쿨타임 시작: {skillData.cooldown}초");
+        }
+    }
+    public bool IsOnCooldown
+    {
+        get
+        {
+            if (SkillCooldownManager.Instance != null)
+            {
+                return SkillCooldownManager.Instance.IsOnCooldown(skillData.skillId);
+            }
+            return false;
+        }
+    }
+    public float CooldownRemaining
+    {
+        get
+        {
+            if (SkillCooldownManager.Instance != null)
+            {
+                return SkillCooldownManager.Instance.GetRemainingCooldown(skillData.skillId);
+            }
+            return 0f;
+        }
+    }
+    public float CooldownProgress
+    {
+        get
+        {
+            if (SkillCooldownManager.Instance != null)
+            {
+                return SkillCooldownManager.Instance.GetCooldownProgress(skillData.skillId);
+            }
+            return 1f;
+        }
     }
 
     public void ResetCooldown()
     {
-        currentCooldown = 0f;
+        if (SkillCooldownManager.Instance != null)
+        {
+            SkillCooldownManager.Instance.ResetCooldown(skillData.skillId);
+        }
     }
 
     // ===== 스킬 사용 검증 =====
@@ -58,11 +83,6 @@ public abstract class SkillBase
     {
         if (IsOnCooldown)
         {
-            if (FloatingNotificationManager.Instance != null)
-            {
-                FloatingNotificationManager.Instance.ShowNotification(
-                    $"{SkillName} 쿨타임 중 ({currentCooldown:F1}초)");
-            }
             return false;
         }
         return true;

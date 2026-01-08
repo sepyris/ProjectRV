@@ -103,6 +103,7 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         {
             DraggableSkillUi.CancelCurrentDrag();
         }
+        activeSkillSlots.Clear();
 
 
         // 기존 리스트 아이템 삭제
@@ -180,6 +181,7 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
             slotUI = itemObj.AddComponent<SkillSlotUI>();
         }
         slotUI.Initialize(iconImage, cooldownOverlay, cooldownText, skill);
+        activeSkillSlots.Add(slotUI);
 
         // ===== 드래그 컴포넌트 =====
 
