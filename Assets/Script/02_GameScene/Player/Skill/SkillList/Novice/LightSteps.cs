@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LightSteps : ActiveSkillBase
 {
+    private const string EFFECT_PATH = "SkillsPrefabs/LightSteps";
     public LightSteps(SkillData data, int level = 1) : base(data, level)
     {
     }
@@ -18,7 +19,7 @@ public class LightSteps : ActiveSkillBase
         BuffManager.Instance.ApplyBuff(
             skillData.skillId,
             skillData.skillName,
-            buffDuration,  // ← buff_duration 말고 buffDuration!
+            buffDuration,
             (stats) => {
                 stats.skill_moveSpeedBonus += buffPercent;
                 stats.RecalculateStats();
@@ -30,8 +31,6 @@ public class LightSteps : ActiveSkillBase
                 Debug.Log($"[BraveHeart] 버프 종료");
             }
         );
-
-        // 이펙트
-        SpawnEffect("", caster.position, Quaternion.identity);
+        SpawnEffect(EFFECT_PATH, caster.position, Quaternion.identity);
     }
 }

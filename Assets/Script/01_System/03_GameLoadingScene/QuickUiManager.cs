@@ -11,8 +11,9 @@ public class QuickUiManager : MonoBehaviour
     public Button QuickUiEquipButton;
     public Button QuickUiQuestButton;
     public Button QuickUiStatButton;
+    public Button QuickUiSkillButton;
     //public Button QuickUiPartyButton;
-    //public Button QuickUiFriendButton;
+
 
     void Awake()
     {
@@ -38,6 +39,8 @@ public class QuickUiManager : MonoBehaviour
             QuickUiStatButton.onClick.AddListener(() => OpenStatUi());
         if (QuickUiEquipButton != null)
             QuickUiEquipButton.onClick.AddListener(() => OpenEquipUi());
+        if (QuickUiSkillButton != null)
+            QuickUiSkillButton.onClick.AddListener(() => OpenSkillUi());
     }
 
     private void OpenItemUi()
@@ -58,5 +61,8 @@ public class QuickUiManager : MonoBehaviour
     {
         PlayerHUD.Instance.ToggleEquipmentUI();
     }
-
+    private void OpenSkillUi()
+    {
+        PlayerHUD.Instance.ToggleSkillUI();
+    }
 }

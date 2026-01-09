@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: normalAttack
+  m_Name: LightSteps
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 66169433, guid: 2c6f7c02a4fbefe409ac772da77a6c6d, type: 3}
+      value: {fileID: -533885472, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
+    - time: 0.083333336
+      value: {fileID: -562755750, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
     - time: 0.16666667
-      value: {fileID: 967201981, guid: 2c6f7c02a4fbefe409ac772da77a6c6d, type: 3}
+      value: {fileID: 1321073467, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
+    - time: 0.25
+      value: {fileID: 719003236, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
     - time: 0.33333334
-      value: {fileID: 967201981, guid: 2c6f7c02a4fbefe409ac772da77a6c6d, type: 3}
+      value: {fileID: -34215240, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,9 +52,11 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 66169433, guid: 2c6f7c02a4fbefe409ac772da77a6c6d, type: 3}
-    - {fileID: 967201981, guid: 2c6f7c02a4fbefe409ac772da77a6c6d, type: 3}
-    - {fileID: 967201981, guid: 2c6f7c02a4fbefe409ac772da77a6c6d, type: 3}
+    - {fileID: -533885472, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
+    - {fileID: -562755750, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
+    - {fileID: 1321073467, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
+    - {fileID: 719003236, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
+    - {fileID: -34215240, guid: 68a59a11f0158f44581a9f0e76025199, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

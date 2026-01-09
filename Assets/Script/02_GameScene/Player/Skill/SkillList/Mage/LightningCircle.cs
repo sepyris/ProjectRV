@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LightningCircle : ActiveSkillBase
 {
-    private const string EFFECT_PATH = "Effects/LightningCircleEffect";
+    private const string EFFECT_PATH = "SkillsPrefabs/LightningCircle";
     private const float ATTACK_RADIUS = 5.0f;  // 공격 반경
 
     public LightningCircle(SkillData data, int level = 1) : base(data, level)
@@ -50,15 +50,11 @@ public class LightningCircle : ActiveSkillBase
                 {
                     finalDamage = Mathf.FloorToInt(damage * (stats.criticalDamage / 100f));
                 }
-
+                SpawnEffect(EFFECT_PATH, monster.transform.position, Quaternion.identity);
                 monster.TakeDamage(finalDamage, isCritical, stats.accuracy);
                 hitCount++;
             }
         }
-
-        // 이펙트 (캐릭터 위치 중심)
-        SpawnEffect(EFFECT_PATH, caster.position, Quaternion.identity);
-
         Debug.Log($"[LightningCircle] {hitCount}명 공격!");
     }
 }

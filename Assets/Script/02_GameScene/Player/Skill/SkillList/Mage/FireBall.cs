@@ -66,7 +66,7 @@ public class FireBall : ActiveSkillBase
                 stats.accuracy,
                 PROJECTILE_DISTANCE
             );
-
+            projectile.SetPenetration(true, 5);
             projectile.SetVelocity(direction * PROJECTILE_SPEED);
             projectile.SetIgnoreWalls(true);
         }

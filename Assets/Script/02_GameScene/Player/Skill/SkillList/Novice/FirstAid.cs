@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FirstAid : ActiveSkillBase
 {
+    private const string EFFECT_PATH = "SkillsPrefabs/FirstAid";
     public FirstAid(SkillData data, int level = 1) : base(data, level)
     {
     }
@@ -16,5 +17,6 @@ public class FirstAid : ActiveSkillBase
         int healamount = Mathf.FloorToInt(playerStats.Stats.maxHP * (healRate / 100f));
 
         playerStats.Stats.Heal(healamount);
+        SpawnEffect(EFFECT_PATH, caster.position, Quaternion.identity);
     }
 }
