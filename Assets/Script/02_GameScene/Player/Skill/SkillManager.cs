@@ -1,11 +1,12 @@
-using System;
+ï»¿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// ½ºÅ³ ½Ã½ºÅÛ °ü¸®ÀÚ
-/// ÆĞ½Ãºê ½ºÅ³ ÀÚµ¿ Àû¿ë/ÇØÁ¦ Æ÷ÇÔ
+/// ìŠ¤í‚¬ ì‹œìŠ¤í…œ ê´€ë¦¬ì
+/// íŒ¨ì‹œë¸Œ ìŠ¤í‚¬ ìë™ ì ìš©/í•´ì œ í¬í•¨
 /// </summary>
 public class SkillManager : MonoBehaviour
 {
@@ -14,13 +15,17 @@ public class SkillManager : MonoBehaviour
     private List<PlayerSkillData> skills = new List<PlayerSkillData>();
     private Dictionary<string, SkillBase> skillInstances = new Dictionary<string, SkillBase>();
 
-    private bool isInSkillDelay = false;
+    
     private float skillDelayRemaining = 0f;
     private const float GLOBAL_SKILL_DELAY = 0.3f;
 
+    private bool isInSkillDelay = false;
     public bool IsInSkillDelay => isInSkillDelay;
 
-    // ÀÌº¥Æ®
+    private bool isUsingSkill = false;
+    public bool IsUsingSkill => isUsingSkill;
+
+    // ì´ë²¤íŠ¸
     public event Action<PlayerSkillData> OnSkillAdded;
     public event Action<PlayerSkillData> OnSkillRemoved;
     public event Action<PlayerSkillData> OnSkillUse;
@@ -41,12 +46,12 @@ public class SkillManager : MonoBehaviour
 
     private void Start()
     {
-        // ¾À ·Îµå ½Ã ÆĞ½Ãºê ½ºÅ³ ÀçÀû¿ë
+        // ì”¬ ë¡œë“œ ì‹œ íŒ¨ì‹œë¸Œ ìŠ¤í‚¬ ì¬ì ìš©
         ReapplyAllPassiveSkills();
     }
 
     /// <summary>
-    /// ¸ğµç ½ºÅ³ ¸ñ·Ï °¡Á®¿À±â
+    /// ëª¨ë“  ìŠ¤í‚¬ ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
     /// </summary>
     public List<PlayerSkillData> GetSkillsByType()
     {
@@ -54,7 +59,7 @@ public class SkillManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Æ¯Á¤ ½ºÅ³ ID·Î ½ºÅ³ µ¥ÀÌÅÍ °¡Á®¿À±â
+    /// íŠ¹ì • ìŠ¤í‚¬ IDë¡œ ìŠ¤í‚¬ ë°ì´í„° ê°€ì ¸ì˜¤ê¸°
     /// </summary>
     public PlayerSkillData GetSkill(string skillID)
     {
@@ -62,7 +67,7 @@ public class SkillManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ½ºÅ³ ÀÎ½ºÅÏ½º °¡Á®¿À±â
+    /// ìŠ¤í‚¬ ì¸ìŠ¤í„´ìŠ¤ ê°€ì ¸ì˜¤ê¸°
     /// </summary>
     public SkillBase GetSkillInstance(string skillID)
     {
@@ -74,75 +79,75 @@ public class SkillManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ½ºÅ³ Ãß°¡ (ÆĞ½Ãºê ÀÚµ¿ Àû¿ë)
+    /// ìŠ¤í‚¬ ì¶”ê°€ (íŒ¨ì‹œë¸Œ ìë™ ì ìš©)
     /// </summary>
     public bool AddSkill(string skillID)
     {
-        // ÀÌ¹Ì ÀÖ´Â ½ºÅ³ÀÇ °æ¿ì Ãß°¡ ¾È ÇÔ
+        // ì´ë¯¸ ìˆëŠ” ìŠ¤í‚¬ì˜ ê²½ìš° ì¶”ê°€ ì•ˆ í•¨
         if (HasSkill(skillID))
         {
-            Debug.Log($"[SkillManager] ÀÌ¹Ì º¸À¯ ÁßÀÎ ½ºÅ³: {skillID}");
+            Debug.Log($"[SkillManager] ì´ë¯¸ ë³´ìœ  ì¤‘ì¸ ìŠ¤í‚¬: {skillID}");
             return false;
         }
 
-        // ½ºÅ³ µ¥ÀÌÅÍ °ËÁõ
+        // ìŠ¤í‚¬ ë°ì´í„° ê²€ì¦
         if (SkillDataManager.Instance == null)
         {
-            Debug.LogError($"[SkillManager] SkillDataManager°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError($"[SkillManager] SkillDataManagerê°€ ì—†ìŠµë‹ˆë‹¤.");
             return false;
         }
 
         SkillData skillData = SkillDataManager.Instance.GetSkillData(skillID);
         if (skillData == null)
         {
-            Debug.LogWarning($"[SkillManager] ½ºÅ³À» Ã£À» ¼ö ¾øÀ½: {skillID}");
+            Debug.LogWarning($"[SkillManager] ìŠ¤í‚¬ì„ ì°¾ì„ ìˆ˜ ì—†ìŒ: {skillID}");
             return false;
         }
 
-        // ½ºÅ³ µ¥ÀÌÅÍ Ãß°¡
+        // ìŠ¤í‚¬ ë°ì´í„° ì¶”ê°€
         PlayerSkillData newSkill = new PlayerSkillData();
         newSkill.skillid = skillID;
         newSkill.canUse = true;
         skills.Add(newSkill);
 
-        // ½ºÅ³ ÀÎ½ºÅÏ½º »ı¼º
+        // ìŠ¤í‚¬ ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
         SkillBase skillInstance = SkillFactory.CreateSkill(skillData);
         if (skillInstance != null)
         {
             skillInstances[skillID] = skillInstance;
 
-            // ÆĞ½Ãºê ½ºÅ³ÀÌ¸é Áï½Ã Àû¿ë
+            // íŒ¨ì‹œë¸Œ ìŠ¤í‚¬ì´ë©´ ì¦‰ì‹œ ì ìš©
             if (skillInstance is PassiveSkillBase passiveSkill)
             {
                 if (PlayerStatsComponent.Instance != null)
                 {
                     passiveSkill.ApplyEffect(PlayerStatsComponent.Instance.Stats);
-                    Debug.Log($"[SkillManager] ÆĞ½Ãºê ½ºÅ³ Àû¿ë: {skillID}");
+                    Debug.Log($"[SkillManager] íŒ¨ì‹œë¸Œ ìŠ¤í‚¬ ì ìš©: {skillID}");
                 }
                 else
                 {
-                    Debug.LogWarning($"[SkillManager] PlayerStatsComponent°¡ ¾ø¾î ÆĞ½Ãºê Àû¿ë ½ÇÆĞ: {skillID}");
+                    Debug.LogWarning($"[SkillManager] PlayerStatsComponentê°€ ì—†ì–´ íŒ¨ì‹œë¸Œ ì ìš© ì‹¤íŒ¨: {skillID}");
                 }
             }
         }
         else
         {
-            Debug.LogWarning($"[SkillManager] ½ºÅ³ ÀÎ½ºÅÏ½º »ı¼º ½ÇÆĞ: {skillID}");
+            Debug.LogWarning($"[SkillManager] ìŠ¤í‚¬ ì¸ìŠ¤í„´ìŠ¤ ìƒì„± ì‹¤íŒ¨: {skillID}");
         }
 
         OnSkillAdded?.Invoke(newSkill);
         OnSkillChanged?.Invoke();
 
-        Debug.Log($"[SkillManager] ½ºÅ³ Ãß°¡: {skillID} ({skillData.skillType}), ÃÑ ½ºÅ³ ¼ö: {skills.Count}");
+        Debug.Log($"[SkillManager] ìŠ¤í‚¬ ì¶”ê°€: {skillID} ({skillData.skillType}), ì´ ìŠ¤í‚¬ ìˆ˜: {skills.Count}");
         return true;
     }
 
     /// <summary>
-    /// ½ºÅ³ Á¦°Å (ÆĞ½Ãºê ÀÚµ¿ ÇØÁ¦)
+    /// ìŠ¤í‚¬ ì œê±° (íŒ¨ì‹œë¸Œ ìë™ í•´ì œ)
     /// </summary>
     public bool RemoveSkill(string skillID)
     {
-        // ÆĞ½Ãºê È¿°ú Á¦°Å
+        // íŒ¨ì‹œë¸Œ íš¨ê³¼ ì œê±°
         if (skillInstances.TryGetValue(skillID, out SkillBase skillInstance))
         {
             if (skillInstance is PassiveSkillBase passiveSkill)
@@ -150,61 +155,112 @@ public class SkillManager : MonoBehaviour
                 if (PlayerStatsComponent.Instance != null)
                 {
                     passiveSkill.RemoveEffect(PlayerStatsComponent.Instance.Stats);
-                    Debug.Log($"[SkillManager] ÆĞ½Ãºê ½ºÅ³ Á¦°Å: {skillID}");
+                    Debug.Log($"[SkillManager] íŒ¨ì‹œë¸Œ ìŠ¤í‚¬ ì œê±°: {skillID}");
                 }
             }
             skillInstances.Remove(skillID);
         }
 
-        // ½ºÅ³ µ¥ÀÌÅÍ Á¦°Å
+        // ìŠ¤í‚¬ ë°ì´í„° ì œê±°
         PlayerSkillData skill = skills.FirstOrDefault(s => s.skillid == skillID);
         if (skill != null)
         {
             skills.Remove(skill);
             OnSkillRemoved?.Invoke(skill);
             OnSkillChanged?.Invoke();
-            Debug.Log($"[SkillManager] ½ºÅ³ Á¦°Å: {skillID}");
+            Debug.Log($"[SkillManager] ìŠ¤í‚¬ ì œê±°: {skillID}");
             return true;
         }
         return false;
     }
 
     /// <summary>
-    /// ½ºÅ³ »ç¿ë
+    /// ìŠ¤í‚¬ ì‚¬ìš©
     /// </summary>
     public bool UseSkill(string skillID, Transform caster, Vector3 targetPosition, Transform targetTransform = null)
     {
+        // 1. ìŠ¤í‚¬ ë”œë ˆì´ ì²´í¬
         if (isInSkillDelay)
         {
-            if (FloatingNotificationManager.Instance != null)
-            {
-                FloatingNotificationManager.Instance.ShowNotification("½ºÅ³ »ç¿ë ´ë±â Áß!");
-            }
             return false;
         }
 
+        // 2. ìŠ¤í‚¬ ë³´ìœ  í™•ì¸
+        PlayerSkillData skillData = GetSkill(skillID);
+        if (skillData == null)
+        {
+            Debug.LogWarning($"[SkillManager] ë³´ìœ í•˜ì§€ ì•Šì€ ìŠ¤í‚¬: {skillID}");
+            return false;
+        }
+
+        // 3. ì‚¬ìš© ê°€ëŠ¥ ì—¬ë¶€ í™•ì¸
+        if (!skillData.canUse)
+        {
+            Debug.LogWarning($"[SkillManager] ìŠ¤í‚¬ì„ ì‚¬ìš©í•  ìˆ˜ ì—†ìŒ: {skillID}");
+            return false;
+        }
+
+        // 4. ìŠ¤í‚¬ ì¸ìŠ¤í„´ìŠ¤ ê°€ì ¸ì˜¤ê¸°
         if (!skillInstances.TryGetValue(skillID, out SkillBase skillInstance))
         {
-            Debug.LogWarning($"[SkillManager] ½ºÅ³ ÀÎ½ºÅÏ½º¸¦ Ã£À» ¼ö ¾øÀ½: {skillID}");
+            Debug.LogWarning($"[SkillManager] ìŠ¤í‚¬ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ: {skillID}");
             return false;
         }
 
+        // 5. ì¿¨íƒ€ì„ ì²´í¬ (SkillCooldownManager ì‚¬ìš©)
+        if (SkillCooldownManager.Instance != null &&
+            SkillCooldownManager.Instance.IsOnCooldown(skillID))
+        {
+            SkillData data = skillData.GetSkillData();
+            float remaining = SkillCooldownManager.Instance.GetRemainingCooldown(skillID);
+
+            Debug.Log($"[SkillManager] {data?.skillName ?? skillID} ì¿¨íƒ€ì„ ì¤‘");
+            return false;
+        }
+
+        isUsingSkill = true;
+        Debug.Log($"[SkillManager] ìŠ¤í‚¬ ì‚¬ìš© ì‹œì‘ - ì´ë™ ë©ˆì¶¤");
+
+        // 6. ìŠ¤í‚¬ ì‚¬ìš©
         bool success = skillInstance.Use(caster, targetPosition, targetTransform);
 
         if (success)
         {
+            // 7. ìŠ¤í‚¬ ë”œë ˆì´ ì‹œì‘
             isInSkillDelay = true;
             skillDelayRemaining = GLOBAL_SKILL_DELAY;
 
-            PlayerSkillData skillData = GetSkill(skillID);
+            // 8. ì´ë²¤íŠ¸ ë°œìƒ
             OnSkillUse?.Invoke(skillData);
+            skillData.AddExp(5 * skillData.skillLevel);
+
+            // 9. ì¿¨íƒ€ì„ ì‹œì‘ (SkillBaseì—ì„œ ìë™ìœ¼ë¡œ SkillCooldownManager í˜¸ì¶œ)
+            // skillInstance.Use() ë‚´ë¶€ì—ì„œ StartCooldown() í˜¸ì¶œë¨
+
+            Debug.Log($"[SkillManager]  ìŠ¤í‚¬ ì‚¬ìš© ì„±ê³µ: {skillInstance.SkillName}");
+
+            // ===== ìŠ¤í‚¬ ì‚¬ìš© ì¢…ë£Œ ì½”ë£¨í‹´ =====
+
+            StartCoroutine(ResetSkillUse(0.3f));
+        }
+        else
+        {
+            // ===== ìŠ¤í‚¬ ì‹¤íŒ¨ ì‹œ ì¦‰ì‹œ ì´ë™ ì¬ê°œ =====
+
+            isUsingSkill = false;
+            Debug.Log($"[SkillManager] âŒ ìŠ¤í‚¬ ì‚¬ìš© ì‹¤íŒ¨");
         }
 
         return success;
     }
+    private IEnumerator ResetSkillUse(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isUsingSkill = false;
+    }
 
     /// <summary>
-    /// ½ºÅ³ »ç¿ë °¡´É ¿©ºÎ ¼³Á¤
+    /// ìŠ¤í‚¬ ì‚¬ìš© ê°€ëŠ¥ ì—¬ë¶€ ì„¤ì •
     /// </summary>
     public void SetSkillUsable(string skillID, bool canUse)
     {
@@ -213,12 +269,12 @@ public class SkillManager : MonoBehaviour
         {
             skill.canUse = canUse;
             OnSkillChanged?.Invoke();
-            Debug.Log($"[SkillManager] ½ºÅ³ »ç¿ë °¡´É ¿©ºÎ º¯°æ: {skillID} -> {canUse}");
+            Debug.Log($"[SkillManager] ìŠ¤í‚¬ ì‚¬ìš© ê°€ëŠ¥ ì—¬ë¶€ ë³€ê²½: {skillID} -> {canUse}");
         }
     }
 
     /// <summary>
-    /// ½ºÅ³ÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+    /// ìŠ¤í‚¬ì´ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸
     /// </summary>
     public bool HasSkill(string skillID)
     {
@@ -226,13 +282,13 @@ public class SkillManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸ğµç ÆĞ½Ãºê ½ºÅ³ ÀçÀû¿ë (¾À ÀüÈ¯ ½Ã)
+    /// ëª¨ë“  íŒ¨ì‹œë¸Œ ìŠ¤í‚¬ ì¬ì ìš© (ì”¬ ì „í™˜ ì‹œ)
     /// </summary>
     public void ReapplyAllPassiveSkills()
     {
         if (PlayerStatsComponent.Instance == null)
         {
-            Debug.LogWarning("[SkillManager] PlayerStatsComponent°¡ ¾ø¾î ÆĞ½Ãºê ÀçÀû¿ë ºÒ°¡");
+            Debug.LogWarning("[SkillManager] PlayerStatsComponentê°€ ì—†ì–´ íŒ¨ì‹œë¸Œ ì¬ì ìš© ë¶ˆê°€");
             return;
         }
 
@@ -243,18 +299,18 @@ public class SkillManager : MonoBehaviour
             {
                 passiveSkill.ApplyEffect(PlayerStatsComponent.Instance.Stats);
                 reappliedCount++;
-                Debug.Log($"[SkillManager] ÆĞ½Ãºê ÀçÀû¿ë: {kvp.Key}");
+                Debug.Log($"[SkillManager] íŒ¨ì‹œë¸Œ ì¬ì ìš©: {kvp.Key}");
             }
         }
 
         if (reappliedCount > 0)
         {
-            Debug.Log($"[SkillManager] ÃÑ {reappliedCount}°³ ÆĞ½Ãºê ½ºÅ³ ÀçÀû¿ë ¿Ï·á");
+            Debug.Log($"[SkillManager] ì´ {reappliedCount}ê°œ íŒ¨ì‹œë¸Œ ìŠ¤í‚¬ ì¬ì ìš© ì™„ë£Œ");
         }
     }
 
     /// <summary>
-    /// ½ºÅ³ µ¥ÀÌÅÍ ÀúÀå
+    /// ìŠ¤í‚¬ ë°ì´í„° ì €ì¥
     /// </summary>
     public SkillSaveData ToSaveData()
     {
@@ -265,11 +321,11 @@ public class SkillManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ½ºÅ³ µ¥ÀÌÅÍ ·Îµå
+    /// ìŠ¤í‚¬ ë°ì´í„° ë¡œë“œ
     /// </summary>
     public void LoadFromData(SkillSaveData data)
     {
-        // ±âÁ¸ ÆĞ½Ãºê È¿°ú Á¦°Å
+        // ê¸°ì¡´ íŒ¨ì‹œë¸Œ íš¨ê³¼ ì œê±°
         foreach (var kvp in skillInstances)
         {
             if (kvp.Value is PassiveSkillBase passiveSkill)
@@ -286,24 +342,45 @@ public class SkillManager : MonoBehaviour
 
         if (data != null && data.skills != null)
         {
-            foreach (var skillData in data.skills)
+            foreach (var savedSkill in data.skills)
             {
-                // AddSkillÀ» »ç¿ëÇÏ¿© ÀÚµ¿À¸·Î ÆĞ½Ãºê Àû¿ë
-                AddSkill(skillData.skillId);
+                // PlayerSkillData ë³µì› (LoadData ì‚¬ìš©)
+                PlayerSkillData playerSkill = PlayerSkillData.LoadData(savedSkill);
+                skills.Add(playerSkill);
+
+                SkillData skillData = SkillDataManager.Instance?.GetSkillData(savedSkill.skillId);
+                if (skillData == null)
+                {
+                    Debug.LogWarning($"[SkillManager] ìŠ¤í‚¬ ë°ì´í„°ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ: {savedSkill.skillId}");
+                    continue;
+                }
+
+                SkillBase skillInstance = SkillFactory.CreateSkill(skillData, savedSkill.skillLevel);
+                if (skillInstance != null)
+                {
+                    skillInstances[savedSkill.skillId] = skillInstance;
+
+                    if (skillInstance is PassiveSkillBase passiveSkill)
+                    {
+                        if (PlayerStatsComponent.Instance != null)
+                        {
+                            passiveSkill.ApplyEffect(PlayerStatsComponent.Instance.Stats);
+                        }
+                    }
+                }
             }
         }
 
         OnSkillChanged?.Invoke();
-
-        Debug.Log($"[SkillManager] µ¥ÀÌÅÍ ·Îµå ¿Ï·á ({skills.Count}°³ ½ºÅ³)");
+        Debug.Log($"[SkillManager] ë°ì´í„° ë¡œë“œ ì™„ë£Œ ({skills.Count}ê°œ ìŠ¤í‚¬)");
     }
 
     /// <summary>
-    /// ¸ğµç ½ºÅ³ ÃÊ±âÈ­ (»õ Ä³¸¯ÅÍ »ı¼º ½Ã)
+    /// ëª¨ë“  ìŠ¤í‚¬ ì´ˆê¸°í™” (ìƒˆ ìºë¦­í„° ìƒì„± ì‹œ)
     /// </summary>
     public void ClearAllSkills()
     {
-        // ¸ğµç ÆĞ½Ãºê È¿°ú Á¦°Å
+        // ëª¨ë“  íŒ¨ì‹œë¸Œ íš¨ê³¼ ì œê±°
         foreach (var kvp in skillInstances)
         {
             if (kvp.Value is PassiveSkillBase passiveSkill)
@@ -315,18 +392,18 @@ public class SkillManager : MonoBehaviour
             }
         }
 
-        Debug.Log("[SkillManager] ¸ğµç ½ºÅ³ ÃÊ±âÈ­");
+        Debug.Log("[SkillManager] ëª¨ë“  ìŠ¤í‚¬ ì´ˆê¸°í™”");
         skills.Clear();
         skillInstances.Clear();
         OnSkillChanged?.Invoke();
     }
 
     /// <summary>
-    /// ÄğÅ¸ÀÓ ¾÷µ¥ÀÌÆ®
+    /// ì¿¨íƒ€ì„ ì—…ë°ì´íŠ¸
     /// </summary>
     private void Update()
     {
-        // ÈÄµô·¹ÀÌ ¾÷µ¥ÀÌÆ® Ãß°¡
+        // í›„ë”œë ˆì´ ì—…ë°ì´íŠ¸ ì¶”ê°€
         if (isInSkillDelay)
         {
             skillDelayRemaining -= Time.deltaTime;
@@ -340,7 +417,7 @@ public class SkillManager : MonoBehaviour
 }
 
 /// <summary>
-/// ½ºÅ³ ÀúÀå µ¥ÀÌÅÍ
+/// ìŠ¤í‚¬ ì €ì¥ ë°ì´í„°
 /// </summary>
 [Serializable]
 public class SkillSaveData

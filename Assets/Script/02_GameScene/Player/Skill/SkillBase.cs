@@ -25,6 +25,8 @@ public abstract class SkillBase
     public int CurrentLevel => currentLevel;
     public int MaxLevel => skillData.maxLevel;
 
+    public string IconPath => skillData.skillIconPath;
+
     // ===== 쿨타임 관리 =====
 
     protected void StartCooldown()
@@ -128,9 +130,6 @@ public abstract class SkillBase
         return skillData.damageRate + (skillData.levelUpDamageRate * (currentLevel - 1));
     }
 
-    // ===== 유틸리티 =====
-
-    // SkillBase.cs의 SpawnEffect 메서드 교체
 
     // ===== 유틸리티 =====
 

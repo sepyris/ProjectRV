@@ -177,52 +177,14 @@ public static class UsageHandler
     /// 스킬 사용 (공통 로직)
     public static bool UseSkill(string skillId)
     {
-        // 1. 스킬 매니저 확인
+        // 1. SkillManager 확인
         if (SkillManager.Instance == null)
         {
             Debug.LogWarning("[UsageHandler] SkillManager가 없음");
             return false;
         }
 
-        // 2. 스킬 보유 확인
-        PlayerSkillData skillData = SkillManager.Instance.GetSkill(skillId);
-        if (skillData == null)
-        {
-            Debug.LogWarning($"[UsageHandler] 보유하지 않은 스킬: {skillId}");
-            return false;
-        }
-
-        // 3. 스킬 데이터 확인
-        SkillData data = skillData.GetSkillData();
-        if (data == null)
-        {
-            Debug.LogWarning($"[UsageHandler] 스킬 데이터를 찾을 수 없음: {skillId}");
-            return false;
-        }
-
-        // 4. 사용 가능 여부 확인
-        if (!skillData.canUse)
-        {
-            Debug.LogWarning($"[UsageHandler] {data.skillName}은(는) 현재 사용할 수 없습니다.");
-            return false;
-        }
-
-        // 5. 쿨타임 체크
-        if (SkillCooldownManager.Instance.IsOnCooldown(skillId))
-        {
-            Debug.Log($"[UsageHandler] {data.skillName} 쿨타임 중");
-            return false;
-        }
-
-        // 6. 스킬 생성
-        SkillBase skill = SkillFactory.CreateSkillById(skillId);
-        if (skill == null)
-        {
-            Debug.LogError($"[UsageHandler] 스킬 생성 실패: {skillId}");
-            return false;
-        }
-
-        // 7. 플레이어 Transform 가져오기
+        // 2. PlayerController 확인
         Transform playerTransform = PlayerController.Instance?.transform;
         if (playerTransform == null)
         {
@@ -230,17 +192,18 @@ public static class UsageHandler
             return false;
         }
 
-        // 8. 타겟 위치 계산 (임시)
+        // 3. 타겟 위치 계산
         Vector3 targetPosition = playerTransform.position + playerTransform.forward * 5f;
 
-        // 9. 스킬 사용
-        bool used = skill.Use(playerTransform, targetPosition);
+        // ===== ★ SkillManager에 위임 =====
+
+        bool used = SkillManager.Instance.UseSkill(skillId, playerTransform, targetPosition);
+
         if (used)
         {
-            // 쿨타임 시작 (매니저에 등록)
-            SkillCooldownManager.Instance.StartCooldown(skillId, data.cooldown);
-            Debug.Log($"[UsageHandler] {data.skillName} 스킬 사용");
+            Debug.Log($"[UsageHandler] 스킬 사용 성공");
         }
+
         return used;
     }
 

@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public bool ControlsLocked => controlsLocked;
     public bool IsAttacking => attack != null && attack.IsAttacking;
     public bool IsGathering => interaction != null && interaction.IsGathering;
+    public bool IsUsingSkill => SkillManager.Instance != null && SkillManager.Instance.IsUsingSkill;
     public Vector2 MoveInput => moveInput;
 
     // ==================== Unity Lifecycle ====================
@@ -111,7 +112,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 공격 중이거나 채집 중일 때 이동 불가
-        if (IsAttacking || IsGathering)
+        if (IsAttacking || IsGathering || IsUsingSkill)
         {
             rb.velocity = Vector2.zero;
             return;
@@ -317,18 +318,6 @@ public class PlayerController : MonoBehaviour
         {
             // 일반 상호작용 (채집, NPC)
             interaction?.TryInteract();
-
-            // SavePoint 체크
-            Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
-            foreach (var col in nearbyColliders)
-            {
-                SavePointController savePoint = col.GetComponent<SavePointController>();
-                if (savePoint != null)
-                {
-                    savePoint.TryInteract();
-                    break; // 하나만 처리
-                }
-            }
         }
     }
 

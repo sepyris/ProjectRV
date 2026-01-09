@@ -22,7 +22,7 @@ MonoBehaviour:
     requiredLevel: 1
     maxLevel: 10
     cooldown: 5
-    damageRate: 170
+    damageRate: 350
     levelUpDamageRate: 20
     skillIconPath: Icons/Skills/FullSwing
   - skillId: Skill_002
@@ -34,7 +34,7 @@ MonoBehaviour:
     requiredLevel: 1
     maxLevel: 10
     cooldown: 5
-    damageRate: 70
+    damageRate: 170
     levelUpDamageRate: 5
     skillIconPath: Icons/Skills/MagicMissile
   - skillId: Skill_003
@@ -44,7 +44,7 @@ MonoBehaviour:
     requiredJob: novice
     requiredLevel: 1
     maxLevel: 1
-    cooldown: 20
+    cooldown: 5
     damageRate: 10
     levelUpDamageRate: 0
     skillIconPath: Icons/Skills/FirstAid
@@ -69,8 +69,8 @@ MonoBehaviour:
     requiredLevel: 10
     maxLevel: 10
     cooldown: 10
-    damageRate: 250
-    levelUpDamageRate: 20
+    damageRate: 400
+    levelUpDamageRate: 25
     skillIconPath: Icons/Skills/BashDash
   - skillId: Skill_006
     skillName: "\uC5F0\uC18D\uBCA0\uAE30"
@@ -81,8 +81,8 @@ MonoBehaviour:
     requiredLevel: 10
     maxLevel: 10
     cooldown: 10
-    damageRate: 60
-    levelUpDamageRate: 5
+    damageRate: 100
+    levelUpDamageRate: 15
     skillIconPath: Icons/Skills/MultiSlash
   - skillId: Skill_007
     skillName: "\uB4E0\uB4E0\uD55C \uB9C8\uC74C"
@@ -105,8 +105,8 @@ MonoBehaviour:
     requiredLevel: 10
     maxLevel: 10
     cooldown: 10
-    damageRate: 70
-    levelUpDamageRate: 5
+    damageRate: 220
+    levelUpDamageRate: 20
     skillIconPath: Icons/Skills/DaggerThrow
   - skillId: Skill_009
     skillName: "\uAC15\uC778\uD55C \uC0DD\uBA85\uB825"
@@ -154,8 +154,8 @@ MonoBehaviour:
     requiredLevel: 10
     maxLevel: 10
     cooldown: 10
-    damageRate: 300
-    levelUpDamageRate: 20
+    damageRate: 500
+    levelUpDamageRate: 30
     skillIconPath: Icons/Skills/FireBall
   - skillId: Skill_013
     skillName: "\uD504\uB85C\uC2A4\uD2B8\uD544\uB4DC"
@@ -166,8 +166,8 @@ MonoBehaviour:
     requiredLevel: 10
     maxLevel: 10
     cooldown: 10
-    damageRate: 200
-    levelUpDamageRate: 10
+    damageRate: 300
+    levelUpDamageRate: 20
     skillIconPath: Icons/Skills/FrostField
   - skillId: Skill_014
     skillName: "\uB77C\uC774\uD2B8\uB2DD\uC11C\uD074"
@@ -178,7 +178,7 @@ MonoBehaviour:
     requiredLevel: 10
     maxLevel: 10
     cooldown: 10
-    damageRate: 100
+    damageRate: 200
     levelUpDamageRate: 15
     skillIconPath: Icons/Skills/LightningCircle
   - skillId: Skill_015
@@ -188,8 +188,8 @@ MonoBehaviour:
     requiredJob: mage
     requiredLevel: 10
     maxLevel: 10
-    cooldown: 20
-    damageRate: 20
+    cooldown: 10
+    damageRate: 25
     levelUpDamageRate: 1
     skillIconPath: Icons/Skills/Heal
   - skillId: Skill_016

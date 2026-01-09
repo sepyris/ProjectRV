@@ -40,10 +40,6 @@ public class MagicMissile : ActiveSkillBase
 
         if (targets.Count == 0)
         {
-            if (FloatingNotificationManager.Instance != null)
-            {
-                FloatingNotificationManager.Instance.ShowNotification("범위 내 적이 없습니다!");
-            }
             return false;
         }
 

@@ -46,10 +46,6 @@ public class DaggerThrow : ActiveSkillBase
 
         if (target == null)
         {
-            if (FloatingNotificationManager.Instance != null)
-            {
-                FloatingNotificationManager.Instance.ShowNotification("범위 내 적이 없습니다!");
-            }
             return false;
         }
 

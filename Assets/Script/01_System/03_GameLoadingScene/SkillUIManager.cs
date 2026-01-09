@@ -163,12 +163,14 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         // ===== 이름으로 자식 찾기 =====
 
         Image iconImage = itemObj.transform.Find("SkillIconImage")?.GetComponent<Image>();
+        TextMeshProUGUI skillLevelText = itemObj?.transform.Find("SkillLevelText")?.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI descriptionText = itemObj.transform.Find("SkillDescText")?.GetComponent<TextMeshProUGUI>();
         Transform infoPanel = itemObj.transform.Find("SkillNamePanel");
         Slider expSlider = itemObj.transform.Find("SkillExp")?.GetComponent<Slider>();
+        TextMeshProUGUI exptext = expSlider?.transform.Find("SkillExpText")?.GetComponent<TextMeshProUGUI>();
 
         TextMeshProUGUI skillNameText = infoPanel?.Find("SkillNameText")?.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI skillLevelText = infoPanel?.Find("SkillLevelText")?.GetComponent<TextMeshProUGUI>();
+        
 
         Image cooldownOverlay = itemObj.transform.Find("SkillCooldownImage")?.GetComponent<Image>();
         TextMeshProUGUI cooldownText = itemObj.transform.Find("SkillCooldownText")?.GetComponent<TextMeshProUGUI>();
@@ -218,6 +220,19 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
 
         if (expSlider != null)
             expSlider.value = skill.GetExpProgress();
+
+        if(exptext != null)
+        {
+            exptext.text = (skill.GetExpProgress() * 100).ToString() + "%";
+            if(skill.IsMaxLevel)
+            {
+                exptext.text = "Max";
+                skillLevelText.text = "Lv.Max";
+
+            }
+        }
+            
+        
     }
 
     private void OnSkillChanged()

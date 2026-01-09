@@ -41,9 +41,8 @@ public class PlayerSkillData
     /// </summary>
     public int GetRequiredExpForNextLevel()
     {
-        // 레벨당 필요 경험치 공식 (예시)
-        // Lv.1→2: 100, Lv.2→3: 150, Lv.3→4: 200...
-        return 50 + (skillLevel * 50);
+        // 레벨당 필요 경험치
+        return 50 + (skillLevel * 70);
     }
 
     /// <summary>
@@ -135,7 +134,7 @@ public class PlayerSkillData
     /// <summary>
     /// 저장 데이터에서 복원
     /// </summary>
-    public static PlayerSkillData FromSaveData(PlayerSkillSaveData data)
+    public static PlayerSkillData LoadData(PlayerSkillSaveData data)
     {
         return new PlayerSkillData
         {
