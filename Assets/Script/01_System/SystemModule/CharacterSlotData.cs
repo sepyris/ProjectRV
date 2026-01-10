@@ -43,9 +43,13 @@ public class CharacterSlotData
     //  상점 재고 정보 추가 (캐릭터별로 따로 관리)
     public ShopStockSaveData shopStockData = new ShopStockSaveData();
 
-    
+    public SkillSaveData skillData = new SkillSaveData();
+
+    public AllQuestsSaveData questdata = new AllQuestsSaveData();
+
+
     /// 새 캐릭터 생성
-    
+
     public static CharacterSlotData CreateNew(string name, int slot)
     {
         // 기존 CharacterStats 사용
@@ -71,6 +75,9 @@ public class CharacterSlotData
 
             //  빈 상점 재고 데이터 초기화
             shopStockData = new ShopStockSaveData(),
+
+            skillData = new SkillSaveData(),
+            questdata = new AllQuestsSaveData(),
 
             hairStyle = 0,
             hairColor = 0,

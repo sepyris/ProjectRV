@@ -569,8 +569,8 @@ public class CharacterSaveManager : MonoBehaviour
         // 스킬 로드
         if (SkillManager.Instance != null)
         {
-            SkillManager.Instance.LoadFromData(CurrentGlobalData.skillData);
-            Debug.Log($"[SaveManager] 스킬 로드: {CurrentGlobalData.skillData?.skills?.Count ?? 0}개");
+            SkillManager.Instance.LoadFromData(CurrentCharacter.skillData);
+            Debug.Log($"[SaveManager] 스킬 로드: {CurrentCharacter.skillData?.skills?.Count ?? 0}개");
         }
 
 
@@ -638,8 +638,8 @@ public class CharacterSaveManager : MonoBehaviour
         //스킬 저장
         if (SkillManager.Instance != null)
         {
-            CurrentGlobalData.skillData = SkillManager.Instance.ToSaveData();
-            Debug.Log($"[SaveManager] 스킬 저장: {CurrentGlobalData.skillData?.skills?.Count ?? 0}개");
+            CurrentCharacter.skillData = SkillManager.Instance.ToSaveData();
+            Debug.Log($"[SaveManager] 스킬 저장: {CurrentCharacter.skillData?.skills?.Count ?? 0}개");
         }
 
         //  장비 저장 추가
@@ -857,7 +857,6 @@ public class GlobalSaveData
     public SubSceneData subSceneState = new SubSceneData();
     public InventorySaveData inventoryData = new InventorySaveData();
     public AllQuestsSaveData questData = new AllQuestsSaveData();
-    public SkillSaveData skillData = new SkillSaveData();
     public string integrityHash = "";
     public string lastSafeZoneScene = "";
     public string lastSafeZoneSpawnPoint = "";
