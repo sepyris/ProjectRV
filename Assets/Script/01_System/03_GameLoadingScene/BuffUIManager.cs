@@ -109,8 +109,14 @@ public class BuffUIManager : MonoBehaviour
             activeBuffUIs.Remove(buff.buffId);
 
             Debug.Log($"[BuffUIManager] 버프 UI 제거: {buff.buffName}");
+
+            // 해당 버프의 디테일 패널이 열려있다면 닫기
+            if (SkillDetailUIManager.Instance != null)
+            {
+                SkillDetailUIManager.Instance.HideSkillDetail();
+            }
         }
-        if(activeBuffUIs.Count == 0)
+        if (activeBuffUIs.Count == 0)
         {
             buffContainer.gameObject.SetActive(false);
         }

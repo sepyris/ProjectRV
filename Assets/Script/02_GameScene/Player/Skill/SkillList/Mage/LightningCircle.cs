@@ -8,7 +8,13 @@ public class LightningCircle : ActiveSkillBase
     public LightningCircle(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n{ATTACK_RADIUS}범위내의 적에게 번개를 내리쳐 공격 합니다. \n공격력의 {GetCurrentDamage()}% 만큼의 데미지를 줍니다.";
+        }
+    }
     protected override void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform)
     {
         PlayerStatsComponent playerStats = caster.GetComponent<PlayerStatsComponent>();

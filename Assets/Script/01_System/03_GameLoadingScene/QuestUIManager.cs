@@ -9,7 +9,7 @@ using Definitions;
 /// Q키로 열리는 독립적인 퀘스트 창 UI 관리
 /// PlayerController에서 호출됨
 
-public class QuestUIManager : MonoBehaviour,IClosableUI
+public class QuestUIManager : MonoBehaviour, IClosableUI
 {
     public static QuestUIManager Instance { get; private set; }
 
@@ -166,33 +166,8 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
     private void SwitchTab(QuestTab tab)
     {
         currentTab = tab;
-        //UpdateTabButtons();
+        UpdateTabColors();
         RefreshQuestList();
-    }
-
-    private void UpdateTabButtons()
-    {
-        // 탭 버튼 활성화 상태 업데이트
-        if (availableTabButton != null)
-        {
-            var colors = availableTabButton.colors;
-            colors.normalColor = currentTab == QuestTab.Available ? new Color(1f, 1f, 0.5f) : Color.white;
-            availableTabButton.colors = colors;
-        }
-
-        if (inProgressTabButton != null)
-        {
-            var colors = inProgressTabButton.colors;
-            colors.normalColor = currentTab == QuestTab.InProgress ? new Color(0.5f, 1f, 0.5f) : Color.white;
-            inProgressTabButton.colors = colors;
-        }
-
-        if (completedTabButton != null)
-        {
-            var colors = completedTabButton.colors;
-            colors.normalColor = currentTab == QuestTab.Completed ? new Color(0.5f, 0.5f, 1f) : Color.white;
-            completedTabButton.colors = colors;
-        }
     }
 
     // ==========================================
@@ -226,12 +201,12 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
             CreateQuestListItem(quest);
 
             //퀘스트가 완료된 상태가 아니라면 목표 갱신
-            if(quest.status != QuestStatus.Rewarded)
+            if (quest.status != QuestStatus.Rewarded)
             {
                 string objectives = GetQuestObjectives(quest);
                 questObjectivesText.text = $"<b>목표</b>\n{objectives}";
             }
-            
+
 
             if (quest.questId == selectedQuestId)
             {
@@ -335,9 +310,9 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
         // ================================
     }
 
-    
+
     /// 상태 아이콘 가져오기
-    
+
     private string GetStatusIcon(QuestData quest)
     {
         switch (quest.status)
@@ -367,9 +342,9 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
         }
     }
 
-    
+
     /// 퀘스트 목표 텍스트 생성 (완료 가능 상태 강조)
-    
+
     private string GetQuestObjectives(QuestData quest)
     {
         if (quest.objectives == null || quest.objectives.Count == 0)
@@ -606,9 +581,9 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
     // 퀘스트 트래커 (핀 기능)
     // ==========================================
 
-    
+
     /// 핀 버튼 클릭 시 호출
-    
+
     private void OnPinButtonClicked(string questId, Button pinButton)
     {
         if (QuestTrackerUIManager.Instance == null)
@@ -660,9 +635,9 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
     // 퀘스트 매니저 이벤트 핸들러
     // ==========================================
 
-    
+
     /// 퀘스트 상태 변경 시 호출 (QuestManager 이벤트)
-    
+
     private void OnQuestStatusChanged(string questId, QuestStatus newStatus)
     {
         // 퀘스트 창이 열려있을 때만 자동 업데이트
@@ -673,9 +648,9 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
         }
     }
 
-    
+
     /// 퀘스트 목표 업데이트 시 호출 (QuestManager 이벤트)
-    
+
     private void OnQuestObjectiveUpdated(string questId)
     {
         // 퀘스트 창이 열려있을 때만 자동 업데이트
@@ -683,6 +658,30 @@ public class QuestUIManager : MonoBehaviour,IClosableUI
         {
             RefreshUI();
             Debug.Log($"[QuestUI] 퀘스트 목표 업데이트 감지: {questId}");
+        }
+    }
+
+
+    private void UpdateTabColors()
+    {
+        Color selectedColor = new Color(0f, 0.392f, 1f);
+
+        if (availableTabButton != null)
+        {
+            Image img = availableTabButton.GetComponent<Image>();
+            if (img != null) img.color = (currentTab == QuestTab.Available) ? selectedColor : Color.white;
+        }
+
+        if (inProgressTabButton != null)
+        {
+            Image img = inProgressTabButton.GetComponent<Image>();
+            if (img != null) img.color = (currentTab == QuestTab.InProgress) ? selectedColor : Color.white;
+        }
+
+        if (completedTabButton != null)
+        {
+            Image img = completedTabButton.GetComponent<Image>();
+            if (img != null) img.color = (currentTab == QuestTab.Completed) ? selectedColor : Color.white;
         }
     }
 

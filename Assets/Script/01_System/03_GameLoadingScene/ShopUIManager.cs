@@ -170,7 +170,7 @@ public class ShopUIManager : MonoBehaviour, IClosableUI
         pendingShopItemData = null;
         isPendingTransactionRebuy = false;
 
-        //UpdateBuyTabColors();
+        UpdateBuyTabColors();
         RefreshBuyList();
     }
 
@@ -188,7 +188,7 @@ public class ShopUIManager : MonoBehaviour, IClosableUI
         pendingItemData = null;
         pendingShopItemData = null;
 
-        //UpdateSellTabColors();
+        UpdateSellTabColors();
         RefreshSellList();
     }
 
@@ -205,8 +205,8 @@ public class ShopUIManager : MonoBehaviour, IClosableUI
         pendingShopItemData = null;
         isPendingTransactionRebuy = false;
 
-      //UpdateBuyTabColors();
-      //UpdateSellTabColors();
+        UpdateBuyTabColors();
+        UpdateSellTabColors();
 
         RefreshBuyList();
         RefreshSellList();
@@ -247,15 +247,17 @@ public class ShopUIManager : MonoBehaviour, IClosableUI
 
     void UpdateBuyTabColors()
     {
-        buyTabButton.GetComponent<Image>().color = (currentBuyMode == ShopMode.Buy) ? Color.yellow : Color.white;
-        rebuyTabButton.GetComponent<Image>().color = (currentBuyMode == ShopMode.Rebuy) ? Color.yellow : Color.white;
+        Color selectedColor = new Color(0f, 0.392f, 1f);
+        buyTabButton.GetComponent<Image>().color = (currentBuyMode == ShopMode.Buy) ? selectedColor : Color.white;
+        rebuyTabButton.GetComponent<Image>().color = (currentBuyMode == ShopMode.Rebuy) ? selectedColor : Color.white;
     }
 
     void UpdateSellTabColors()
     {
-        equipmentTabButton.GetComponent<Image>().color = (currentSellMode == ShopMode.SellEquipment) ? Color.yellow : Color.white;
-        usingitemTabButton.GetComponent<Image>().color = (currentSellMode == ShopMode.SellConsumable) ? Color.yellow : Color.white;
-        etcitemTabButton.GetComponent<Image>().color = (currentSellMode == ShopMode.SellMaterial) ? Color.yellow : Color.white;
+        Color selectedColor = new Color(0f, 0.392f, 1f);
+        equipmentTabButton.GetComponent<Image>().color = (currentSellMode == ShopMode.SellEquipment) ? selectedColor : Color.white;
+        usingitemTabButton.GetComponent<Image>().color = (currentSellMode == ShopMode.SellConsumable) ? selectedColor : Color.white;
+        etcitemTabButton.GetComponent<Image>().color = (currentSellMode == ShopMode.SellMaterial) ? selectedColor : Color.white;
     }
 
     void DisplayBuyItems()
@@ -422,9 +424,9 @@ public class ShopUIManager : MonoBehaviour, IClosableUI
         }
     }
 
-    
+
     /// 골드 부족 경고 팝업 표시
-    
+
     void ShowInsufficientGoldWarning(int requiredGold, int quantity)
     {
         if (PopupManager.Instance == null) return;
@@ -435,9 +437,9 @@ public class ShopUIManager : MonoBehaviour, IClosableUI
         PopupManager.Instance.ShowWarningPopup(message);
     }
 
-    
+
     /// 구매 전 골드 확인
-    
+
     bool CheckGoldBeforePurchase()
     {
         if (PlayerStatsComponent.Instance == null) return false;

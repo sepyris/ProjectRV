@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// ½ºÅ³ ½½·Ô ÄðÅ¸ÀÓ °ü¸®
 /// </summary>
-public class SkillSlotUI : MonoBehaviour
+public class SkillSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Image skillIcon;
     private Image cooldownOverlay;
@@ -102,4 +103,21 @@ public class SkillSlotUI : MonoBehaviour
     {
         return playerSkill?.skillid;
     }
+
+    public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (playerSkill != null && SkillDetailUIManager.Instance != null)
+        {
+            SkillDetailUIManager.Instance.ShowSkillDetail(playerSkill.skillid, this.transform);
+        }
+    }
+
+    public void OnPointerExit(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (SkillDetailUIManager.Instance != null)
+        {
+            SkillDetailUIManager.Instance.HideSkillDetail();
+        }
+    }
+
 }

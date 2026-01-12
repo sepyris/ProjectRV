@@ -4,12 +4,18 @@ public class FireBall : ActiveSkillBase
 {
     private const string PROJECTILE_PATH = "SkillsPrefabs/FireBallProjectile";
     private const float PROJECTILE_SPEED = 12f;
-    private const float PROJECTILE_DISTANCE = 10f;
+    private const float PROJECTILE_DISTANCE = 5f;
 
     public FireBall(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n 공격력의 {GetCurrentDamage()}% 만큼의 데미지를 줍니다.";
+        }
+    }
     protected override void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform)
     {
         PlayerStatsComponent playerStats = caster.GetComponent<PlayerStatsComponent>();

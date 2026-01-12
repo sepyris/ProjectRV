@@ -1,32 +1,28 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillUIManager : MonoBehaviour,IClosableUI
+public class SkillUIManager : MonoBehaviour, IClosableUI
 {
-    // Singleton instance
     public static SkillUIManager Instance { get; private set; }
 
     [Header("메인 패널")]
     public GameObject skillUIPanel;
     public Button SkillUiCloseButton;
 
-    [Header("탭버튼")]
-    public Button ActiveSkillTabButton;
+    [Header("탭 버튼 컨테이너")]
+    public Transform jobTabContainer;
+    public GameObject jobTabButtonPrefab;
 
     [Header("스킬 리스트")]
     public Transform SkillListContainer;
     public GameObject skillUIPrepabs;
 
     private List<SkillSlotUI> activeSkillSlots = new List<SkillSlotUI>();
-
-    private enum SkillTab
-    {
-        FirstSkill,
-        SecondSkill,
-    }
-    private SkillTab currentTab = SkillTab.FirstSkill;
+    private List<GameObject> jobTabButtons = new List<GameObject>();
+    private JobsType currentJobTab = JobsType.Novice;
     private bool isOpen = false;
 
     void Awake()
@@ -42,17 +38,22 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         }
         skillUIPanel.SetActive(false);
         SetupButtons();
-        if(SkillManager.Instance!= null)
+        if (SkillManager.Instance != null)
         {
             SkillManager.Instance.OnSkillChanged += OnSkillChanged;
         }
-        
     }
+
     void OnDestroy()
     {
         if (SkillManager.Instance != null)
         {
             SkillManager.Instance.OnSkillChanged -= OnSkillChanged;
+        }
+
+        if (PlayerStatsComponent.Instance != null && PlayerStatsComponent.Instance.Stats != null)
+        {
+            PlayerStatsComponent.Instance.Stats.OnJobChanged -= OnJobChanged;
         }
     }
 
@@ -60,19 +61,26 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
     {
         if (SkillUiCloseButton != null)
             SkillUiCloseButton.onClick.AddListener(CloseSkillUI);
+
+        if (PlayerStatsComponent.Instance != null && PlayerStatsComponent.Instance.Stats != null)
+        {
+            PlayerStatsComponent.Instance.Stats.OnJobChanged += OnJobChanged;
+        }
     }
 
     public void OpenSkillUI()
     {
         if (isOpen) return;
 
-        // 대화 중이면 열지 않음
         if (DialogueUIManager.Instance != null && DialogueUIManager.Instance.IsDialogueOpen)
             return;
 
         isOpen = true;
         skillUIPanel.SetActive(true);
+
+        RefreshJobTabs();
         RefreshSkillList();
+
         PlayerHUD.Instance?.RegisterUI(this);
     }
 
@@ -83,10 +91,44 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         isOpen = false;
         skillUIPanel.SetActive(false);
         PlayerHUD.Instance?.UnregisterUI(this);
+
+        // 스킬 디테일 패널 닫기
+        if (SkillDetailUIManager.Instance != null)
+        {
+            SkillDetailUIManager.Instance.HideSkillDetail();
+        }
     }
+
     public bool IsSkillUIOpen()
     {
         return isOpen;
+    }
+
+
+    private void UpdateJobTabColors()
+    {
+        Color selectedColor = new Color(0f, 0.392f, 1f);
+
+        foreach (var tabBtn in jobTabButtons)
+        {
+            if (tabBtn == null) continue;
+
+            Button button = tabBtn.GetComponent<Button>();
+            if (button == null) continue;
+
+            Image img = tabBtn.GetComponent<Image>();
+            if (img == null) continue;
+
+            // 버튼의 onClick 이벤트에서 JobsType 가져오기
+            // 이 방법은 완벽하지 않으므로, 탭 버튼 이름으로 구분
+            TextMeshProUGUI tabText = tabBtn.GetComponentInChildren<TextMeshProUGUI>();
+            if (tabText != null)
+            {
+                string tabName = tabText.text;
+                string currentJobName = GetJobName(currentJobTab);
+                img.color = (tabName == currentJobName) ? selectedColor : Color.white;
+            }
+        }
     }
     public void Close()
     {
@@ -97,35 +139,94 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
     {
         return skillUIPanel;
     }
+
+    private void RefreshJobTabs()
+    {
+        if (jobTabContainer == null || jobTabButtonPrefab == null)
+        {
+            Debug.LogWarning("[SkillUIManager] jobTabContainer 또는 jobTabButtonPrefab이 없습니다.");
+            return;
+        }
+
+        foreach (var btn in jobTabButtons)
+        {
+            Destroy(btn);
+        }
+        jobTabButtons.Clear();
+
+        if (PlayerStatsComponent.Instance == null || PlayerStatsComponent.Instance.Stats == null)
+            return;
+
+        var allJobs = PlayerStatsComponent.Instance.Stats.GetAllJobs();
+
+        if (allJobs.Count == 0)
+            return;
+
+        bool isFirstTab = true;
+        foreach (var job in allJobs)
+        {
+            GameObject tabBtn = Instantiate(jobTabButtonPrefab, jobTabContainer);
+            jobTabButtons.Add(tabBtn);
+
+            TextMeshProUGUI tabText = tabBtn.GetComponentInChildren<TextMeshProUGUI>();
+            if (tabText != null)
+            {
+                string jobName = GetJobName(job.jobType);
+                tabText.text = jobName;
+            }
+
+            Button button = tabBtn.GetComponent<Button>();
+            if (button != null)
+            {
+                JobsType capturedJobType = job.jobType;
+                button.onClick.AddListener(() => OnJobTabClicked(capturedJobType));
+
+                if (isFirstTab)
+                {
+                    currentJobTab = capturedJobType;
+                    isFirstTab = false;
+                }
+            }
+        }
+
+        UpdateJobTabColors();
+    }
+
+    private void OnJobTabClicked(JobsType jobType)
+    {
+        if (currentJobTab == jobType)
+            return;
+
+        currentJobTab = jobType;
+        UpdateJobTabColors();
+        RefreshSkillList();
+    }
+
     private void RefreshSkillList()
     {
-        if(DraggableSkillUi.IsDragging())
+        if (DraggableSkillUi.IsDragging())
         {
             DraggableSkillUi.CancelCurrentDrag();
         }
         activeSkillSlots.Clear();
 
-
-        // 기존 리스트 아이템 삭제
         foreach (Transform child in SkillListContainer)
             Destroy(child.gameObject);
 
-        // 현재 탭에 맞는 아이템 가져오기
-        List<PlayerSkillData> items = GetItemsForCurrentTab();
+        List<PlayerSkillData> skills = GetSkillsForCurrentJobTab();
 
-        // 아이템 리스트 아이템 생성
-        foreach (var item in items)
+        foreach (var skill in skills)
         {
-            CreateSkillListItem(item);
+            CreateSkillListItem(skill);
         }
 
-        Debug.Log($"[ItemUI] {currentTab} 탭: {items.Count}개 아이템 표시");
+        Debug.Log($"[SkillUIManager] {currentJobTab} 탭: {skills.Count}개 스킬 표시");
     }
+
     private void Update()
     {
         if (!isOpen) return;
 
-        // 모든 스킬 슬롯 쿨타임 업데이트
         foreach (var slot in activeSkillSlots)
         {
             if (slot != null)
@@ -135,22 +236,41 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         }
     }
 
-    private List<PlayerSkillData> GetItemsForCurrentTab()
+    private List<PlayerSkillData> GetSkillsForCurrentJobTab()
     {
         if (SkillManager.Instance == null)
             return new List<PlayerSkillData>();
 
-        switch (currentTab)
+        List<PlayerSkillData> allSkills = SkillManager.Instance.GetSkillsByType();
+
+        List<PlayerSkillData> filteredSkills = new List<PlayerSkillData>();
+
+        foreach (var playerSkill in allSkills)
         {
-            case SkillTab.FirstSkill:
-                return SkillManager.Instance.GetSkillsByType();
-
-            case SkillTab.SecondSkill:
-                return SkillManager.Instance.GetSkillsByType();
-
-            default:
-                return new List<PlayerSkillData>();
+            SkillData skillData = playerSkill.GetSkillData();
+            if (skillData != null)
+            {
+                if (skillData.requiredJob == currentJobTab)
+                {
+                    filteredSkills.Add(playerSkill);
+                }
+            }
         }
+
+        return filteredSkills;
+    }
+
+    private string GetJobName(JobsType jobType)
+    {
+        if (JobsDataManager.Instance != null)
+        {
+            JobsData jobData = JobsDataManager.Instance.GetJobDataByType(jobType);
+            if (jobData != null)
+            {
+                return jobData.jobName;
+            }
+        }
+        return jobType.ToString();
     }
 
     private void CreateSkillListItem(PlayerSkillData skill)
@@ -160,8 +280,6 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         SkillData data = skill.GetSkillData();
         if (data == null) return;
 
-        // ===== 이름으로 자식 찾기 =====
-
         Image iconImage = itemObj.transform.Find("SkillIconImage")?.GetComponent<Image>();
         TextMeshProUGUI skillLevelText = itemObj?.transform.Find("SkillLevelText")?.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI descriptionText = itemObj.transform.Find("SkillDescText")?.GetComponent<TextMeshProUGUI>();
@@ -170,12 +288,9 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         TextMeshProUGUI exptext = expSlider?.transform.Find("SkillExpText")?.GetComponent<TextMeshProUGUI>();
 
         TextMeshProUGUI skillNameText = infoPanel?.Find("SkillNameText")?.GetComponent<TextMeshProUGUI>();
-        
 
         Image cooldownOverlay = itemObj.transform.Find("SkillCooldownImage")?.GetComponent<Image>();
         TextMeshProUGUI cooldownText = itemObj.transform.Find("SkillCooldownText")?.GetComponent<TextMeshProUGUI>();
-
-        // ===== SkillSlotUI 컴포넌트 추가 =====
 
         SkillSlotUI slotUI = itemObj.GetComponent<SkillSlotUI>();
         if (slotUI == null)
@@ -185,16 +300,12 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         slotUI.Initialize(iconImage, cooldownOverlay, cooldownText, skill);
         activeSkillSlots.Add(slotUI);
 
-        // ===== 드래그 컴포넌트 =====
-
         DraggableSkillUi draggable = itemObj.GetComponent<DraggableSkillUi>();
         if (draggable == null)
         {
             draggable = itemObj.AddComponent<DraggableSkillUi>();
         }
         draggable.Initialize(skill);
-
-        // ===== 아이콘 설정 =====
 
         if (iconImage != null && !string.IsNullOrEmpty(data.skillIconPath))
         {
@@ -205,8 +316,6 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
             }
         }
 
-        // ===== 텍스트 설정 =====
-
         if (skillNameText != null)
             skillNameText.text = data.skillName;
 
@@ -216,23 +325,18 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         if (descriptionText != null)
             descriptionText.text = data.description;
 
-        // ===== 경험치 =====
-
         if (expSlider != null)
             expSlider.value = skill.GetExpProgress();
 
-        if(exptext != null)
+        if (exptext != null)
         {
             exptext.text = (skill.GetExpProgress() * 100).ToString() + "%";
-            if(skill.IsMaxLevel)
+            if (skill.IsMaxLevel)
             {
                 exptext.text = "Max";
                 skillLevelText.text = "Lv.Max";
-
             }
         }
-            
-        
     }
 
     private void OnSkillChanged()
@@ -240,15 +344,24 @@ public class SkillUIManager : MonoBehaviour,IClosableUI
         if (isOpen)
         {
             RefreshSkillList();
+        }
+    }
 
-            //  상세 패널은 RefreshItemList()에서 이미 숨겨지므로 
-            // 여기서는 다시 표시하지 않음 (호버 시에만 표시)
+    private void OnJobChanged()
+    {
+        if (isOpen)
+        {
+            RefreshJobTabs();
+            RefreshSkillList();
         }
     }
 
     public void RefreshUI()
     {
         if (isOpen)
+        {
+            RefreshJobTabs();
             RefreshSkillList();
+        }
     }
 }

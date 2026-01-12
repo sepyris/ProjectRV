@@ -49,6 +49,22 @@ public class SkillManager : MonoBehaviour
         return skills.ToList();
     }
 
+    public List<PlayerSkillData> GetSkillsByJob(JobsType jobType)
+    {
+        List<PlayerSkillData> result = new List<PlayerSkillData>();
+
+        foreach (var playerSkill in skills)
+        {
+            SkillData skillData = playerSkill.GetSkillData();
+            if (skillData != null && skillData.requiredJob == jobType)
+            {
+                result.Add(playerSkill);
+            }
+        }
+
+        return result;
+    }
+
     public PlayerSkillData GetSkill(string skillID)
     {
         return skills.FirstOrDefault(s => s.skillid == skillID);

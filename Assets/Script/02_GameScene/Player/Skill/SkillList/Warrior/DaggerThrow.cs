@@ -6,14 +6,20 @@ public class DaggerThrow : ActiveSkillBase
     private const string PROJECTILE_PATH = "SkillsPrefabs/DaggerProjectile";
     private const float PROJECTILE_SPEED = 15f;
     private const float PROJECTILE_DISTANCE = 12f;
-    private const float SEARCH_RADIUS = 8f;
+    private const float SEARCH_RADIUS = 5f;
     private const float SEARCH_ANGLE = 120f;
     private const float THROW_INTERVAL = 0.1f;  // 단검 발사 간격
 
     public DaggerThrow(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n바라보는 방향 {SEARCH_RADIUS}범위 내에 적이 있다면\n{GetDaggerCount()}개의 단검을 날립니다 \n각 단검은 공격력의 {GetCurrentDamage()}% 만큼의 데미지를 줍니다.";
+        }
+    }
     /// <summary>
     /// 레벨별 단검 개수
     /// </summary>

@@ -6,12 +6,18 @@ public class MagicMissile : ActiveSkillBase
     private const string PROJECTILE_PATH = "SkillsPrefabs/MagicMissileProjectile";
     private const float PROJECTILE_SPEED = 18f;
     private const float PROJECTILE_DISTANCE = 15f;
-    private const float SEARCH_RADIUS = 10f;
+    private const float SEARCH_RADIUS = 5f;
 
     public MagicMissile(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n{SEARCH_RADIUS}범위내의 적을 추적하여 \n총{GetMissileCount()}개의 미사일을 날립니다 \n각 미사일은 공격력의 {GetCurrentDamage()}% 만큼의 데미지를 줍니다.";
+        }
+    }
     /// <summary>
     /// 레벨별 발사체 개수
     /// </summary>

@@ -9,7 +9,13 @@ public class FullSwing : ActiveSkillBase
     public FullSwing(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n전방의 적에게 공격력의 {GetCurrentDamage()}% 만큼의 데미지를 줍니다.";
+        }
+    }
     protected override void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform)
     {
         PlayerStatsComponent playerStats = caster.GetComponent<PlayerStatsComponent>();

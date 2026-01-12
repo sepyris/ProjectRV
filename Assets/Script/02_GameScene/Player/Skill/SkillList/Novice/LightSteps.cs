@@ -8,7 +8,13 @@ public class LightSteps : ActiveSkillBase
     public LightSteps(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n{skillData.cooldown/2f}초동안 {GetCurrentDamage()}% 만큼 빨라집니다.";
+        }
+    }
     protected override void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform)
     {
         // 버프 수치 계산

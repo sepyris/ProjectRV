@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 개별 버프 UI 아이템
 /// 버프 아이콘, 이름, 남은 시간 표시
 /// </summary>
-public class BuffUIItem : MonoBehaviour
+public class BuffUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("UI References")]
     public Image iconImage;                    // 버프 아이콘
@@ -88,4 +89,21 @@ public class BuffUIItem : MonoBehaviour
     {
         return currentBuff?.buffId;
     }
+
+    public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (currentBuff != null && SkillDetailUIManager.Instance != null)
+        {
+            SkillDetailUIManager.Instance.ShowBuffDetail(currentBuff, this.transform);
+        }
+    }
+
+    public void OnPointerExit(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (SkillDetailUIManager.Instance != null)
+        {
+            SkillDetailUIManager.Instance.HideSkillDetail();
+        }
+    }
+
 }

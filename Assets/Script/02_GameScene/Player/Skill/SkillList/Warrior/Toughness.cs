@@ -7,7 +7,13 @@ public class Toughness : PassiveSkillBase
     public Toughness(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n현재 체력의 {GetCurrentDamage()}% 가 오릅니다";
+        }
+    }
     protected override void OnApply(CharacterStats stats)
     {
         float hpbonus = GetCurrentDamage();

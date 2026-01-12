@@ -11,7 +11,13 @@ public class MultiSlash : ActiveSkillBase
     public MultiSlash(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n전방의 적을 {GetSlashCount()}번 베어버립니다 \n한번 벨때마다 공격력의 {GetCurrentDamage()}% 만큼의 데미지를 줍니다.";
+        }
+    }
     /// <summary>
     /// 레벨별 베기 횟수
     /// </summary>

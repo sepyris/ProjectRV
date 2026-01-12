@@ -171,7 +171,7 @@ public class EquipmentUIManager : MonoBehaviour, IClosableUI
     private void SwitchTab(EquipmentTab tab)
     {
         currentTab = tab;
-        //UpdateTabButtons();
+        UpdateTabColors();
         if (tab == EquipmentTab.Equipment)
         {
             helmetSlot.gameObject.SetActive(true);
@@ -217,23 +217,6 @@ public class EquipmentUIManager : MonoBehaviour, IClosableUI
         Debug.Log($"[EquipmentUI] {tab} 탭으로 전환");
     }
 
-    private void UpdateTabButtons()
-    {
-        UpdateTabButtonColor(equipmentTabButton, currentTab == EquipmentTab.Equipment, new Color(1f, 0.8f, 0.5f));
-        UpdateTabButtonColor(cosmeticTabButton, currentTab == EquipmentTab.Cosmetic, new Color(0.8f, 0.5f, 1f));
-
-
-    }
-
-    private void UpdateTabButtonColor(Button button, bool isActive, Color activeColor)
-    {
-        if (button == null) return;
-
-        var colors = button.colors;
-        colors.normalColor = isActive ? activeColor : Color.white;
-        button.colors = colors;
-    }
-
     // ==================== 슬롯 갱신 ====================
 
     public void RefreshAllSlots()
@@ -268,9 +251,9 @@ public class EquipmentUIManager : MonoBehaviour, IClosableUI
         RefreshCosmeticSlot(cosmeticcapeSlot, CosmeticSlot.Cape);
     }
 
-    
+
     ///  무기 슬롯 특별 처리: MeleeWeapon과 RangedWeapon 둘 다 체크
-    
+
     private void RefreshWeaponSlot()
     {
         if (weaponSlot == null) return;
@@ -311,9 +294,9 @@ public class EquipmentUIManager : MonoBehaviour, IClosableUI
         slotUI.UpdateSlot(item);
     }
 
-    
+
     ///  모든 슬롯의 상세 패널 숨김
-    
+
     private void HideAllDetailPanels()
     {
         // 장비 슬롯들의 상세 패널 숨김
@@ -420,6 +403,23 @@ public class EquipmentUIManager : MonoBehaviour, IClosableUI
             RefreshAllSlots();
     }
 
+
+    private void UpdateTabColors()
+    {
+        Color selectedColor = new Color(0f, 0.392f, 1f);
+
+        if (equipmentTabButton != null)
+        {
+            Image img = equipmentTabButton.GetComponent<Image>();
+            if (img != null) img.color = (currentTab == EquipmentTab.Equipment) ? selectedColor : Color.white;
+        }
+
+        if (cosmeticTabButton != null)
+        {
+            Image img = cosmeticTabButton.GetComponent<Image>();
+            if (img != null) img.color = (currentTab == EquipmentTab.Cosmetic) ? selectedColor : Color.white;
+        }
+    }
     public void Close()
     {
         CloseEquipmentUI();

@@ -9,7 +9,13 @@ public class MentalTraining : PassiveSkillBase
     public MentalTraining(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n현재방어력의 {GetCurrentDamage()}% 가 오릅니다";
+        }
+    }
     protected override void OnApply(CharacterStats stats)
     {
         float defenseBonus = GetCurrentDamage();

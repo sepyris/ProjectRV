@@ -10,6 +10,11 @@ public abstract class SkillBase
     protected SkillData skillData;
     protected int currentLevel;
 
+    /// <summary>
+    /// 스킬 데이터 (외부 접근용)
+    /// </summary>
+    public SkillData SkillData => skillData;
+
     public SkillBase(SkillData data, int level = 1)
     {
         skillData = data;
@@ -21,6 +26,13 @@ public abstract class SkillBase
     public string SkillId => skillData.skillId;
     public string SkillName => skillData.skillName;
     public string Description => skillData.description;
+
+    /// <summary>
+    /// 스킬 디테일 패널용 상세 설명
+    /// 각 스킬 클래스에서 오버라이드하여 커스텀 설명 제공 가능
+    /// </summary>
+    public virtual string DetailDescription => skillData.description;
+
     public SkillType SkillType => skillData.skillType;
     public int CurrentLevel => currentLevel;
     public int MaxLevel => skillData.maxLevel;

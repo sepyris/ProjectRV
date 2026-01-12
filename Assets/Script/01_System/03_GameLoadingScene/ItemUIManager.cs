@@ -76,8 +76,9 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
 
     void Update()
     {
+        UpdateTooltipPosition();
     }
-
+    
     private void SetupButtons()
     {
         if (closeButton != null)
@@ -168,6 +169,7 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
     private void SwitchTab(ItemTab tab)
     {
         currentTab = tab;
+        UpdateTabColors();
         RefreshItemList();
 
         // 탭 전환 시 상세정보 숨김
@@ -322,9 +324,9 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
         itemDetailPanel.SetActive(false);
     }
 
-    
+
     /// 패널이 화면 밖으로 나가지 않도록 위치를 조정합니다
-    
+
     private Vector3 ClampToScreen(Vector3 position, RectTransform panelRect)
     {
         if (panelRect == null) return position;
@@ -395,17 +397,14 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
 
             if (detailRect != null && slotRect != null)
             {
-                // 버튼 오른쪽에 패널 배치
                 Vector3 newPosition = slotRect.position;
 
-                // 버튼의 오른쪽 끝 계산
-                float buttonRightEdgeX = slotRect.position.x + slotRect.rect.width * (1 - slotRect.pivot.x);
+                float anchorRightEdgeX = slotRect.position.x + slotRect.rect.width * (1 - slotRect.pivot.x);
                 float detailPanelPivotCompensation = detailRect.rect.width * detailRect.pivot.x;
-                newPosition.x = buttonRightEdgeX + 10f + detailPanelPivotCompensation;
+                newPosition.x = anchorRightEdgeX + 10f + detailPanelPivotCompensation;
 
-                newPosition.y = slotRect.position.y - 120f;
+                newPosition.y = slotRect.position.y;
 
-                //  화면 밖으로 나가지 않도록 위치 조정
                 newPosition = ClampToScreen(newPosition, detailRect);
 
                 detailRect.position = newPosition;
@@ -460,7 +459,29 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
         // 버튼 표시 여부
         // useButton과 discardButton 제거됨 - 더블클릭과 드래그로 대체
     }
+    private void UpdateTooltipPosition()
+    {
+        if (itemDetailPanel == null) return;
 
+        Vector2 mousePosition = Input.mousePosition;
+        RectTransform tooltipRect = itemDetailPanel.GetComponent<RectTransform>();
+
+        if (tooltipRect != null)
+        {
+            Vector2 offset = new Vector2(15f, -15f);
+            Vector2 newPosition = mousePosition + offset;
+
+            float tooltipPivotCompensationX = tooltipRect.rect.width * tooltipRect.pivot.x;
+            float tooltipPivotCompensationY = tooltipRect.rect.height * tooltipRect.pivot.y;
+
+            newPosition.x += tooltipPivotCompensationX;
+            newPosition.y -= tooltipPivotCompensationY;
+
+            newPosition = ClampToScreen(newPosition, tooltipRect);
+
+            tooltipRect.position = newPosition;
+        }
+    }
     private string GetItemTypeName(ItemType type)
     {
         switch (type)
@@ -517,6 +538,36 @@ public class ItemUIManager : MonoBehaviour, IClosableUI
     public bool IsItemUIOpen()
     {
         return isOpen;
+    }
+
+
+    private void UpdateTabColors()
+    {
+        Color selectedColor = new Color(0f, 0.392f, 1f);
+
+        if (equipmentTabButton != null)
+        {
+            Image img = equipmentTabButton.GetComponent<Image>();
+            if (img != null) img.color = (currentTab == ItemTab.Equipment) ? selectedColor : Color.white;
+        }
+
+        if (usingitemTabButton != null)
+        {
+            Image img = usingitemTabButton.GetComponent<Image>();
+            if (img != null) img.color = (currentTab == ItemTab.Consumable) ? selectedColor : Color.white;
+        }
+
+        if (etcitemTabButton != null)
+        {
+            Image img = etcitemTabButton.GetComponent<Image>();
+            if (img != null) img.color = (currentTab == ItemTab.Material) ? selectedColor : Color.white;
+        }
+
+        if (questitemTabButton != null)
+        {
+            Image img = questitemTabButton.GetComponent<Image>();
+            if (img != null) img.color = (currentTab == ItemTab.QuestItem) ? selectedColor : Color.white;
+        }
     }
 
     public void Close()

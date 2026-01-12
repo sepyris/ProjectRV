@@ -4,14 +4,20 @@ using System.Collections;
 public class Afterimage : ActiveSkillBase
 {
     private const string EFFECT_PATH = "Effects/TeleportEffect";
-    private const float DASH_DISTANCE = 6f;
+    private const float DASH_DISTANCE = 3f;
     private const float DASH_DURATION = 0.15f;  // 매우 빠름
     private const float AFTERIMAGE_DURATION = 2f;  // 잔상 지속시간
 
     public Afterimage(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n바라보는 방향으로 {DASH_DISTANCE}거리만큼 이동 합니다.";
+        }
+    }
     protected override void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform)
     {
         PlayerController player = caster.GetComponent<PlayerController>();

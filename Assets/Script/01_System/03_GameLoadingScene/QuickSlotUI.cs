@@ -146,9 +146,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         UpdateKeyBindText();
     }
 
-    
+
     /// 키 바인딩 텍스트 업데이트
-    
+
     private void UpdateKeyBindText()
     {
         if (keyBindText != null)
@@ -204,9 +204,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    
+
     /// UI 업데이트
-    
+
     private void UpdateUI()
     {
         //  슬롯 내용이 변경되면 ItemUIManager의 상세 패널 숨김 (호버 상태 리셋)
@@ -253,9 +253,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    
+
     /// 소모품 UI 업데이트
-    
+
     private void UpdateConsumableUI(string itemId)
     {
         currentSkill = null;
@@ -409,14 +409,17 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         //스킬일 경우 상세 정보 표시
         if (slotData.slotType == QuickSlotType.Skill)
         {
-
+            if (SkillDetailUIManager.Instance != null)
+            {
+                SkillDetailUIManager.Instance.ShowSkillDetail(slotData.skillId, this.transform);
+            }
         }
 
     }
 
-    
+
     /// 마우스 호버 종료 - 상세 정보 숨기기
-    
+
     public void OnPointerExit(PointerEventData eventData)
     {
         // 슬롯이 비어있으면 무시
@@ -431,10 +434,13 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
                 ItemUIManager.Instance.HideDetailPanelOnHoverExit();
             }
         }
-        //
-        if(slotData.slotType == QuickSlotType.Skill)
+        //스킬 호버 종료
+        if (slotData.slotType == QuickSlotType.Skill)
         {
-
+            if (SkillDetailUIManager.Instance != null)
+            {
+                SkillDetailUIManager.Instance.HideSkillDetail();
+            }
         }
     }
 
@@ -442,9 +448,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
     // 드롭 및 클릭 처리
     // ==========================================
 
-    
+
     /// 드롭 처리 - 아이템을 퀵슬롯에 등록
-    
+
     public void OnDrop(PointerEventData eventData)
     {
         GameObject draggedObject = eventData.pointerDrag;
@@ -497,9 +503,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    
+
     /// 클릭 처리 - 퀵슬롯 사용
-    
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -520,9 +526,9 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    
+
     /// 공개 메서드: 외부에서 UI 강제 업데이트
-    
+
     public void RefreshUI()
     {
         if (QuickSlotManager.Instance != null)

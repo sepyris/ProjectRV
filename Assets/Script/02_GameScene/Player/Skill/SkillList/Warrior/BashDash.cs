@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public class BashDash : ActiveSkillBase
@@ -6,16 +6,22 @@ public class BashDash : ActiveSkillBase
     private const string DASH_EFFECT_PATH = "Effects/DashEffect";
     private const string SLASH_EFFECT_PATH = "Effects/SlashEffect";
 
-    private const float TARGET_SEARCH_RADIUS = 8f;  // Àû Å½»ö ¹İ°æ
-    private const float DASH_DISTANCE = 5f;          // ´ë½¬ °Å¸®
+    private const float TARGET_SEARCH_RADIUS = 3f;  // ì  íƒìƒ‰ ë°˜ê²½
+    private const float DASH_DISTANCE = 3f;          // ëŒ€ì‰¬ ê±°ë¦¬
     private const float DASH_DURATION = 0.3f;
-    private const float SLASH_RANGE = 2.5f;          // ÈÖµÎ¸£±â ¹üÀ§
-    private const float SLASH_ANGLE = 150f;          // ÈÖµÎ¸£±â °¢µµ
+    private const float SLASH_RANGE = 2.5f;          // íœ˜ë‘ë¥´ê¸° ë²”ìœ„
+    private const float SLASH_ANGLE = 150f;          // íœ˜ë‘ë¥´ê¸° ê°ë„
 
     public BashDash(SkillData data, int level = 1) : base(data, level)
     {
     }
-
+    public override string DetailDescription
+    {
+        get
+        {
+            return $"{Description}\n\n{TARGET_SEARCH_RADIUS}ë²”ìœ„ë‚´ì— ì ì´ ìˆë‹¤ë©´ ìë™ìœ¼ë¡œ ì ì—ê²Œ ëŒì§„í•˜ì—¬ \n ê³µê²©ë ¥ì˜ {GetCurrentDamage()}% ë§Œí¼ì˜ ë°ë¯¸ì§€ë¥¼ ì¤ë‹ˆë‹¤.\në²”ìœ„ë‚´ì— ì ì´ ì—†ë‹¤ë©´ ë°”ë¼ë³´ëŠ” ë°©í–¥ìœ¼ë¡œ {DASH_DISTANCE}ê±°ë¦¬ë§Œí¼ ì´ë™ í•©ë‹ˆë‹¤.";
+        }
+    }
     protected override void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform)
     {
         PlayerController player = caster.GetComponent<PlayerController>();
@@ -24,27 +30,27 @@ public class BashDash : ActiveSkillBase
 
         if (player == null || playerStats == null)
         {
-            Debug.LogError("[BashDash] ÇÊ¿äÇÑ ÄÄÆ÷³ÍÆ® ¾øÀ½");
+            Debug.LogError("[BashDash] í•„ìš”í•œ ì»´í¬ë„ŒíŠ¸ ì—†ìŒ");
             return;
         }
 
-        // 1´Ü°è: ´ë½¬ ¸ñÇ¥ °áÁ¤
+        // 1ë‹¨ê³„: ëŒ€ì‰¬ ëª©í‘œ ê²°ì •
         Vector2 dashDirection;
         float dashDistance;
         MonsterController targetMonster = FindNearestMonster(caster.position, TARGET_SEARCH_RADIUS);
 
         if (targetMonster != null)
         {
-            // °¡±î¿î ÀûÀÌ ÀÖÀ¸¸é ¡æ Àû¿¡°Ô µ¹Áø
+            // ê°€ê¹Œìš´ ì ì´ ìˆìœ¼ë©´ â†’ ì ì—ê²Œ ëŒì§„
             Vector2 toMonster = (targetMonster.transform.position - caster.position);
             dashDirection = toMonster.normalized;
-            dashDistance = Mathf.Min(toMonster.magnitude - 0.5f, DASH_DISTANCE);  // Àû ¹Ù·Î ¾Õ±îÁö
+            dashDistance = Mathf.Min(toMonster.magnitude - 0.5f, DASH_DISTANCE);  // ì  ë°”ë¡œ ì•ê¹Œì§€
 
-            Debug.Log($"[BashDash] Àû ¹ß°ß! {targetMonster.GetMonsterName()}¿¡°Ô µ¹Áø");
+            Debug.Log($"[BashDash] ì  ë°œê²¬! {targetMonster.GetMonsterName()}ì—ê²Œ ëŒì§„");
         }
         else
         {
-            // ÀûÀÌ ¾øÀ¸¸é ¡æ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î µ¹Áø
+            // ì ì´ ì—†ìœ¼ë©´ â†’ ë°”ë¼ë³´ëŠ” ë°©í–¥ìœ¼ë¡œ ëŒì§„
             if (movement != null)
             {
                 dashDirection = movement.LastMoveDirection;
@@ -55,21 +61,21 @@ public class BashDash : ActiveSkillBase
             }
             dashDistance = DASH_DISTANCE;
 
-            Debug.Log($"[BashDash] Àû ¾øÀ½. ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î µ¹Áø: {dashDirection}");
+            Debug.Log($"[BashDash] ì  ì—†ìŒ. ë°”ë¼ë³´ëŠ” ë°©í–¥ìœ¼ë¡œ ëŒì§„: {dashDirection}");
         }
 
-        // µ¥¹ÌÁö °è»ê (ÈÖµÎ¸£±â¸¸)
+        // ë°ë¯¸ì§€ ê³„ì‚° (íœ˜ë‘ë¥´ê¸°ë§Œ)
         float skillDamageRate = GetCurrentDamage();
         int slashDamage = Mathf.FloorToInt(playerStats.Stats.attackPower * skillDamageRate / 100f);
 
-        // 2´Ü°è: ´ë½¬ ½ÇÇà (Ãæµ¹ Ã¼Å© ¾øÀ½)
+        // 2ë‹¨ê³„: ëŒ€ì‰¬ ì‹¤í–‰ (ì¶©ëŒ ì²´í¬ ì—†ìŒ)
         player.Dash(
             dashDirection,
             dashDistance,
             DASH_DURATION,
-            null,  // ¡ç onDashTick = null (Ãæµ¹ Ã¼Å© Á¦°Å)
+            null,  // â† onDashTick = null (ì¶©ëŒ ì²´í¬ ì œê±°)
             () => {
-                // 3´Ü°è: ´ë½¬ ¿Ï·á ÈÄ ÈÖµÎ¸£±â¸¸
+                // 3ë‹¨ê³„: ëŒ€ì‰¬ ì™„ë£Œ í›„ íœ˜ë‘ë¥´ê¸°ë§Œ
                 if (player is MonoBehaviour mono)
                 {
                     mono.StartCoroutine(PerformSlashAttack(caster, dashDirection, slashDamage, playerStats.Stats));
@@ -77,12 +83,12 @@ public class BashDash : ActiveSkillBase
             }
         );
 
-        // ½ÃÀÛ ÀÌÆåÆ®
+        // ì‹œì‘ ì´í™íŠ¸
         SpawnEffect(DASH_EFFECT_PATH, caster.position, Quaternion.identity);
     }
 
     /// <summary>
-    /// °¡Àå °¡±î¿î Àû Ã£±â
+    /// ê°€ì¥ ê°€ê¹Œìš´ ì  ì°¾ê¸°
     /// </summary>
     private MonsterController FindNearestMonster(Vector2 position, float radius)
     {
@@ -109,22 +115,22 @@ public class BashDash : ActiveSkillBase
     }
 
     /// <summary>
-    /// ´ë½¬ ÈÄ ÈÖµÎ¸£±â °ø°İ
+    /// ëŒ€ì‰¬ í›„ íœ˜ë‘ë¥´ê¸° ê³µê²©
     /// </summary>
     private IEnumerator PerformSlashAttack(Transform caster, Vector2 dashDirection, int damage, CharacterStats stats)
     {
-        // ÂªÀº µô·¹ÀÌ (´ë½¬ ÈÄ ÈÖµÎ¸£±â)
+        // ì§§ì€ ë”œë ˆì´ (ëŒ€ì‰¬ í›„ íœ˜ë‘ë¥´ê¸°)
         yield return new WaitForSeconds(0.1f);
 
-        Debug.Log("[BashDash] ÈÖµÎ¸£±â °ø°İ!");
+        Debug.Log("[BashDash] íœ˜ë‘ë¥´ê¸° ê³µê²©!");
 
-        // ÈÖµÎ¸£±â ¹üÀ§ ³» Àû Å½»ö
+        // íœ˜ë‘ë¥´ê¸° ë²”ìœ„ ë‚´ ì  íƒìƒ‰
         Collider2D[] hits = Physics2D.OverlapCircleAll(caster.position, SLASH_RANGE, LayerMask.GetMask("Monster"));
 
         int hitCount = 0;
         foreach (Collider2D hit in hits)
         {
-            // °¢µµ Ã¼Å© (ºÎÃ¤²Ã ¹üÀ§)
+            // ê°ë„ ì²´í¬ (ë¶€ì±„ê¼´ ë²”ìœ„)
             Vector2 toEnemy = (hit.transform.position - caster.position).normalized;
             float angle = Vector2.Angle(dashDirection, toEnemy);
 
@@ -147,11 +153,11 @@ public class BashDash : ActiveSkillBase
             }
         }
 
-        // ÈÖµÎ¸£±â ÀÌÆåÆ®
+        // íœ˜ë‘ë¥´ê¸° ì´í™íŠ¸
         Vector3 effectPosition = caster.position + (Vector3)dashDirection * 1.2f;
         float effectAngle = Mathf.Atan2(dashDirection.y, dashDirection.x) * Mathf.Rad2Deg;
         SpawnEffect(SLASH_EFFECT_PATH, effectPosition, Quaternion.Euler(0, 0, effectAngle));
 
-        Debug.Log($"[BashDash] ÈÖµÎ¸£±â·Î {hitCount}¸í °ø°İ!");
+        Debug.Log($"[BashDash] íœ˜ë‘ë¥´ê¸°ë¡œ {hitCount}ëª… ê³µê²©!");
     }
 }
