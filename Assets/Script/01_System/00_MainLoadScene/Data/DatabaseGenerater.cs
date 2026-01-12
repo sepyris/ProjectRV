@@ -62,6 +62,10 @@ public static class DatabaseGenerater
             {
                 ParseSkillDataCSV(csvFile.text, soPath);
             }
+            else if (csvFile.name.Contains(Def_CSV.Jobs))
+            {
+                ParseJobsDataCSV(csvFile.text, soPath);
+            }
             else
             {
                 Debug.LogWarning($"[DatabaseGenerater] 알 수 없는 CSV 파일: {csvFile.name}");
@@ -774,14 +778,14 @@ public static class DatabaseGenerater
 
             var parts = SplitCSVLine(raw);
             //CSV 구조:skillId	skillName	description	skillType	requiredJob	requiredLevel	maxLevel	cooldown	damageRate	levelUpDamageRate	skillIconPath
-            if (parts.Count < 9) continue;
+            if (parts.Count < 11) continue;
             SkillData skill = new SkillData
             {
                 skillId = parts[0].Trim(),
                 skillName = parts[1].Trim(),
                 description = parts[2].Trim(),
                 skillType = ParseSkillType(parts[3].Trim()),
-                requiredJob = parts[4].Trim(),
+                requiredJob = ParseJobsType(parts[4].Trim()),
                 requiredLevel = ParseInt(parts[5].Trim(), 1),
                 maxLevel = ParseInt(parts[6].Trim(), 1),
                 cooldown = ParseFloat(parts[7].Trim(), 0f),
@@ -805,15 +809,63 @@ public static class DatabaseGenerater
             Debug.LogWarning($"변환할 수 없는 CSV 파일입니다");
         }
     }
+    private static void ParseJobsDataCSV(string csvText, string soPath)
+    {
+        JobsDataSO database = AssetDatabase.LoadAssetAtPath<JobsDataSO>(soPath);
+        if (database == null)
+        {
+            database = ScriptableObject.CreateInstance<JobsDataSO>();
+            AssetDatabase.CreateAsset(database, soPath);
+        }
+        database.Items.Clear();
+        var lines = GetLinesFromCSV(csvText);
+        bool skipHeader = true;
+        foreach (var raw in lines)
+        {
+            if (skipHeader) { skipHeader = false; continue; }
+            if (string.IsNullOrWhiteSpace(raw)) continue;
+
+            string trimmed = raw.TrimStart();
+            if (trimmed.StartsWith("#")) continue;
+
+            var parts = SplitCSVLine(raw);
+            
+            if (parts.Count < 6) continue;
+            JobsData jobs = new JobsData
+            {
+                jobId = parts[0].Trim(),
+                jobName = parts[1].Trim(),
+                jobstype = ParseJobsType(parts[2].Trim()),
+                description = parts[3].Trim(),
+                requiredLevel = ParseInt(parts[4].Trim(), 1),
+                jobIconPath = parts[5].Trim(),
+};
+            database.Items.Add(jobs);
+        }
+
+
+        if (database != null)
+        {
+            EditorUtility.SetDirty(database);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            Debug.Log($"CSV 파싱 및 ScriptableObject **{soPath}** 생성 완료! ({database.Items.Count}개 데이터)");
+        }
+        else
+        {
+            Debug.LogWarning($"변환할 수 없는 CSV 파일입니다");
+        }
+    }
+    
 
     // ==========================================
     // TimeRestriction 파싱 헬퍼 메서드 
     // DatabaseGenerater.cs의 ParseMonsterType 함수 다음에 추가하세요
     // ==========================================
 
-    
+
     /// 시간 제한 타입 파싱
-    
+
     private static TimeRestriction ParseTimeRestriction(string restrictionStr)
     {
         switch (restrictionStr.ToLower())
@@ -889,7 +941,22 @@ public static class DatabaseGenerater
                 return SkillType.None;
         }
     }
-
+    private static JobsType ParseJobsType(string jobstype)
+    {
+        switch (jobstype.ToLower())
+        {
+            case "novice":
+                return JobsType.Novice;
+            case "warrior":
+                return JobsType.Warrior;
+            case "mage":
+                return JobsType.Mage;
+            case "none":
+                return JobsType.None;
+            default:
+                return JobsType.None;
+        }
+    }
     /// 채집 도구 타입 파싱
 
     private static GatherToolType ParseGatherTool(string toolStr)

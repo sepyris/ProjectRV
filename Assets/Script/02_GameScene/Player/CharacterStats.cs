@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -10,6 +12,9 @@ public class CharacterStats
     public int currentExp = 0;
     public int expToNextLevel = 100;
     public int gold = 0;
+
+    [Header("직업 정보")]
+    public List<PlayerJobData> jobHistory = new List<PlayerJobData>();
 
     [Header("기본 스탯")]
     public int strength = 10;
@@ -48,11 +53,10 @@ public class CharacterStats
     public float skill_accuracy = 0f;
 
     [Header("이동 관련")]
-    public float baseMoveSpeed = 5f;           // 기본 이동속도
-    public float equip_moveSpeedBonus = 0f;   // 장비 이동속도 보너스 (고정값)
-    public float skill_moveSpeedBonus = 0f;   // 스킬 이동속도 보너스 (%)
+    public float baseMoveSpeed = 5f;
+    public float equip_moveSpeedBonus = 0f;
+    public float skill_moveSpeedBonus = 0f;
 
-    // 계산된 이동속도 (읽기 전용)
     public float moveSpeed { get; private set; }
 
     public event Action OnStatsChanged;
@@ -60,13 +64,11 @@ public class CharacterStats
     public event Action OnDeath;
     public event Action<int> OnExpGained;
     public event Action<int> OnGoldChanged;
+    public event Action OnJobChanged;
 
     private bool is_monster_stat = false;
-
-    //  추가: DamageTextSpawner 참조
     private DamageTextSpawner damageTextSpawner;
 
-    //  추가: DamageTextSpawner 설정 메서드
     public void SetDamageTextSpawner(DamageTextSpawner spawner)
     {
         this.damageTextSpawner = spawner;
@@ -85,8 +87,83 @@ public class CharacterStats
         luck = 10 + (level - 1) * 2;
         technique = 10 + (level - 1) * 2;
 
+        if (!is_monster)
+        {
+            AddJob(JobsType.Novice, true);
+        }
+
         RecalculateStats();
         currentHP = maxHP;
+    }
+
+    public void AddJob(JobsType jobType, bool setAsCurrent = true)
+    {
+        if (HasJob(jobType))
+        {
+            Debug.LogWarning($"[{characterName}] 이미 보유한 직업입니다: {jobType}");
+            return;
+        }
+
+        if (setAsCurrent)
+        {
+            foreach (var job in jobHistory)
+            {
+                job.isCurrentJob = false;
+            }
+        }
+
+        PlayerJobData newJob = new PlayerJobData(jobType, setAsCurrent);
+        jobHistory.Add(newJob);
+
+        Debug.Log($"[{characterName}] 새 직업 획득: {newJob.GetJobName()} (현재 직업: {setAsCurrent})");
+
+        OnJobChanged?.Invoke();
+    }
+
+    public bool ChangeJob(JobsType jobType)
+    {
+        PlayerJobData targetJob = jobHistory.FirstOrDefault(j => j.jobType == jobType);
+
+        if (targetJob == null)
+        {
+            Debug.LogWarning($"[{characterName}] 보유하지 않은 직업입니다: {jobType}");
+            return false;
+        }
+
+        foreach (var job in jobHistory)
+        {
+            job.isCurrentJob = false;
+        }
+
+        targetJob.isCurrentJob = true;
+
+        Debug.Log($"[{characterName}] 직업 변경: {targetJob.GetJobName()}");
+
+        OnJobChanged?.Invoke();
+        return true;
+    }
+
+    public bool HasJob(JobsType jobType)
+    {
+        return jobHistory.Any(j => j.jobType == jobType);
+    }
+
+    public PlayerJobData GetCurrentJob()
+    {
+        return jobHistory.FirstOrDefault(j => j.isCurrentJob);
+    }
+
+    public List<PlayerJobData> GetAllJobs()
+    {
+        return new List<PlayerJobData>(jobHistory);
+    }
+
+    public bool CanUseSkill(JobsType requiredJob)
+    {
+        if (requiredJob == JobsType.None)
+            return true;
+
+        return jobHistory.Any(j => j.jobType == requiredJob);
     }
 
     public void RecalculateStats()
@@ -96,78 +173,56 @@ public class CharacterStats
             return;
         }
 
-        //  이전 maxHP 저장 (HP 조정을 위해)
         int oldMaxHP = maxHP;
 
-        // 평화로운 RPG 밸런스
-        //                  기본값   스탯 계수
-        
+        float base_attackPower = (15 + (Mathf.FloorToInt((strength + equip_strength) * 0.35f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.2f)) + equip_attackBonus);
+        float base_defense = (5 + (Mathf.FloorToInt((strength + equip_strength) * 0.15f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.1f)) + equip_defenseBonus);
+        float base_maxHP = (100 + (((level - 1) * 10) + Mathf.FloorToInt((strength + equip_strength) * 1.2f)) + equip_HPBonus);
 
-        float base_attackPower =       (15 +    (Mathf.FloorToInt((strength + equip_strength) * 0.35f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.2f))  + equip_attackBonus);
-        float base_defense =           (5 +     (Mathf.FloorToInt((strength + equip_strength) * 0.15f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.1f)) + equip_defenseBonus);
-        float base_maxHP =             (100 +   (((level - 1) * 10) + Mathf.FloorToInt((strength + equip_strength) * 1.2f)) + equip_HPBonus);
-
-        float base_accuracy =          (60 +    Mathf.FloorToInt((technique + equip_technique) * 0.25f) + Mathf.FloorToInt((luck + equip_luck) * 0.15f)) + skill_accuracy;
-        float base_evasionRate =       (2 +     Mathf.FloorToInt((dexterity + equip_dexterity) * 0.2f) + Mathf.FloorToInt((luck + equip_luck) * 0.12f)) + skill_evasionRate;
-        float base_criticalChance =    (2 +     Mathf.FloorToInt((luck + equip_luck) * 0.2f) + Mathf.FloorToInt((technique + equip_technique) * 0.15f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.08f)) + skill_criticalChance;
-        float base_criticalDamage =    (150 +   Mathf.FloorToInt(((strength + equip_strength) + (intelligence + equip_intelligence) + (dexterity + equip_dexterity) + (luck + equip_luck) + (technique + equip_technique)) * 0.075f)) + skill_criticalDamage;
+        float base_accuracy = (60 + Mathf.FloorToInt((technique + equip_technique) * 0.25f) + Mathf.FloorToInt((luck + equip_luck) * 0.15f)) + skill_accuracy;
+        float base_evasionRate = (2 + Mathf.FloorToInt((dexterity + equip_dexterity) * 0.2f) + Mathf.FloorToInt((luck + equip_luck) * 0.12f)) + skill_evasionRate;
+        float base_criticalChance = (2 + Mathf.FloorToInt((luck + equip_luck) * 0.2f) + Mathf.FloorToInt((technique + equip_technique) * 0.15f) + Mathf.FloorToInt((intelligence + equip_intelligence) * 0.08f)) + skill_criticalChance;
+        float base_criticalDamage = (150 + Mathf.FloorToInt(((strength + equip_strength) + (intelligence + equip_intelligence) + (dexterity + equip_dexterity) + (luck + equip_luck) + (technique + equip_technique)) * 0.075f)) + skill_criticalDamage;
 
         attackPower = Mathf.FloorToInt(base_attackPower + (base_attackPower * (skill_attackBonus / 100)));
         defense = Mathf.FloorToInt(base_defense + (base_defense * (skill_defenseBonus / 100)));
         maxHP = Mathf.FloorToInt(base_maxHP + (base_maxHP * (skill_HPBonus / 100)));
-        
-        // 방식: (기본속도 + 장비 고정값) * (1 + 스킬%)
+
         float basePluEquip = baseMoveSpeed + equip_moveSpeedBonus;
         moveSpeed = basePluEquip * (1 + skill_moveSpeedBonus);
-
-        // 최소/최대 속도 제한 (선택)
         moveSpeed = Mathf.Clamp(moveSpeed, 1f, 15f);
 
-
-        //  HP 조정 로직 (장비 장착/해제 시)
         AdjustCurrentHP(oldMaxHP, maxHP);
 
         OnStatsChanged?.Invoke();
     }
 
-    
-    ///  maxHP 변경 시 currentHP 조정
-    
     private void AdjustCurrentHP(int oldMaxHP, int newMaxHP)
     {
-        // maxHP 변화가 없으면 조정 불필요
         if (oldMaxHP == newMaxHP)
             return;
 
         int hpDifference = newMaxHP - oldMaxHP;
 
-        // 케이스 1: currentHP == oldMaxHP (체력이 풀일 때)
-        // → 장비 변경 시 currentHP를 새로운 maxHP에 맞춤
         if (currentHP == oldMaxHP)
         {
             currentHP = newMaxHP;
             Debug.Log($"[{characterName}] HP 풀 상태 - currentHP를 maxHP에 맞춤: {currentHP}/{newMaxHP}");
         }
-        // 케이스 2: currentHP < oldMaxHP (체력이 감소한 상태)
-        // → maxHP가 늘어나면 늘어난 만큼 currentHP도 증가
         else if (currentHP < oldMaxHP)
         {
             if (hpDifference > 0)
             {
-                // maxHP 증가 → currentHP도 같은 양만큼 증가
                 currentHP += hpDifference;
-                currentHP = Mathf.Min(currentHP, newMaxHP); // 안전장치
+                currentHP = Mathf.Min(currentHP, newMaxHP);
                 Debug.Log($"[{characterName}] maxHP 증가 (+{hpDifference}) - currentHP도 증가: {currentHP}/{newMaxHP}");
             }
             else
             {
-                // maxHP 감소 → currentHP가 newMaxHP를 초과하지 않도록 조정
                 currentHP = Mathf.Min(currentHP, newMaxHP);
                 Debug.Log($"[{characterName}] maxHP 감소 ({hpDifference}) - currentHP 조정: {currentHP}/{newMaxHP}");
             }
         }
-        // 케이스 3: currentHP > oldMaxHP (비정상 상태)
-        // → currentHP를 maxHP에 맞춤
         else if (currentHP > oldMaxHP)
         {
             currentHP = newMaxHP;
@@ -215,7 +270,6 @@ public class CharacterStats
     {
         if (currentHP <= 0) return 0;
 
-        // 명중/회피 판정
         float hitChance = attackerAccuracy - evasionRate;
         hitChance = Mathf.Clamp(hitChance, 10f, 95f);
 
@@ -223,7 +277,6 @@ public class CharacterStats
         {
             Debug.Log($"[{characterName}] 회피!");
 
-            //  수정: DamageTextSpawner 사용
             if (damageTextSpawner != null)
             {
                 damageTextSpawner.ShowMiss();
@@ -232,7 +285,6 @@ public class CharacterStats
             return 0;
         }
 
-        // 비율 기반 방어력 (defense / (defense + 100))
         float damageReduction = defense / (defense + 100f);
         int actualDamage = Mathf.RoundToInt(rawDamage * (1f - damageReduction));
 
@@ -243,13 +295,11 @@ public class CharacterStats
 
         Debug.Log($"[{characterName}] 데미지 -{actualDamage} (방어 {defense}, 감소 {damageReduction * 100f:F1}%, HP: {currentHP}/{maxHP})");
 
-        //  수정: DamageTextSpawner 사용
         if (damageTextSpawner != null)
         {
             damageTextSpawner.ShowDamage(actualDamage, is_critical);
         }
 
-        //  수정: 플레이어만 히트 애니메이션 (is_monster_stat으로 판단)
         if (PlayerController.Instance != null && !is_monster_stat)
         {
             PlayerController.Instance.PlayHitAnimation();
@@ -269,7 +319,6 @@ public class CharacterStats
     {
         if (currentHP <= 0) return;
 
-        //  실제 회복되는 양 계산
         int actualHealAmount = Mathf.Min(amount, maxHP - currentHP);
 
         currentHP += actualHealAmount;
@@ -324,11 +373,6 @@ public class CharacterStats
     private void Die()
     {
         Debug.Log($"[{characterName}] 사망!");
-
-        // ===== HP 회복 제거 - 리스폰 시에만 회복 =====
-        // 사망 즉시 회복하지 않음
-        // ============================================
-
         OnDeath?.Invoke();
     }
 
@@ -360,11 +404,28 @@ public class CharacterStats
         clone.evasionRate = this.evasionRate;
         clone.accuracy = this.accuracy;
         clone.is_monster_stat = this.is_monster_stat;
+
+        clone.jobHistory = new List<PlayerJobData>();
+        foreach (var job in this.jobHistory)
+        {
+            clone.jobHistory.Add(new PlayerJobData(job.jobType, job.isCurrentJob));
+        }
+
         return clone;
     }
 
     public CharacterStatsData ToSaveData()
     {
+        List<PlayerJobSaveData> jobSaveData = new List<PlayerJobSaveData>();
+        foreach (var job in jobHistory)
+        {
+            jobSaveData.Add(new PlayerJobSaveData
+            {
+                jobType = (int)job.jobType,
+                isCurrentJob = job.isCurrentJob
+            });
+        }
+
         return new CharacterStatsData
         {
             characterName = this.characterName,
@@ -378,7 +439,8 @@ public class CharacterStats
             luck = this.luck,
             technique = this.technique,
             currentHP = this.currentHP,
-            maxHP = this.maxHP
+            maxHP = this.maxHP,
+            jobHistoryData = jobSaveData
         };
     }
 
@@ -395,15 +457,27 @@ public class CharacterStats
         luck = data.luck;
         technique = data.technique;
 
-        //  저장된 HP 차이값 계산 (maxHP - currentHP)
         int savedHpDeficit = data.maxHP - data.currentHP;
 
         Debug.Log($"[{characterName}] 저장된 HP: {data.currentHP}/{data.maxHP} (부족량: {savedHpDeficit})");
 
-        // 스탯 재계산 (장비 없이 기본 maxHP 계산)
+        jobHistory.Clear();
+        if (data.jobHistoryData != null && data.jobHistoryData.Count > 0)
+        {
+            foreach (var jobSaveData in data.jobHistoryData)
+            {
+                JobsType jobType = (JobsType)jobSaveData.jobType;
+                PlayerJobData job = new PlayerJobData(jobType, jobSaveData.isCurrentJob);
+                jobHistory.Add(job);
+            }
+        }
+        else
+        {
+            AddJob(JobsType.Novice, true);
+        }
+
         RecalculateStats();
 
-        //  차이값을 유지하면서 currentHP 복원
         currentHP = maxHP - savedHpDeficit;
         currentHP = Mathf.Clamp(currentHP, 1, maxHP);
 
@@ -476,4 +550,6 @@ public class CharacterStatsData
     public int maxHP;
     public int attackbonus;
     public int defencebonus;
+
+    public List<PlayerJobSaveData> jobHistoryData = new List<PlayerJobSaveData>();
 }

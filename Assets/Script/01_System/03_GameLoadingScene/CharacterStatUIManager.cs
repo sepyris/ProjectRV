@@ -12,6 +12,7 @@ public class CharacterStatUIManager : MonoBehaviour,IClosableUI
     [Header("스탯")]
     public GameObject statUIPanel;
     public TextMeshProUGUI characterNameText;
+    public TextMeshProUGUI characterJobText;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI expText;
@@ -84,6 +85,7 @@ public class CharacterStatUIManager : MonoBehaviour,IClosableUI
 
             // 기본 정보
             characterNameText.text = stats.characterName;
+            characterJobText.text = stats.GetCurrentJob().GetJobName();
             levelText.text = $"Lv. {stats.level}";
             HPText.text = $"{stats.currentHP} / {stats.maxHP}";
 

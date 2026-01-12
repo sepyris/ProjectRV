@@ -483,6 +483,9 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         if(SkillUIManager.Instance != null)
             SkillUIManager.Instance.CloseSkillUI();
 
+        if(BuffUIManager.Instance != null) 
+            BuffUIManager.Instance.ClearAllBuffUIs();
+
         if (pauseMenuPanel != null)
             pauseMenuPanel.SetActive(false);
 

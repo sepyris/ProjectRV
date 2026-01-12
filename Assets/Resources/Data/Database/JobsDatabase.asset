@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f37d73e4aa5a0b6439bb90bc2101d7fa, type: 3}
+  m_Name: JobsDatabase
+  m_EditorClassIdentifier: 
+  Items:
+  - jobId: J_001
+    jobName: "\uCD08\uBCF4\uC790"
+    jobstype: 1
+    description: 
+    requiredLevel: 1
+    jobIconPath: 
+  - jobId: J_002
+    jobName: "\uC804\uC0AC"
+    jobstype: 2
+    description: 
+    requiredLevel: 10
+    jobIconPath: 
+  - jobId: J_003
+    jobName: "\uB9C8\uBC95\uC0AC"
+    jobstype: 3
+    description: 
+    requiredLevel: 10
+    jobIconPath: 

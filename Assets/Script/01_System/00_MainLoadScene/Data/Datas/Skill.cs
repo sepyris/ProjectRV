@@ -15,7 +15,7 @@ public class SkillData
     public string skillName;
     public string description;
     public SkillType skillType;
-    public string requiredJob;
+    public JobsType requiredJob;
     public int requiredLevel;
     public int maxLevel;
     public float cooldown;

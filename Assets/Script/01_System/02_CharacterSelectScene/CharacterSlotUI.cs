@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
+﻿using System.Linq;
 using TMPro;
-
-
-/// 캐릭터 슬롯 UI
+using UnityEditor.U2D.Animation;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CharacterSlotUI : MonoBehaviour, IPointerClickHandler
 {
@@ -72,7 +71,10 @@ public class CharacterSlotUI : MonoBehaviour, IPointerClickHandler
                 emptySlotPanel.SetActive(false);
 
             if (levelJobText != null)
-                levelJobText.text = $"Lv.{characterData.stats.level} 초보자";
+            {
+                string jobName = GetCurrentJobName();
+                levelJobText.text = $"Lv.{characterData.stats.level} {jobName}";
+            }
 
             if (nameText != null)
                 nameText.text = characterData.stats.characterName;
@@ -96,6 +98,34 @@ public class CharacterSlotUI : MonoBehaviour, IPointerClickHandler
                 deleteButton.gameObject.SetActive(false);
         }
 
+    }
+
+    private string GetCurrentJobName()
+    {
+        if (characterData == null || characterData.stats == null)
+            return "초보자";
+
+        if (characterData.stats.jobHistoryData == null || characterData.stats.jobHistoryData.Count == 0)
+            return "초보자";
+
+
+        var currentJob = characterData.stats.jobHistoryData.FirstOrDefault(j => j.isCurrentJob);
+
+        if (currentJob == null)
+            return "초보자";
+
+        JobsType jobType = (JobsType)currentJob.jobType;
+
+        if (JobsDataManager.Instance != null)
+        {
+            JobsData jobData = JobsDataManager.Instance.GetJobDataByType(jobType);
+            if (jobData != null)
+            {
+                return jobData.jobName;
+            }
+        }
+
+        return jobType.ToString();
     }
 
     public void SetSlotEnabled(bool enabled)

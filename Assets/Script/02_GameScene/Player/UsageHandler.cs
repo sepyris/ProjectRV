@@ -2,16 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-/// <summary>
-/// 아이템과 스킬 사용 처리 통합 핸들러
-/// - 더블클릭으로 아이템/스킬 사용
-/// - 퀵슬롯에서 아이템/스킬 사용
-/// 모든 사용 로직을 한 곳에서 관리
-/// </summary>
 public static class UsageHandler
 {
     // ==================== 아이템 사용 ====================
-    /// 소모품 아이템 사용 (공통 로직)
     public static bool UseConsumable(string itemId, bool removeFromInventory = true)
     {
         // 1. 인벤토리에 아이템이 있는지 확인
@@ -43,7 +36,7 @@ public static class UsageHandler
             return false;
         }
 
-        // 4. 사용 전 검증 (체력 가득 참 등)
+        // 4. 사용 전 검증 (체력 가득 찬 등)
         if (!ValidateConsumableUse(itemData))
         {
             return false;
@@ -62,10 +55,9 @@ public static class UsageHandler
         return true;
     }
 
-    /// 소모품 사용 전 검증
     private static bool ValidateConsumableUse(ItemData itemData)
     {
-        // 체력 회복 아이템인 경우 - 체력이 가득 찼는지 확인
+        // 체력 회복 아이템인 경우 - 체력이 가득 찬지 확인
         if (itemData.IsHealEffect())
         {
             if (PlayerStatsComponent.Instance != null)
@@ -77,6 +69,50 @@ public static class UsageHandler
                         FloatingNotificationManager.Instance.ShowNotification("체력이 가득 차 있습니다.");
                     }
                     return false;
+                }
+            }
+        }
+
+        // 스킬 스크롤인 경우 - 직업 조건 확인
+        string skillId = itemData.GetSkill();
+        if (!string.IsNullOrEmpty(skillId))
+        {
+            if (SkillDataManager.Instance != null && PlayerStatsComponent.Instance != null)
+            {
+                SkillData skillData = SkillDataManager.Instance.GetSkillData(skillId);
+                if (skillData != null)
+                {
+                    // 이미 보유한 스킬인지 확인
+                    if (SkillManager.Instance != null && SkillManager.Instance.HasSkill(skillId))
+                    {
+                        if (PopupManager.Instance != null)
+                        {
+                            PopupManager.Instance.ShowWarningPopup(
+                                "이미 보유한 스킬 입니다."
+                                );
+                        }
+                        return false;
+                    }
+
+                    // 직업 조건 확인
+                    if (skillData.requiredJob != JobsType.None)
+                    {
+                        CharacterStats stats = PlayerStatsComponent.Instance.Stats;
+                        if (!stats.CanUseSkill(skillData.requiredJob))
+                        {
+                            // 직업 조건 미충족
+                            string jobName = GetJobName(skillData.requiredJob);
+                            if (PopupManager.Instance != null)
+                            {
+                                PopupManager.Instance.ShowWarningPopup(
+                                    $"{jobName} 스킬 입니다.\n{stats.GetCurrentJob().GetJobName()} 은(는) 배울수 없습니다."
+                                    );
+                            }
+
+                            Debug.Log($"[UsageHandler] 직업 조건 미충족 - 필요: {skillData.requiredJob}, 보유 직업: {string.Join(", ", stats.GetAllJobs().Select(j => j.jobType))}");
+                            return false;
+                        }
+                    }
                 }
             }
         }
@@ -102,7 +138,6 @@ public static class UsageHandler
         return true;
     }
 
-    /// 소모품 효과 적용
     private static void ApplyConsumableEffects(ItemData itemData)
     {
         // 1. 체력 회복 효과
@@ -128,16 +163,7 @@ public static class UsageHandler
                 {
                     if (InventoryManager.Instance != null)
                     {
-                        bool added = InventoryManager.Instance.AddItem(reward.itemId, reward.quantity);
-
-                        if (added)
-                        {
-                            string rewardName = reward.GetItemName();
-                            if (FloatingNotificationManager.Instance != null)
-                            {
-                                FloatingNotificationManager.Instance.ShowNotification($"{rewardName} :{reward.quantity} 획득!");
-                            }
-                        }
+                        InventoryManager.Instance.AddItem(reward.itemId, reward.quantity);
                     }
                 }
             }
@@ -162,19 +188,30 @@ public static class UsageHandler
         }
     }
 
-    /// 보상 아이템을 받기 위해 필요한 인벤토리 슬롯 수 계산
     private static int CalculateRequiredSlots(List<ItemReward> rewards)
     {
         if (InventoryManager.Instance == null || rewards == null)
             return 0;
 
-        // 단순히 보상 아이템 종류 수를 셈
         return rewards.Count;
+    }
+
+    private static string GetJobName(JobsType jobType)
+    {
+        if (JobsDataManager.Instance != null)
+        {
+            JobsData jobData = JobsDataManager.Instance.GetJobDataByType(jobType);
+            if (jobData != null)
+            {
+                return jobData.jobName;
+            }
+        }
+
+        return jobType.ToString();
     }
 
     // ==================== 스킬 사용 ====================
 
-    /// 스킬 사용 (공통 로직)
     public static bool UseSkill(string skillId)
     {
         // 1. SkillManager 확인
@@ -195,8 +232,6 @@ public static class UsageHandler
         // 3. 타겟 위치 계산
         Vector3 targetPosition = playerTransform.position + playerTransform.forward * 5f;
 
-        // ===== ★ SkillManager에 위임 =====
-
         bool used = SkillManager.Instance.UseSkill(skillId, playerTransform, targetPosition);
 
         if (used)
@@ -209,9 +244,6 @@ public static class UsageHandler
 
     // ==================== UI 갱신 ====================
 
-    /// <summary>
-    /// 아이템/스킬 사용 후 모든 관련 UI 갱신
-    /// </summary>
     public static void RefreshAllRelatedUIs()
     {
         if (ItemUIManager.Instance != null)
