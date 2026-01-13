@@ -50,10 +50,15 @@ public class TutorialManager : MonoBehaviour
         if (quest_id == "Quest_006")
         {
             show_Panel = true;
-            narration_Text.text = "E(e)키를 눌러서 장비창을 열수 있습니다.\n아이템창에서 장비를 드래그 하거나 더블클릭하여 장착 할수 있습니다.";
+            narration_Text.text = "E(e)키를 눌러서 장비창을 열수 있습니다.\n아이템창에서 장비를 드래그 하거나 더블클릭하여 장착 할수 있습니다.\n스페이스바(SpaceBar)키를 눌러서 공격할수 있습니다.";
+        }
+        if (quest_id == "Quest_007")
+        {
+            show_Panel = true;
+            narration_Text.text = "S(s)키를 눌러서 스킬창을 열수 있습니다.\n스킬은 스킬창에서 스킬을 드래그 해서 퀵슬롯에 올려 사용할수 있습니다.";
         }
 
-        if(show_Panel)
+        if (show_Panel)
         {
             narration_Panel.SetActive(true);
         }

@@ -29,16 +29,12 @@ public class MapLoadingManager : MonoBehaviour
     private string[] loadingTips = {
         "몬스터를 처치하면 경험치를 얻을 수 있습니다.",
         "채집 지점은 일정 시간이 지나면 랜덤위치에 다시 생성됩니다.",
-        "세이브 포인트에서 E키를 눌러 저장할수 있습니다.",
         "인벤토리는 I키로 열 수 있습니다.",
         "NPC와 대화하면 퀘스트를 받을 수 있습니다.",
         "퀘스트를 완료하면 보상을 받을 수 있습니다.",
         "맵을 탐험하며 숨겨진 아이템을 찾아보세요.",
-        "파티를 구성하여 강력한 몬스터에 도전하세요.",
         "상점에서 아이템을 구매하고 판매할 수 있습니다.",
-        "스킬을 업그레이드하여 전투 능력을 향상시키세요.",
         "장비 없이 싸우면 위험합니다.",
-        "자동저장이 없습니다.세이브를 잊지마세요.",
     };
 
     void Start()
@@ -94,29 +90,16 @@ public class MapLoadingManager : MonoBehaviour
         UpdateProgress(0.3f);
 
         yield return new WaitForSeconds(0.3f);
+        //맵 이동시 간간히 이동하자마자 충돌되는 문제가 있어 임시로 멀리 보냄
+        PlayerController player = FindObjectOfType<PlayerController>();
+        player.transform.position = new Vector2(-999,-999);
 
-        // 씬 비동기 로드
-        //AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(TargetSceneName);
         CharacterSaveManager.Instance.CurrentGlobalData.currentSceneName = TargetSceneName;
+        CharacterSaveManager.Instance.CurrentCharacter.currentScene = TargetSceneName;
         CharacterSaveManager.Instance.NextSceneSpawnPointid = TargetSpawnPointid;
         CharacterSaveManager.Instance.LoadSceneByName(TargetSceneName, TargetSpawnPointid);
         UpdateProgress(0.8f);
-        /*
-        if (asyncLoad == null)
-        {
-            Debug.LogError($"[MapLoading] 씬 '{TargetSceneName}'를 로드할 수 없습니다!");
-            yield break;
-        }
-
-        // 로딩 진행률 업데이트
-        while (!asyncLoad.isDone)
-        {
-            // AsyncOperation.progress는 0.0 ~ 0.9 범위
-            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-            UpdateProgress(progress);
-            yield return null;
-        }
-        */
+        
         UpdateLoadingText("로딩 완료!");
         UpdateProgress(1f);
 

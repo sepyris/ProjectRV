@@ -151,6 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e810e473d9204194aa4a03c62ba7165d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  narration_Panel: {fileID: 0}
+  narration_Close_Button: {fileID: 0}
+  narration_Text: {fileID: 0}
 --- !u!4 &92459498
 Transform:
   m_ObjectHideFlags: 0
