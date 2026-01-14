@@ -366,7 +366,6 @@ public class NPCController : MonoBehaviour
     {
         //Gizmos.color = Color.cyan;
         //Gizmos.DrawWireSphere(transform.position, 1f);
-
         CircleCollider2D collider = gameObject.GetComponent<CircleCollider2D>();
         if (collider != null)
         {

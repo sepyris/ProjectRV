@@ -17,7 +17,7 @@ public class JobsData
 
     public int requiredLevel;
 
-    public string jobIconPath;
+    public JobsType previousJob;
 }
 
 public enum JobsType

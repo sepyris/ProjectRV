@@ -838,8 +838,8 @@ public static class DatabaseGenerater
                 jobstype = ParseJobsType(parts[2].Trim()),
                 description = parts[3].Trim(),
                 requiredLevel = ParseInt(parts[4].Trim(), 1),
-                jobIconPath = parts[5].Trim(),
-};
+                previousJob = ParseJobsType(parts[5].Trim()),
+            };
             database.Items.Add(jobs);
         }
 

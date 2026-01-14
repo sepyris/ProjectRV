@@ -18,16 +18,16 @@ MonoBehaviour:
     jobstype: 1
     description: 
     requiredLevel: 1
-    jobIconPath: 
+    previousJob: 0
   - jobId: J_002
     jobName: "\uC804\uC0AC"
     jobstype: 2
     description: 
     requiredLevel: 10
-    jobIconPath: 
+    previousJob: 1
   - jobId: J_003
     jobName: "\uB9C8\uBC95\uC0AC"
     jobstype: 3
     description: 
     requiredLevel: 10
-    jobIconPath: 
+    previousJob: 1

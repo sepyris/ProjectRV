@@ -31100,6 +31100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC4
       objectReference: {fileID: 0}
+    - target: {fileID: 8092413433141278370, guid: deafb1e06da6079449ad7db0fc6fe233, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8559307827917202499, guid: deafb1e06da6079449ad7db0fc6fe233, type: 3}
       propertyPath: m_SortingOrder
       value: 3

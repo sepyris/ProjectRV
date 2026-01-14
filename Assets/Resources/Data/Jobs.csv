@@ -1,4 +1,4 @@
-jobId,jobName,jobType,description,requiredLevel,jobIconPath
-J_001,초보자,novice,"""""",1,
-J_002,전사,warrior,"""""",10,
-J_003,마법사,mage,"""""",10,
+jobId,jobName,jobType,description,requiredLevel,previousJob
+J_001,초보자,novice,"""""",1,none
+J_002,전사,warrior,"""""",10,novice
+J_003,마법사,mage,"""""",10,novice

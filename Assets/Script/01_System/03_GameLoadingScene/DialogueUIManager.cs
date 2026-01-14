@@ -425,11 +425,44 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
         // 퀘스트가 전혀 없으면 바로 일상 대화로 전환
         if (activeQuests == null || activeQuests.Count == 0)
         {
-            var dailyDialogue = DialogueDataManager.Instance.GetDialogueSequence(npc.npcId, Def_Dialogue.TYPE_DAILY);
-            if (dailyDialogue != null && dailyDialogue.Count > 0)
-                StartCoroutine(RunDialogueSequence(dailyDialogue, showChoicesAfter: false, questId: null));
+            if (npc.gameObject.CompareTag("jobChange"))
+            {
+                questSelectionPanel.SetActive(true);
+                GameObject JobChangeButtonObj = Instantiate(questButtonPrefab, questListContainer);
+                Button JobChangeButton = JobChangeButtonObj.GetComponent<Button>();
+                TextMeshProUGUI JobChangeTexy = JobChangeButtonObj.GetComponentInChildren<TextMeshProUGUI>();
+                if (JobChangeTexy != null) JobChangeTexy.text = "전직하기";
+
+                JobChangeButton.onClick.AddListener(() =>
+                {
+                    questSelectionPanel.SetActive(false);
+                    JobChangeUIManager.Instance.OpenJobChangeUI(JobsType.Novice);
+                    CloseInteraction();
+                });
+                // 일상 대화 버튼 항상 추가
+                GameObject dButtonObj = Instantiate(questButtonPrefab, questListContainer);
+                Button dButton = dButtonObj.GetComponent<Button>();
+                TextMeshProUGUI dText = dButtonObj.GetComponentInChildren<TextMeshProUGUI>();
+                if (dText != null) dText.text = "일상 대화";
+
+                dButton.onClick.AddListener(() =>
+                {
+                    questSelectionPanel.SetActive(false);
+                    var dailyDialogue = DialogueDataManager.Instance.GetDialogueSequence(npc.npcId, Def_Dialogue.TYPE_DAILY);
+                    if (dailyDialogue != null && dailyDialogue.Count > 0)
+                        StartCoroutine(RunDialogueSequence(dailyDialogue, showChoicesAfter: false, questId: null));
+                    else
+                        CloseInteraction();
+                });
+            }
             else
-                CloseInteraction();
+            {
+                var dailyDialogue = DialogueDataManager.Instance.GetDialogueSequence(npc.npcId, Def_Dialogue.TYPE_DAILY);
+                if (dailyDialogue != null && dailyDialogue.Count > 0)
+                    StartCoroutine(RunDialogueSequence(dailyDialogue, showChoicesAfter: false, questId: null));
+                else
+                    CloseInteraction();
+            }
             return;
         }
 
@@ -465,6 +498,24 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
                 HandleQuestInteraction(npc, capturedQuestId);
             });
         }
+
+
+        if(npc.gameObject.CompareTag("jobChange"))
+        {
+            GameObject JobChangeButtonObj = Instantiate(questButtonPrefab, questListContainer);
+            Button JobChangeButton = JobChangeButtonObj.GetComponent<Button>();
+            TextMeshProUGUI JobChangeTexy = JobChangeButtonObj.GetComponentInChildren<TextMeshProUGUI>();
+            if (JobChangeTexy != null) JobChangeTexy.text = "전직하기";
+
+            JobChangeButton.onClick.AddListener(() =>
+            {
+                questSelectionPanel.SetActive(false);
+
+                CloseInteraction();
+            });
+        }
+        
+
 
         // 일상 대화 버튼 항상 추가
         GameObject dailyButtonObj = Instantiate(questButtonPrefab, questListContainer);

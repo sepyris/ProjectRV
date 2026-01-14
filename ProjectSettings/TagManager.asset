@@ -11,6 +11,7 @@ TagManager:
   - KeepCamera
   - TmpCamera
   - MinimapObject
+  - jobChange
   layers:
   - Default
   - TransparentFX
