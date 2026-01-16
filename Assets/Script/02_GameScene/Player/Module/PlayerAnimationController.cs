@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerAnimationController
 {
     private Animator animator;
-    private SpriteRenderer spriteRenderer;  // Ãß°¡!
+    private SpriteRenderer spriteRenderer;
 
     private const string PARAM_SPEED = "Speed";
     private const string PARAM_MOVE_X = "MoveX";

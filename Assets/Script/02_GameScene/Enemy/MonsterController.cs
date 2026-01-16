@@ -83,6 +83,15 @@ public class MonsterController : MonoBehaviour
             }
             UpdateHPProgress(hp_percent);
         }
+        if(rb.velocity.x > 0) //좌로 이동
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (rb.velocity.x < 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
     }
 
     void FixedUpdate()
