@@ -195,14 +195,15 @@ MonoBehaviour:
     lukBonus: 0
     tecBonus: 0
     isCosmetic: 0
-  - itemId: herb_healing
-    itemName: "\uCE58\uC720 \uC57D\uCD08"
+  - itemId: herb
+    itemName: "\uB098\uBB47\uC78E"
     itemType: 2
-    description: "\uC57D\uC744 \uB9CC\uB4DC\uB294 \uC57D\uCD08"
+    description: "\uC57D\uCD08\uBC2D\uC5D0\uC11C \uC7AC\uBC30\uD55C \uC57D\uCD08\n\uC778\uC904
+      \uC54C\uC558\uB294\uB370 \uB098\uBB47\uC78E\uC774\uC5C8\uB2E4"
     maxStack: 999
-    buyPrice: 30
-    sellPrice: 15
-    iconPath: Icons/Materials/herb_healing
+    buyPrice: 20
+    sellPrice: 10
+    iconPath: Icons/Materials/herb
     disposable: 1
     consumableEffect: 
     equipSlot: 0
@@ -646,6 +647,295 @@ MonoBehaviour:
     iconPath: Icons/SkillScroll/SkillScrollMentalTraining
     disposable: 1
     consumableEffect: Skill_018
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: leather_piece
+    itemName: "\uAC00\uC8FD\uC870\uAC01"
+    itemType: 2
+    description: "\uAC00\uC8FD\uC870\uAC01\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 20
+    sellPrice: 10
+    iconPath: Icons/Materials/leather_piece
+    disposable: 1
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: yellow_flower
+    itemName: "\uB178\uB780\uAF43"
+    itemType: 2
+    description: "\uBBFC\uB4E4\uB808 \uAC19\uC544 \uBCF4\uC774\uB294 \uB178\uB780\uAF43\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 40
+    sellPrice: 20
+    iconPath: Icons/Materials/yellow_flower
+    disposable: 1
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: mana_mass
+    itemName: "\uB9C8\uB098\uB369\uC5B4\uB9AC"
+    itemType: 2
+    description: "\uB9C8\uB098\uAC00 \uBB49\uCCD0\uC9C4 \uAD6C\uC2AC\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 100
+    sellPrice: 1
+    iconPath: Icons/Materials/mana_mass
+    disposable: 1
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: white_feathers
+    itemName: "\uD558\uC580\uAE43\uD138"
+    itemType: 2
+    description: "\uC0C8\uD558\uC580 \uAE43\uD138\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 30
+    sellPrice: 15
+    iconPath: Icons/Materials/white_feathers
+    disposable: 1
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: herb_healing
+    itemName: "\uC57D\uCD08"
+    itemType: 1
+    description: "\uCCB4\uB825\uC744 \uC870\uAE08 \uD68C\uBCF5 \uD560 \uC218 \uC788\uB294
+      \uC57D\uCD08\uB2E4"
+    maxStack: 999
+    buyPrice: 30
+    sellPrice: 15
+    iconPath: Icons/Materials/herb_healing
+    disposable: 1
+    consumableEffect: 10
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: forest_mana_mass
+    itemName: "\uC232\uC758 \uB9C8\uB098 \uB369\uC5B4\uB9AC"
+    itemType: 2
+    description: "\uC232\uC758 \uAE30\uC6B4\uC744 \uAC00\uC9C4 \uB9C8\uB098\uAC00
+      \uBB49\uCCD0\uC9C4 \uAD6C\uC2AC\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 200
+    sellPrice: 100
+    iconPath: Icons/Materials/forest_mana_mass
+    disposable: 1
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: mushroom_red
+    itemName: "\uBE68\uAC04\uBC84\uC12F"
+    itemType: 2
+    description: "\uBE68\uAC04 \uBC84\uC12F\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 40
+    sellPrice: 20
+    iconPath: Icons/Materials/mushroom_red
+    disposable: 1
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: post_stamp_felis
+    itemName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uC6B0\uD45C"
+    itemType: 3
+    description: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uC0AC\uB78C\uB4E4\uC744 \uB3C4\uC640\uC11C
+      \uBC1B\uC740 \uC6B0\uD45C\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/post_stamp_felis
+    disposable: 0
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: post_stamp_caldera
+    itemName: "\uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4 \uC6B0\uD45C"
+    itemType: 3
+    description: "\uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4 \uC0AC\uB78C\uB4E4\uC744
+      \uB3C4\uC640\uC11C \uBC1B\uC740 \uC6B0\uD45C\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/post_stamp_caldera
+    disposable: 0
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: post_stamp_perfectory
+    itemName: "\uD37C\uD329\uD1A0\uB9AC \uC6B0\uD45C"
+    itemType: 3
+    description: "\uD37C\uD399\uD1A0\uB9AC \uC0AC\uB78C\uB4E4\uC744 \uB3C4\uC640\uC11C
+      \uBC1B\uC740 \uC6B0\uD45C\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/post_stamp_perfectory
+    disposable: 0
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: post_stamp_serenity
+    itemName: "\uC138\uB808\uB2C8\uD2F0 \uBE44\uCE58 \uC6B0\uD45C"
+    itemType: 3
+    description: "\uC138\uB808\uB2C8\uD2F0 \uBE44\uCE58 \uC0AC\uB78C\uB4E4\uC744
+      \uB3C4\uC640\uC11C \uBC1B\uC740 \uC6B0\uD45C\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/post_stamp_serenity
+    disposable: 0
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: post_stamp_mewtopia
+    itemName: "\uBBA4\uD1A0\uD53C\uC544 \uC6B0\uD45C"
+    itemType: 3
+    description: "\uBBA4\uD1A0\uD53C\uC544 \uC0AC\uB78C\uB4E4\uC744 \uB3C4\uC640\uC11C
+      \uBC1B\uC740 \uC6B0\uD45C\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/post_stamp_mewtopia
+    disposable: 0
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: post_stamp_pawsylvania
+    itemName: "\uD3EC\uC2E4\uBCA0\uB2C8\uC544 \uC6B0\uD45C"
+    itemType: 3
+    description: "\uD3EC\uC2E4\uBCA0\uB2C8\uC544 \uC0AC\uB78C\uB4E4\uC744 \uB3C4\uC640\uC11C
+      \uBC1B\uC740 \uC6B0\uD45C\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/post_stamp_pawsylvania
+    disposable: 0
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: post_stamp_shiorean
+    itemName: "\uC2DC\uC624\uB9AC\uC548 \uC6B0\uD45C"
+    itemType: 3
+    description: "\uC2DC\uC624\uB9AC\uC548 \uC0AC\uB78C\uB4E4\uC744 \uB3C4\uC640\uC11C
+      \uBC1B\uC740 \uC6B0\uD45C\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/post_stamp_shiorean
+    disposable: 0
+    consumableEffect: 
     equipSlot: 0
     attackBonus: 0
     defenseBonus: 0

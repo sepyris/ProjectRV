@@ -23,7 +23,7 @@ MonoBehaviour:
     isAggressive: 0
     isRanged: 0
     attackSpeed: 0.8
-    moveSpeed: 1.5
+    moveSpeed: 1
     detectionRange: 5
     strBonus: 2
     dexBonus: 1
@@ -34,12 +34,9 @@ MonoBehaviour:
     dropGold: 2
     dropItems:
     - itemId: gold_coin
-      quantity: 2
-      dropRate: 100
-    - itemId: herb_healing
       quantity: 1
-      dropRate: 50
-    - itemId: leather_piece
+      dropRate: 100
+    - itemId: mana_mass
       quantity: 1
       dropRate: 20
   - monsterid: monster_1000002
@@ -51,7 +48,7 @@ MonoBehaviour:
     isAggressive: 0
     isRanged: 0
     attackSpeed: 0.9
-    moveSpeed: 1.8
+    moveSpeed: 1
     detectionRange: 6
     strBonus: 3
     dexBonus: 2
@@ -62,506 +59,303 @@ MonoBehaviour:
     dropGold: 4
     dropItems:
     - itemId: gold_coin
-      quantity: 3
+      quantity: 1
       dropRate: 100
-    - itemId: herb_healing
-      quantity: 1
-      dropRate: 60
-    - itemId: wood_log
-      quantity: 1
-      dropRate: 40
-    - itemId: leather_piece
+    - itemId: herb
       quantity: 1
       dropRate: 30
+    - itemId: mana_mass
+      quantity: 1
+      dropRate: 20
   - monsterid: monster_1000003
     monsterName: "\uB4E4\uAF43 \uACE0\uC591\uC774"
     description: "\uB4E4\uAF43\uCC98\uB7FC \uC791\uACE0 \uADC0\uC5EC\uC6B4 \uACE0\uC591\uC774.
       \uACF5\uACA9\uC131\uC774 \uAC70\uC758 \uC5C6\uB2E4."
-    level: 2
+    level: 3
     monsterType: 0
     isAggressive: 0
     isRanged: 0
     attackSpeed: 0.8
-    moveSpeed: 2
+    moveSpeed: 1
     detectionRange: 5
     strBonus: 2
     dexBonus: 3
     intBonus: 1
     lukBonus: 2
     tecBonus: 0
-    dropExp: 8
+    dropExp: 10
     dropGold: 5
     dropItems:
     - itemId: gold_coin
-      quantity: 4
-      dropRate: 100
-    - itemId: herb_healing
-      quantity: 2
-      dropRate: 70
-    - itemId: feather_bird
       quantity: 1
-      dropRate: 25
-  - monsterid: monster_1000004
-    monsterName: "\uD480\uC78E \uACE0\uC591\uC774"
-    description: "\uD480\uC78E \uC0AC\uC774\uB97C \uD5E4\uCE58\uACE0 \uB2E4\uB2C8\uB294
-      \uACE0\uC591\uC774. \uC7AC\uBE60\uB974\uAC8C \uC6C0\uC9C1\uC778\uB2E4."
-    level: 3
+      dropRate: 100
+    - itemId: yellow_flower
+      quantity: 1
+      dropRate: 20
+    - itemId: mana_mass
+      quantity: 1
+      dropRate: 20
+  - monsterid: monster_2000004
+    monsterName: "\uC232\uC758 \uACE0\uC591\uC774"
+    description: "\uC232\uC758 \uAE30\uC6B4\uC744 \uAC00\uC9C4 \uACE0\uC591\uC774"
+    level: 9
+    monsterType: 1
+    isAggressive: 0
+    isRanged: 0
+    attackSpeed: 0.5
+    moveSpeed: 1.2
+    detectionRange: 7
+    strBonus: 9
+    dexBonus: 9
+    intBonus: 8
+    lukBonus: 9
+    tecBonus: 9
+    dropExp: 50
+    dropGold: 10
+    dropItems:
+    - itemId: gold_coin
+      quantity: 5
+      dropRate: 100
+    - itemId: mana_mass
+      quantity: 5
+      dropRate: 20
+    - itemId: forest_mana_mass
+      quantity: 1
+      dropRate: 10
+  - monsterid: monster_Error000005
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
     isAggressive: 0
     isRanged: 0
     attackSpeed: 1
-    moveSpeed: 2.2
-    detectionRange: 7
-    strBonus: 4
-    dexBonus: 4
-    intBonus: 1
-    lukBonus: 2
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
     tecBonus: 0
-    dropExp: 10
-    dropGold: 6
-    dropItems:
-    - itemId: gold_coin
-      quantity: 5
-      dropRate: 100
-    - itemId: herb_healing
-      quantity: 2
-      dropRate: 70
-    - itemId: leather_piece
-      quantity: 2
-      dropRate: 40
-    - itemId: wood_log
-      quantity: 1
-      dropRate: 30
-  - monsterid: monster_1000005
-    monsterName: "\uC232\uC18D \uACE0\uC591\uC774"
-    description: "\uD478\uB978 \uC232\uC744 \uC790\uC720\uB86D\uAC8C \uB204\uBE44\uB294
-      \uACE0\uC591\uC774. \uC544\uC9C1 \uC628\uC21C\uD558\uC9C0\uB9CC \uACBD\uACC4\uC2EC\uC774
-      \uC788\uB2E4."
-    level: 4
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000006
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
     isAggressive: 0
     isRanged: 0
-    attackSpeed: 1.1
-    moveSpeed: 2.5
-    detectionRange: 8
-    strBonus: 5
-    dexBonus: 5
-    intBonus: 2
-    lukBonus: 3
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
     tecBonus: 0
-    dropExp: 14
-    dropGold: 8
-    dropItems:
-    - itemId: gold_coin
-      quantity: 7
-      dropRate: 100
-    - itemId: herb_healing
-      quantity: 2
-      dropRate: 70
-    - itemId: leather_piece
-      quantity: 2
-      dropRate: 50
-    - itemId: wood_log
-      quantity: 2
-      dropRate: 40
-  - monsterid: monster_1000006
-    monsterName: "\uB098\uBB34 \uACE0\uC591\uC774"
-    description: "\uB098\uBB34\uB97C \uD0C0\uACE0 \uC624\uB974\uB0B4\uB9AC\uB294
-      \uACE0\uC591\uC774. \uB192\uC740 \uACF3\uC744 \uC88B\uC544\uD55C\uB2E4."
-    level: 5
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000007
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
     isAggressive: 0
     isRanged: 0
-    attackSpeed: 1.2
-    moveSpeed: 2.8
-    detectionRange: 9
-    strBonus: 6
-    dexBonus: 7
-    intBonus: 2
-    lukBonus: 4
-    tecBonus: 1
-    dropExp: 20
-    dropGold: 10
-    dropItems:
-    - itemId: gold_coin
-      quantity: 9
-      dropRate: 100
-    - itemId: wood_log
-      quantity: 3
-      dropRate: 60
-    - itemId: leather_piece
-      quantity: 3
-      dropRate: 60
-    - itemId: feather_bird
-      quantity: 2
-      dropRate: 30
-  - monsterid: monster_1010007
-    monsterName: "\uB364\uBD88 \uACE0\uC591\uC774"
-    description: "\uB364\uBD88 \uC18D\uC5D0 \uC228\uC5B4 \uC0AC\uB294 \uACE0\uC591\uC774.
-      \uAC11\uC790\uAE30 \uD280\uC5B4\uB098\uC640 \uB180\uB77C\uAC8C \uD55C\uB2E4.
-      \uBA40\uB9AC\uC11C \uB098\uBB47\uAC00\uC9C0\uB97C \uB358\uC9C4\uB2E4."
-    level: 5
-    monsterType: 0
-    isAggressive: 0
-    isRanged: 1
-    attackSpeed: 1.3
-    moveSpeed: 2.5
-    detectionRange: 10
-    strBonus: 5
-    dexBonus: 8
-    intBonus: 3
-    lukBonus: 4
-    tecBonus: 1
-    dropExp: 22
-    dropGold: 11
-    dropItems:
-    - itemId: gold_coin
-      quantity: 10
-      dropRate: 100
-    - itemId: herb_healing
-      quantity: 3
-      dropRate: 80
-    - itemId: leather_piece
-      quantity: 3
-      dropRate: 60
-    - itemId: cloth_roll
-      quantity: 1
-      dropRate: 25
-  - monsterid: monster_1000008
-    monsterName: "\uD638\uC218 \uACE0\uC591\uC774"
-    description: "\uD638\uC218 \uADFC\uCC98\uB97C \uC5B4\uC2AC\uB801\uAC70\uB9AC\uB294
-      \uACE0\uC591\uC774. \uBB3C\uACE0\uAE30\uB97C \uC88B\uC544\uD55C\uB2E4."
-    level: 5
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000008
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
     isAggressive: 0
     isRanged: 0
-    attackSpeed: 1.2
-    moveSpeed: 3
-    detectionRange: 10
-    strBonus: 7
-    dexBonus: 6
-    intBonus: 2
-    lukBonus: 5
-    tecBonus: 1
-    dropExp: 28
-    dropGold: 14
-    dropItems:
-    - itemId: gold_coin
-      quantity: 12
-      dropRate: 100
-    - itemId: leather_piece
-      quantity: 3
-      dropRate: 70
-    - itemId: feather_bird
-      quantity: 2
-      dropRate: 40
-    - itemId: slime_gel
-      quantity: 2
-      dropRate: 30
-  - monsterid: monster_1100009
-    monsterName: "\uACBD\uACC4\uD558\uB294 \uACE0\uC591\uC774"
-    description: "\uC601\uC5ED\uC744 \uC9C0\uD0A4\uB294 \uACE0\uC591\uC774. \uCE68\uC785\uC790\uB97C
-      \uBC1C\uACAC\uD558\uBA74 \uACF5\uACA9\uD55C\uB2E4."
-    level: 6
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000009
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
-    isAggressive: 1
+    isAggressive: 0
     isRanged: 0
-    attackSpeed: 1.4
-    moveSpeed: 2.8
-    detectionRange: 12
-    strBonus: 8
-    dexBonus: 7
-    intBonus: 2
-    lukBonus: 5
-    tecBonus: 1
-    dropExp: 30
-    dropGold: 15
-    dropItems:
-    - itemId: gold_coin
-      quantity: 13
-      dropRate: 100
-    - itemId: leather_piece
-      quantity: 4
-      dropRate: 70
-    - itemId: wood_log
-      quantity: 2
-      dropRate: 50
-    - itemId: bone_monster
-      quantity: 1
-      dropRate: 20
-  - monsterid: monster_1100010
-    monsterName: "\uC232\uC9C0\uAE30 \uACE0\uC591\uC774"
-    description: "\uAE4A\uC740 \uC232\uC758 \uC624\uB798\uB41C \uACE0\uC591\uC774.
-      \uC232\uC744 \uC9C0\uD0A4\uB294 \uC5ED\uD560\uC744 \uD55C\uB2E4."
-    level: 7
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000010
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
-    isAggressive: 1
+    isAggressive: 0
     isRanged: 0
-    attackSpeed: 1.5
-    moveSpeed: 3
-    detectionRange: 13
-    strBonus: 10
-    dexBonus: 8
-    intBonus: 3
-    lukBonus: 6
-    tecBonus: 2
-    dropExp: 38
-    dropGold: 18
-    dropItems:
-    - itemId: gold_coin
-      quantity: 15
-      dropRate: 100
-    - itemId: leather_piece
-      quantity: 5
-      dropRate: 80
-    - itemId: wood_log
-      quantity: 3
-      dropRate: 60
-    - itemId: herb_healing
-      quantity: 3
-      dropRate: 70
-  - monsterid: monster_1100011
-    monsterName: "\uADF8\uB9BC\uC790 \uACE0\uC591\uC774"
-    description: "\uC232 \uADF8\uB298\uC5D0 \uC228\uC5B4 \uC788\uB294 \uACE0\uC591\uC774.
-      \uC5B4\uB460\uC744 \uC88B\uC544\uD55C\uB2E4."
-    level: 8
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000011
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
-    isAggressive: 1
+    isAggressive: 0
     isRanged: 0
-    attackSpeed: 1.6
-    moveSpeed: 3.2
-    detectionRange: 14
-    strBonus: 11
-    dexBonus: 10
-    intBonus: 4
-    lukBonus: 7
-    tecBonus: 2
-    dropExp: 48
-    dropGold: 22
-    dropItems:
-    - itemId: gold_coin
-      quantity: 18
-      dropRate: 100
-    - itemId: leather_piece
-      quantity: 5
-      dropRate: 80
-    - itemId: cloth_roll
-      quantity: 2
-      dropRate: 40
-    - itemId: bone_monster
-      quantity: 2
-      dropRate: 30
-  - monsterid: monster_1110012
-    monsterName: "\uB9C8\uB098 \uACE0\uC591\uC774"
-    description: "\uB9C8\uB098\uAC00 \uB18D\uCD95\uB41C \uACE0\uC591\uC774. \uC57D\uD55C
-      \uB9C8\uBC95\uC744 \uC0AC\uC6A9\uD560 \uC218 \uC788\uB2E4."
-    level: 8
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000012
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
-    isAggressive: 1
-    isRanged: 1
-    attackSpeed: 1.5
-    moveSpeed: 3
-    detectionRange: 15
-    strBonus: 8
-    dexBonus: 9
-    intBonus: 8
-    lukBonus: 6
-    tecBonus: 3
-    dropExp: 52
-    dropGold: 24
-    dropItems:
-    - itemId: gold_coin
-      quantity: 20
-      dropRate: 100
-    - itemId: herb_healing
-      quantity: 4
-      dropRate: 80
-    - itemId: slime_gel
-      quantity: 3
-      dropRate: 50
-    - itemId: cloth_roll
-      quantity: 2
-      dropRate: 35
-  - monsterid: monster_1100013
-    monsterName: "\uC232\uC758 \uC218\uD638\uC790 \uACE0\uC591\uC774"
-    description: "\uC232\uC744 \uC9C0\uD0A4\uB294 \uAC15\uD55C \uACE0\uC591\uC774.
-      \uCE68\uC785\uC790\uB97C \uAC00\uB9CC\uB450\uC9C0 \uC54A\uB294\uB2E4."
-    level: 9
+    isAggressive: 0
+    isRanged: 0
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000013
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
-    isAggressive: 1
+    isAggressive: 0
     isRanged: 0
-    attackSpeed: 1.7
-    moveSpeed: 3.5
-    detectionRange: 16
-    strBonus: 12
-    dexBonus: 11
-    intBonus: 5
-    lukBonus: 8
-    tecBonus: 3
-    dropExp: 60
-    dropGold: 28
-    dropItems:
-    - itemId: gold_coin
-      quantity: 22
-      dropRate: 100
-    - itemId: leather_piece
-      quantity: 6
-      dropRate: 80
-    - itemId: wood_log
-      quantity: 4
-      dropRate: 60
-    - itemId: bone_monster
-      quantity: 2
-      dropRate: 40
-    - itemId: ore_iron
-      quantity: 1
-      dropRate: 15
-  - monsterid: monster_1100014
-    monsterName: "\uC57C\uD589\uC131 \uACE0\uC591\uC774"
-    description: "\uBC24\uC5D0 \uD65C\uB3D9\uD558\uB294 \uACE0\uC591\uC774. \uB0A0\uCE74\uB85C\uC6B4
-      \uBC1C\uD1B1\uC744 \uAC00\uC84C\uB2E4."
-    level: 11
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000014
+    monsterName: 
+    description: 
+    level: 1
     monsterType: 0
-    isAggressive: 1
+    isAggressive: 0
     isRanged: 0
-    attackSpeed: 1.8
-    moveSpeed: 3.8
-    detectionRange: 17
-    strBonus: 14
-    dexBonus: 13
-    intBonus: 5
-    lukBonus: 9
-    tecBonus: 3
-    dropExp: 70
-    dropGold: 35
-    dropItems:
-    - itemId: gold_coin
-      quantity: 25
-      dropRate: 100
-    - itemId: leather_piece
-      quantity: 7
-      dropRate: 90
-    - itemId: bone_monster
-      quantity: 3
-      dropRate: 50
-    - itemId: dagger_iron
-      quantity: 1
-      dropRate: 8
-    - itemId: ore_iron
-      quantity: 2
-      dropRate: 20
-  - monsterid: monster_2100015
-    monsterName: "\uD478\uB978 \uC232\uC758 \uC655"
-    description: "\uD478\uB978 \uC232\uC744 \uC9C0\uBC30\uD558\uB294 \uACE0\uC591\uC774.
-      \uAC15\uB825\uD55C \uBAB8\uC9D3\uC73C\uB85C \uC0C1\uB300\uB97C \uC555\uB3C4\uD55C\uB2E4."
-    level: 11
-    monsterType: 1
-    isAggressive: 1
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000015
+    monsterName: 
+    description: 
+    level: 1
+    monsterType: 0
+    isAggressive: 0
     isRanged: 0
-    attackSpeed: 2
-    moveSpeed: 3.5
-    detectionRange: 18
-    strBonus: 12
-    dexBonus: 14
-    intBonus: 6
-    lukBonus: 8
-    tecBonus: 4
-    dropExp: 95
-    dropGold: 50
-    dropItems:
-    - itemId: gold_coin
-      quantity: 40
-      dropRate: 100
-    - itemId: leather_piece
-      quantity: 8
-      dropRate: 90
-    - itemId: armor_leather
-      quantity: 1
-      dropRate: 25
-    - itemId: wood_log
-      quantity: 5
-      dropRate: 70
-    - itemId: ore_iron
-      quantity: 3
-      dropRate: 50
-    - itemId: ring_bronze
-      quantity: 1
-      dropRate: 15
-  - monsterid: monster_2110016
-    monsterName: "\uB9C8\uB098 \uC0AC\uB0E5\uAFBC"
-    description: "\uB9C8\uB098\uB97C \uBA39\uACE0 \uC790\uB780 \uACE0\uC591\uC774.
-      \uC6D0\uAC70\uB9AC \uB9C8\uBC95 \uACF5\uACA9\uC744 \uAD6C\uC0AC\uD55C\uB2E4."
-    level: 13
-    monsterType: 1
-    isAggressive: 1
-    isRanged: 1
-    attackSpeed: 2.1
-    moveSpeed: 4
-    detectionRange: 20
-    strBonus: 10
-    dexBonus: 12
-    intBonus: 15
-    lukBonus: 10
-    tecBonus: 6
-    dropExp: 150
-    dropGold: 70
-    dropItems:
-    - itemId: gold_coin
-      quantity: 60
-      dropRate: 100
-    - itemId: staff_wooden
-      quantity: 1
-      dropRate: 20
-    - itemId: herb_healing
-      quantity: 5
-      dropRate: 90
-    - itemId: cloth_roll
-      quantity: 4
-      dropRate: 60
-    - itemId: slime_gel
-      quantity: 5
-      dropRate: 70
-    - itemId: necklace_simple
-      quantity: 1
-      dropRate: 12
-  - monsterid: monster_2100017
-    monsterName: "\uC5B4\uB460\uC744 \uAC77\uB294 \uACE0\uC591\uC774"
-    description: "\uAE4A\uC740 \uC232\uC758 \uC5B4\uB460 \uC18D\uC5D0 \uC228\uC5B4
-      \uC0AC\uB294 \uAC15\uB825\uD55C \uACE0\uC591\uC774. \uBE60\uB978 \uACF5\uACA9\uC73C\uB85C
-      \uC0C1\uB300\uB97C \uC555\uB3C4\uD55C\uB2E4."
-    level: 13
-    monsterType: 1
-    isAggressive: 1
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000016
+    monsterName: 
+    description: 
+    level: 1
+    monsterType: 0
+    isAggressive: 0
     isRanged: 0
-    attackSpeed: 2.2
-    moveSpeed: 4.2
-    detectionRange: 22
-    strBonus: 15
-    dexBonus: 16
-    intBonus: 8
-    lukBonus: 10
-    tecBonus: 5
-    dropExp: 175
-    dropGold: 80
-    dropItems:
-    - itemId: gold_coin
-      quantity: 70
-      dropRate: 100
-    - itemId: leather_piece
-      quantity: 10
-      dropRate: 90
-    - itemId: armor_chainmail
-      quantity: 1
-      dropRate: 20
-    - itemId: bone_monster
-      quantity: 8
-      dropRate: 80
-    - itemId: ore_iron
-      quantity: 5
-      dropRate: 60
-    - itemId: ring_bronze
-      quantity: 1
-      dropRate: 20
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
+  - monsterid: monster_Error000017
+    monsterName: 
+    description: 
+    level: 1
+    monsterType: 0
+    isAggressive: 0
+    isRanged: 0
+    attackSpeed: 1
+    moveSpeed: 1
+    detectionRange: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    dropExp: 0
+    dropGold: 0
+    dropItems: []
   - monsterid: monster_Error000018
     monsterName: 
     description: 

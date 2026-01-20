@@ -9,7 +9,8 @@ potion_hp_large,큰 체력 물약,Consumable,체력 300 회복,99,400,200,Icons/
 potion_hp_full,완전 회복 물약,Consumable,체력 완전 회복,20,1000,500,Icons/Potions/hp_full,TRUE,9999,,,,,,,,,,
 treasure_box_basic,기본 보물상자,Consumable,열면 아이템 획득,10,0,0,Icons/Items/treasure_basic,TRUE,gold_coin:100:100;potion_hp_small:3:80,,,,,,,,,,
 gold_coin,금화,Material,"""기본 화폐 판매시 5골드를 얻을수 있다""",9999,5,5,Icons/Materials/gold_coin,TRUE,,,,,,,,,,,
-herb_healing,치유 약초,Material,약을 만드는 약초,999,30,15,Icons/Materials/herb_healing,TRUE,,,,,,,,,,,
+herb,나뭇잎,Material,"약초밭에서 재배한 약초
+인줄 알았는데 나뭇잎이었다",999,20,10,Icons/Materials/herb,TRUE,,,,,,,,,,,
 quest_rumo_letter,루모의편지,QuestItem,루모가 루루에게 쓴 안부 편지,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
 quest_rura_letter,루라의편지,QuestItem,루라가 루루에게 쓴 안부 편지,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
 SkillScrollFullSwing,힘껏 휘두르기 스크롤,Consumable,"[액티브][초보자]
@@ -66,3 +67,17 @@ SkillScrollManaControl,마나제어 스크롤,Consumable,"[패시브][마법사]
 SkillScrollMentalTraining,정신수양 스크롤,Consumable,"[패시브][마법사]
 정신수양 스킬을 배울수 있다
 마음을 차분히 가라앉히는 법을 배워 방어력이 올라갑니다.",1,3000,1500,Icons/SkillScroll/SkillScrollMentalTraining,TRUE,Skill_018,,,,,,,,,,
+leather_piece,가죽조각,Material,가죽조각이다,99,20,10,Icons/Materials/leather_piece,TRUE,,,,,,,,,,,
+yellow_flower,노란꽃,Material,민들레 같아 보이는 노란꽃이다,99,40,20,Icons/Materials/yellow_flower,TRUE,,,,,,,,,,,
+mana_mass,마나덩어리,Material,마나가 뭉쳐진 구슬이다,99,100,1,Icons/Materials/mana_mass,TRUE,,,,,,,,,,,
+white_feathers,하얀깃털,Material,새하얀 깃털이다,99,30,15,Icons/Materials/white_feathers,TRUE,,,,,,,,,,,
+herb_healing,약초,Consumable,체력을 조금 회복 할 수 있는 약초다,999,30,15,Icons/Materials/herb_healing,TRUE,10,,,,,,,,,,
+forest_mana_mass,숲의 마나 덩어리,Material,숲의 기운을 가진 마나가 뭉쳐진 구슬이다,99,200,100,Icons/Materials/forest_mana_mass,TRUE,,,,,,,,,,,
+mushroom_red,빨간버섯,Material,빨간 버섯이다,99,40,20,Icons/Materials/mushroom_red,TRUE,,,,,,,,,,,
+post_stamp_felis,펠리스타운 우표,QuestItem,펠리스타운 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_felis,FALSE,,,,,,,,,,,
+post_stamp_caldera,칼데라스프링스 우표,QuestItem,칼데라스프링스 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_caldera,FALSE,,,,,,,,,,,
+post_stamp_perfectory,퍼팩토리 우표,QuestItem,퍼펙토리 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_perfectory,FALSE,,,,,,,,,,,
+post_stamp_serenity,세레니티 비치 우표,QuestItem,세레니티 비치 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_serenity,FALSE,,,,,,,,,,,
+post_stamp_mewtopia,뮤토피아 우표,QuestItem,뮤토피아 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_mewtopia,FALSE,,,,,,,,,,,
+post_stamp_pawsylvania,포실베니아 우표,QuestItem,포실베니아 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_pawsylvania,FALSE,,,,,,,,,,,
+post_stamp_shiorean,시오리안 우표,QuestItem,시오리안 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_shiorean,FALSE,,,,,,,,,,,

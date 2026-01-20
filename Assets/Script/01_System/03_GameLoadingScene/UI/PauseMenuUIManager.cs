@@ -486,11 +486,16 @@ public class PauseMenuUIManager : MonoBehaviour, IClosableUI
         if(BuffUIManager.Instance != null) 
             BuffUIManager.Instance.ClearAllBuffUIs();
 
+        if(JobChangeUIManager.Instance != null)
+            JobChangeUIManager.Instance.CloseJobChangeUI();
+
         if (pauseMenuPanel != null)
             pauseMenuPanel.SetActive(false);
 
         if (warningPanel != null)
             warningPanel.SetActive(false);
+
+        PlayerHUD.Instance.CloseAllUIs();
     }
 
     

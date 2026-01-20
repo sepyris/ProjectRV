@@ -46,15 +46,14 @@ public class JobChangeUIManager : MonoBehaviour
 
     public void OpenJobChangeUI(JobsType currentJob)
     {
-        if (PlayerStatsComponent.Instance == null || PlayerStatsComponent.Instance.Stats == null)
-        {
-            Debug.LogWarning("[JobChangeUIManager] PlayerStatsComponent가 없습니다.");
-            return;
-        }
+        if(PlayerController.Instance != null)
+            PlayerController.Instance.SetControlsLocked(true);
 
         List<JobsData> availableJobs = GetAvailableJobs(currentJob);
+        jobChangePanel.transform.SetAsLastSibling();
 
         jobChangePanel.SetActive(true);
+
         RefreshJobSlots(availableJobs);
         UpdateConfirmButton();
     }
@@ -111,7 +110,7 @@ public class JobChangeUIManager : MonoBehaviour
 
             slotUI.Initialize(jobData);
 
-            Button slotButton = slotObj.GetComponent<Button>();
+            Button slotButton = slotObj.transform.Find("ClassChange_Job_Select_Button").GetComponent<Button>();
             if (slotButton != null)
             {
                 slotButton.onClick.AddListener(() => OnJobSlotSelected(slotUI));
@@ -167,13 +166,16 @@ public class JobChangeUIManager : MonoBehaviour
         }
 
         Debug.Log($"[JobChangeUIManager] 전직 완료: {selectedJob.jobName}");
-
+        
         CloseJobChangeUI();
     }
     public void CloseJobChangeUI()
     {
         if (jobChangePanel != null)
             jobChangePanel.SetActive(false);
+
+        if (PlayerController.Instance != null)
+            PlayerController.Instance.SetControlsLocked(false);
 
         selectedJobSlot = null;
     }

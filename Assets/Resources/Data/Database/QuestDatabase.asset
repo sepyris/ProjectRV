@@ -76,7 +76,7 @@ MonoBehaviour:
     questHint: 
     objectives:
     - type: 2
-      targetId: herb_healing
+      targetId: herb
       requiredCount: 5
       currentCount: 0
     rewardGold: 0
@@ -123,6 +123,179 @@ MonoBehaviour:
       quantity: 1
       dropRate: 100
     - itemId: SkillScrollFullSwing
+      quantity: 1
+      dropRate: 100
+    status: 0
+  - questId: Quest_007
+    questName: "\uC2A4\uD0AC \uC0AC\uC6A9 \uC5F0\uC2B5"
+    description: "\uBAAC\uC2A4\uD130\uB97C \uC4F0\uB7EC\uB728\uB824\uBD10\uC694"
+    prerequisite:
+      type: 3
+      value: Quest_005:Rewarded
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 1
+      targetId: monster_1000001
+      requiredCount: 10
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 150
+    rewards:
+    - itemId: SkillScrollLightSteps
+      quantity: 1
+      dropRate: 100
+    status: 0
+  - questId: Quest_008
+    questName: "\uC544\uC774\uD15C\uC744 \uB5A8\uC5B4\uB728\uB9AC\uB294 \uBAAC\uC2A4\uD130"
+    description: "\uBAAC\uC2A4\uD130\uAC00 \uC544\uC774\uD15C\uC744 \uB5A8\uC5B4\uB728\uB9AC\uB294
+      \uC774\uC720\uAC00 \uBB58\uAE4C?"
+    prerequisite:
+      type: 1
+      value: 5
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: mana_mass
+      requiredCount: 5
+      currentCount: 0
+    rewardGold: 200
+    rewardExp: 20
+    rewards:
+    - itemId: post_stamp_felis
+      quantity: 1
+      dropRate: 100
+    status: 0
+  - questId: Quest_009
+    questName: "\uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD574\uBCF4\uC790"
+    description: "\uB9C8\uC744 \uC815\uD654\uB97C \uC704\uD574 \uC2A4\uD0AC\uC744
+      \uC0AC\uC6A9\uD574\uC11C \uBAAC\uC2A4\uD130\uB97C \uC4F0\uB7EC\uB728\uB824\uBCF4\uC790"
+    prerequisite:
+      type: 1
+      value: 5
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 1
+      targetId: monster_1000003
+      requiredCount: 10
+      currentCount: 0
+    rewardGold: 1000
+    rewardExp: 20
+    rewards:
+    - itemId: post_stamp_felis
+      quantity: 1
+      dropRate: 100
+    status: 0
+  - questId: Quest_010
+    questName: "\uC218\uB828\uC740 \uD798\uB4E4\uC5B4"
+    description: "\uBAAC\uC2A4\uD130\uB97C \uC4F0\uB7EC\uB728\uB9AC\uB294\uAC83\uB3C4
+      \uC57D\uCD08\uB97C \uAD6C\uD558\uB294\uAC83\uB3C4 \uC218\uB828"
+    prerequisite:
+      type: 1
+      value: 5
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 1
+      targetId: monster_1000002
+      requiredCount: 10
+      currentCount: 0
+    - type: 2
+      targetId: herb
+      requiredCount: 5
+      currentCount: 0
+    rewardGold: 1000
+    rewardExp: 20
+    rewards:
+    - itemId: post_stamp_felis
+      quantity: 1
+      dropRate: 100
+    status: 0
+  - questId: Quest_011
+    questName: "\uB9C8\uB098\uB97C \uBA38\uAE08\uC740 \uC57D\uCD08"
+    description: "\uB9C8\uB098\uB97C \uBA38\uAE08\uC740 \uC57D\uCD08\uAC00 \uC788\uB2E4\uB2C8
+      \uB8E8\uBAA8\uAC00 \uC88B\uC544\uD560\uB824\uB098?"
+    prerequisite:
+      type: 1
+      value: 5
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: herb_healing
+      requiredCount: 10
+      currentCount: 0
+    rewardGold: 200
+    rewardExp: 20
+    rewards:
+    - itemId: post_stamp_felis
+      quantity: 1
+      dropRate: 100
+    - itemId: potion_hp_small
+      quantity: 5
+      dropRate: 100
+    status: 0
+  - questId: Quest_012
+    questName: "\uC57D\uCD08\uAC00 \uB108\uBB34 \uC88B\uC544"
+    description: "\uC57D\uCD08\uC758 \uC18C\uC2DD\uC744 \uB4E4\uC740 \uB8E8\uBAA8"
+    prerequisite:
+      type: 3
+      value: Quest_011:Rewarded
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: herb_healing
+      requiredCount: 20
+      currentCount: 0
+    rewardGold: 1500
+    rewardExp: 20
+    rewards:
+    - itemId: post_stamp_felis
+      quantity: 1
+      dropRate: 100
+    - itemId: potion_hp_small
+      quantity: 10
+      dropRate: 100
+    status: 0
+  - questId: Quest_013
+    questName: "[\uC804\uC9C1]\uCCAB\uBC88\uC9F8 \uC120\uD0DD"
+    description: "\uC804\uC9C1\uC774\uB780 \uBB58\uAE4C...\n\uB098\uB294 \uBB50\uAC00
+      \uB420\uC218 \uC788\uC744\uAE4C?"
+    prerequisite:
+      type: 1
+      value: 10
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 1
+      targetId: monster_2000004
+      requiredCount: 1
+      currentCount: 0
+    - type: 2
+      targetId: forest_mana_mass
+      requiredCount: 1
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 200
+    rewards: []
+    status: 0
+  - questId: Quest_014
+    questName: "\uB9C8\uC744 \uC8FC\uBBFC\uC744 \uB3C4\uC6B4 \uBCF4\uB2F5"
+    description: "\uB9C8\uC744 \uC8FC\uBBFC\uC744 \uB3C4\uC640\uC11C \uC6B0\uD45C\uB97C
+      \uBC1B\uC558\uB2E4"
+    prerequisite:
+      type: 2
+      value: post_stamp_felis:1
+    preAcceptReward: 
+    questHint: 
+    objectives: []
+    rewardGold: 0
+    rewardExp: 20
+    rewards:
+    - itemId: post_stamp_felis
       quantity: 1
       dropRate: 100
     status: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 
 /// 플레이어의 원거리 공격 발사체
@@ -25,8 +26,9 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] private float maxDistance = 2f;        // 최대 이동 거리 (외부에서 설정)
 
     [Header("Visual Effects")]
-    [SerializeField] private GameObject hitEffectPrefab;  // 충돌 시 이펙트
+    [SerializeField] private ParticleSystem hitEffectparticle;  // 충돌 파티클
     [SerializeField] private TrailRenderer trailRenderer; // 발사체 궤적
+    [SerializeField] private ParticleSystem particle; // 발사체 파티클
 
     private int penetrationCount = 0;
     private Rigidbody2D rb;
@@ -61,7 +63,7 @@ public class PlayerProjectile : MonoBehaviour
         RotateTowardsVelocity();
 
         // 거리 기반 파괴 체크
-        CheckDistanceDestroy();
+        CheckDistanceDestroy();        
     }
 
     
@@ -232,10 +234,12 @@ public class PlayerProjectile : MonoBehaviour
     
     private void SpawnHitEffect(Vector3 position)
     {
-        if (hitEffectPrefab != null)
+        if (hitEffectparticle != null)
         {
-            GameObject effect = Instantiate(hitEffectPrefab, position, Quaternion.identity);
-            Destroy(effect, 1f);  // 1초 후 이펙트 제거
+            hitEffectparticle.Play();
+            hitEffectparticle.transform.SetParent(null);
+            
+            //Destroy(effect, 1f);  // 1초 후 이펙트 제거
         }
     }
 
@@ -250,6 +254,9 @@ public class PlayerProjectile : MonoBehaviour
             trailRenderer.transform.SetParent(null);  // 부모에서 분리
             Destroy(trailRenderer.gameObject, trailRenderer.time);  // Trail 시간만큼 유지 후 삭제
         }
+
+        particle.transform.SetParent(null);
+        particle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
         Destroy(gameObject);
     }

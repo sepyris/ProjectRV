@@ -55,7 +55,7 @@ public class TutorialManager : MonoBehaviour
         if (quest_id == "Quest_007")
         {
             show_Panel = true;
-            narration_Text.text = "S(s)키를 눌러서 스킬창을 열수 있습니다.\n스킬은 스킬창에서 스킬을 드래그 해서 퀵슬롯에 올려 사용할수 있습니다.";
+            narration_Text.text = "K(k)키를 눌러서 스킬창을 열수 있습니다.\n스킬은 스킬창에서 스킬을 드래그 해서 퀵슬롯에 올려 사용할수 있습니다.";
         }
 
         if (show_Panel)

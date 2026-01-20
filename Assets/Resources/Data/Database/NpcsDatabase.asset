@@ -41,55 +41,55 @@ MonoBehaviour:
     npcName: "\uB8E8\uD0A4"
     npcTitle: "\uCD08\uBCF4\uC790\uB9C8\uC2A4\uD130"
     npcDescription: 
-    mapId: 
+    mapId: FOR_001
     position: {x: 0, y: 0}
   - npcId: npc_0006
     npcName: "\uB8E8\uB098"
     npcTitle: "\uB9C8\uBC95\uC0AC\uB9C8\uC2A4\uD130"
     npcDescription: 
-    mapId: 
+    mapId: FOR_001
     position: {x: 0, y: 0}
   - npcId: npc_0007
     npcName: "\uB8E8\uB8E8\uBBF8"
-    npcTitle: 
+    npcTitle: "\uB9C8\uC744\uC8FC\uBBFC"
     npcDescription: 
-    mapId: 
+    mapId: FOR_101
     position: {x: 0, y: 0}
   - npcId: npc_0008
     npcName: "\uB8E8\uBBF8\uB77C"
-    npcTitle: 
+    npcTitle: "\uB9C8\uC744\uC8FC\uBBFC"
     npcDescription: 
-    mapId: 
+    mapId: FOR_001
     position: {x: 0, y: 0}
   - npcId: npc_0009
     npcName: "\uB8E8\uB77C\uBBF8"
-    npcTitle: 
+    npcTitle: "\uB9C8\uC744\uC8FC\uBBFC"
     npcDescription: 
-    mapId: 
+    mapId: FOR_001
     position: {x: 0, y: 0}
   - npcId: npc_0010
     npcName: "\uB8E8\uBAA8\uD0A4"
-    npcTitle: 
+    npcTitle: "\uB9C8\uC744\uC8FC\uBBFC"
     npcDescription: 
-    mapId: 
+    mapId: FOR_101
     position: {x: 0, y: 0}
   - npcId: npc_0011
     npcName: "\uBBF8\uBBF8"
     npcTitle: "\uC804\uC0AC\uB9C8\uC2A4\uD130"
     npcDescription: 
-    mapId: 
+    mapId: FOR_001
     position: {x: 0, y: 0}
   - npcId: npc_0012
     npcName: "\uBBF8\uB8E8"
-    npcTitle: 
+    npcTitle: "\uB9C8\uC744\uC8FC\uBBFC"
     npcDescription: 
-    mapId: 
+    mapId: FOR_001
     position: {x: 0, y: 0}
   - npcId: npc_0013
     npcName: "\uBBF8\uB85C"
-    npcTitle: 
+    npcTitle: "\uC804\uC9C1"
     npcDescription: 
-    mapId: 
+    mapId: FOR_001
     position: {x: 0, y: 0}
   - npcId: npc_0014
     npcName: "\uBBF8\uB77C"

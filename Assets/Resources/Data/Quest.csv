@@ -2,6 +2,15 @@ QuestID,QuestName,Description,PrerequisiteType,PrerequisiteValue,PreAcceptReward
 Quest_001,마을 대표와 인사,"""처음하는 퀘스트에요""",Level,1,,,,,50,
 Quest_002,첫 번째 거래,"""상점을 이용해봐요""",QuestStatus,Quest_001:Rewarded,item:gold_coin:10,,Collect:potion_hp_small:1,potion_hp_small:5,60,
 Quest_003,안부를 전해요,"""다른 주민을 만나봐요""",QuestStatus,Quest_002:Rewarded,,,Collect:quest_rumo_letter:1,armor_leather:1,80,
-Quest_004,약초를 캐 봐요,"""처음하는 채집이에요""",QuestStatus,Quest_003:Accepted,,,Collect:herb_healing:5,quest_rumo_letter:1,70,
+Quest_004,약초를 캐 봐요,"""처음하는 채집이에요""",QuestStatus,Quest_003:Accepted,,,Collect:herb:5,quest_rumo_letter:1,70,
 Quest_005,전투를 준비하며,"""또 다른 주민을 만나봐요""",QuestStatus,Quest_003:Rewarded,,,Collect:quest_rura_letter:1,,100,
 Quest_006,첫 전투 연습,"""몬스터를 쓰러뜨려봐요""",QuestStatus,Quest_005:Accepted,item:sword_wooden:1;item:staff_wooden:1,,Kill:monster_1000001:5,quest_rura_letter:1;SkillScrollFullSwing:1,90,
+Quest_007,스킬 사용 연습,"""몬스터를 쓰러뜨려봐요""",QuestStatus,Quest_005:Rewarded,,,Kill:monster_1000001:10,SkillScrollLightSteps:1,150,
+Quest_008,아이템을 떨어뜨리는 몬스터,"""몬스터가 아이템을 떨어뜨리는 이유가 뭘까?""",Level,5,,,Collect:mana_mass:5,post_stamp_felis:1,20,200
+Quest_009,스킬을 사용해보자,마을 정화를 위해 스킬을 사용해서 몬스터를 쓰러뜨려보자,Level,5,,,Kill:monster_1000003:10,post_stamp_felis:1,20,1000
+Quest_010,수련은 힘들어,몬스터를 쓰러뜨리는것도 약초를 구하는것도 수련,Level,5,,,Kill:monster_1000002:10;Collect:herb:5,post_stamp_felis:1,20,1000
+Quest_011,마나를 머금은 약초,마나를 머금은 약초가 있다니 루모가 좋아할려나?,Level,5,,,Collect:herb_healing:10,post_stamp_felis:1;potion_hp_small:5,20,200
+Quest_012,약초가 너무 좋아,약초의 소식을 들은 루모,QuestStatus,Quest_011:Rewarded,,,Collect:herb_healing:20,post_stamp_felis:1;potion_hp_small:10,20,1500
+Quest_013,[전직]첫번째 선택,"전직이란 뭘까...
+나는 뭐가 될수 있을까?",Level,10,,,Kill:monster_2000004:1;Collect:forest_mana_mass:1,,200,
+Quest_014,마을 주민을 도운 보답,마을 주민을 도와서 우표를 받았다,Item,post_stamp_felis:1,,,,post_stamp_felis:1,20,

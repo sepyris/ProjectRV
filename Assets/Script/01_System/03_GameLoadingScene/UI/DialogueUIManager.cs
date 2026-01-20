@@ -425,7 +425,7 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
         // 퀘스트가 전혀 없으면 바로 일상 대화로 전환
         if (activeQuests == null || activeQuests.Count == 0)
         {
-            if (npc.gameObject.CompareTag("jobChange"))
+            if (npc.gameObject.CompareTag("jobChange") && QuestManager.Instance.GetQuestStatus("Quest_013") == QuestStatus.Rewarded)
             {
                 questSelectionPanel.SetActive(true);
                 GameObject JobChangeButtonObj = Instantiate(questButtonPrefab, questListContainer);
@@ -498,24 +498,6 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
                 HandleQuestInteraction(npc, capturedQuestId);
             });
         }
-
-
-        if(npc.gameObject.CompareTag("jobChange"))
-        {
-            GameObject JobChangeButtonObj = Instantiate(questButtonPrefab, questListContainer);
-            Button JobChangeButton = JobChangeButtonObj.GetComponent<Button>();
-            TextMeshProUGUI JobChangeTexy = JobChangeButtonObj.GetComponentInChildren<TextMeshProUGUI>();
-            if (JobChangeTexy != null) JobChangeTexy.text = "전직하기";
-
-            JobChangeButton.onClick.AddListener(() =>
-            {
-                questSelectionPanel.SetActive(false);
-
-                CloseInteraction();
-            });
-        }
-        
-
 
         // 일상 대화 버튼 항상 추가
         GameObject dailyButtonObj = Instantiate(questButtonPrefab, questListContainer);

@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: GatherableDatabase
   m_EditorClassIdentifier: 
   Items:
-  - gatherableid: herb_node_basic
-    gatherableName: "\uC57D\uCD08 \uB364\uBD88"
-    description: "\uAE30\uBCF8 \uC57D\uCD08\uB97C \uCC44\uC9D1\uD560 \uC218 \uC788\uB294
+  - gatherableid: g_0001
+    gatherableName: "\uB098\uBB47\uC78E \uB364\uBD88"
+    description: "\uAE30\uBCF8 \uC57D\uCD08?\uB97C \uCC44\uC9D1\uD560 \uC218 \uC788\uB294
       \uB364\uBD88"
     gatherType: 1
     requiredTool: 2
     gatherTime: 2
     dropItems:
-    - itemId: herb_healing
+    - itemId: herb
       quantity: 1
       dropRate: 100
-    - itemId: herb_healing
+    - itemId: herb
       quantity: 1
       dropRate: 50
-  - gatherableid: ore_node_iron
+  - gatherableid: g_1001
     gatherableName: "\uCCA0\uAD11\uC11D \uAD11\uB9E5"
     description: "\uCCA0\uAD11\uC11D\uC744 \uCC44\uC9D1\uD560 \uC218 \uC788\uB294
       \uAD11\uB9E5"
@@ -41,8 +41,8 @@ MonoBehaviour:
     - itemId: ore_iron
       quantity: 3
       dropRate: 60
-  - gatherableid: fish_spot_river
-    gatherableName: "\uAC15 \uB09A\uC2DC\uD130"
+  - gatherableid: g_2001
+    gatherableName: "\uD638\uC218 \uB09A\uC2DC\uD130"
     description: "\uBBFC\uBB3C\uACE0\uAE30\uB97C \uB09A\uC744 \uC218 \uC788\uB294
       \uACF3"
     gatherType: 3
@@ -55,16 +55,32 @@ MonoBehaviour:
     - itemId: fish_salmon
       quantity: 1
       dropRate: 30
-  - gatherableid: mushroom_spot
-    gatherableName: "\uBC84\uC12F \uAD70\uB77D"
+  - gatherableid: g_0002
+    gatherableName: "\uBC84\uC12F"
     description: "\uBC84\uC12F\uC744 \uCC44\uC9D1\uD560 \uC218 \uC788\uB294 \uACF3"
     gatherType: 1
-    requiredTool: 0
+    requiredTool: 2
     gatherTime: 1.5
     dropItems:
+    - itemId: herb
+      quantity: 1
+      dropRate: 100
     - itemId: mushroom_red
-      quantity: 3
+      quantity: 1
       dropRate: 90
-    - itemId: mushroom_blue
-      quantity: 2
-      dropRate: 40
+  - gatherableid: g_0003
+    gatherableName: "\uC57D\uCD08 \uB364\uBD88"
+    description: "\uC57D\uCD08\uB97C \uCC44\uC9D1\uD560\uC218 \uC788\uB294 \uB364\uBD88"
+    gatherType: 1
+    requiredTool: 2
+    gatherTime: 3
+    dropItems:
+    - itemId: herb
+      quantity: 1
+      dropRate: 100
+    - itemId: herb_healing
+      quantity: 1
+      dropRate: 70
+    - itemId: herb_healing
+      quantity: 1
+      dropRate: 50

@@ -261,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &97234850
 RectTransform:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2905539121402444257, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 2905539121402444257, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1285,6 +1285,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 701144334}
     m_Modifications:
+    - target: {fileID: 2905539121402444257, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 7159792301246188185, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
       propertyPath: m_Name
       value: Slot3
@@ -2230,15 +2234,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2905539121402444257, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 2905539121402444257, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000098169
+      value: -0.53544
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905539121402444257, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -165
       objectReference: {fileID: 0}
     - target: {fileID: 7159792301246188185, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
       propertyPath: m_Name
       value: Slot1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696376531697178468, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
+      propertyPath: m_margin.x
+      value: 2.122345
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696376531697178468, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
+      propertyPath: m_margin.z
+      value: -2.1226196
       objectReference: {fileID: 0}
     - target: {fileID: 7706595179457547202, guid: 2e958c45fc5c8654aad799dcc8207ea8, type: 3}
       propertyPath: m_Pivot.x

@@ -193,7 +193,7 @@ public class QuestPrerequisite
                 break;
             //선행조건 아이템 체크
             case PrerequisiteType.Item:
-                var items = value.Split(',');
+                var items = value.Split(';');
                 foreach (var item in items)
                 {
                     var iparts = item.Split(':');
@@ -202,8 +202,8 @@ public class QuestPrerequisite
                         string itemId = iparts[0].Trim();
                         if (int.TryParse(iparts[1].Trim(), out int quantity))
                         {
-                            if (!InventoryManager.Instance.HasItem(itemId, quantity))
-                                return false;
+                            if (InventoryManager.Instance.HasItem(itemId, quantity))
+                                return true;
                         }
                     }
                 }

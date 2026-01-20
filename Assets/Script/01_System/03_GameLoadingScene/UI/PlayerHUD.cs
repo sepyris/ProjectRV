@@ -91,6 +91,7 @@ public class PlayerHUD : MonoBehaviour
         Debug.Log($"[PlayerHUD] 맨 위 UI 닫기: {topUI.GetUIPanel().name}");
 
         topUI.Close();
+        UnregisterUI(topUI);
     }
 
 
