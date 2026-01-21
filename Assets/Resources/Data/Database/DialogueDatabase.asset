@@ -589,3 +589,98 @@ MonoBehaviour:
     lines:
     - Text: "\uCC3E\uC558\uB2E4!!\n\uB9C8\uC744 \uC0AC\uB78C\uB4E4\uC744 \uB3C4\uC640\uC8FC\uC154\uC11C
         \uAC10\uC0AC\uD569\uB2C8\uB2E4"
+  - npcId: npc_0008
+    dialogueType: Quest_Offer
+    questId: Quest_015
+    lines:
+    - Text: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uC8FC\uBCC0\uC744 \uB3CC\uC544\uBCF8\uC801\uC774
+        \uC788\uB098\uC694?"
+    - Text: "\uBD81\uCABD\uC73C\uB85C\uB294 \uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4\n\uB0A8\uCABD\uC73C\uB85C\uB294
+        \uD37C\uD329\uD1A0\uB9AC\n\uB0A8\uB3D9\uCABD\uC73C\uB85C\uB294 \uC2DC\uC624\uB9AC\uC548"
+    - Text: "\uAC01 \uC9C0\uC5ED\uC5D0 \uD0D0\uD5D8\uAC00\uB4E4\uC774 \uC788\uC5B4\uC694\n\uD55C\uBC88
+        \uB2E4\uB140\uC640 \uBCF4\uC2DC\uACA0\uC5B4\uC694?"
+  - npcId: npc_0008
+    dialogueType: Quest_Accept
+    questId: Quest_015
+    lines:
+    - Text: "\uBD81\uCABD\uC5D0\uB294 \uBBF8\uB8E8\uBBF8\uAC00 \uC788\uACE0\n\uB0A8\uCABD\uC5D0\uB294
+        \uBBF8\uB77C\uB8E8\uAC00 \uC788\uACE0\n\uB0A8\uB3D9\uCABD\uC5D0\uB294 \uBBF8\uCFE0\uD1A0\uAC00
+        \uC788\uC5B4\uC694"
+  - npcId: npc_0008
+    dialogueType: Quest_Decline
+    questId: Quest_015
+    lines:
+    - Text: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4\uC5D0\uB9CC \uC788\uB294\uAC83\uB3C4
+        \uD3C9\uD654\uB86D\uACE0 \uC88B\uC8E0"
+  - npcId: npc_0008
+    dialogueType: Quest_Progress
+    questId: Quest_015
+    lines:
+    - Text: "\uBD81\uCABD\uC5D0\uB294 \uBBF8\uB8E8\uBBF8\uAC00 \uC788\uACE0\n\uB0A8\uCABD\uC5D0\uB294
+        \uBBF8\uB77C\uB8E8\uAC00 \uC788\uACE0\n\uB0A8\uB3D9\uCABD\uC5D0\uB294 \uBBF8\uCFE0\uD1A0\uAC00
+        \uC788\uC5B4\uC694"
+  - npcId: npc_0008
+    dialogueType: Quest_Complete
+    questId: Quest_015
+    lines:
+    - Text: "\uC870\uC0AC\uBCF4\uACE0\uC11C\uB77C\uB2C8\n\uD0D0\uD5D8\uAC00\uBD84\uB4E4\uC740
+        \uC870\uC0AC\uB97C \uC88B\uC544 \uD558\uB098\uBD10\uC694"
+  - npcId: npc_0001
+    dialogueType: Quest_Offer
+    questId: Quest_016
+    lines:
+    - Text: "\uBC8C\uC368 \uB808\uBCA8\uC774 10\uC774\uB098 \uB418\uC168\uB124\uC694\n\uC804\uC9C1\uC740
+        \uD558\uC168\uB098\uC694?\n\uB9C8\uC744 \uBD81\uCABD\uC5D0 \uBBF8\uB85C\uAC00
+        \uC804\uC9C1\uC5D0 \uB300\uD574 \uC54C\uB824\uC904\uD150\uB370"
+    - Text: "\uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4\uC5D0 \uB300\uD574 \uB4E4\uC5B4\uBCF4\uC168\uB098\uC694?\n\uC628\uCC9C\uB9C8\uC744\uC774\uB77C\uC11C
+        \uBAB8\uC744 \uD3B8\uD788 \uC26C\uAC8C \uD574\uC904\uC218 \uC788\uC5B4\uC694"
+    - Text: "\uB9C8\uCE68 \uC800\uD55C\uD14C \uC628\uCC9C \uD2F0\uCF13\uC774 \uC788\uB294\uB370\n\uD55C\uBC88
+        \uAC00\uBCF4\uC2DC\uACA0\uC5B4\uC694?"
+  - npcId: npc_0001
+    dialogueType: Quest_Accept
+    questId: Quest_016
+    lines:
+    - Text: "\uC544!! \uAC00\uB294\uAE40\uC5D0 \uBAA8\uBAA8\uD55C\uD14C \uD3B8\uC9C0\uB3C4
+        \uC804\uB2EC \uBD80\uD0C1\uB4DC\uB824\uC694"
+  - npcId: npc_0001
+    dialogueType: Quest_Decline
+    questId: Quest_016
+    lines:
+    - Text: "\uC544\uC9C1 \uD3A0\uB9AC\uC2A4\uD0C0\uC6B4\uC5D0\uC11C \uD560 \uC77C\uC774
+        \uB0A8\uC544\uC788\uC73C\uC2E0\uAC00\uC694?"
+  - npcId: npc_0001
+    dialogueType: Quest_Progress
+    questId: Quest_016
+    lines:
+    - Text: "\uB9C8\uC744 \uBD81\uCABD\uC73C\uB85C \uB098\uAC00\uC11C \uCB49 \uAC00\uB2E4\uBCF4\uBA74
+        \uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4\uC5D0 \uB3C4\uCC29 \uD560\uAEBC\uC5D0\uC694"
+  - npcId: npc_0017
+    dialogueType: Normal
+    questId: 
+    lines:
+    - Text: "\uC5EC\uAE30\uB294 \uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4"
+  - npcId: npc_0017
+    dialogueType: Daily
+    questId: 
+    lines:
+    - Text: "\uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4 \uC774\uC0C1\uBB34"
+  - npcId: npc_0018
+    dialogueType: Normal
+    questId: 
+    lines:
+    - Text: "\uC5EC\uAE30\uB294 \uD37C\uD329\uD1A0\uB9AC"
+  - npcId: npc_0018
+    dialogueType: Daily
+    questId: 
+    lines:
+    - Text: "\uD37C\uD329\uD1A0\uB9AC \uC774\uC0C1\uBB34"
+  - npcId: npc_0019
+    dialogueType: Normal
+    questId: 
+    lines:
+    - Text: "\uC5EC\uAE30\uB294 \uC2DC\uC624\uB9AC\uC548"
+  - npcId: npc_0019
+    dialogueType: Daily
+    questId: 
+    lines:
+    - Text: "\uC2DC\uC624\uB9AC\uC548 \uC774\uC0C1\uBB34"

@@ -18,7 +18,7 @@ MonoBehaviour:
     description: "\uC774\uC81C \uB9C9 \uB9C8\uB098\uB85C \uD615\uC131\uB41C \uC544\uAE30
       \uACE0\uC591\uC774. \uD638\uAE30\uC2EC \uAC00\uB4DD\uD55C \uB208\uC73C\uB85C
       \uC8FC\uBCC0\uC744 \uD0D0\uC0C9\uD55C\uB2E4."
-    level: 1
+    level: 2
     monsterType: 0
     isAggressive: 0
     isRanged: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
     dexBonus: 1
     intBonus: 0
     lukBonus: 1
-    tecBonus: 0
+    tecBonus: 2
     dropExp: 5
     dropGold: 2
     dropItems:
@@ -43,7 +43,7 @@ MonoBehaviour:
     monsterName: "\uB098\uBB47\uC78E \uACE0\uC591\uC774"
     description: "\uB098\uBB47\uC78E\uC744 \uBAB8\uC5D0 \uAC10\uC2F8\uACE0 \uC788\uB294
       \uACE0\uC591\uC774. \uC232\uC758 \uAE30\uC6B4\uC744 \uBA38\uAE08\uACE0 \uC788\uB2E4."
-    level: 2
+    level: 4
     monsterType: 0
     isAggressive: 0
     isRanged: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     dexBonus: 2
     intBonus: 1
     lukBonus: 1
-    tecBonus: 0
+    tecBonus: 1
     dropExp: 7
     dropGold: 4
     dropItems:
@@ -71,19 +71,19 @@ MonoBehaviour:
     monsterName: "\uB4E4\uAF43 \uACE0\uC591\uC774"
     description: "\uB4E4\uAF43\uCC98\uB7FC \uC791\uACE0 \uADC0\uC5EC\uC6B4 \uACE0\uC591\uC774.
       \uACF5\uACA9\uC131\uC774 \uAC70\uC758 \uC5C6\uB2E4."
-    level: 3
+    level: 7
     monsterType: 0
     isAggressive: 0
     isRanged: 0
     attackSpeed: 0.8
     moveSpeed: 1
     detectionRange: 5
-    strBonus: 2
-    dexBonus: 3
-    intBonus: 1
-    lukBonus: 2
-    tecBonus: 0
-    dropExp: 10
+    strBonus: 7
+    dexBonus: 7
+    intBonus: 6
+    lukBonus: 8
+    tecBonus: 10
+    dropExp: 15
     dropGold: 5
     dropItems:
     - itemId: gold_coin
@@ -98,18 +98,18 @@ MonoBehaviour:
   - monsterid: monster_2000004
     monsterName: "\uC232\uC758 \uACE0\uC591\uC774"
     description: "\uC232\uC758 \uAE30\uC6B4\uC744 \uAC00\uC9C4 \uACE0\uC591\uC774"
-    level: 9
+    level: 14
     monsterType: 1
     isAggressive: 0
     isRanged: 0
     attackSpeed: 0.5
     moveSpeed: 1.2
     detectionRange: 7
-    strBonus: 9
-    dexBonus: 9
-    intBonus: 8
-    lukBonus: 9
-    tecBonus: 9
+    strBonus: 15
+    dexBonus: 15
+    intBonus: 15
+    lukBonus: 15
+    tecBonus: 15
     dropExp: 50
     dropGold: 10
     dropItems:
@@ -122,60 +122,80 @@ MonoBehaviour:
     - itemId: forest_mana_mass
       quantity: 1
       dropRate: 10
-  - monsterid: monster_Error000005
-    monsterName: 
-    description: 
-    level: 1
+  - monsterid: monster_1000005
+    monsterName: "\uC5F4\uAE30 \uACE0\uC591\uC774"
+    description: "\uD654\uC0B0\uC758 \uAE30\uC6B4\uC744 \uBC1B\uC544 \uC5F4\uC744
+      \uB0B4\uBFDC\uB294 \uACE0\uC591\uC774"
+    level: 15
     monsterType: 0
     isAggressive: 0
     isRanged: 0
-    attackSpeed: 1
+    attackSpeed: 0.8
     moveSpeed: 1
-    detectionRange: 0
-    strBonus: 0
-    dexBonus: 0
-    intBonus: 0
-    lukBonus: 0
-    tecBonus: 0
-    dropExp: 0
-    dropGold: 0
-    dropItems: []
-  - monsterid: monster_Error000006
-    monsterName: 
-    description: 
-    level: 1
+    detectionRange: 5
+    strBonus: 15
+    dexBonus: 16
+    intBonus: 15
+    lukBonus: 16
+    tecBonus: 18
+    dropExp: 20
+    dropGold: 10
+    dropItems:
+    - itemId: gold_coin
+      quantity: 1
+      dropRate: 100
+    - itemId: boiled_egg
+      quantity: 1
+      dropRate: 20
+  - monsterid: monster_1000006
+    monsterName: "\uBC2D\uC758 \uACE0\uC591\uC774"
+    description: "\uBC2D\uC774 \uB9CE\uC544 \uC990\uAC70\uC6B4 \uACE0\uC591\uC774"
+    level: 20
     monsterType: 0
     isAggressive: 0
     isRanged: 0
-    attackSpeed: 1
-    moveSpeed: 1
-    detectionRange: 0
-    strBonus: 0
-    dexBonus: 0
-    intBonus: 0
-    lukBonus: 0
-    tecBonus: 0
-    dropExp: 0
-    dropGold: 0
-    dropItems: []
-  - monsterid: monster_Error000007
-    monsterName: 
-    description: 
-    level: 1
+    attackSpeed: 0.9
+    moveSpeed: 1.1
+    detectionRange: 5
+    strBonus: 20
+    dexBonus: 27
+    intBonus: 24
+    lukBonus: 27
+    tecBonus: 26
+    dropExp: 50
+    dropGold: 15
+    dropItems:
+    - itemId: gold_coin
+      quantity: 1
+      dropRate: 100
+    - itemId: seed
+      quantity: 1
+      dropRate: 20
+  - monsterid: monster_1000007
+    monsterName: "\uB0C9\uAE30 \uACE0\uC591\uC774"
+    description: "\uB208\uC758 \uB9C8\uBC95\uC758 \uC601\uD5A5\uC73C\uB85C \uB0C9\uAE30\uB97C
+      \uBFDC\uB294 \uACE0\uC591\uC774"
+    level: 35
     monsterType: 0
     isAggressive: 0
     isRanged: 0
-    attackSpeed: 1
-    moveSpeed: 1
-    detectionRange: 0
-    strBonus: 0
-    dexBonus: 0
-    intBonus: 0
-    lukBonus: 0
-    tecBonus: 0
-    dropExp: 0
-    dropGold: 0
-    dropItems: []
+    attackSpeed: 0.6
+    moveSpeed: 1.2
+    detectionRange: 7
+    strBonus: 35
+    dexBonus: 45
+    intBonus: 35
+    lukBonus: 37
+    tecBonus: 38
+    dropExp: 70
+    dropGold: 20
+    dropItems:
+    - itemId: gold_coin
+      quantity: 1
+      dropRate: 100
+    - itemId: carrot
+      quantity: 1
+      dropRate: 20
   - monsterid: monster_Error000008
     monsterName: 
     description: 

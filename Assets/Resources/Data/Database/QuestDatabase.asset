@@ -23,7 +23,7 @@ MonoBehaviour:
     questHint: 
     objectives: []
     rewardGold: 0
-    rewardExp: 50
+    rewardExp: 60
     rewards: []
     status: 0
   - questId: Quest_002
@@ -40,7 +40,7 @@ MonoBehaviour:
       requiredCount: 1
       currentCount: 0
     rewardGold: 0
-    rewardExp: 60
+    rewardExp: 70
     rewards:
     - itemId: potion_hp_small
       quantity: 5
@@ -80,7 +80,7 @@ MonoBehaviour:
       requiredCount: 5
       currentCount: 0
     rewardGold: 0
-    rewardExp: 70
+    rewardExp: 90
     rewards:
     - itemId: quest_rumo_letter
       quantity: 1
@@ -117,7 +117,7 @@ MonoBehaviour:
       requiredCount: 5
       currentCount: 0
     rewardGold: 0
-    rewardExp: 90
+    rewardExp: 150
     rewards:
     - itemId: quest_rura_letter
       quantity: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
       requiredCount: 10
       currentCount: 0
     rewardGold: 0
-    rewardExp: 150
+    rewardExp: 200
     rewards:
     - itemId: SkillScrollLightSteps
       quantity: 1
@@ -161,7 +161,7 @@ MonoBehaviour:
       requiredCount: 5
       currentCount: 0
     rewardGold: 200
-    rewardExp: 20
+    rewardExp: 200
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
@@ -182,7 +182,7 @@ MonoBehaviour:
       requiredCount: 10
       currentCount: 0
     rewardGold: 1000
-    rewardExp: 20
+    rewardExp: 200
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
       requiredCount: 5
       currentCount: 0
     rewardGold: 1000
-    rewardExp: 20
+    rewardExp: 300
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
@@ -228,7 +228,7 @@ MonoBehaviour:
       requiredCount: 10
       currentCount: 0
     rewardGold: 200
-    rewardExp: 20
+    rewardExp: 300
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
@@ -251,7 +251,7 @@ MonoBehaviour:
       requiredCount: 20
       currentCount: 0
     rewardGold: 1500
-    rewardExp: 20
+    rewardExp: 350
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
@@ -293,9 +293,55 @@ MonoBehaviour:
     questHint: 
     objectives: []
     rewardGold: 0
-    rewardExp: 20
+    rewardExp: 200
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
       dropRate: 100
+    status: 0
+  - questId: Quest_015
+    questName: "\uD3A0\uB9AC\uC2A4 \uD0C0\uC6B4 \uC8FC\uBCC0"
+    description: "\uD3A0\uB9AC\uC2A4 \uD0C0\uC6B4 \uC8FC\uBCC0\uC744 \uD655\uC778
+      \uD574\uBCF4\uC790"
+    prerequisite:
+      type: 1
+      value: 5
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 0
+      targetId: npc_0017
+      requiredCount: 1
+      currentCount: 0
+    - type: 0
+      targetId: npc_0018
+      requiredCount: 1
+      currentCount: 0
+    - type: 0
+      targetId: npc_0019
+      requiredCount: 1
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 250
+    rewards:
+    - itemId: post_stamp_felis
+      quantity: 1
+      dropRate: 100
+    status: 0
+  - questId: Quest_016
+    questName: "\uB2E4\uB978 \uB9C8\uC744\uB85C"
+    description: "\uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4\uB85C \uAC00\uBCF4\uC790"
+    prerequisite:
+      type: 1
+      value: 10
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 0
+      targetId: npc_0021
+      requiredCount: 1
+      currentCount: 0
+    rewardGold: 1000
+    rewardExp: 300
+    rewards: []
     status: 0

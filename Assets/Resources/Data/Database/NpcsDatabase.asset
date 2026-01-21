@@ -111,21 +111,21 @@ MonoBehaviour:
     position: {x: 0, y: 0}
   - npcId: npc_0017
     npcName: "\uBBF8\uB8E8\uBBF8"
-    npcTitle: 
+    npcTitle: "\uD0D0\uD5D8\uAC00"
     npcDescription: 
-    mapId: 
+    mapId: FOR_104
     position: {x: 0, y: 0}
   - npcId: npc_0018
     npcName: "\uBBF8\uB77C\uB8E8"
-    npcTitle: 
+    npcTitle: "\uD0D0\uD5D8\uAC00"
     npcDescription: 
-    mapId: 
+    mapId: FOR_105
     position: {x: 0, y: 0}
   - npcId: npc_0019
     npcName: "\uBBF8\uCFE0\uD1A0"
-    npcTitle: 
+    npcTitle: "\uD0D0\uD5D8\uAC00"
     npcDescription: 
-    mapId: 
+    mapId: FOR_106
     position: {x: 0, y: 0}
   - npcId: npc_0020
     npcName: "\uBBF8\uD53C\uB77C"

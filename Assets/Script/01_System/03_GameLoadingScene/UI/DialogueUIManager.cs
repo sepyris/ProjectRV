@@ -111,7 +111,7 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
         if (PlayerController.Instance != null)
             PlayerController.Instance.SetActionControlsLocked(true);
         PlayerHUD.Instance.RegisterUI(this);
-
+        QuestManager.Instance.UpdateDialogueProgress(currentNPC.npcId);
         var normalDialogue = DialogueDataManager.Instance.GetDialogueSequence(npc.npcId, Def_Dialogue.TYPE_NORMAL);
         if (normalDialogue != null && normalDialogue.Count > 0)
         {
@@ -425,7 +425,7 @@ public class DialogueUIManager : MonoBehaviour, IClosableUI
         // 퀘스트가 전혀 없으면 바로 일상 대화로 전환
         if (activeQuests == null || activeQuests.Count == 0)
         {
-            if (npc.gameObject.CompareTag("jobChange") && QuestManager.Instance.GetQuestStatus("Quest_013") == QuestStatus.Rewarded)
+            if (npc.gameObject.CompareTag("jobChange") && QuestManager.Instance.GetQuestStatus("Quest_013") == QuestStatus.Rewarded && PlayerStatsComponent.Instance.Stats.GetCurrentJob().jobType == JobsType.Novice)
             {
                 questSelectionPanel.SetActive(true);
                 GameObject JobChangeButtonObj = Instantiate(questButtonPrefab, questListContainer);

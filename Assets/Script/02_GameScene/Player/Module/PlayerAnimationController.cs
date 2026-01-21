@@ -13,6 +13,7 @@ public class PlayerAnimationController
     private const string PARAM_GATHER = "Gather";
     private const string PARAM_DEATH = "Death";
     private const string PARAM_HIT = "Hit";
+    private const string PARAM_IDLE = "Idle";
 
     private Vector2 lastMoveDirection = Vector2.down;
     private bool isMoving = false;
@@ -114,6 +115,7 @@ public class PlayerAnimationController
         {
             animator.SetBool(PARAM_IS_MOVING, false);
             animator.SetFloat(PARAM_SPEED, 0);
+            animator.SetTrigger(PARAM_IDLE);
         }
     }
 

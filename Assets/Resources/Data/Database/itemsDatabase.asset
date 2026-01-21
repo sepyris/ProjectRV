@@ -946,3 +946,65 @@ MonoBehaviour:
     lukBonus: 0
     tecBonus: 0
     isCosmetic: 0
+  - itemId: boiled_egg
+    itemName: "\uC0B6\uC740 \uB2EC\uAC40"
+    itemType: 1
+    description: "\uB530\uB4EF\uD574\uC11C \uBA39\uAE30 \uC88B\uC740 \uC0B6\uC740
+      \uB2EC\uAC40\uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 100
+    sellPrice: 50
+    iconPath: Icons/Materials/boiled_egg
+    disposable: 1
+    consumableEffect: 5
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: seed
+    itemName: "\uC528\uC557"
+    itemType: 2
+    description: "\uBAAC\uC2A4\uD130\uAC00 \uB5A8\uC5B4\uB728\uB9B0 \uC528\uC557\uC774\uB2E4.\n\uD6D4\uCE5C\uAC74
+      \uC544\uB2C8\uACA0\uC9C0"
+    maxStack: 99
+    buyPrice: 140
+    sellPrice: 70
+    iconPath: Icons/Materials/seed
+    disposable: 1
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: carrot
+    itemName: "\uB2F9\uADFC"
+    itemType: 2
+    description: "\uAF5D\uAF5D \uC5BC\uC5B4\uC788\uB294 \uB2F9\uADFC \uC774\uB2E4"
+    maxStack: 99
+    buyPrice: 400
+    sellPrice: 200
+    iconPath: Icons/Materials/carrot
+    disposable: 1
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0

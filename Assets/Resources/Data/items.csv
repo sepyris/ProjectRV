@@ -81,3 +81,7 @@ post_stamp_serenity,세레니티 비치 우표,QuestItem,세레니티 비치 사
 post_stamp_mewtopia,뮤토피아 우표,QuestItem,뮤토피아 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_mewtopia,FALSE,,,,,,,,,,,
 post_stamp_pawsylvania,포실베니아 우표,QuestItem,포실베니아 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_pawsylvania,FALSE,,,,,,,,,,,
 post_stamp_shiorean,시오리안 우표,QuestItem,시오리안 사람들을 도와서 받은 우표이다,99,0,0,Icons/Quest/post_stamp_shiorean,FALSE,,,,,,,,,,,
+boiled_egg,삶은 달걀,Consumable,따듯해서 먹기 좋은 삶은 달걀이다,99,100,50,Icons/Materials/boiled_egg,TRUE,5,,,,,,,,,,
+seed,씨앗,Material,"몬스터가 떨어뜨린 씨앗이다.
+훔친건 아니겠지",99,140,70,Icons/Materials/seed,TRUE,,,,,,,,,,,
+carrot,당근,Material,꽝꽝 얼어있는 당근 이다,99,400,200,Icons/Materials/carrot,TRUE,,,,,,,,,,,
