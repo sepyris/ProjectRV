@@ -15,10 +15,6 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] private float goldMultiplier = 1.0f; // 골드 배율 (이벤트 등에 사용)
     [SerializeField] private float goldRandomRange = 0.2f; // 골드 랜덤 범위 (±20%)
 
-    [Header("레벨별 경험치 테이블 (옵션)")]
-    [SerializeField] private bool useCustomExpTable = false;
-    [SerializeField] private int[] customExpTable; // 레벨별 필요 경험치
-
     void Awake()
     {
         if (Instance == null)
@@ -134,18 +130,10 @@ public class ExperienceManager : MonoBehaviour
     }
 
     
-    /// 레벨별 필요 경험치 계산 (커스텀 테이블 사용)
+    /// 레벨별 필요 경험치 계산
     
     public int GetRequiredExpForLevel(int level)
     {
-        if (useCustomExpTable && customExpTable != null && level <= customExpTable.Length)
-        {
-            return customExpTable[level - 1];
-        }
-        else
-        {
-            // 기본 공식: 100 * 1.2^(level-1)
-            return Mathf.RoundToInt(100 * Mathf.Pow(1.2f, level - 1));
-        }
+        return Mathf.RoundToInt(300 * Mathf.Pow(1.1f, level - 0.5f));
     }
 }
