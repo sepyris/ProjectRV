@@ -232,7 +232,7 @@ public class QuestManager : MonoBehaviour
     /// </summary>
     public void UpdateObjective(string questId, string targetId, int count)
     {
-        var q = GetQuestData(questId);
+         var q = GetQuestData(questId);
         if (q == null) return;
         if (q.status != QuestStatus.Accepted) return;
 

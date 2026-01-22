@@ -40,12 +40,12 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
             cooldownText.enabled = false;
         }
 
-        // 기존 코드
         // QuickSlotManager 이벤트 구독
         if (QuickSlotManager.Instance != null)
         {
             QuickSlotManager.Instance.OnQuickSlotChanged += OnSlotChanged;
             QuickSlotManager.Instance.OnQuickSlotUsed += OnSlotUsed;
+            InventoryManager.Instance.OnItemAdded += OnItemAdded;
         }
 
         // 초기 슬롯 데이터 가져오기
@@ -253,6 +253,14 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
+    //획득한 아이템이 퀵슬롯에 등록되어 있으면 UI 업데이트
+    private void OnItemAdded(InventoryItem item)
+    {
+        if(slotData.itemId == item.itemid)
+        {
+            UpdateUI();
+        }
+    }
 
     /// 소모품 UI 업데이트
 
@@ -301,9 +309,6 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
             }
         }
     }
-
-    /// 스킬 UI 업데이트
-    // QuickSlotUI.cs - UpdateSkillUI() 수정
 
     /// <summary>
     /// 스킬 UI 업데이트
@@ -379,10 +384,6 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    // ==========================================
-    //  호버 기능 추가
-    // ==========================================
-
 
     /// 마우스 호버 시작 - 아이템 상세 정보 표시
 
@@ -444,9 +445,6 @@ public class QuickSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler, IP
         }
     }
 
-    // ==========================================
-    // 드롭 및 클릭 처리
-    // ==========================================
 
 
     /// 드롭 처리 - 아이템을 퀵슬롯에 등록

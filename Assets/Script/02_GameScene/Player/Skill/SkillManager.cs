@@ -221,7 +221,12 @@ public class SkillManager : MonoBehaviour
             skillDelayRemaining = GLOBAL_SKILL_DELAY;
 
             OnSkillUse?.Invoke(skillData);
-            skillData.AddExp(5 * skillData.skillLevel);
+            bool levelup = skillData.AddExp(5 * skillData.skillLevel);
+            if (levelup)
+            {
+                skillInstance.LevelUp();
+                OnSkillChanged?.Invoke();
+            }
 
             Debug.Log($"[SkillManager]  스킬 사용 성공: {skillInstance.SkillName}");
 

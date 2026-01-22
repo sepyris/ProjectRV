@@ -659,7 +659,10 @@ public class CharacterSaveManager : MonoBehaviour
         // 현재 씬 정보 저장
         if (CurrentCharacter != null)
         {
-            CurrentGlobalData.currentSceneName = CurrentCharacter.currentScene;
+            if(CurrentCharacter.currentScene.StartsWith(Def_Name.SCENE_NAME_START_MAP))
+            {
+                CurrentGlobalData.currentSceneName = CurrentCharacter.currentScene;
+            }
             CurrentGlobalData.playerPosition = CurrentCharacter.position;
         }
 
