@@ -15,7 +15,7 @@ public class BraveHeart : ActiveSkillBase
     protected override void Execute(Transform caster, Vector3 targetPosition, Transform targetTransform)
     {
         // 버프 수치 계산
-        float buffPercent = GetCurrentDamage() / 100f;
+        float buffPercent = GetCurrentDamage();
         float buffDuration = skillData.cooldown / 2f;
 
         // BuffManager로 버프 적용

@@ -684,3 +684,255 @@ MonoBehaviour:
     questId: 
     lines:
     - Text: "\uC2DC\uC624\uB9AC\uC548 \uC774\uC0C1\uBB34"
+  - npcId: npc_0017
+    dialogueType: Quest_Offer
+    questId: Quest_017
+    lines:
+    - Text: "\uB8E8\uBBF8\uB77C\uAC00 \uBCF4\uB0B8 \uBAA8\uD5D8\uAC00\uBD84\uC778\uAC00\uC694?\n\uC800\uB294
+        \uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4 \uAC00\uB294\uAE38\uC744 \uC870\uC0AC\uD558\uB294
+        \uBBF8\uB8E8\uBBF8 \uC785\uB2C8\uB2E4"
+    - Text: "\uADFC\uB370 \uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4\uC5D0 \uAC00\uAE4C\uC6CC\uC838\uC11C
+        \uC778\uC9C0\n\uB354\uC6B4\uB290\uB08C\uC774 \uB4E4\uC5B4\uC694\n\uC81C \uBD80\uD0C1\uC744
+        \uB4E4\uC5B4\uC8FC\uC2E4\uC218 \uC788\uC744\uAE4C\uC694?"
+  - npcId: npc_0017
+    dialogueType: Quest_Accept
+    questId: Quest_017
+    lines:
+    - Text: "\uB108\uBB34 \uBAA9\uC774 \uB9C8\uB978\uB370 \uD3EC\uC158\uC880 \uB098\uB220\uC8FC\uC2E4\uC218
+        \uC788\uC744\uAE4C\uC694?"
+  - npcId: npc_0017
+    dialogueType: Quest_Decline
+    questId: Quest_017
+    lines:
+    - Text: "\uB354\uC6CC\uC11C \uD798\uB4E4\uC5B4\uC694..."
+  - npcId: npc_0017
+    dialogueType: Quest_Progress
+    questId: Quest_017
+    lines:
+    - Text: "\uC791\uC740 \uCCB4\uB825 \uBB3C\uC57D 10\uAC1C \uC815\uB3C4 \uC788\uC73C\uBA74
+        \uB420\uAC70 \uAC19\uC544\uC694"
+  - npcId: npc_0017
+    dialogueType: Quest_Complete
+    questId: Quest_017
+    lines:
+    - Text: "\uAC10\uC0AC\uD569\uB2C8\uB2E4\n\uD55C\uC2DC\uB984 \uB1A8\uB124\uC694."
+    - Text: "\uCE7C\uB370\uB77C \uC2A4\uD504\uB9C1\uC2A4\uB294 \uB4A4\uC5D0 \uC788\uB294
+        \uC560\uC2DC \uB9C8\uC6B4\uD2B8\uB294 \uD654\uC0B0\uC774\uC9C0\uB9CC\n\uC0AC\uD654\uC0B0\uC774\uB77C\uC11C
+        \uB354 \uC774\uC0C1 \uD3ED\uBC1C\uD558\uC9C0 \uC54A\uC544 \uC548\uC804\uD574\uC694"
+  - npcId: npc_0018
+    dialogueType: Quest_Offer
+    questId: Quest_018
+    lines:
+    - Text: "\uB8E8\uBBF8\uB77C\uAC00 \uBCF4\uB0B8 \uBAA8\uD5D8\uAC00\uBD84\uC778\uAC00\uC694?\n\uC800\uB294
+        \uD37C\uD329\uD1A0\uB9AC \uAC00\uB294\uAE38\uC744 \uC870\uC0AC\uD558\uB294
+        \uBBF8\uB77C\uB8E8 \uC785\uB2C8\uB2E4"
+    - Text: "\uC5EC\uAE30\uB294  \uC544\uBB34\uAC83\uB3C4 \uC5C6\uC5B4\uC11C \uC870\uC0AC\uAC00
+        \uD798\uB4E4\uC5B4\uC694\n\uC81C \uBD80\uD0C1\uC744 \uB4E4\uC5B4\uC8FC\uC2E4\uC218
+        \uC788\uC744\uAE4C\uC694?"
+  - npcId: npc_0018
+    dialogueType: Quest_Accept
+    questId: Quest_018
+    lines:
+    - Text: "\uBAA9\uB9C8\uB974\uACE0 \uBC30\uACE0\uD508\uB370 \uD3EC\uC158\uD558\uACE0
+        \uBC84\uC12F\uC880 \uB098\uB220\uC8FC\uC2E4\uC218 \uC788\uC744\uAE4C\uC694?"
+  - npcId: npc_0018
+    dialogueType: Quest_Decline
+    questId: Quest_018
+    lines:
+    - Text: "\uB05D\uC774 \uC548\uBCF4\uC5EC\uC694..."
+  - npcId: npc_0018
+    dialogueType: Quest_Progress
+    questId: Quest_018
+    lines:
+    - Text: "\uC791\uC740 \uCCB4\uB825 \uBB3C\uC57D 5\uAC1C\uD558\uACE0 \uBE68\uAC04
+        \uBC84\uC12F 5\uAC1C \uC815\uB3C4 \uC788\uC73C\uBA74 \uB420\uAC70 \uAC19\uC544\uC694"
+  - npcId: npc_0018
+    dialogueType: Quest_Complete
+    questId: Quest_018
+    lines:
+    - Text: "\uAC10\uC0AC\uD569\uB2C8\uB2E4\n\uD55C\uC2DC\uB984 \uB1A8\uB124\uC694."
+    - Text: "\uD37C\uD329\uD1A0\uB9AC\uB294 \uB18D\uACBD\uC9C0\uB300\uC778\uB370
+        \uC12C \uC804\uCCB4\uB97C \uCEE4\uBC84\uD560 \uC815\uB3C4\uB85C\n\uC2DD\uB7C9\uC774
+        \uB9CE\uC774 \uB098\uC640\uC694\n\uC815\uC791 \uC800\uB294 \uC544\uBB34\uAC83\uB3C4
+        \uC5C6\uC9C0\uB9CC\uC694..."
+  - npcId: npc_0019
+    dialogueType: Quest_Offer
+    questId: Quest_019
+    lines:
+    - Text: "\uB8E8\uBBF8\uB77C\uAC00 \uBCF4\uB0B8 \uBAA8\uD5D8\uAC00\uBD84\uC778\uAC00\uC694?\n\uC800\uB294
+        \uC2DC\uC624\uB9AC\uC548 \uAC00\uB294\uAE38\uC744 \uC870\uC0AC\uD558\uB294
+        \uBBF8\uB8E8\uBBF8 \uC785\uB2C8\uB2E4"
+    - Text: "\uADFC\uB370 \uC2DC\uC624\uB9AC\uC548\uC5D0 \uAC00\uAE4C\uC6CC\uC838\uC11C
+        \uC778\uC9C0\n\uB108\uBB34 \uCD94\uC6CC\uC694...\n\uC81C \uBD80\uD0C1\uC744
+        \uB4E4\uC5B4\uC8FC\uC2E4\uC218 \uC788\uC744\uAE4C\uC694?"
+  - npcId: npc_0019
+    dialogueType: Quest_Accept
+    questId: Quest_019
+    lines:
+    - Text: "\uB108\uBB34 \uBC30\uACE0\uD508\uB370 \uBC84\uC12F\uC880 \uB098\uB220\uC8FC\uC2E4\uC218
+        \uC788\uC744\uAE4C\uC694?"
+  - npcId: npc_0019
+    dialogueType: Quest_Decline
+    questId: Quest_019
+    lines:
+    - Text: "\uCD94\uC6CC\uC11C \uBC30\uACE0\uD30C\uC694..."
+  - npcId: npc_0019
+    dialogueType: Quest_Progress
+    questId: Quest_019
+    lines:
+    - Text: "\uBE68\uAC04 \uBC84\uC12F 10\uAC1C \uC815\uB3C4 \uC788\uC73C\uBA74 \uB420\uAC70
+        \uAC19\uC544\uC694"
+  - npcId: npc_0019
+    dialogueType: Quest_Complete
+    questId: Quest_019
+    lines:
+    - Text: "\uAC10\uC0AC\uD569\uB2C8\uB2E4\n\uD55C\uC2DC\uB984 \uB1A8\uB124\uC694."
+    - Text: "\uC2DC\uC624\uB9AC\uC548\uC740 \uCC38 \uC544\uB984\uB2E4\uC6B4 \uC124\uC0B0
+        \uB9C8\uC744\uC778\uB370\n\uD56D\uC0C1 \uB208\uC774 \uB0B4\uB9AC\uACE0 \uC788\uC5B4\uC694\n\uC5B8\uC81C
+        \uBA48\uCD9C\uAE4C\uC694...?"
+  - npcId: npc_0008
+    dialogueType: Quest_Offer
+    questId: Quest_020
+    lines:
+    - Text: "\uC5EC\uAE30\uC11C \uB8E8\uB8E8\uB97C \uBCF4\uB294\uB370 \uAC00\uB054
+        \uC774\uC0C1\uD558\uB2E8 \uB9D0\uC774\uC57C\n\uBAA8\uD5D8\uAC00\uB2D8\uB3C4
+        \uADF8\uB807\uAC8C \uC0DD\uAC01\uD558\uC9C0 \uC54A\uC544?"
+    - Text: "\uC758\uC2EC\uB418\uB294 \uC0C1\uD669\uC774 \uB9CE\uC740\uB370 \uAD81\uAE08\uD558\uC9C0
+        \uC54A\uC544?"
+  - npcId: npc_0008
+    dialogueType: Quest_Accept
+    questId: Quest_020
+    lines:
+    - Text: "\uADFC\uB370 \uB204\uAD6C\uC5D0\uAC8C\uB098 \uB9D0\uD558\uC9C0 \uBABB\uD558\uACE0\n\uB9C8\uC744\uC0AC\uB78C\uB4E4\uC758
+        \uC2E0\uB8B0\uB97C \uC5BB\uC740 \uC0AC\uB78C\uC5D0\uAC8C\uB9CC \uB9D0\uD574\uC904\uAE4C
+        \uC2F6\uC5B4"
+  - npcId: npc_0008
+    dialogueType: Quest_Decline
+    questId: Quest_020
+    lines:
+    - Text: "\uAD81\uAE08\uD558\uC9C0 \uC54A\uC740\uAC00 \uBCF4\uAD6C\uB098"
+  - npcId: npc_0008
+    dialogueType: Quest_Progress
+    questId: Quest_020
+    lines:
+    - Text: "\uBAA8\uD5D8\uAC00\uB2D8\uC740 \uC2E0\uB8B0\uD560\uB9CC\uD55C \uC0AC\uB78C\uC77C\uAE4C?\n\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4
+        \uC6B0\uD45C\uB97C \uBCF4\uC5EC\uC904\uC218 \uC788\uC744\uAE4C?"
+  - npcId: npc_0008
+    dialogueType: Quest_Complete
+    questId: Quest_020
+    lines:
+    - Text: "\uC774\uBC29\uC778\uC774 \uC62C\uB54C\uB9C8\uB2E4 \uAE08\uD654,\uD3EC\uC158\uB4F1
+        \uC544\uC774\uD15C\uC744 \uB098\uB220\uC8FC\uB294\uB370\n\uC5B4\uB514\uC11C
+        \uB098\uC628\uAC78\uAE4C?"
+    - Text: "\uD56D\uC0C1 \uB8E8\uBAA8\uD558\uACE0 \uB8E8\uB77C\uD55C\uD14C \uC548\uBD80\uB97C
+        \uBB3B\uB294\uB370\n\uB458\uC740 \uBB54\uAC00 \uC54C\uC9C0 \uC54A\uC744\uAE4C?"
+  - npcId: npc_0003
+    dialogueType: Quest_Offer
+    questId: Quest_021
+    lines:
+    - Text: "\uB8E8\uBBF8\uB77C\uAC00 \uC758\uC2EC\uC774 \uB9CE\uC8E0?\n\uB8E8\uB8E8\uC758
+        \uC544\uC774\uD15C\uC744 \uC800\uB294 \uC54C\uACE0 \uC788\uC5B4\uC694"
+  - npcId: npc_0003
+    dialogueType: Quest_Accept
+    questId: Quest_021
+    lines:
+    - Text: "\uADFC\uB370 \uC800\uB294 \uC57D\uCD08\uB97C \uC54C\uACE0 \uC2F6\uC5B4\uC694\n\uB098\uBB47\uC78E,\uC57D\uCD08,\uBE68\uAC04\uBC84\uC12F\uC744
+        5\uAC1C\uC529 \uAD6C\uD574\uC640\uC8FC\uC2E4\uC218\uC788\uB098\uC694?"
+  - npcId: npc_0003
+    dialogueType: Quest_Decline
+    questId: Quest_021
+    lines:
+    - Text: "\uC81C \uC815\uBCF4\uAC00 \uD544\uC694\uC5C6\uC73C\uC2E0\uAC00\uC694?"
+  - npcId: npc_0003
+    dialogueType: Quest_Progress
+    questId: Quest_021
+    lines:
+    - Text: "\uB098\uBB47\uC78E,\uC57D\uCD08,\uBE68\uAC04\uBC84\uC12F...\uB9CE\uC73C\uBA74
+        \uB9CE\uC744\uC218\uB85D \uC88B\uC544\uC694"
+  - npcId: npc_0003
+    dialogueType: Quest_Complete
+    questId: Quest_021
+    lines:
+    - Text: "\uC0AC\uC2E4 \uD3A0\uB9AC\uC2A4\uD0C0\uC6B4\uC5D0\uB294 \uB9C8\uC744\uBC1C\uC804\uAE30\uAE08\uC774
+        \uC788\uC5B4\uC694\n\uAE08\uC561\uC774 \uB192\uC9C0\uB294 \uC54A\uC9C0\uB9CC
+        \uC544\uB9C8 \uADF8 \uB3C8\uC744 \uC4F0\uB294\uAC70 \uC544\uB2D0\uAE4C\uC694?"
+  - npcId: npc_0004
+    dialogueType: Quest_Offer
+    questId: Quest_022
+    lines:
+    - Text: "\uB8E8\uBBF8\uB77C\uC640 \uB8E8\uBAA8\uD55C\uD14C \uBB54\uAC00\uB97C
+        \uB4E3\uACE0 \uC624\uC168\uAD70\uC694"
+    - Text: "\uB8E8\uBAA8\uC758 \uB9C8\uC744\uBC1C\uC804\uAE30\uAE08\uC740 \uC815\uB9D0\uB85C
+        \uBC1C\uC804\uC5D0\uB9CC \uC4F0\uC774\uB294\uAC70\uB85C \uC54C\uACE0 \uC788\uC5B4\uC694\n\uC81C\uAC00
+        \uC54C\uAE30\uB85C\uB294 \uC5B4\uB5A4 \uBB3C\uAC74\uC744 \uC774\uC6A9\uD55C\uB2E4\uACE0
+        \uD588\uC5B4\uC694"
+  - npcId: npc_0004
+    dialogueType: Quest_Accept
+    questId: Quest_022
+    lines:
+    - Text: "\uC800 \uB300\uC2E0 \uC8FC\uC704 \uBAAC\uC2A4\uD130\uB4E4\uC744 \uCC98\uB9AC
+        \uD574\uC8FC\uC2E4\uC218 \uC788\uB098\uC694?\n\uADF8\uB3D9\uC548 \uADF8 \uBB3C\uAC74\uC5D0
+        \uB300\uD574 \uC790\uC138\uD788 \uC54C\uC544\uBCFC\uAED8\uC694\n\uBAAC\uC2A4\uD130\uB4E4\uC758
+        \uB9C8\uB098\uB369\uC5B4\uB9AC\uC640 \uB178\uB780\uAF43\uC744 5\uAC1C\uC529
+        \uAD6C\uD574\uC640\uC8FC\uC2E4\uC218 \uC788\uB098\uC694?"
+  - npcId: npc_0004
+    dialogueType: Quest_Decline
+    questId: Quest_022
+    lines:
+    - Text: "\uAD81\uAE08\uD558\uC9C0 \uC54A\uC73C\uC2E0\uAC00\uC694?\n\uBB3C\uAC74\uC744
+        \uB9CC\uB4E4\uC5B4\uB0B4\uB294 \uBB3C\uAC74\uC774\uB77C\uB2C8"
+  - npcId: npc_0004
+    dialogueType: Quest_Progress
+    questId: Quest_022
+    lines:
+    - Text: "\uB9C8\uB098\uB369\uC5B4\uB9AC\uC640 \uB178\uB780\uAF43\uC740 \uBAAC\uC2A4\uD130\uB4E4\uC744
+        \uC7A1\uB2E4\uBCF4\uBA74 \uC5BB\uC744\uC218 \uC788\uC5B4\uC694\n5\uAC1C\uC815\uB3C4\uB9CC
+        \uC788\uC73C\uBA74 \uB420\uAC70 \uAC19\uC544\uC694"
+  - npcId: npc_0004
+    dialogueType: Quest_Complete
+    questId: Quest_022
+    lines:
+    - Text: "\uAE4A\uC740 \uC232\uC18D\uC5D0\uC11C \uB098\uC624\uB294 \uC544\uC774\uD15C\uC774\uB77C\uB098\uBD10\uC694\n\uADF8\uB0E5
+        \uB8E8\uB8E8\uD55C\uD14C \uC9C1\uC811 \uBB3C\uC5B4\uBCF4\uBA74 \uC5B4\uB5A8\uAE4C\uC694?"
+  - npcId: npc_0001
+    dialogueType: Quest_Offer
+    questId: Quest_023
+    lines:
+    - Text: "\uC800\uC5D0\uB300\uD574 \uC54C\uC544\uBCF4\uACE0 \uC788\uB2E4\uACE0
+        \uB4E4\uC5C8\uB294\uB370..."
+    - Text: ...
+    - Text: "\uC81C\uAC00 \uC544\uC774\uD15C\uC744 \uB9CE\uC774 \uB098\uB220\uC904\uC218
+        \uC788\uB294 \uC774\uC720\uC694?\n\uC544\uC774\uD15C\uC744 \uB9CC\uB4E4\uC5B4\uB0B4\uB294
+        \uC544\uC774\uD15C\uC774\uC694?"
+  - npcId: npc_0001
+    dialogueType: Quest_Accept
+    questId: Quest_023
+    lines:
+    - Text: "\uADF8\uB7FC \uC232\uC758 \uACE0\uC591\uC774\uAC00 \uAC00\uC9C0\uACE0
+        \uC788\uB294\n\uC232\uC758 \uB9C8\uB098 \uB369\uC5B4\uB9AC\uB97C \uD558\uB098\uB9CC
+        \uAD6C\uD574\uC640\uC8FC\uC2E4\uC218 \uC788\uB098\uC694?"
+  - npcId: npc_0001
+    dialogueType: Quest_Decline
+    questId: Quest_023
+    lines:
+    - Text: "\uADF8\uB7F0\uAC74 \uC5C6\uB2E4\uACE0 \uC0DD\uAC01\uD558\uB294\uAC70\uC8E0"
+  - npcId: npc_0001
+    dialogueType: Quest_Progress
+    questId: Quest_023
+    lines:
+    - Text: "\uAE4A\uC740 \uC232\uC18D \uB354 \uAE4A\uC740\uACF3\uC5D0 \uC0AC\uB294
+        \uC232\uC758 \uACE0\uC591\uC774\uAC00 \uAC00\uC9C4\n\uC232\uC758 \uB9C8\uB098\uB369\uC5B4\uB9AC\uC5D0\uC694"
+  - npcId: npc_0001
+    dialogueType: Quest_Complete
+    questId: Quest_023
+    lines:
+    - Text: "\uC232\uC758 \uB9C8\uB098 \uB369\uC5B4\uB9AC\uB97C \uC774\uB807\uAC8C"
+    - Text: ...
+    - Text: ...
+    - Text: "\uC9DC\uC794 \uC544\uC774\uD15C\uC774 \uB9CC\uB4E4\uC5B4\uC84C\uB2F5\uB2C8\uB2E4\n\uB2E4\uB978
+        \uB9C8\uC744\uC0AC\uB78C\uB4E4\uC5D0\uAC8C\uB294 \uADF8\uB0E5 \uCC3D\uACE0\uC5D0
+        \uC190\uC744 \uB123\uC5C8\uB2E4 \uBE80\uAC83\uCC98\uB7FC \uBCF4\uC778\uB2E4\uB294\uB370"
+    - Text: "\uAD00\uB9AC\uC790\uAC00 \uC800\uD55C\uD14C \uC900 \uC2A4\uD0AC\uC774\uC5D0\uC694\n\uC65C
+        \uC800\uD55C\uD14C \uC774\uB7F0 \uB2A5\uB825\uC744 \uC92C\uB294\uC9C0 \uBAA8\uB974\uACA0\uC9C0\uB9CC\uC694\n\uBCC4\uAC70
+        \uC5C6\uC8E0?\uD5E4\uD5E4"
+    - Text: "\uB2E4\uB978 \uC0AC\uB78C\uB4E4\uC5D0\uAC8C\uB294 \uBE44\uBC00\uC774\uC5D0\uC694~"

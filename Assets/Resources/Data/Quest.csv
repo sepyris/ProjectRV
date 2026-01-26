@@ -1,18 +1,25 @@
-QuestID,QuestName,Description,PrerequisiteType,PrerequisiteValue,PreAcceptReward,QuestHint,Objectives,Rewards,RewardExp,RewardGold,,
-Quest_001,마을 대표와 인사,"""처음하는 퀘스트에요""",Level,1,,,,,60,,,
-Quest_002,첫 번째 거래,"""상점을 이용해봐요""",QuestStatus,Quest_001:Rewarded,item:gold_coin:10,,Collect:potion_hp_small:1,potion_hp_small:5,70,,,
-Quest_003,안부를 전해요,"""다른 주민을 만나봐요""",QuestStatus,Quest_002:Rewarded,,,Collect:quest_rumo_letter:1,armor_leather:1,80,,,
-Quest_004,약초를 캐 봐요,"""처음하는 채집이에요""",QuestStatus,Quest_003:Accepted,,,Collect:herb:5,quest_rumo_letter:1,90,,750,
-Quest_005,전투를 준비하며,"""또 다른 주민을 만나봐요""",QuestStatus,Quest_003:Rewarded,,,Collect:quest_rura_letter:1,,100,,,
-Quest_006,첫 전투 연습,"""몬스터를 쓰러뜨려봐요""",QuestStatus,Quest_005:Accepted,item:sword_wooden:1;item:staff_wooden:1,,Kill:monster_1000001:5,quest_rura_letter:1;SkillScrollFullSwing:1,150,,2300,2596
-Quest_007,스킬 사용 연습,"""몬스터를 쓰러뜨려봐요""",QuestStatus,Quest_005:Rewarded,,,Kill:monster_1000001:10,SkillScrollLightSteps:1,200,,,
-Quest_008,아이템을 떨어뜨리는 몬스터,"""몬스터가 아이템을 떨어뜨리는 이유가 뭘까?""",Level,5,,,Collect:mana_mass:5,post_stamp_felis:1,200,200,,
-Quest_009,스킬을 사용해보자,마을 정화를 위해 스킬을 사용해서 몬스터를 쓰러뜨려보자,Level,5,,,Kill:monster_1000003:10,post_stamp_felis:1,200,1000,,
-Quest_010,수련은 힘들어,몬스터를 쓰러뜨리는것도 약초를 구하는것도 수련,Level,5,,,Kill:monster_1000002:10;Collect:herb:5,post_stamp_felis:1,300,1000,,
-Quest_011,마나를 머금은 약초,마나를 머금은 약초가 있다니 루모가 좋아할려나?,Level,5,,,Collect:herb_healing:10,post_stamp_felis:1;potion_hp_small:5,300,200,,
-Quest_012,약초가 너무 좋아,약초의 소식을 들은 루모,QuestStatus,Quest_011:Rewarded,,,Collect:herb_healing:20,post_stamp_felis:1;potion_hp_small:10,350,1500,,
+QuestID,QuestName,Description,PrerequisiteType,PrerequisiteValue,PreAcceptReward,QuestHint,Objectives,Rewards,RewardExp,RewardGold
+Quest_001,마을 대표와 인사,"""처음하는 퀘스트에요""",Level,1,,,,,50,
+Quest_002,첫 번째 거래,"""상점을 이용해봐요""",QuestStatus,Quest_001:Rewarded,item:gold_coin:10,,Collect:potion_hp_small:1,potion_hp_small:5,60,
+Quest_003,안부를 전해요,"""다른 주민을 만나봐요""",QuestStatus,Quest_002:Rewarded,,,Collect:quest_rumo_letter:1,armor_leather:1,70,100
+Quest_004,약초를 캐 봐요,"""처음하는 채집이에요""",QuestStatus,Quest_003:Accepted,,,Collect:herb:5,quest_rumo_letter:1,80,100
+Quest_005,전투를 준비하며,"""또 다른 주민을 만나봐요""",QuestStatus,Quest_003:Rewarded,,,Collect:quest_rura_letter:1,,90,100
+Quest_006,첫 전투 연습,"""몬스터를 쓰러뜨려봐요""",QuestStatus,Quest_005:Accepted,item:sword_wooden:1;item:staff_wooden:1,,Kill:monster_1000001:5,quest_rura_letter:1;SkillScrollFullSwing:1,100,100
+Quest_007,스킬 사용 연습,"""몬스터를 쓰러뜨려봐요""",QuestStatus,Quest_005:Rewarded,,,Kill:monster_1000001:10,SkillScrollLightSteps:1,150,600
+Quest_008,아이템을 떨어뜨리는 몬스터,"""몬스터가 아이템을 떨어뜨리는 이유가 뭘까?""",Level,5,,,Collect:mana_mass:5,post_stamp_felis:1;potion_hp_small:5,150,200
+Quest_009,스킬을 사용해보자,마을 정화를 위해 스킬을 사용해서 몬스터를 쓰러뜨려보자,Level,5,,,Kill:monster_1000003:10,post_stamp_felis:1;potion_hp_small:5,150,1000
+Quest_010,수련은 힘들어,몬스터를 쓰러뜨리는것도 약초를 구하는것도 수련,Level,5,,,Kill:monster_1000002:10;Collect:herb:5,post_stamp_felis:1;potion_hp_small:5,250,1000
+Quest_011,마나를 머금은 약초,마나를 머금은 약초가 있다니 루모가 좋아할려나?,Level,5,,,Collect:herb_healing:10,post_stamp_felis:1;potion_hp_small:10,200,200
+Quest_012,약초가 너무 좋아,약초의 소식을 들은 루모,QuestStatus,Quest_011:Rewarded,,,Collect:herb_healing:15,post_stamp_felis:1;potion_hp_small:20,250,1500
 Quest_013,[전직]첫번째 선택,"전직이란 뭘까...
-나는 뭐가 될수 있을까?",Level,10,,,Kill:monster_2000004:1;Collect:forest_mana_mass:1,,200,,,
-Quest_014,마을 주민을 도운 보답,마을 주민을 도와서 우표를 받았다,Item,post_stamp_felis:1,,,,post_stamp_felis:1,200,,,
-Quest_015,펠리스 타운 주변,펠리스 타운 주변을 확인 해보자,Level,5,,,Dialogue:npc_0017:1;Dialogue:npc_0018:1;Dialogue:npc_0019:1,post_stamp_felis:1,250,,,
-Quest_016,다른 마을로,칼데라스프링스로 가보자,Level,10,,,Dialogue:npc_0021:1,,300,1000,,
+나는 뭐가 될수 있을까?",Level,10,,,Kill:monster_2000004:1;Collect:forest_mana_mass:1,,150,
+Quest_014,마을 주민을 도운 보답,마을 주민을 도와서 우표를 받았다,Item,post_stamp_felis:1,,,,post_stamp_felis:1,150,
+Quest_015,펠리스 타운 주변,펠리스 타운 주변을 확인 해보자,Level,5,,,Collect:quest_mirumi_letter:1;Collect:quest_miraru_letter:1;Collect:quest_mikuto_letter:1,post_stamp_felis:1,200,
+Quest_016,다른 마을로,칼데라스프링스로 가보자,Level,10,,,Dialogue:npc_0021:1,,250,1000
+Quest_017,더워서 목말라요,작은 체력 물약을 가져다주자,QuestStatus,Quest_015:Accepted,,,Collect:potion_hp_small:10,post_stamp_felis:1;quest_mirumi_letter:1,150,1000
+Quest_018,여긴 아무것도 없어요,작은 체력 물약과 버섯을 가져다 주자,QuestStatus,Quest_015:Accepted,,,Collect:potion_hp_small:5;Collect:mushroom_red:5,post_stamp_felis:1;quest_miraru_letter:1,300,2000
+Quest_019,추워서 배고파요,버섯을 가져다주자,QuestStatus,Quest_015:Accepted,,,Collect:mushroom_red:10,post_stamp_felis:1;quest_mikuto_letter:1,150,1500
+Quest_020,마을 대표의 정체!?,루루는 어떤 존재 일까?,Level,8,,,Collect:post_stamp_felis:8,,500,
+Quest_021,저는 알아요,루모가 뭔가를 알고 있다!?,QuestStatus,Quest_020:Rewarded,,,Collect:herb:5;Collect:herb_healing:5;Collect:mushroom_red:5,,500,
+Quest_022,저도 알아요,루라가 뭔가를 알고 있다!?,QuestStatus,Quest_021:Rewarded,,,Collect:mana_mass:5;Collect:yellow_flower:5,,500,
+Quest_023,루루의 정체는!!,루루의 정체는 바로 바로....,QuestStatus,Quest_022:Rewarded,,,Collect:forest_mana_mass:1,,1000,

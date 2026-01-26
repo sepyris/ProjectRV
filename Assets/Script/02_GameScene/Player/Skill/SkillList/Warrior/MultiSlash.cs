@@ -56,13 +56,12 @@ public class MultiSlash : ActiveSkillBase
         // 데미지 계산 (총 데미지를 나눔)
         float skillDamageRate = GetCurrentDamage();
         int totalDamage = Mathf.FloorToInt(playerStats.Stats.attackPower * skillDamageRate / 100f);
-        int damagePerSlash = Mathf.FloorToInt(totalDamage / (float)slashCount);
 
         // 연속 베기 시작
         PlayerController player = caster.GetComponent<PlayerController>();
         if (player is MonoBehaviour mono)
         {
-            mono.StartCoroutine(PerformMultiSlash(caster, attackDirection, damagePerSlash, playerStats.Stats, slashCount));
+            mono.StartCoroutine(PerformMultiSlash(caster, attackDirection, totalDamage, playerStats.Stats, slashCount));
         }
     }
 

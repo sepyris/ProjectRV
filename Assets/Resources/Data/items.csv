@@ -85,3 +85,6 @@ boiled_egg,삶은 달걀,Consumable,따듯해서 먹기 좋은 삶은 달걀이�
 seed,씨앗,Material,"몬스터가 떨어뜨린 씨앗이다.
 훔친건 아니겠지",99,140,70,Icons/Materials/seed,TRUE,,,,,,,,,,,
 carrot,당근,Material,꽝꽝 얼어있는 당근 이다,99,400,200,Icons/Materials/carrot,TRUE,,,,,,,,,,,
+quest_mirumi_letter,미루미의 보고서,QuestItem,미루미가 쓴 칼데라스프링스로 가는길에 대한 보고서 이다,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
+quest_miraru_letter,미라루의 보고서,QuestItem,미라루가 쓴 퍼팩토리로 가는길에 대한 보고서이다,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,
+quest_mikuto_letter,미쿠토의 보고서,QuestItem,미쿠토가 쓴 시오리안으로 가는길에 대한 보고서이다,1,0,0,Icons/Quest/letter,FALSE,,,,,,,,,,,

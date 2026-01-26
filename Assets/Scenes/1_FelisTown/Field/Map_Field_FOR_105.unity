@@ -40276,7 +40276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3141061479948383541, guid: deafb1e06da6079449ad7db0fc6fe233, type: 3}
       propertyPath: questIds.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141061479948383541, guid: deafb1e06da6079449ad7db0fc6fe233, type: 3}
+      propertyPath: questIds.Array.data[0]
+      value: Quest_018
       objectReference: {fileID: 0}
     - target: {fileID: 8092413433141278370, guid: deafb1e06da6079449ad7db0fc6fe233, type: 3}
       propertyPath: m_Name

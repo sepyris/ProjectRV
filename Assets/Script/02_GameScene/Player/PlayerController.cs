@@ -98,6 +98,21 @@ public class PlayerController : MonoBehaviour
         {
             interaction?.UpdateNearestInteractable();
         }
+        if(playerControls.Player.Attack.IsPressed())
+        {
+            if (!controlsLocked && !IsLoadingActive() && !IsAttacking && !IsGathering)
+            {
+                // 공격 애니메이션 재생
+                if (animationController != null)
+                {
+                    animationController.PlayAttackAnimation();
+                }
+
+                attack?.PerformAttack();
+            }
+        }
+        
+
 
         UpdateMovement();
     }
@@ -148,7 +163,7 @@ public class PlayerController : MonoBehaviour
         moveAction.canceled += OnMoveCanceled;
 
         // Attack
-        playerControls.Player.Attack.performed += OnAttackPerformed;
+        //playerControls.Player.Attack.performed += OnAttackPerformed;
 
         // Interact
         playerControls.Player.Interact.performed += OnInteractPerformed;
@@ -268,7 +283,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerControls != null)
         {
-            playerControls.Player.Attack.performed -= OnAttackPerformed;
+            //playerControls.Player.Attack.performed -= OnAttackPerformed;
             playerControls.Player.Interact.performed -= OnInteractPerformed;
             playerControls.Player.ToggleQuest.performed -= OnToggleQuestPerformed;
             playerControls.Player.ToggleInventory.performed -= OnToggleInventoryPerformed;

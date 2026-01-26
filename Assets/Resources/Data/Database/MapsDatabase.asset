@@ -23,28 +23,28 @@ MonoBehaviour:
   - mapId: FOR_001
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4"
     mapType: Town
-    mapRecommendedLevel: 
+    mapRecommendedLevel: Lv.1-10
     spawnPoint: {x: 0, y: 0, z: 0}
     parentMapId: 
     connectedMaps: []
   - mapId: FOR_101
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB3D9\uCABD - \uC0C8\uC2F9 \uC232"
     mapType: Field
-    mapRecommendedLevel: 
+    mapRecommendedLevel: Lv.1-3
     spawnPoint: {x: 0, y: 0, z: 0}
     parentMapId: 
     connectedMaps: []
   - mapId: FOR_102
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB3D9\uCABD - \uD478\uB978 \uC232"
     mapType: Field
-    mapRecommendedLevel: 
+    mapRecommendedLevel: Lv.4-6
     spawnPoint: {x: 0, y: 0, z: 0}
     parentMapId: 
     connectedMaps: []
   - mapId: FOR_103
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB3D9\uCABD - \uAE4A\uC740 \uC232"
     mapType: Field
-    mapRecommendedLevel: 
+    mapRecommendedLevel: Lv.7-10
     spawnPoint: {x: 0, y: 0, z: 0}
     parentMapId: 
     connectedMaps: []
@@ -52,7 +52,7 @@ MonoBehaviour:
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uBD81\uCABD - \uCE7C\uB370\uB77C \uAC00\uB294
       \uAE38"
     mapType: Field
-    mapRecommendedLevel: 
+    mapRecommendedLevel: Lv.10-20
     spawnPoint: {x: 0, y: 0, z: 0}
     parentMapId: 
     connectedMaps: []
@@ -60,7 +60,7 @@ MonoBehaviour:
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB0A8\uCABD - \uD37C\uD329\uD1A0\uB9AC
       \uAC00\uB294 \uAE38"
     mapType: Field
-    mapRecommendedLevel: 
+    mapRecommendedLevel: Lv.20-35
     spawnPoint: {x: 0, y: 0, z: 0}
     parentMapId: 
     connectedMaps: []
@@ -68,7 +68,7 @@ MonoBehaviour:
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB0A8\uB3D9\uCABD - \uC2DC\uC624\uB9AC\uC548
       \uAC00\uB294 \uAE381"
     mapType: Field
-    mapRecommendedLevel: 
+    mapRecommendedLevel: Lv.35-40
     spawnPoint: {x: 0, y: 0, z: 0}
     parentMapId: 
     connectedMaps: []
@@ -76,7 +76,7 @@ MonoBehaviour:
     mapName: "\uD3A0\uB9AC\uC2A4\uD0C0\uC6B4 \uB0A8\uB3D9\uCABD - \uC2DC\uC624\uB9AC\uC548
       \uAC00\uB294 \uAE382"
     mapType: Field
-    mapRecommendedLevel: 
+    mapRecommendedLevel: Lv.75-90
     spawnPoint: {x: 0, y: 0, z: 0}
     parentMapId: 
     connectedMaps: []

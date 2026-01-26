@@ -23,7 +23,7 @@ MonoBehaviour:
     questHint: 
     objectives: []
     rewardGold: 0
-    rewardExp: 60
+    rewardExp: 50
     rewards: []
     status: 0
   - questId: Quest_002
@@ -40,7 +40,7 @@ MonoBehaviour:
       requiredCount: 1
       currentCount: 0
     rewardGold: 0
-    rewardExp: 70
+    rewardExp: 60
     rewards:
     - itemId: potion_hp_small
       quantity: 5
@@ -59,8 +59,8 @@ MonoBehaviour:
       targetId: quest_rumo_letter
       requiredCount: 1
       currentCount: 0
-    rewardGold: 0
-    rewardExp: 80
+    rewardGold: 100
+    rewardExp: 70
     rewards:
     - itemId: armor_leather
       quantity: 1
@@ -79,8 +79,8 @@ MonoBehaviour:
       targetId: herb
       requiredCount: 5
       currentCount: 0
-    rewardGold: 0
-    rewardExp: 90
+    rewardGold: 100
+    rewardExp: 80
     rewards:
     - itemId: quest_rumo_letter
       quantity: 1
@@ -99,8 +99,8 @@ MonoBehaviour:
       targetId: quest_rura_letter
       requiredCount: 1
       currentCount: 0
-    rewardGold: 0
-    rewardExp: 100
+    rewardGold: 100
+    rewardExp: 90
     rewards: []
     status: 0
   - questId: Quest_006
@@ -116,8 +116,8 @@ MonoBehaviour:
       targetId: monster_1000001
       requiredCount: 5
       currentCount: 0
-    rewardGold: 0
-    rewardExp: 150
+    rewardGold: 100
+    rewardExp: 100
     rewards:
     - itemId: quest_rura_letter
       quantity: 1
@@ -139,8 +139,8 @@ MonoBehaviour:
       targetId: monster_1000001
       requiredCount: 10
       currentCount: 0
-    rewardGold: 0
-    rewardExp: 200
+    rewardGold: 600
+    rewardExp: 150
     rewards:
     - itemId: SkillScrollLightSteps
       quantity: 1
@@ -161,10 +161,13 @@ MonoBehaviour:
       requiredCount: 5
       currentCount: 0
     rewardGold: 200
-    rewardExp: 200
+    rewardExp: 150
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
+      dropRate: 100
+    - itemId: potion_hp_small
+      quantity: 5
       dropRate: 100
     status: 0
   - questId: Quest_009
@@ -182,10 +185,13 @@ MonoBehaviour:
       requiredCount: 10
       currentCount: 0
     rewardGold: 1000
-    rewardExp: 200
+    rewardExp: 150
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
+      dropRate: 100
+    - itemId: potion_hp_small
+      quantity: 5
       dropRate: 100
     status: 0
   - questId: Quest_010
@@ -207,10 +213,13 @@ MonoBehaviour:
       requiredCount: 5
       currentCount: 0
     rewardGold: 1000
-    rewardExp: 300
+    rewardExp: 250
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
+      dropRate: 100
+    - itemId: potion_hp_small
+      quantity: 5
       dropRate: 100
     status: 0
   - questId: Quest_011
@@ -228,13 +237,13 @@ MonoBehaviour:
       requiredCount: 10
       currentCount: 0
     rewardGold: 200
-    rewardExp: 300
+    rewardExp: 200
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
       dropRate: 100
     - itemId: potion_hp_small
-      quantity: 5
+      quantity: 10
       dropRate: 100
     status: 0
   - questId: Quest_012
@@ -248,16 +257,16 @@ MonoBehaviour:
     objectives:
     - type: 2
       targetId: herb_healing
-      requiredCount: 20
+      requiredCount: 15
       currentCount: 0
     rewardGold: 1500
-    rewardExp: 350
+    rewardExp: 250
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
       dropRate: 100
     - itemId: potion_hp_small
-      quantity: 10
+      quantity: 20
       dropRate: 100
     status: 0
   - questId: Quest_013
@@ -279,7 +288,7 @@ MonoBehaviour:
       requiredCount: 1
       currentCount: 0
     rewardGold: 0
-    rewardExp: 200
+    rewardExp: 150
     rewards: []
     status: 0
   - questId: Quest_014
@@ -293,7 +302,7 @@ MonoBehaviour:
     questHint: 
     objectives: []
     rewardGold: 0
-    rewardExp: 200
+    rewardExp: 150
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
@@ -309,20 +318,20 @@ MonoBehaviour:
     preAcceptReward: 
     questHint: 
     objectives:
-    - type: 0
-      targetId: npc_0017
+    - type: 2
+      targetId: quest_mirumi_letter
       requiredCount: 1
       currentCount: 0
-    - type: 0
-      targetId: npc_0018
+    - type: 2
+      targetId: quest_miraru_letter
       requiredCount: 1
       currentCount: 0
-    - type: 0
-      targetId: npc_0019
+    - type: 2
+      targetId: quest_mikuto_letter
       requiredCount: 1
       currentCount: 0
     rewardGold: 0
-    rewardExp: 250
+    rewardExp: 200
     rewards:
     - itemId: post_stamp_felis
       quantity: 1
@@ -342,6 +351,160 @@ MonoBehaviour:
       requiredCount: 1
       currentCount: 0
     rewardGold: 1000
+    rewardExp: 250
+    rewards: []
+    status: 0
+  - questId: Quest_017
+    questName: "\uB354\uC6CC\uC11C \uBAA9\uB9D0\uB77C\uC694"
+    description: "\uC791\uC740 \uCCB4\uB825 \uBB3C\uC57D\uC744 \uAC00\uC838\uB2E4\uC8FC\uC790"
+    prerequisite:
+      type: 3
+      value: Quest_015:Accepted
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: potion_hp_small
+      requiredCount: 10
+      currentCount: 0
+    rewardGold: 1000
+    rewardExp: 150
+    rewards:
+    - itemId: post_stamp_felis
+      quantity: 1
+      dropRate: 100
+    - itemId: quest_mirumi_letter
+      quantity: 1
+      dropRate: 100
+    status: 0
+  - questId: Quest_018
+    questName: "\uC5EC\uAE34 \uC544\uBB34\uAC83\uB3C4 \uC5C6\uC5B4\uC694"
+    description: "\uC791\uC740 \uCCB4\uB825 \uBB3C\uC57D\uACFC \uBC84\uC12F\uC744
+      \uAC00\uC838\uB2E4 \uC8FC\uC790"
+    prerequisite:
+      type: 3
+      value: Quest_015:Accepted
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: potion_hp_small
+      requiredCount: 5
+      currentCount: 0
+    - type: 2
+      targetId: mushroom_red
+      requiredCount: 5
+      currentCount: 0
+    rewardGold: 2000
     rewardExp: 300
+    rewards:
+    - itemId: post_stamp_felis
+      quantity: 1
+      dropRate: 100
+    - itemId: quest_miraru_letter
+      quantity: 1
+      dropRate: 100
+    status: 0
+  - questId: Quest_019
+    questName: "\uCD94\uC6CC\uC11C \uBC30\uACE0\uD30C\uC694"
+    description: "\uBC84\uC12F\uC744 \uAC00\uC838\uB2E4\uC8FC\uC790"
+    prerequisite:
+      type: 3
+      value: Quest_015:Accepted
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: mushroom_red
+      requiredCount: 10
+      currentCount: 0
+    rewardGold: 1500
+    rewardExp: 150
+    rewards:
+    - itemId: post_stamp_felis
+      quantity: 1
+      dropRate: 100
+    - itemId: quest_mikuto_letter
+      quantity: 1
+      dropRate: 100
+    status: 0
+  - questId: Quest_020
+    questName: "\uB9C8\uC744 \uB300\uD45C\uC758 \uC815\uCCB4!?"
+    description: "\uB8E8\uB8E8\uB294 \uC5B4\uB5A4 \uC874\uC7AC \uC77C\uAE4C?"
+    prerequisite:
+      type: 1
+      value: 8
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: post_stamp_felis
+      requiredCount: 8
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 500
+    rewards: []
+    status: 0
+  - questId: Quest_021
+    questName: "\uC800\uB294 \uC54C\uC544\uC694"
+    description: "\uB8E8\uBAA8\uAC00 \uBB54\uAC00\uB97C \uC54C\uACE0 \uC788\uB2E4!?"
+    prerequisite:
+      type: 3
+      value: Quest_020:Rewarded
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: herb
+      requiredCount: 5
+      currentCount: 0
+    - type: 2
+      targetId: herb_healing
+      requiredCount: 5
+      currentCount: 0
+    - type: 2
+      targetId: mushroom_red
+      requiredCount: 5
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 500
+    rewards: []
+    status: 0
+  - questId: Quest_022
+    questName: "\uC800\uB3C4 \uC54C\uC544\uC694"
+    description: "\uB8E8\uB77C\uAC00 \uBB54\uAC00\uB97C \uC54C\uACE0 \uC788\uB2E4!?"
+    prerequisite:
+      type: 3
+      value: Quest_021:Rewarded
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: mana_mass
+      requiredCount: 5
+      currentCount: 0
+    - type: 2
+      targetId: yellow_flower
+      requiredCount: 5
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 500
+    rewards: []
+    status: 0
+  - questId: Quest_023
+    questName: "\uB8E8\uB8E8\uC758 \uC815\uCCB4\uB294!!"
+    description: "\uB8E8\uB8E8\uC758 \uC815\uCCB4\uB294 \uBC14\uB85C \uBC14\uB85C...."
+    prerequisite:
+      type: 3
+      value: Quest_022:Rewarded
+    preAcceptReward: 
+    questHint: 
+    objectives:
+    - type: 2
+      targetId: forest_mana_mass
+      requiredCount: 1
+      currentCount: 0
+    rewardGold: 0
+    rewardExp: 1000
     rewards: []
     status: 0

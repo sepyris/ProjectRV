@@ -1008,3 +1008,66 @@ MonoBehaviour:
     lukBonus: 0
     tecBonus: 0
     isCosmetic: 0
+  - itemId: quest_mirumi_letter
+    itemName: "\uBBF8\uB8E8\uBBF8\uC758 \uBCF4\uACE0\uC11C"
+    itemType: 3
+    description: "\uBBF8\uB8E8\uBBF8\uAC00 \uC4F4 \uCE7C\uB370\uB77C\uC2A4\uD504\uB9C1\uC2A4\uB85C
+      \uAC00\uB294\uAE38\uC5D0 \uB300\uD55C \uBCF4\uACE0\uC11C \uC774\uB2E4"
+    maxStack: 1
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/letter
+    disposable: 0
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: quest_miraru_letter
+    itemName: "\uBBF8\uB77C\uB8E8\uC758 \uBCF4\uACE0\uC11C"
+    itemType: 3
+    description: "\uBBF8\uB77C\uB8E8\uAC00 \uC4F4 \uD37C\uD329\uD1A0\uB9AC\uB85C
+      \uAC00\uB294\uAE38\uC5D0 \uB300\uD55C \uBCF4\uACE0\uC11C\uC774\uB2E4"
+    maxStack: 1
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/letter
+    disposable: 0
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0
+  - itemId: quest_mikuto_letter
+    itemName: "\uBBF8\uCFE0\uD1A0\uC758 \uBCF4\uACE0\uC11C"
+    itemType: 3
+    description: "\uBBF8\uCFE0\uD1A0\uAC00 \uC4F4 \uC2DC\uC624\uB9AC\uC548\uC73C\uB85C
+      \uAC00\uB294\uAE38\uC5D0 \uB300\uD55C \uBCF4\uACE0\uC11C\uC774\uB2E4"
+    maxStack: 1
+    buyPrice: 0
+    sellPrice: 0
+    iconPath: Icons/Quest/letter
+    disposable: 0
+    consumableEffect: 
+    equipSlot: 0
+    attackBonus: 0
+    defenseBonus: 0
+    hpBonus: 0
+    strBonus: 0
+    dexBonus: 0
+    intBonus: 0
+    lukBonus: 0
+    tecBonus: 0
+    isCosmetic: 0

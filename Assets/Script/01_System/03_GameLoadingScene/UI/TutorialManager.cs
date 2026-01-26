@@ -36,7 +36,7 @@ public class TutorialManager : MonoBehaviour
         if (quest_id == null) return;
 
         bool show_Panel = false;
-        narration_Text.text = "";
+        if(!narration_Panel.activeSelf) narration_Text.text = "";
         if (quest_id == "Quest_002")
         {
             show_Panel = true;
